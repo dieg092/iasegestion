@@ -1,0 +1,22 @@
+{
+  "name": "iasegestion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+		"node": "9.11.1",
+		"npm": "5.6.0"
+	},
+	"scripts": {
+		"start": "node index.js",
+		"dev": "nodemon index.js"
+	},
+  "author": "Diego Barranco Moliner",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.2",
+    "nodemon": "^1.17.5"
+  }
+}
