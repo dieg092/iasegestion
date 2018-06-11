@@ -1,0 +1,33 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": {
+    "/api/*": {
+      "target": "http://localhost:5000"
+    }
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "concurrently": "^3.5.1",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.10",
+    "materialize-css": "^1.0.0-rc.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-form": "^7.3.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar ./src/styles -o ./public/css",
+    "watch-css": "npm run build-css && node-sass-chokidar ./src/styles -o ./public/css --watch --recursive",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
