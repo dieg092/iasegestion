@@ -12,10 +12,6 @@ const Token = mongoose.model('token');
 let host, link, mailOptions;;
 
 module.exports = app => {
-  app.get('/', (req, res) => {
-    res.send({ hi: 'Hi!' });
-  });
-
   app.post('/api/solicitud', async (req, res) => {
     const { emailRequest } = req.body;
     const existingUser =  await User.findOne({ email : emailRequest });
