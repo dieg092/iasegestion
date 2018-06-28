@@ -13,7 +13,7 @@ const userSchema = new Schema({
     isActive: { type: Boolean, default: null },
     gender: Boolean,
     // birthDate: Date,
-    _population: { type: Schema.ObjectId, ref: 'Population' },
+    _population: String,
     rol: Boolean,
     // photo: String,
     createDate: Date,
