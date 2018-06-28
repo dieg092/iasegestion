@@ -52,7 +52,7 @@ module.exports = app => {
           if (!user[0].password) {
             try {
               mailOptions={
-                from: 'Diego Barranco Moliner <diegobarranco92@gmail.com>',
+                from: 'Iasegestion <diegobarranco92@gmail.com>',
                 to: user[0].email,
                 subject: 'Cuenta Activada (Claves de Acceso)',
                 text: 'Bienvenido a la plataforma de iasegestion.com, aquí debajo tienes tus claves de acceso:',
@@ -110,7 +110,7 @@ module.exports = app => {
         if (!err) {
           try {
             mailOptions={
-              from: 'Diego Barranco Moliner <diegobarranco92@gmail.com>',
+              from: 'Iasegestión <diegobarranco92@gmail.com>',
               to: user[0].email,
               subject: 'Cuenta Activada (Claves de Acceso)',
               text: 'Bienvenido a la plataforma de iasegestion.com, aquí debajo tienes tus claves de acceso:',

@@ -46,7 +46,7 @@ module.exports = app => {
         host = req.get('host');
         linkRegenerar = "http://" + host + "/api/recordar/" + token.token;
         mailOptions={
-          from: 'Diego Barranco Moliner <diegobarranco92@gmail.com>',
+          from: 'Iasegestión <diegobarranco92@gmail.com>',
           to: emailRemember,
           subject: 'Recuperación de cuenta',
           text: 'Aquí tienes el link para regenerar tu contraseña.',
@@ -87,7 +87,7 @@ module.exports = app => {
           linkConfirmar = "http://" + host + "/api/solicitud/" + token.token + '/' + cryptoEmail;
           linkRegenerar = "http://" + host + "/api/regenerar/" + cryptoEmail;
           mailOptions={
-            from: 'Diego Barranco Moliner <diegobarranco92@gmail.com>',
+            from: 'Iasegestión <diegobarranco92@gmail.com>',
             to: emailRequest,
             subject: 'Verificiación de Cuenta',
             text: 'Verifica tu cuenta',
@@ -184,7 +184,7 @@ module.exports = app => {
               linkConfirmar = "http://" + host + "/api/solicitud/" + token.token + '/' + cryptoEmail;
               linkRegenerar = "http://" + host + "/api/regenerar/" + cryptoEmail;
               mailOptions={
-                from: 'Diego Barranco Moliner <diegobarranco92@gmail.com>',
+                from: 'Iasegestión <diegobarranco92@gmail.com>',
                 to: email,
                 subject: 'Verificiación de Cuenta',
                 text: 'Verifica tu cuenta',
