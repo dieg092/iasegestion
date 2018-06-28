@@ -2,9 +2,19 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const provinceSchema = new Schema({
-    _id: Number,
-		name: String,
-    _community: { type: Schema.ObjectId, ref: 'Community' }
+  _id: {
+		$oid: {
+			type: 'ObjectId'
+		}
+	},
+  _community: {
+    $oid: {
+      type: 'ObjectId'
+    }
+  },
+  name: {
+    type: 'String'
+  }
 });
 
 mongoose.model('province', provinceSchema);

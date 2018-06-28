@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import M from "materialize-css/dist/js/materialize.min.js";
 import ModalRequest from './auth/ModalRequest';
+import ModalRememberPass from './auth/ModalRememberPass';
 import ModalLogin from './auth/ModalLogin';
 import ModalSuccessRequest from './auth/ModalSuccessRequest';
+import ModalSuccessRemember from './auth/ModalSuccessRemember';
 
 class Header extends Component {
   componentDidMount() {
@@ -22,11 +24,13 @@ class Header extends Component {
     return (
       <div>
         <ModalRequest />
+        <ModalRememberPass />
         <ModalLogin />
         <ModalSuccessRequest />
+        <ModalSuccessRemember />
         <nav>
           <div className="nav-wrapper">
-            <a href="/" className="brand-logo">Logo</a>
+            <img href="/" className="brand-logo" style={{ width: '175px', marginLeft: '20px', marginTop: '7px' }} src="http://iasegestion.com/templates/siteground/images/summer/joomla_logo.png" />
             <a href="#!" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down">
               <li><a data-target="modal-request" className="modal-trigger">Solicitud Acceso</a></li>

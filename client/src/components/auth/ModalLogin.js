@@ -12,6 +12,10 @@ class ModalLogin extends Component {
     this.props.requestAccessModal();
   }
 
+  onRememberPass() {
+    this.props.rememberPass();
+  }
+
   render() {
     return (
       <div id="login">
@@ -23,7 +27,7 @@ class ModalLogin extends Component {
                 <h4 className="margin-bottom-20">Iniciar Sesión</h4>
                 <LoginForm />
                 <div className="center margin-top-10">
-                  <a className="teal-text pointer">¿Has olvidado tu contraseña?</a>
+                  <a className="teal-text pointer" onClick={this.onRememberPass.bind(this)}>¿Has olvidado tu contraseña?</a>
                 </div>
                 <div className="center request-access">
                   <span>¿No tienes cuenta?<a className="teal-text pointer bold" onClick={this.onRequestAccess.bind(this)}> Solicitar Acceso</a></span>

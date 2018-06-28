@@ -12,6 +12,7 @@ require('./models/User');
 require('./models/Token');
 require('./services/passport');
 
+mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI);
 
 const app = express();
@@ -27,6 +28,7 @@ app.use(passport.session());
 app.use(flash());
 
 require('./routes/authRoutes')(app);
+require('./routes/userRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets

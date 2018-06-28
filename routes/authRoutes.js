@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
-const crypto = require('crypto')
+const crypto = require('crypto');
+const bcrypt   = require('bcrypt-nodejs');
 const _ = require('lodash');
 const Path = require('path-parser').default;
 const { URL } = require('url');
+const passport = require('passport');
 
 const Mailer = require('../services/Mailer');
 const keys = require('../config/keys');
@@ -12,6 +14,52 @@ const Token = mongoose.model('token');
 let host, link, mailOptions;;
 
 module.exports = app => {
+
+  app.post('/api/login', passport.authenticate('local',
+    { successRedirect: '/api/usuarios', failureRedirect: '/', }
+  ));
+
+  app.get('/api/current_user', (req, res) => {
+    res.send(req.user);
+  });
+
+  app.get('/api/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+  });
+
+  app.post('/api/recordar', async (req, res) => {
+    console.log('hola')
+    //¿Existe el usuario?
+    const { emailRemember } = req.body;
+    const existingUser =  await User.findOne({ email : emailRemember });
+
+    if (!existingUser) {
+      res.statusMessage = "Correo no encontrado";
+      return res.status(200).end(); //CAMBIAR ERROR
+    } else {
+      const token = new Token({ _userId: existingUser._id, token: crypto.randomBytes(16).toString('hex') });
+
+      token.save((err) => {
+        if (err) { return res.status(500).send({ msg: err.message }); }
+
+        host = req.get('host');
+        linkRegenerar = "http://" + host + "/api/recordar/" + token.token;
+        mailOptions={
+          from: 'Diego Barranco Moliner <diegobarranco92@gmail.com>',
+          to: emailRemember,
+          subject: 'Recuperación de cuenta',
+          text: 'Aquí tienes el link para regenerar tu contraseña.',
+          html: 'Para regenerar su contraseña pulse aqui:  <a href="' + linkRegenerar + '">Regenerar contrseña</a>.',
+        };
+
+        Mailer.newMail(mailOptions, req);
+      })
+      res.status(200).end();
+    }
+    //Emvoar correo con Link con token
+  });
+
   app.post('/api/solicitud', async (req, res) => {
     const { emailRequest } = req.body;
     const existingUser =  await User.findOne({ email : emailRequest });
@@ -151,6 +199,40 @@ module.exports = app => {
       }
     });
   });
+
+  app.get('/api/recordar/:token', (req, res) => {
+    Token.findOne({ token: req.params.token }, async (err, token) => {
+      if (token) {
+        res.redirect('/regenerar/' + req.params.token);
+      } else {
+        res.redirect('/');
+      }
+    });
+  });
+
+  app.post('/api/recordar/:token', async (req, res) => {
+    const token = await Token.findOne({ token: req.params.token});
+    let update = {};
+
+    bcrypt.hash(req.body.contrasenaRemember, null, null, (err, hash) => {
+        update.password = hash;
+
+        User.updateOne(
+          {
+            _id: token._userId
+          },
+            update
+        ).exec((err, result) => {
+          if (!err) {
+            Token.deleteOne({ token: req.params.token }, (err, result) => {});
+          } else {
+            res.statusMessage = "ERROR";
+          }
+          res.send({});
+        });
+    });
+  });
+
 }
 
 //

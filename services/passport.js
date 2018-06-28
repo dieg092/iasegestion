@@ -6,7 +6,7 @@ const keys = require('../config/keys');
 const User = mongoose.model('user');
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user._id);
 });
 
 passport.deserializeUser((id, done) => {
@@ -14,6 +14,22 @@ passport.deserializeUser((id, done) => {
     done(null, user);
   });
 });
+
+passport.use(new LocalStrategy({
+		usernameField: 'email',
+		passwordField: 'password'
+	}, (email, password, done) => {
+    User.findOne({ email: email }, (err, user) => {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }));
 
 // passport.use('local-signup',
 //   new LocalStrategy(

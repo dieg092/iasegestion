@@ -10,9 +10,9 @@ import validateEmail from '../../../utils/validateEmail';
 import formFields from './formFields';
 import * as actions from '../../../actions';
 
-class RequestForm extends Component {
+class RememberForm extends Component {
   onSubmitRequest() {
-    this.props.submitRequest(this.props.requestForm.values, this.props.history);
+    this.props.submitRemember(this.props.rememberForm.values, this.props.history);
   }
 
   renderFields() {
@@ -45,7 +45,7 @@ class RequestForm extends Component {
 function validate(values) {
   const errors = {};
 
-  errors.emailRequest = validateEmail(values.emailRequest || '');
+  errors.emailRemember = validateEmail(values.emailRemember || '');
 
   _.each(formFields, ({ name, noValueError }) => {
     if (!values[name]) {
@@ -57,17 +57,17 @@ function validate(values) {
 }
 
 function mapStateToProps(state) {
-  const errores  = state.auth.error;
-  const requestForm = state.form.requestForm;
+  const errores  = state.auth.errorRemember;
+  const rememberForm = state.form.rememberForm;
 
-  return { requestForm, errores };
+  return { rememberForm, errores };
 }
 
 export default compose(
   connect(mapStateToProps, actions),
   reduxForm({
     validate,
-    form: 'requestForm',
+    form: 'rememberForm',
     destroyOnUnmount: false
   })
-)(withRouter(RequestForm));
+)(withRouter(RememberForm));

@@ -1,19 +1,43 @@
 import {
   SUBMIT_REQUEST_SUCCESS,
-  SUBMIT_REQUEST_ERROR
+  SUBMIT_REQUEST_ERROR,
+  USER_LOGGED,
+  USER_LOGGED_FAIL,
+  USER_REMEMBER_SUCCESS,
+  USER_REMEMBER_FAIL,
+  USER_CHANGE_PASS_SUCCESS,
+  USER_CHANGE_PASS_FAIL
 } from '../actions/types';
 
 const INITIAL_STATE = {
   emailRequest: '',
-  error: ''
+  emailRemember: '',
+  error: '',
+  errorLogin: '',
+  errorRemember: '',
+  errorChangePass: '',
+  userLogged: null
 };
 
 export default function(state =INITIAL_STATE, action) {
+  console.log(action.payload)
   switch (action.type) {
     case SUBMIT_REQUEST_SUCCESS:
       return { ...state, emailRequest: action.payload, error: '' };
     case SUBMIT_REQUEST_ERROR:
       return { ...state, emailRequest: action.payload, error: 'Correo en uso' };
+    case USER_LOGGED:
+      return { ...state, userLogged: action.payload, errorLogin: '' };
+    case USER_LOGGED_FAIL:
+      return { ...state, errorLogin: 'Credenciales erróneas' };
+    case USER_REMEMBER_SUCCESS:
+      return { ...state, emailRemember: action.payload, errorRemember: '' };
+    case USER_REMEMBER_FAIL:
+      return { ...state, emailRemember: action.payload, errorRemember: 'Correo no encontrado.' };
+    case  USER_CHANGE_PASS_SUCCESS:
+      return { ...state, errorChangePass: '' };
+    case  USER_CHANGE_PASS_FAIL:
+      return { ...state, errorChangePass: action.payload };
     default:
       return state;
   }

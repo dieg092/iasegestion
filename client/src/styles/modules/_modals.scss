@@ -1,11 +1,11 @@
 #login {
   .modal {
     width: 503px !important;
-    height: 520px !important;
+    height: 500px !important;
   }
 }
 
-#request {
+#request, #remember {
   .modal {
     width: 600px !important;
     height: 342px !important;
@@ -19,8 +19,15 @@
   }
 }
 
+#resend-pass {
+  .modal {
+    width: 572px !important;
+    height: 260px !important;
+  }
+}
+
 @media screen and (max-width: 668px) {
-  #login, #request, #success-request {
+  #login, #request, #success-request, #resend-pass, #remember {
     .modal {
       width: 100% !important;
       height: 100% !important;

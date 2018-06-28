@@ -17,7 +17,7 @@ module.exports = {
     var options = {
       from: mailOptions.from,
       to: mailOptions.to,
-      subject: 'Account Verification Token',
+      subject: mailOptions.subject,
       text: mailOptions.text,
       html: mailOptions.html
     };

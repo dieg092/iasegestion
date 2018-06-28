@@ -16,23 +16,21 @@ export const requestAccessModal = () => {
   };
 };
 
+export const rememberPass = () => {
+  let login = document.getElementById('modal-login');
+  let remember = document.getElementById('modal-remember');
+
+  M.Modal.getInstance(login).close();
+  M.Modal.getInstance(remember).open();
+
+  return {
+    type: REQUEST_ACCESS_MODAL
+  };
+};
 
 export const closeModal = (modal) => {
-  let elem = '';
+  let elem = document.getElementById(modal);
 
-  switch (modal) {
-    case 'modal-login':
-      elem = document.getElementById(modal);
-      break;
-    case 'modal-request':
-      elem = document.getElementById(modal);
-      break;
-    case 'modal-success-request':
-      elem = document.getElementById(modal);
-      break;
-    default:
-      break;
-  }
 
   const instance = M.Modal.getInstance(elem);
   instance.close();
