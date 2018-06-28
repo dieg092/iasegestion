@@ -109,8 +109,6 @@ module.exports = app => {
 
     _.chain(req.body)
       .map(({ email, url }) => {
-        console.log(match)
-        console.log('match')
         const match = p.test(new URL(url).pathname);
         if (match) {
           return { email, token: match.token };
@@ -129,10 +127,6 @@ module.exports = app => {
           $set: { 'isVerified': true }
         }
       ).exec((err, result) => {
-        console.log('result')
-        console.log(result)
-        console.log('token')
-        console.log(token)
         if (!err) {
           Token.deleteOne({ token: token }, (err, result) => {});
         }
