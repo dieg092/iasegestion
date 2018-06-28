@@ -1,5 +1,9 @@
 export const POPULATION = [
 {
+"label": "Selecciona una opción",
+"value": "123"
+},
+{
 "label": "Agaete (Las Palmas, Canarias)",
 "value": "5b07011f6ed0097e1e67aca8"
 },

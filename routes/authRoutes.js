@@ -72,7 +72,7 @@ module.exports = app => {
     try {
       let newUser = new User();
       newUser.email = emailRequest;
-      newUser._population = '';
+      newUser._population = '123';
       newUser.requestDate = Date.now();
       newUser.save((err) => {
 
