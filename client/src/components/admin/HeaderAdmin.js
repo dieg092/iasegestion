@@ -63,7 +63,7 @@ class HeaderAdmin extends Component {
             </li>
             <li><a href="/fiscal" className={this.props.location.pathname === '/fiscal' && 'primary-text'}><i className={this.props.location.pathname === '/fiscal' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>content_copy</i>Asesoría Fiscal</a></li>
           </div>
-            <li style={{ position: 'absolute', bottom: '0px', paddingBottom: '60px', width: '100%' }}>
+            <li style={{ position: 'absolute', bottom: '0px', paddingBottom: '0px', width: '100%' }}>
               <a href="/api/logout"><i className="material-icons prefix">power_settings_new</i>Cerrar Sesión</a>
             </li>
         </ul>
