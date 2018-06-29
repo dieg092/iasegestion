@@ -3,6 +3,7 @@ import {
   SUBMIT_REQUEST_ERROR,
   USER_LOGGED,
   USER_LOGGED_FAIL,
+  USER_LOGGED_DISABLED,
   USER_REMEMBER_SUCCESS,
   USER_REMEMBER_FAIL,
   USER_CHANGE_PASS_SUCCESS,
@@ -20,7 +21,6 @@ const INITIAL_STATE = {
 };
 
 export default function(state =INITIAL_STATE, action) {
-  console.log(action.payload)
   switch (action.type) {
     case SUBMIT_REQUEST_SUCCESS:
       return { ...state, emailRequest: action.payload, error: '' };
@@ -30,6 +30,8 @@ export default function(state =INITIAL_STATE, action) {
       return { ...state, userLogged: action.payload, errorLogin: '' };
     case USER_LOGGED_FAIL:
       return { ...state, errorLogin: 'Credenciales erróneas' };
+    case USER_LOGGED_DISABLED:
+      return { ...state, errorLogin: 'Usuario desactivado' };
     case USER_REMEMBER_SUCCESS:
       return { ...state, emailRemember: action.payload, errorRemember: '' };
     case USER_REMEMBER_FAIL:

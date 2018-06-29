@@ -16,8 +16,12 @@ let host, link, mailOptions;;
 module.exports = app => {
 
   app.post('/api/login', passport.authenticate('local',
-    { successRedirect: '/api/usuarios', failureRedirect: '/', }
+    { successRedirect: '/api/logged', failureRedirect: '/' }
   ));
+
+  app.get('/api/logged', (req, res) => {
+    res.send(req.user);
+  });
 
   app.get('/api/current_user', (req, res) => {
     res.send(req.user);
@@ -29,7 +33,6 @@ module.exports = app => {
   });
 
   app.post('/api/recordar', async (req, res) => {
-    console.log('hola')
     //¿Existe el usuario?
     const { emailRemember } = req.body;
     const existingUser =  await User.findOne({ email : emailRemember });

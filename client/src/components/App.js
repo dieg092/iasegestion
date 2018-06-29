@@ -24,7 +24,6 @@ class App extends Component {
   }
 
   render () {
-    console.log('hola')
     return (
       <div className="app-container">
         {this.props.userLogged !== null &&
@@ -36,15 +35,15 @@ class App extends Component {
                   <Header />
                 }
               <Switch>
-                <Route exact path="/" render={() => (this.props.userLogged ? ( <Redirect to="/usuarios"/> ) : ( <Landing />))} />
+                <Route exact path="/" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Landing />)))} />
                 <Route exact path="/solicitud/verificar" render={() => (this.props.userLogged ? ( <Redirect to="/usuarios"/> ) : ( <Verify />))} />
                 <Route exact path="/solicitud/reenviar" render={() => (this.props.userLogged ? ( <Redirect to="/usuarios"/> ) : ( <Resend />))} />
                 <Route exact path="/regenerar/:token" render={() => (this.props.userLogged ? ( <Redirect to="/usuarios"/> ) : ( <ChangePass />))} />
 
-                {this.props.userLogged &&
+                {this.props.userLogged && this.props.userLogged.rol &&
                     <Route exact path="/usuarios"  component={Usuarios} />
                 }
-                {this.props.userLogged &&
+                {this.props.userLogged && this.props.userLogged.rol &&
                     <Route exact path="/usuarios/:idUsuario" component={Usuario} />
                 }
                 {this.props.userLogged &&

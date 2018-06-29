@@ -14,6 +14,7 @@ const Community = mongoose.model('community');
 
 module.exports = app => {
   app.get('/api/usuarios', requireLogin, async (req, res) => {
+    console.log(res.user)
     const users = await User.find({});
 
     res.send(users);
