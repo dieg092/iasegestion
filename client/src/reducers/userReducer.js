@@ -5,13 +5,16 @@ import {
 
 const INITIAL_STATE = {
   users: null,
-  userSelected: null
+  userSelected: null,
+  pages: null,
+  page: 1
+
 };
 
 export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
     case FETCH_USERS:
-      return { ...state, users: action.payload };
+      return { ...state, users: action.payload.docs, pages: action.payload.pages, page: action.payload.page  };
     case USER_CLICKED:
       return { ...state, userSelected: action.payload };
     case USER_CHANGE_STATE:

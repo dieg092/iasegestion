@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import FilterForm from './users/filter/FilterForm';
 import * as actions from '../../actions';
 import { Card } from '../containers/common';
 import { POPULATION } from '../../utils/population';
 
 class Usuarios extends Component {
   componentDidMount() {
-    this.props.fetchUsers();
+    this.props.fetchUsers(1, null);
   }
 
   onUserClick(user) {
     this.props.userClicked(user, this.props.history);
+  }
+
+  onPaginationClick(page) {
+    this.props.fetchUsers(page)
   }
 
   renderUsers() {
@@ -32,7 +37,7 @@ class Usuarios extends Component {
           <td>{user.isActive ?
                 <span className="new badge green" data-badge-caption={'ACTIVADO'}></span>
                 :
-                <span className="new badge red" data-badge-caption={'DESACTIVADO'}></span> 
+                <span className="new badge red" data-badge-caption={'DESACTIVADO'}></span>
               }
           </td>
           <td>{new Date(user.requestDate).toLocaleDateString()}</td>
@@ -41,43 +46,71 @@ class Usuarios extends Component {
     });
   }
 
+  pagination() {
+    let rows = [];
+    for (var i = 1; i <= this.props.pages; i++) {
+        rows.push(<li key={i} className={this.props.page === i ? 'active waves-effect' : 'waves-effect'}><a href="#!">{i}</a></li>);
+    }
+    return rows;
+  }
+
   render() {
     return (
       <div className="admin-container">
         <div className="row admin-margin-container">
           <div className="col s12">
-          <div>
-            <h3>Usuarios</h3>
+          <h2 className="center">Usuarios</h2>
+            <h4>Filtrar Usuarios</h4>
+          <div className="card">
+            <FilterForm />
           </div>
-            <div className="card">
-              <table className="highlight">
-                <thead>
-                  <tr>
-                      <th>Correo</th>
-                      <th>Nombre</th>
-                      <th>Apellidos</th>
-                      <th>NIF/CIF</th>
-                      <th>Población</th>
-                      <th>Verificado</th>
-                      <th>Activado</th>
-                      <th>Fecha solicitud</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.props && this.props.users && this.renderUsers()}
-                </tbody>
-              </table>
-            </div>
+          <h4>Listado de Usuarios</h4>
+          <div className="card">
+            <table className="highlight">
+              <thead>
+                <tr>
+                    <th>Correo</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>NIF/CIF</th>
+                    <th>Población</th>
+                    <th>Verificado</th>
+                    <th>Activado</th>
+                    <th>Fecha solicitud</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.props && this.props.users && this.renderUsers()}
+              </tbody>
+            </table>
+
+            {this.props.pages >= 40 &&
+              <div className="center" style={{ paddingBottom: '10px', paddingTop: '10px' }}>
+                <ul className="pagination">
+                  <li className={this.props.page === 1 ? 'disabled' : 'waves-effect'} onClick={() => {this.onPaginationClick(this.props.page - 1)}}><a href="#!"><i className="material-icons">chevron_left</i></a></li>
+                  {this.pagination().map((result) => {
+                    return (
+                      <li key={result.key} className={result.props.className} onClick={() => {this.onPaginationClick(result.key)}}><a href="#!">{result.key}</a></li>
+                    )
+                  })}
+                  <li className={this.props.page === this.props.pages ? 'disabled' : 'waves-effect'} onClick={() => {this.onPaginationClick(this.props.page + 1)}}><a href="#!"><i className="material-icons">chevron_right</i></a></li>
+                </ul>
+              </div>
+            }
           </div>
         </div>
       </div>
+    </div>
     );
   }
 }
 
 function mapStateToProps(state) {
   const users  = state.user.users;
-  return { users };
+  const pages  = state.user.pages;
+  const page  = state.user.page;
+
+  return { users, pages, page };
 }
 
 export default connect(mapStateToProps, actions)(Usuarios);

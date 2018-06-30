@@ -35,7 +35,7 @@ module.exports = app => {
   app.post('/api/recordar', async (req, res) => {
     //¿Existe el usuario?
     const { emailRemember } = req.body;
-    const existingUser =  await User.findOne({ email : emailRemember });
+    const existingUser =  await User.findOne({ email : emailRemember.toLowerCase() });
 
     if (!existingUser) {
       res.statusMessage = "Correo no encontrado";
@@ -65,7 +65,7 @@ module.exports = app => {
 
   app.post('/api/solicitud', async (req, res) => {
     const { emailRequest } = req.body;
-    const existingUser =  await User.findOne({ email : emailRequest });
+    const existingUser =  await User.findOne({ email : emailRequest.toLowerCase() });
 
     if (existingUser) {
       res.statusMessage = "Correo ya en uso";
@@ -74,7 +74,7 @@ module.exports = app => {
 
     try {
       let newUser = new User();
-      newUser.email = emailRequest;
+      newUser.email = emailRequest.toLowerCase();
       newUser._population = '123';
       newUser.requestDate = Date.now();
       newUser.save((err) => {

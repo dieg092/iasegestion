@@ -14,10 +14,46 @@ const Community = mongoose.model('community');
 
 module.exports = app => {
   app.get('/api/usuarios', requireLogin, async (req, res) => {
-    console.log(res.user)
-    const users = await User.find({});
+    let query = req.query;
+    console.log(req.query)
+    if (query.email) {
+      query.email = { $regex: '.*' + req.query.email + '.*' };
+    }
+    if (query.name) {
+      query.name = { $regex: '.*' + req.query.name + '.*' };
+    }
+    if (query.lastName) {
+      query.lastName = { $regex: '.*' + req.query.lastName + '.*' };
+    }
+    if (query.nif) {
+      query.nif = { $regex: '.*' + req.query.nif + '.*' };
+    }
+    if (query.gender === 'Femeníno') {
+      query.gender = true;
+    } else if (query.gender === 'Masculino') {
+      query.gender = false;
+    }
+    if (query.rol === 'Administrador') {
+      query.rol = true;
+    } else if (query.rol === 'Cliente') {
+      query.rol = false;
+    }
+    if (query.isActive === 'Activado') {
+      query.isActive = true;
+    } else if (query.isActive === 'Desactivado') {
+      query.isActive = false;
+    }
+    if (query.isVerified === 'Si') {
+      query.isVerified = true;
+    } else if (query.isVerified === 'No') {
+      query.isVerified = false;
+    }
 
-    res.send(users);
+    delete query.page;
+
+    await User.paginate(query, { page: parseInt(req.query.page), limit: 40, sort: {email: 1}}, function(err, result) {
+      res.send(result);
+    });
   });
 
   app.get('/api/usuarios/:idUsuario', requireLogin, async (req, res) => {

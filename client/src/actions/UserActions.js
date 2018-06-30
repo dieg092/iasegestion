@@ -3,10 +3,17 @@ import { FETCH_USERS, USER_CLICKED, USER_CHANGE_STATE, USER_SAVED } from './type
 import M from "materialize-css/dist/js/materialize.min.js";
 import { POPULATION } from '../utils/population';
 
-export const fetchUsers = () => async dispatch => {
-  const res = await axios.get('/api/usuarios');
+export const fetchUsers = (page, filters) => async dispatch => {
+  console.log(filters)
+  const filter = filterUsers(filters)
+
+  const res = await axios.get('/api/usuarios?page=' + page + filter);
 
   dispatch({ type: FETCH_USERS, payload: res.data });
+};
+
+export const submitFilterUser = (values) => async dispatch => {
+  console.log(values);
 };
 
 export const userClicked = (user, history) => async dispatch => {
@@ -89,5 +96,38 @@ export const regeneratePass = (userId) => async dispatch => {
   }
   M.Modal.getInstance(resendModal).close();
   window.M.toast({html: message, classes: 'rounded'});
-
 }
+
+
+export const filterUsers = (filters) => {
+  let filter = "&";
+  if (filters && filters.email) {
+    filter = filter + '&email=' + filters.email;
+  }
+  if (filters && filters.gender) {
+    filter = filter + '&gender=' + filters.gender;
+  }
+  if (filters && filters.name) {
+    filter = filter + '&name=' + filters.name;
+  }
+  if (filters && filters.lastName) {
+    filter = filter + '&lastName=' + filters.lastName;
+  }
+  if (filters && filters.nif) {
+    filter = filter + '&nif=' + filters.nif;
+  }
+  if (filters && filters.rol) {
+    filter = filter + '&rol=' + filters.rol;
+  }
+  if (filters && filters.population) {
+    filter = filter + '&population=' + filters.population;
+  }
+  if (filters && filters.isActive) {
+    filter = filter + '&isActive=' + filters.isActive;
+  }
+  if (filters && filters.isVerified) {
+    filter = filter + '&isVerified=' + filters.isVerified;
+  }
+
+  return filter;
+};
