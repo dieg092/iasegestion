@@ -32,7 +32,7 @@ class Usuarios extends Component {
           <td>{user.name}</td>
           <td>{user.lastName}</td>
           <td>{user.nif}</td>
-          <td>{population.value !== '123' ? population.label : '-'}</td>
+          <td>{population && population.value !== '123' ? population.label : (population && population.label ? '-' : '-')}</td>
           <td>{user.isVerified ? 'Si' : 'No'}</td>
           <td>{user.isActive ?
                 <span className="new badge green" data-badge-caption={'ACTIVADO'}></span>

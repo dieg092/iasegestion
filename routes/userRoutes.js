@@ -7,15 +7,11 @@ const Mailer = require('../services/Mailer');
 const requireLogin = require('../middlewares/requireLogin');
 
 const User = mongoose.model('user');
-const Population = mongoose.model('population');
-const Province = mongoose.model('province');
-const Community = mongoose.model('community');
-// mongoose.Types.ObjectId.isValid('whatever')
 
 module.exports = app => {
   app.get('/api/usuarios', requireLogin, async (req, res) => {
     let query = req.query;
-    console.log(req.query)
+
     if (query.email) {
       query.email = { $regex: '.*' + req.query.email + '.*' };
     }
@@ -89,7 +85,7 @@ module.exports = app => {
           if (!user[0].password) {
             try {
               mailOptions={
-                from: 'Iasegestion <diegobarranco92@gmail.com>',
+                from: 'Iasegestion <informacion@iasegestion.com>',
                 to: user[0].email,
                 subject: 'Cuenta Activada (Claves de Acceso)',
                 text: 'Bienvenido a la plataforma de iasegestion.com, aquí debajo tienes tus claves de acceso:',
@@ -147,7 +143,7 @@ module.exports = app => {
         if (!err) {
           try {
             mailOptions={
-              from: 'Iasegestión <diegobarranco92@gmail.com>',
+              from: 'Iasegestión <informacion@iasegestion.com>',
               to: user[0].email,
               subject: 'Cuenta Activada (Claves de Acceso)',
               text: 'Bienvenido a la plataforma de iasegestion.com, aquí debajo tienes tus claves de acceso:',

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import Header from './Header';
+import Landing from './containers/Landing';
 import Verify from './containers/RequestSuccess';
 import Resend from './containers/RequestResend';
 import ChangePass from './auth/rememberPass/changePass/ChangePassForm';
@@ -11,7 +12,6 @@ import HeaderAdmin from './admin/HeaderAdmin';
 import Usuarios from './admin/Usuarios';
 import Usuario from './admin/User';
 
-const Landing = () => <h2>Landing</h2>;
 const NoMatch = () => <h1>404</h1>;
 const Laboral = () => <h3>Laboral</h3>;
 const Fiscal = () => <h3>Fiscal</h3>;

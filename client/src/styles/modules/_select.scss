@@ -1,0 +1,41 @@
+.ui-menu {
+  list-style-type: none;
+  border-color: grey;
+  border: 0.5px;
+}
+
+.ui-menu-item {
+  height: 50px;
+  font-size: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.ui-menu:hover {
+  list-style-type: none;
+  border-color: #f2f2f2;
+  border: 0.5px;
+
+  .ui-menu-item:hover {
+    .ui-menu-item-wrapper {
+      zoom:1;
+      text-decoration:none;
+      font-weight: normal;
+      background-color: #f2f2f2;
+      background: #f2f2f2;
+      border: none;
+      border-color: #f2f2f2;
+      border: 0.5px;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+}
+
+.ui-menu-item-wrapper:not( :hover ) {
+  border: none;
+  border-color: transparent !important;
+  border: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+}

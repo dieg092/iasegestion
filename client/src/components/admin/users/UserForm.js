@@ -36,7 +36,7 @@ class UserForm extends Component {
       "nif": this.props && this.props.userSelected && this.props.userSelected.nif,
       "gender": this.props && this.props.userSelected && this.props.userSelected.gender,
       "birthDate": this.props && this.props.userSelected && this.props.userSelected.birthDate,
-      "population": this.props && this.props.userSelected && population.label,
+      "population": this.props && this.props.userSelected && population && population.label ? population.label : '',
       "lastName": this.props && this.props.userSelected && this.props.userSelected.lastName,
       "rol": this.props && this.props.userSelected && this.props.userSelected.rol
     };

@@ -6,7 +6,7 @@ export default email => {
   if (re.test(email.trim())) {
     invalidEmail = false;
   }
-  console.log(invalidEmail)
+
   if (invalidEmail) {
     return `Email no válido`;
   }

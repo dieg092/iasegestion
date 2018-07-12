@@ -9,8 +9,31 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+footer {
+  margin-top: 75px;
+}
+
 label {
   color: $black !important;
+}
+
+.landing-container {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+#page-footer {
+  background-color: #212121 !important;
+}
+
+.sidenav-overlay {
+
+  z-index: 2 !important;
+  //margin-left: 300px;
+}
+
+.footer-copyright {
+  background-color: #191919 !important;
 }
 
 .primary {

@@ -1,6 +1,6 @@
 export const POPULATION = [
 {
-"label": "Selecciona una opción",
+"label": "",
 "value": "123"
 },
 {

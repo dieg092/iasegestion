@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import M from "materialize-css/dist/js/materialize.min.js";
 import { connect } from 'react-redux';
- import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
 
