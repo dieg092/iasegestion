@@ -16,9 +16,9 @@ class ModalSuccessRequest extends Component {
             <div className="body-login">
               <h4>Verifíción de Correo electrónico</h4>
               <div className="card-content margin-top-28">
-                <h5>Hemos enviado un email de verificación a <span className="teal-text">{this.props.emailRequest}</span></h5>
-                <h6 className="margin-top-28">Revise su bandeja de entrada y verfique su cuenta haciendo click en {"\"verificar\""}.</h6>
-                <h6>Una vez verficado el correo, nuestros administradores activarán tu cuenta lo antes posible.</h6>
+                <p className="margin-bottom-20 font-20-custom margin-top-0">Hemos enviado un email de verificación a <span className="teal-text">{this.props.emailRequest}</span></p>
+                <p className="font-18-custom margin-top-0">Revise su bandeja de entrada y verfique su cuenta haciendo click en {"\"verificar\""}.</p>
+                <p className="margin-bottom-18 font-20-custom margin-top-0">Una vez verficado el correo, nuestros administradores activarán tu cuenta lo antes posible.</p>
               </div>
             </div>
           </div>

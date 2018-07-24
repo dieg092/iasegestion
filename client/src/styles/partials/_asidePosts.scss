@@ -1,0 +1,11 @@
+.border-left {
+   border-left: solid 1px grey;
+   padding-left: 30px !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .border-left {
+    border-left: 0px;
+    padding-left: 0px !important;
+  }
+}

@@ -5,14 +5,29 @@ import { compose } from "redux"
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'react-router-dom';
+import $ from 'jquery';
 import AuthField from '../login/AuthField';
 import validateEmail from '../../../utils/validateEmail';
 import formFields from './formFields';
 import * as actions from '../../../actions';
 
 class RequestForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { sendClicked: false };
+
+  }
   onSubmitRequest() {
-    this.props.submitRequest(this.props.requestForm.values, this.props.history);
+
+
+    if ($("#terminos").is(':checked')) {
+      this.setState({ sendClicked: false });
+      this.props.submitRequest(this.props.requestForm.values, this.props.history);
+    } else {
+      this.setState({ sendClicked: true });
+    }
+
   }
 
   renderFields() {
@@ -27,6 +42,13 @@ class RequestForm extends Component {
           <form onSubmit={this.props.handleSubmit(this.onSubmitRequest.bind(this))}>
             <div className="card-content margin-top-28">
               {this.renderFields()}
+              <p className="margin-left-7">
+                <label>
+                  <input id="terminos" name="terminos" type="checkbox" />
+                  <span>Acepto los <a href="/terminos">Términos y condicioes</a></span>
+                </label>
+              </p>
+              {this.state.sendClicked && <p className="red-text">Tienes que aceptar los términos y condiciones</p>}
             </div>
             {this.props && this.props.errores &&
               <p className="red-text">{this.props.errores}</p>

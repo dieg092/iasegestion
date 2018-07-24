@@ -2,11 +2,17 @@
 @import "../../node_modules/materialize-css/sass/components/variables";
 
 @import "./abstracts/_colors.scss";
+@import "./abstracts/_fonts.scss";
 @import "./abstracts/_margins.scss";
+@import "./abstracts/_padding.scss";
 @import "./base/_reset.scss";
 @import "./base/_reset_admin.scss";
 @import "./modules/_modals.scss";
+@import "./modules/_menuBlog.scss";
 @import "./modules/_select.scss";
 @import "./modules/_landingText.scss";
+@import "./modules/_header.scss";
+@import "./partials/_asidePosts.scss";
+@import "./partials/_map.scss";
 
 @import '../../node_modules/materialize-css/sass/materialize';

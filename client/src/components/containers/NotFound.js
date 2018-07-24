@@ -5,17 +5,19 @@ import Footer from './Footer';
 
 const height = $( window ).height() * 0.3;
 
-const RequestSuccess = () => {
+const NotFound = () => {
   return (
     <div className="margin-top-28">
       <div style={{ height: '39.86em' }}>
         <div className="margin-bottom-75 margin-top-42-negative" style={{ backgroundImage: 'url(/images/building.png)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
-          <h1 className="center padding-top-145 white-text">Verificación correo</h1>
+          <h1 className="center padding-top-145 white-text">ERROR 404</h1>
         </div>
-        <Card
-          title="Correo electrónico verificado"
-          body="Nuestros administradores activarán tu cuenta lo antes posible. Recibirás un correo electrónico cuando esté todo listo."
-        />
+        <div className="container center padding-300-custom">
+          <Card
+            title="NO SE ENCONRTÓ LA PÁGINA"
+            body="Puede que la página solicitada ya no exista, haya cambiado de nombre o no esté disponible temporalmente."
+          />
+        </div>
       </div>
       <div >
         <Footer />
@@ -25,4 +27,4 @@ const RequestSuccess = () => {
 };
 
 
-export default RequestSuccess;;
+export default NotFound;

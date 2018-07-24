@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import M from "materialize-css/dist/js/materialize.min.js";
 import ModalRequest from './auth/ModalRequest';
 import ModalRememberPass from './auth/ModalRememberPass';
@@ -22,7 +24,7 @@ class Header extends Component {
 
   render() {
     return (
-      <div style={{ position: 'absolute', width: '100%', zIndex: 3 }}>
+      <div className="header-absolute">
         <ModalRequest />
         <ModalRememberPass />
         <ModalLogin />
@@ -30,14 +32,14 @@ class Header extends Component {
         <ModalSuccessRemember />
         <nav className="transparent">
           <div className="nav-wrapper">
-            <img href="/" className="brand-logo" style={{ width: '175px', marginLeft: '50px', marginTop: '7px' }} src="http://iasegestion.com/templates/siteground/images/summer/joomla_logo.png" />
-            <a href="#!" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+            <a href="/"><img className="brand-logo logo-header" src="http://iasegestion.com/templates/siteground/images/summer/joomla_logo.png" /></a>
+            <a href="#!" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons margin-top-10">menu</i></a>
             <ul className="right hide-on-med-and-down">
-              <li><a>Servicios</a></li>
-              <li><a>Blog</a></li>
-              <li><a>Filosofía</a></li>
-              <li><a>¿Quiénes somos?</a></li>
-              <li><a>Contacto</a></li>
+              <li><a href="/servicios">Servicios</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/filosofia">Filosofía</a></li>
+              <li><a href="/quienes-somos">¿Quiénes somos?</a></li>
+              <li><a href="/contacto">Contacto</a></li>
               <li><a data-target="modal-request" className="modal-trigger">Solicitud Acceso</a></li>
               <li><a data-target="modal-login" className="modal-trigger">Iniciar Sesión</a></li>
             </ul>
@@ -45,11 +47,11 @@ class Header extends Component {
         </nav>
 
         <ul className="sidenav" id="mobile-demo">
-          <li><a>Servicios</a></li>
-          <li><a>Blog</a></li>
-          <li><a>Filosofía</a></li>
-          <li><a>¿Quiénes somos?</a></li>
-          <li><a>Contacto</a></li>
+          <li><a href="/servicios">Servicios</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/filosofia">Filosofía</a></li>
+          <li><a href="/quienes-somos">¿Quiénes somos?</a></li>
+          <li><a href="/contacto">Contacto</a></li>
           <li><a data-target="modal-request" className="modal-trigger">Solicitud Acceso</a></li>
           <li><a data-target="modal-login" className="modal-trigger">Iniciar Sesión</a></li>
         </ul>
@@ -58,4 +60,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);

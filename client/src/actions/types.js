@@ -15,3 +15,5 @@ export const USER_CLICKED = 'user_clicked';
 export const USER_CHANGE_STATE = 'user_change_state';
 export const USER_SAVED = 'user_saved';
 export const USER_LOGGED = 'user_logged';
+
+export const CONTACT_MESSAGE = 'contact_message';

@@ -237,6 +237,27 @@ module.exports = app => {
     });
   });
 
+
+  app.post('/api/contact', async (req, res) => {
+    const { nameContact, emailContact, message } = req.body;
+
+    mailOptions={
+      from: emailContact,
+      to: 'informacion@iasegestion.com',
+      subject: nameContact + ' quiere contactar contigo',
+      text: message,
+      html: '<p>'+ message + '</p>',
+    };
+
+    try {
+      Mailer.newMail(mailOptions, req);
+    } catch (err) {
+      res.statusMessage = "ERROR";
+    }
+    
+    res.status(200).end();
+  });
+
 }
 //https://lairjgliargli.localtunnel.me/api/solicitud/webhook
 //

@@ -36,9 +36,9 @@ export default function(state =INITIAL_STATE, action) {
       return { ...state, emailRemember: action.payload, errorRemember: '' };
     case USER_REMEMBER_FAIL:
       return { ...state, emailRemember: action.payload, errorRemember: 'Correo no encontrado.' };
-    case  USER_CHANGE_PASS_SUCCESS:
+    case USER_CHANGE_PASS_SUCCESS:
       return { ...state, errorChangePass: '' };
-    case  USER_CHANGE_PASS_FAIL:
+    case USER_CHANGE_PASS_FAIL:
       return { ...state, errorChangePass: action.payload };
     default:
       return state;

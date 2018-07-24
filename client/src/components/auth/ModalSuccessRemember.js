@@ -17,8 +17,8 @@ class ModalSuccessRemember extends Component {
             <div className="body-login">
               <h4>Regeneración de contraseña</h4>
               <div className="card-content margin-top-28">
-                <h5>Hemos enviado un email de regeneración de contraseña a <span className="teal-text">{this.props.emailRemember}</span></h5>
-                <h6 className="margin-top-28">Revise su bandeja de entrada y haga click en {"\"Regenerar contraseña\""}.</h6>
+                <p className="margin-bottom-20 font-20-custom margin-top-0">Hemos enviado un email de regeneración de contraseña a <span className="teal-text">{this.props.emailRemember}</span></p>
+                <p className="margin-bottom-20 font-20-custom margin-top-28">Revise su bandeja de entrada y haga click en {"\"Regenerar contraseña\""}.</p>
               </div>
             </div>
           </div>

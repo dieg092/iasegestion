@@ -1,0 +1,15 @@
+.content-element {
+  height: 708px;
+  margin-left: -11px;
+  margin-right: -11px
+}
+
+@media screen and (max-width: 992px) {
+  .content-element {
+    height: 200px;
+  }
+}
+
+.map-element {
+  height: 100%;
+}

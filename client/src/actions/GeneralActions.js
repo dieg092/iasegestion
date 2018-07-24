@@ -1,6 +1,8 @@
+import axios from 'axios';
 import {
   CLOSE_MODAL,
-  REQUEST_ACCESS_MODAL
+  REQUEST_ACCESS_MODAL,
+  CONTACT_MESSAGE
 } from './types';
 import M from "materialize-css/dist/js/materialize.min.js";
 
@@ -15,6 +17,16 @@ export const requestAccessModal = () => {
     type: REQUEST_ACCESS_MODAL
   };
 };
+
+export const requestModal = () => {
+  let request = document.getElementById('modal-request');
+
+  M.Modal.getInstance(request).open();
+
+  return {
+    type: REQUEST_ACCESS_MODAL
+  };
+}
 
 export const rememberPass = () => {
   let login = document.getElementById('modal-login');
@@ -31,11 +43,27 @@ export const rememberPass = () => {
 export const closeModal = (modal) => {
   let elem = document.getElementById(modal);
 
-
   const instance = M.Modal.getInstance(elem);
   instance.close();
 
   return {
     type: CLOSE_MODAL
   };
+};
+
+export const submitContact = (values) => async dispatch => {
+  const res = await axios.post('/api/contact', values);
+  const success = 'Mensaje enviado';
+  const fail = 'Error al enviar el mensaje, Intentelo de nuevo';
+
+  if (res.request.statusText === "OK") {
+    window.M.toast({html: success, classes: 'rounded'});
+  } else {
+    window.M.toast({html: fail, classes: 'rounded'});
+  }
+
+  dispatch({
+    type: CONTACT_MESSAGE,
+    payload: null
+  })
 };

@@ -13,7 +13,7 @@ import {
 import M from "materialize-css/dist/js/materialize.min.js";
 
 export const fetchUser = () => async dispatch => {
-  const res = await axios.get('/api/current_user')
+  const res = await axios.get('/api/current_user');
 
   dispatch({ type: USER_LOGGED, payload: res.data });
 };

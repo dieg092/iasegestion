@@ -1,0 +1,9 @@
+.menu-blog {
+  display: block;
+}
+
+@media screen and (max-width: 992px) {
+  .menu-blog {
+    display: none
+  }
+}

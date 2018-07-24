@@ -17,7 +17,7 @@ class ModalRememberPass extends Component {
           <div className="modal-content container-body">
             <i className="material-icons left grey-text text-darken-2 pointer" onClick={this.closeModal.bind(this)}>clear</i>
             <div className="body-login">
-              <h4>He olvidado mi Contraseña</h4>
+              <p className="margin-bottom-20 font-35-custom margin-top-0">He olvidado mi Contraseña</p>
               <RememberForm />
             </div>
           </div>

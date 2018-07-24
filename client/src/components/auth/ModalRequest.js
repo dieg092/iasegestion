@@ -17,7 +17,7 @@ class ModalRequest extends Component {
           <div className="modal-content container-body">
             <i className="material-icons left grey-text text-darken-2 pointer" onClick={this.closeModal.bind(this)}>clear</i>
             <div className="body-login">
-              <h4>Solicitud de Acceso</h4>
+              <p className="margin-bottom-20 font-35-custom margin-top-0">Solicitud de Acceso</p>
               <RequestForm />
             </div>
           </div>

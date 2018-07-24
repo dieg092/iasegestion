@@ -24,7 +24,7 @@ class ModalLogin extends Component {
             <div className="modal-content">
               <i className="material-icons left grey-text text-darken-2 pointer" onClick={this.onCloseModal.bind(this)}>clear</i>
               <div className="body-login">
-                <h4 className="margin-bottom-20">Iniciar Sesión</h4>
+                <p className="margin-bottom-20 font-35-custom margin-top-0">Iniciar Sesión</p>
                 <LoginForm />
                 <div className="center margin-top-10">
                   <a className="teal-text pointer" onClick={this.onRememberPass.bind(this)}>¿Has olvidado tu contraseña?</a>
