@@ -22,7 +22,8 @@
 
 @media screen and (max-width: 500px) {
   .font-title {
-    font-size: 2.2rem; } }
+    font-size: 2.2rem;
+    margin-top: 0px !important; } }
 
 .margin-left-7 {
   margin-left: 7px; }
@@ -87,6 +88,9 @@
 .margin-top-28 {
   margin-top: 28px; }
 
+.margin-top-header {
+  margin-top: 0px; }
+
 .margin-top-125 {
   margin-top: 125px; }
 
@@ -101,6 +105,10 @@
 
 .margin-right-custom {
   margin-right: -130px; }
+
+@media screen and (max-width: 500px) {
+  .margin-top-header {
+    margin-top: 43px; } }
 
 .padding-top-145 {
   padding-top: 145px; }

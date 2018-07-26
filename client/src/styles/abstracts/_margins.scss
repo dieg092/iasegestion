@@ -82,6 +82,10 @@
   margin-top: 28px;
 }
 
+.margin-top-header {
+  margin-top: 0px;
+}
+
 .margin-top-125 {
   margin-top: 125px;
 }
@@ -100,4 +104,10 @@
 
 .margin-right-custom {
   margin-right: -130px;
+}
+
+@media screen and (max-width: 500px) {
+  .margin-top-header {
+    margin-top: 43px;
+  }
 }

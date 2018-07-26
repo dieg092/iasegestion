@@ -24,7 +24,7 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="header-absolute">
+      <div className="header-absolute margin-top-header">
         <ModalRequest />
         <ModalRememberPass />
         <ModalLogin />

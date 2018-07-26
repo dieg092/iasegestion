@@ -34,15 +34,15 @@ class Langing extends Component {
            <li>
              <img src="https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20(1%20of%201)-5.jpg?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=92b4ef70a4e06a7e7bf54e1bde61b624&auto=format&fit=crop&w=1350&q=80" />
              <div className="caption center-align">
-               <h1>Título Texto UNO!</h1>
-               <h2 className="light grey-text text-lighten-3 font-40-custom">Descripción Texto UNO!.</h2>
+               <h1 className="font-title">Título Texto UNO!</h1>
+               <h2 className="light grey-text font-title text-lighten-3 font-40-custom">Descripción Texto UNO!.</h2>
              </div>
            </li>
            <li>
              <img src="https://images.unsplash.com/photo-1518169640858-0d622b058e5c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5ffa10ff5bac3a77cb7de6e4e7164787&auto=format&fit=crop&w=1383&q=80" />
              <div className="caption right-align">
-               <h1>Right Aligned Caption</h1>
-               <h2 className="light grey-text text-lighten-3 font-40-custom">Here is our small slogan.</h2>
+               <h1 className="font-title">Right Aligned Caption</h1>
+               <h2 className="light grey-text font-title text-lighten-3 font-40-custom">Here is our small slogan.</h2>
              </div>
            </li>
           </ul>
@@ -72,7 +72,7 @@ class Langing extends Component {
                 image="https://images.unsplash.com/photo-1522070436199-956aa4b7dec9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ec391df493ec165dc1b9789512d16703&auto=format&fit=crop&w=1350&q=80"
                 title="Asesoría Jurídica"
                 body="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-                
+
               />
             </div>
             <a href="/servicios" className="waves-effect white grey-text text-darken-4 btn-large margin-right-12 right margin-bottom-75">Más servicios</a>
