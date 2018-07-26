@@ -25,7 +25,7 @@ class Contact extends Component {
     return (
       <div>
         <div className="margin-bottom-75 margin-top-42-negative" style={{ backgroundImage: 'url(/images/building.png)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
-          <h1 className="center padding-top-145 white-text">Contacto</h1>
+          <h1 className="center padding-top-145 white-text font-title">Contacto</h1>
         </div>
 
         <div className="container">

@@ -14,7 +14,7 @@ class Philosophy extends Component {
     return (
       <div>
         <div className="margin-bottom-75 margin-top-42-negative" style={{ backgroundImage: 'url(/images/building.png)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
-          <h1 className="center padding-top-145 white-text">Filosofía</h1>
+          <h1 className="center padding-top-145 white-text font-title">Filosofía</h1>
         </div>
         <div className="container row justify font-18-custom">
           <div className="col s12 xl8 padding-right-30">
