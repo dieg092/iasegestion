@@ -10,12 +10,13 @@ function uploadImageCallBack(file) {
   return new Promise(
     async (resolve, reject) => {
       const uploadConfig = await axios.get('/api/upload');
+      console.log(uploadConfig)
       const upload = await axios.put(uploadConfig.data.url, file, {
         headers: {
           'Content-Type': file.type
         }
       });
-
+        console.log(upload)
       if (upload.status === 200) {
          resolve({ data: { link: 'https://s3.eu-west-3.amazonaws.com/iase-test/' + uploadConfig.data.key  } });
       } else {
