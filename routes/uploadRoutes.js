@@ -10,7 +10,7 @@ const s3 = new AWS.S3({
 });
 
 module.exports = app => {
-  app.get('/api/upload', requireLogin, (req, res) => {
+  app.get('/api/upload', (req, res) => {
     const key = `${req.query.folder}/${uuid()}.jpeg`;
 
     s3.getSignedUrl(

@@ -14,13 +14,13 @@ export const submitService = (values, file, mainPhoto, editor, history) => async
   let uploadConfig = '';
   if (file) {
     uploadConfig = await axios.get('/api/upload?folder=services');
-    console.log(uploadConfig)
+
     const upload = await axios.put(uploadConfig.data.url, file, {
       headers: {
         'Content-Type': file.type
       }
     });
-    console.log(upload)
+
   }
 
   const allValues = {
