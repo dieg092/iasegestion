@@ -13,7 +13,7 @@ module.exports = app => {
   app.get('/api/upload', requireLogin, (req, res) => {
     console.log(req.query)
     const key = `${req.query.folder}/${uuid()}.jpeg`;
-
+    console.log(req.query)
     s3.getSignedUrl(
       'putObject',
       {
@@ -21,7 +21,10 @@ module.exports = app => {
         ContentType: 'image/jpeg',
         Key: key
       },
-      (err, url) => res.send({ key, url })
+      (err, url) => {
+        console.log(url)
+        res.send({ key, url })
+      }
     );
   });
 };
