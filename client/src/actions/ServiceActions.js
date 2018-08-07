@@ -20,8 +20,9 @@ export const submitService = (values, file, mainPhoto, editor, history) => async
         'Content-Type': file.type
       }
     });
+    console.log(upload)
   }
-  console.log(values)
+
   const allValues = {
     title: values.serviceTitle,
     shortDescription: values.shortDescription,
