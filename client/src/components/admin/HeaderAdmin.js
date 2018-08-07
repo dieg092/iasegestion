@@ -62,9 +62,9 @@ class HeaderAdmin extends Component {
             <li><a href="/fiscal" className={this.props.location.pathname === '/fiscal' && 'primary-text'}><i className={this.props.location.pathname === '/fiscal' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>content_copy</i>Asesoría Fiscal</a></li>
             {this.props.userLogged.rol &&
               <li className="margin-top-30">
-                <a href="/admin/servicios" className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/servicios' || this.props.location.pathname === '/') && 'primary-text'}>
+                <a href="/admin/servicios" className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/servicios') && 'primary-text'}>
                   <i
-                    className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/servicios' || this.props.location.pathname === '/') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
+                    className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/servicios') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
                   >view_list
                   </i>
                   Servicios

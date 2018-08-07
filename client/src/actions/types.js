@@ -17,3 +17,6 @@ export const USER_SAVED = 'user_saved';
 export const USER_LOGGED = 'user_logged';
 
 export const CONTACT_MESSAGE = 'contact_message';
+
+export const FETCH_SERVICES = 'fetch_services';
+export const SERVICE_CREATED = 'service_created';

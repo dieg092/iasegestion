@@ -47,7 +47,7 @@ module.exports = app => {
 
     delete query.page;
 
-    await User.paginate(query, { page: parseInt(req.query.page), limit: 40, sort: {email: 1}}, function(err, result) {
+    await User.paginate(query, { page: parseInt(req.query.page), limit: 40, sort: {email: 1}},(err, result) => {
       res.send(result);
     });
   });

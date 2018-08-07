@@ -8,7 +8,6 @@ const INITIAL_STATE = {
   userSelected: null,
   pages: null,
   page: 1
-
 };
 
 export default function(state = INITIAL_STATE, action) {

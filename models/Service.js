@@ -9,9 +9,9 @@ const serviceSchema = new Schema({
     shortDescription: String,
     mainPhoto: String,
     body: String,
+		slug: String,
+		important: { type: Boolean, default: false },
 });
-
-
 
 serviceSchema.plugin(mongoosePaginate);
 

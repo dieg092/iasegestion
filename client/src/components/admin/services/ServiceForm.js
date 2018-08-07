@@ -34,7 +34,7 @@ class ServiceForm extends Component {
     const mainPhoto = document.getElementById("principalPhoto").value;
     const editor = document.getElementById("editor").value;
 
-    this.props.submitService(this.props.serviceForm.values, this.state.file, mainPhoto, editor);
+    this.props.submitService(this.props.serviceForm.values, this.state.file, mainPhoto, editor, this.props.history);
   }
 
   onFileChange(event) {
@@ -65,6 +65,7 @@ class ServiceForm extends Component {
                            placeholder="Elegir imágen principal" />
                      </div>
                   </div>
+                  <h6>Contenido</h6>
                   <EditorConvertToHTML />
                 </div>
               </div>
