@@ -9,7 +9,7 @@ import request from 'request';
 function uploadImageCallBack(file) {
   return new Promise(
     async (resolve, reject) => {
-      const uploadConfig = await axios.get('/api/upload');
+      const uploadConfig = await axios.get('/api/upload?folder=services');
       console.log(uploadConfig)
       const upload = await axios.put(uploadConfig.data.url, file, {
         headers: {
