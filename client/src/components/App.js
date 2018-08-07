@@ -19,6 +19,8 @@ import ChangePass from './auth/rememberPass/changePass/ChangePassForm';
 import HeaderAdmin from './admin/HeaderAdmin';
 import Usuarios from './admin/Usuarios';
 import Usuario from './admin/User';
+import AdminServices from './admin/AdminServices';
+import AdminService from './admin/services/AdminService';
 
 const Laboral = () => <h3>Laboral</h3>;
 const Fiscal = () => <h3>Fiscal</h3>;
@@ -59,6 +61,12 @@ class App extends Component {
                 }
                 {this.props.userLogged && this.props.userLogged.rol &&
                     <Route exact path="/usuarios/:idUsuario" component={Usuario} />
+                }
+                {this.props.userLogged && this.props.userLogged.rol &&
+                    <Route exact path="/admin/servicios" component={AdminServices} />
+                }
+                {this.props.userLogged && this.props.userLogged.rol &&
+                    <Route exact path="/admin/servicios/nuevo" component={AdminService} />
                 }
                 {this.props.userLogged &&
                     <Route exact path="/laboral" component={Laboral} />

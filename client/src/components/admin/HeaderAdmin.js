@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
-
-
 class HeaderAdmin extends Component {
   componentDidMount() {
     const elem = document.querySelector(".sidenav");
@@ -62,6 +60,17 @@ class HeaderAdmin extends Component {
               </a>
             </li>
             <li><a href="/fiscal" className={this.props.location.pathname === '/fiscal' && 'primary-text'}><i className={this.props.location.pathname === '/fiscal' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>content_copy</i>Asesoría Fiscal</a></li>
+            {this.props.userLogged.rol &&
+              <li className="margin-top-30">
+                <a href="/admin/servicios" className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/servicios' || this.props.location.pathname === '/') && 'primary-text'}>
+                  <i
+                    className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/servicios' || this.props.location.pathname === '/') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
+                  >view_list
+                  </i>
+                  Servicios
+                </a>
+              </li>
+            }
           </div>
             <li style={{ position: 'absolute', bottom: '0px', paddingBottom: '0px', width: '100%' }}>
               <a href="/api/logout"><i className="material-icons prefix">power_settings_new</i>Cerrar Sesión</a>

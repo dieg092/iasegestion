@@ -8,6 +8,7 @@ const keys = require('./config/keys');
 require('./models/Community');
 require('./models/Province');
 require('./models/Population');
+require('./models/Service');
 require('./models/User');
 require('./models/Token');
 require('./services/passport');
@@ -29,6 +30,8 @@ app.use(flash());
 
 require('./routes/authRoutes')(app);
 require('./routes/userRoutes')(app);
+require('./routes/uploadRoutes')(app);
+require('./routes/serviceRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets
