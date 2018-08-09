@@ -118,16 +118,21 @@ class UserForm extends Component {
                 {this.loadPopulations()}
               </div>
               <div className="card-action">
-                <Link to="/usuarios" className="btn red btn-red waves-effect waves-light white-text no-uppercase margin-top-15 left">
-                  Cancelar
-                </Link>
-
-                <button type="submit" className="btn teal btn-flat waves-effect waves-light white-text no-uppercase margin-top-15 margin-left-50 right">
-                  Guardar
-                </button>
-                <button type="button" data-target="modal-resend-pass" className="btn amber darken-1 waves-effect waves-light btn-flat white-text no-uppercase margin-top-15 right modal-trigger col s12 m4">
-                  Regenerar y reenviar Claves
-                </button>
+                <div className="col s12 l3 left">
+                  <Link to="/usuarios" className="btn red btn-red waves-effect waves-light white-text no-uppercase margin-top-15">
+                    Cancelar
+                  </Link>
+                </div>
+                <div className="col s12 l3 right">
+                  <button type="submit" className="btn teal btn-flat waves-effect waves-light white-text no-uppercase margin-top-15">
+                    Guardar
+                  </button>
+                </div>
+                <div className="col s12 l6 right">
+                  <button type="button" data-target="modal-resend-pass" className="btn amber darken-1 waves-effect waves-light btn-flat white-text no-uppercase margin-top-15 modal-trigger">
+                    Regenerar y reenviar Claves
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -144,7 +149,6 @@ function validate(values) {
       errors[name] = noValueError;
     }
   });
-
 
   return errors;
 }

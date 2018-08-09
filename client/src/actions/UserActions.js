@@ -17,7 +17,7 @@ export const submitFilterUser = (values) => async dispatch => {
 };
 
 export const userClicked = (user, history) => async dispatch => {
-  history.push('/usuarios/' + user._id);
+  history.push('/admin/usuarios/' + user._id);
 
   dispatch({
     type: USER_CLICKED,

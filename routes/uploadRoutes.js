@@ -23,6 +23,18 @@ module.exports = app => {
       (err, url) => res.send({ key, url })
     );
   });
+
+  app.delete('/api/delete', requireLogin, (req, res) => {
+    const key = `${req.query.key}`;
+
+    s3.deleteObject(
+      {
+        Bucket: 'iase-test',
+        Key: key
+      },
+      (err, data) => res.send({ data })
+    );
+  });
 };
 // signatureVersion: 'v4',
 // region: 'eu-west-3'

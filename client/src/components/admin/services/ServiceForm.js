@@ -20,8 +20,21 @@ class ServiceForm extends Component {
   state = { file: null };
 
   componentDidMount() {
+    if (this.props.serviceSelected) {
+      this.handleInitialize();
+    }
     const elems = document.querySelectorAll('.modal');
     M.Modal.init(elems, {});
+  }
+
+  handleInitialize() {
+    const initData = {
+      "serviceTitle": this.props && this.props.serviceSelected && this.props.serviceSelected.title,
+      "shortDescription": this.props && this.props.serviceSelected && this.props.serviceSelected.shortDescription,
+      "important": this.props && this.props.serviceSelected && this.props.serviceSelected.important
+    };
+
+    this.props.initialize(initData);
   }
 
   renderFields() {
@@ -33,8 +46,13 @@ class ServiceForm extends Component {
   onSubmitService() {
     const mainPhoto = document.getElementById("principalPhoto").value;
     const editor = document.getElementById("editor").value;
+    let edit = false;
 
-    this.props.submitService(this.props.serviceForm.values, this.state.file, mainPhoto, editor, this.props.history);
+    if (this.props.serviceSelected) {
+      edit = true;
+    }
+
+    this.props.submitService(this.props.serviceForm.values, this.state.file, mainPhoto, editor, this.props.history, edit);
   }
 
   onFileChange(event) {
@@ -62,21 +80,32 @@ class ServiceForm extends Component {
 
                      <div className="file-path-wrapper">
                         <input id="principalPhoto" className="file-path validate" type="text"
-                           placeholder="Elegir imágen principal" />
+                           placeholder="Elegir imágen principal"
+                           value={this.state.file ? this.state.file.title : (this.props.serviceSelected && this.props.serviceSelected.mainPhoto ? this.props.serviceSelected.mainPhoto.split('/')[1] : '')}/>
                      </div>
                   </div>
                   <h6>Contenido</h6>
-                  <EditorConvertToHTML />
+                  <EditorConvertToHTML
+                    value={this.props.serviceSelected && this.props.serviceSelected.body ? this.props.serviceSelected.body : ''}
+                  />
                 </div>
               </div>
               <div className="card-action">
-                <Link to="/admin/servicios" className="btn red btn-red waves-effect waves-light white-text no-uppercase margin-top-15 left">
-                  Cancelar
-                </Link>
-
-                <button type="submit" className="btn teal btn-flat waves-effect waves-light white-text no-uppercase margin-top-15 margin-left-50 right">
-                  Guardar
-                </button>
+                <div className="col s12 l3 left">
+                  <Link to="/admin/servicios" className="btn red btn-red waves-effect waves-light white-text no-uppercase margin-top-15">
+                    Cancelar
+                  </Link>
+                </div>
+                <div className="col s12 l3 left">
+                  <button type="button" data-target="modal-delete-service" className="btn amber darken-1 waves-effect waves-light btn-flat white-text no-uppercase margin-top-15 modal-trigger">
+                    Eliminar
+                  </button>
+                </div>
+                <div className="col s12 l3 right">
+                  <button type="submit" className="btn teal btn-flat waves-effect waves-light white-text no-uppercase margin-top-15 ">
+                    Guardar
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -99,8 +128,9 @@ function validate(values) {
 
 function mapStateToProps(state) {
   const serviceForm = state.form.serviceForm;
+  const serviceSelected = state.service.serviceSelected;
 
-  return { serviceForm };
+  return { serviceForm, serviceSelected };
 }
 
 export default compose(

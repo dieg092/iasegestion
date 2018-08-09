@@ -40,9 +40,9 @@ class HeaderAdmin extends Component {
           <div style={{ position: 'relative' }}>
           {this.props.userLogged.rol &&
             <li>
-              <a href="/usuarios" className={this.props.userLogged.rol && (this.props.location.pathname === '/usuarios' || this.props.location.pathname === '/') && 'primary-text'}>
+              <a href="/admin/usuarios" className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/usuarios' || this.props.location.pathname === '/') && 'primary-text'}>
                 <i
-                  className={this.props.userLogged.rol && (this.props.location.pathname === '/usuarios' || this.props.location.pathname === '/') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
+                  className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/usuarios' || this.props.location.pathname === '/') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
                 >supervisor_account
                 </i>
                 Usuarios
@@ -51,15 +51,15 @@ class HeaderAdmin extends Component {
           }
 
             <li>
-              <a href="/laboral"  className={this.props.location.pathname === '/laboral' || (!this.props.userLogged.rol && this.props.location.pathname === '/') && 'primary-text'}>
+              <a href="/admin/laboral"  className={this.props.location.pathname === '/admin/laboral' || (!this.props.userLogged.rol && this.props.location.pathname === '/') && 'primary-text'}>
               <i
-                className={this.props.location.pathname === '/laboral' || (!this.props.userLogged.rol && this.props.location.pathname === '/') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
+                className={this.props.location.pathname === '/admin/laboral' || (!this.props.userLogged.rol && this.props.location.pathname === '/') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
               >card_travel
               </i>
               Asesoría Laboral
               </a>
             </li>
-            <li><a href="/fiscal" className={this.props.location.pathname === '/fiscal' && 'primary-text'}><i className={this.props.location.pathname === '/fiscal' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>content_copy</i>Asesoría Fiscal</a></li>
+            <li><a href="/admin/fiscal" className={this.props.location.pathname === '/admin/fiscal' && 'primary-text'}><i className={this.props.location.pathname === '/admin/fiscal' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>content_copy</i>Asesoría Fiscal</a></li>
             {this.props.userLogged.rol &&
               <li className="margin-top-30">
                 <a href="/admin/servicios" className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/servicios') && 'primary-text'}>

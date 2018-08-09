@@ -20,3 +20,5 @@ export const CONTACT_MESSAGE = 'contact_message';
 
 export const FETCH_SERVICES = 'fetch_services';
 export const SERVICE_CREATED = 'service_created';
+export const SERVICE_CLICKED = 'service_clicked';
+export const SERVICE_DELETED = 'service_deleted';

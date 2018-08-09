@@ -4,26 +4,26 @@ import { compose } from "redux";
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux';
 import axios from 'axios';
-import UserForm from './users/UserForm';
-import ModalResendPass from './users/ModalResendPass';
+import ModalDeleteService from './services/ModalDeleteService';
+import ServiceForm from './services/ServiceForm';
 import * as actions from '../../actions';
 
-class User extends Component {
+class Service extends Component {
   constructor(props) {
       super(props);
 
       this.state = {
-        user: null
+        service: null
       }
   }
 
   componentDidMount(){
-    const userId = this.props.history.location.pathname.split('/')[3];
-    const res = axios.get('/api/usuarios/' + userId)
+    const serviceSlug = this.props.history.location.pathname.split('/')[3];
+    const res = axios.get('/api/service/' + serviceSlug)
       .then((response) => {
-        this.props.userData(response);
+        this.props.serviceData(response);
         this.setState({
-          user: response
+          service: response
         })
       })
       .catch((error) => {
@@ -36,11 +36,11 @@ class User extends Component {
         <div className="admin-container">
           <div className="row">
             <div className="col m8 offset-m2 s12 darken-1">
-              <h2 className="header center">Edición de Usuario</h2>
-              {this.state.user &&
+              <h2 className="header center">Edición de Servicio</h2>
+              {this.state.service &&
                 <div>
-                  <UserForm />
-                  <ModalResendPass />
+                  <ServiceForm />
+                  <ModalDeleteService />
                 </div>
               }
             </div>
@@ -53,6 +53,6 @@ class User extends Component {
 export default compose(
   connect(null, actions),
   reduxForm({
-    form: 'userForm',
+    form: 'serviceForm',
   })
-)(User);
+)(Service);

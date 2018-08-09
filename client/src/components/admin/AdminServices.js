@@ -8,15 +8,18 @@ class AdminServices extends Component {
       this.props.fetchServices(1);
   }
 
+  onServiceClick(service) {
+    this.props.serviceClicked(service, this.props.history);
+  }
+
   renderServices() {
     return this.props.services.map(service => {
       return (
-        <div key={service._id} className="col l4">
+        <div key={service._id} className="col l4" onClick={() => {this.onServiceClick(service)}}>
             <CardImageh1h2
               image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + service.mainPhoto}
               title={service.title}
               body={service.shortDescription}
-              link={'/admin/servicios/' + service.slug}
             />
         </div>
       );
@@ -24,7 +27,6 @@ class AdminServices extends Component {
   }
 
   render() {
-    console.log(this.props.services)
     return (
       <div className="admin-container">
         <div className="row admin-margin-container">

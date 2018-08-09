@@ -15,6 +15,12 @@ module.exports = app => {
     });
   });
 
+  app.get('/api/service/:slugService', requireLogin, async (req, res) => {
+    const service = await Service.find({ slug: req.params.slugService});
+
+    res.send(service);
+  });
+
   app.post('/api/service', requireLogin, async (req, res) => {
     const { title, shortDescription, mainPhoto, editor, important } = req.body;
 
@@ -32,4 +38,50 @@ module.exports = app => {
       res.send({});
     });
   });
+
+  app.post('/api/service/:slugService', requireLogin, async (req, res) => {
+    const { title, shortDescription, mainPhoto, editor, important } = req.body;
+
+    const service = await Service.find({ slug: req.params.slugService });
+
+    let update = {};
+    update.title = title ? title : '';
+    update.shortDescription = shortDescription ? shortDescription : '';
+    if (mainPhoto) {
+        update.mainPhoto = mainPhoto ? mainPhoto : '';
+    }
+    update.body = editor ? editor : '';
+    update.important = important ? important : false;
+    update.slug = title ? urlSlug(title, '_') : '';
+
+    Service.updateOne(
+      {
+        slug: req.params.slugService
+      },
+        update
+    ).exec((err, result) => {
+      if (!err) {
+        res.send({});
+      } else {
+        res.statusMessage = "ERROR";
+        res.send({});
+      }
+    });
+  });
+
+  app.delete('/api/service/:idService', requireLogin, async (req, res) => {
+    Service.deleteOne(
+      {
+        _id: req.params.idService
+      },
+    ).exec((err, result) => {
+      if (!err) {
+        res.send({});
+      } else {
+        res.statusMessage = "ERROR";
+        res.send({});
+      }
+    });
+  });
+
 }

@@ -20,7 +20,8 @@ import HeaderAdmin from './admin/HeaderAdmin';
 import Usuarios from './admin/Usuarios';
 import Usuario from './admin/User';
 import AdminServices from './admin/AdminServices';
-import AdminService from './admin/services/AdminService';
+import NewService from './admin/services/AdminService';
+import AdminService from './admin/Service';
 
 const Laboral = () => <h3>Laboral</h3>;
 const Fiscal = () => <h3>Fiscal</h3>;
@@ -43,36 +44,39 @@ class App extends Component {
                   <Header />
                 }
               <Switch>
-                <Route exact path="/" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Landing />)))} />
-                <Route exact path="/servicios" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Services />)))} />
-                <Route exact path="/filosofia" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Philosophy />)))} />
-                <Route exact path="/quienes-somos" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <AboutUs />)))} />
-                <Route exact path="/contacto" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Contact />)))} />
-                <Route exact path="/servicios/:nameService" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Service />)))} />
-                <Route exact path="/blog" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Blog />)))} />
-                <Route exact path="/blog/:namePost" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Post />)))} />
+                <Route exact path="/" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Landing />)))} />
+                <Route exact path="/servicios" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Services />)))} />
+                <Route exact path="/filosofia" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Philosophy />)))} />
+                <Route exact path="/quienes-somos" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <AboutUs />)))} />
+                <Route exact path="/contacto" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Contact />)))} />
+                <Route exact path="/servicios/:nameService" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Service />)))} />
+                <Route exact path="/blog" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Blog />)))} />
+                <Route exact path="/blog/:namePost" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Post />)))} />
 
-                <Route exact path="/solicitud/verificar" render={() => (this.props.userLogged ? ( <Redirect to="/usuarios"/> ) : ( <Verify />))} />
-                <Route exact path="/solicitud/reenviar" render={() => (this.props.userLogged ? ( <Redirect to="/usuarios"/> ) : ( <Resend />))} />
-                <Route exact path="/regenerar/:token" render={() => (this.props.userLogged ? ( <Redirect to="/usuarios"/> ) : ( <ChangePass />))} />
+                <Route exact path="/solicitud/verificar" render={() => (this.props.userLogged ? ( <Redirect to="/admin/usuarios"/> ) : ( <Verify />))} />
+                <Route exact path="/solicitud/reenviar" render={() => (this.props.userLogged ? ( <Redirect to="/admin/usuarios"/> ) : ( <Resend />))} />
+                <Route exact path="/regenerar/:token" render={() => (this.props.userLogged ? ( <Redirect to="/admin/usuarios"/> ) : ( <ChangePass />))} />
 
                 {this.props.userLogged && this.props.userLogged.rol &&
-                    <Route exact path="/usuarios"  component={Usuarios} />
+                    <Route exact path="/admin/usuarios"  component={Usuarios} />
                 }
                 {this.props.userLogged && this.props.userLogged.rol &&
-                    <Route exact path="/usuarios/:idUsuario" component={Usuario} />
+                    <Route exact path="/admin/usuarios/:idUsuario" component={Usuario} />
                 }
                 {this.props.userLogged && this.props.userLogged.rol &&
                     <Route exact path="/admin/servicios" component={AdminServices} />
                 }
                 {this.props.userLogged && this.props.userLogged.rol &&
-                    <Route exact path="/admin/servicios/nuevo" component={AdminService} />
+                    <Route exact path="/admin/servicios/nuevo" component={NewService} />
+                }
+                {this.props.userLogged && this.props.userLogged.rol &&
+                    <Route exact path="/admin/servicios/:slugService" component={AdminService} />
                 }
                 {this.props.userLogged &&
-                    <Route exact path="/laboral" component={Laboral} />
+                    <Route exact path="/admin/laboral" component={Laboral} />
                 }
                 {this.props.userLogged &&
-                    <Route exact path="/fiscal" component={Fiscal} />
+                    <Route exact path="/admin/fiscal" component={Fiscal} />
                 }
                 {!this.props.userLogged &&
                     <Route exact component={NotFound} />
