@@ -52,7 +52,13 @@ class ServiceForm extends Component {
       edit = true;
     }
 
-    this.props.submitService(this.props.serviceForm.values, this.state.file, mainPhoto, editor, this.props.history, edit);
+    if (edit) {
+      this.props.submitService(this.props.serviceForm.values, this.state.file, mainPhoto, editor, this.props.history, edit, this.props.serviceSelected);
+    } else {
+      this.props.submitService(this.props.serviceForm.values, this.state.file, mainPhoto, editor, this.props.history, edit);
+    }
+
+
   }
 
   onFileChange(event) {

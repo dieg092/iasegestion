@@ -15,7 +15,7 @@ class Usuarios extends Component {
   }
 
   onPaginationClick(page) {
-    this.props.fetchUsers(page)
+    this.props.fetchUsers(page, this.state.filterUserForm)
   }
 
   renderUsers() {
@@ -109,8 +109,9 @@ function mapStateToProps(state) {
   const users  = state.user.users;
   const pages  = state.user.pages;
   const page  = state.user.page;
+  const filterUserForm = state.form.filterUserForm;
 
-  return { users, pages, page };
+  return { users, pages, page, filterUserForm };
 }
 
 export default connect(mapStateToProps, actions)(Usuarios);

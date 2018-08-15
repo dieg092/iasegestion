@@ -71,6 +71,17 @@ class HeaderAdmin extends Component {
                 </a>
               </li>
             }
+            {this.props.userLogged.rol &&
+              <li>
+                <a href="/admin/posts" className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/posts') && 'primary-text'}>
+                  <i
+                    className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/posts') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
+                  >filter_none
+                  </i>
+                  Posts
+                </a>
+              </li>
+            }
           </div>
             <li style={{ position: 'absolute', bottom: '0px', paddingBottom: '0px', width: '100%' }}>
               <a href="/api/logout"><i className="material-icons prefix">power_settings_new</i>Cerrar Sesión</a>

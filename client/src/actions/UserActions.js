@@ -4,7 +4,6 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import { POPULATION } from '../utils/population';
 
 export const fetchUsers = (page, filters) => async dispatch => {
-  console.log(filters)
   const filter = filterUsers(filters)
 
   const res = await axios.get('/api/usuarios?page=' + page + filter);

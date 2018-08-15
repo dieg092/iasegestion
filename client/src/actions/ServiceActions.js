@@ -52,7 +52,7 @@ export const serviceClicked = (service, history) => async dispatch => {
   };
 };
 
-export const submitService = (values, file, mainPhoto, editor, history, edit) => async dispatch => {
+export const submitService = (values, file, mainPhoto, editor, history, edit, serviceSelected) => async dispatch => {
   let message = 'Error al guardar';
   let uploadConfig = '';
   let res = '';
@@ -65,6 +65,31 @@ export const submitService = (values, file, mainPhoto, editor, history, edit) =>
         'Content-Type': file.type
       }
     });
+  }
+
+  const imagesBodySelected = serviceSelected && serviceSelected.body.split('https://s3.eu-west-3.amazonaws.com/iase-test/');
+  const imagesBody = editor && editor.split('https://s3.eu-west-3.amazonaws.com/iase-test/');
+
+  imagesBodySelected && imagesBodySelected.map( async (img, index) => {
+    if (index !== 0) {
+      let repeated = false;
+      const keySelected = img.split('" alt')[0];
+      imagesBody && imagesBody.map( async (imge, index) => {
+        if (index !== 0) {
+          const keyBody = imge.split('" alt')[0];
+          if (keyBody === keySelected) {
+            repeated = true;
+          }
+        }
+      });
+      if (!repeated) {
+        const deleteImage = await axios.delete('/api/delete?key=' + keySelected.split('" alt')[0]);
+      }
+    }
+  });
+
+  if (serviceSelected && file && serviceSelected.mainPhoto.split('/')[1] !== file.name) {
+    const deleteMainImage = await axios.delete('/api/delete?key=' + serviceSelected.mainPhoto);
   }
 
   const allValues = {
@@ -83,7 +108,12 @@ export const submitService = (values, file, mainPhoto, editor, history, edit) =>
 
 
   if (res.statusText !== 'ERROR') {
-    message = 'Servicio creado';
+    if (edit) {
+      message = 'Servicio editado';
+    } else {
+      message = 'Servicio creado';
+    }
+
     history.push('/admin/servicios');
   }
 

@@ -22,6 +22,9 @@ import Usuario from './admin/User';
 import AdminServices from './admin/AdminServices';
 import NewService from './admin/services/AdminService';
 import AdminService from './admin/Service';
+import AdminPosts from './admin/AdminPosts'
+import NewPost from './admin/posts/AdminPost';
+import AdminPost from './admin/Post';
 
 const Laboral = () => <h3>Laboral</h3>;
 const Fiscal = () => <h3>Fiscal</h3>;
@@ -58,7 +61,7 @@ class App extends Component {
                 <Route exact path="/regenerar/:token" render={() => (this.props.userLogged ? ( <Redirect to="/admin/usuarios"/> ) : ( <ChangePass />))} />
 
                 {this.props.userLogged && this.props.userLogged.rol &&
-                    <Route exact path="/admin/usuarios"  component={Usuarios} />
+                    <Route exact path="/admin/usuarios" component={Usuarios} />
                 }
                 {this.props.userLogged && this.props.userLogged.rol &&
                     <Route exact path="/admin/usuarios/:idUsuario" component={Usuario} />
@@ -71,6 +74,15 @@ class App extends Component {
                 }
                 {this.props.userLogged && this.props.userLogged.rol &&
                     <Route exact path="/admin/servicios/:slugService" component={AdminService} />
+                }
+                {this.props.userLogged && this.props.userLogged.rol &&
+                    <Route exact path="/admin/posts" component={AdminPosts} />
+                }
+                {this.props.userLogged && this.props.userLogged.rol &&
+                    <Route exact path="/admin/posts/nuevo" component={NewPost} />
+                }
+                {this.props.userLogged && this.props.userLogged.rol &&
+                    <Route exact path="/admin/posts/:slugPost" component={AdminPost} />
                 }
                 {this.props.userLogged &&
                     <Route exact path="/admin/laboral" component={Laboral} />

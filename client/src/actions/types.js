@@ -22,3 +22,8 @@ export const FETCH_SERVICES = 'fetch_services';
 export const SERVICE_CREATED = 'service_created';
 export const SERVICE_CLICKED = 'service_clicked';
 export const SERVICE_DELETED = 'service_deleted';
+
+export const FETCH_POSTS = 'fetch_posts';
+export const POST_CREATED = 'post_created';
+export const POST_CLICKED = 'post_clicked';
+export const POST_DELETED = 'post_deleted';

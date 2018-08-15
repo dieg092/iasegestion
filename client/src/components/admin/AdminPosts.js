@@ -3,27 +3,26 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import { CardImageh1h2 } from '../containers/common';
 
-class AdminServices extends Component {
+class AdminPosts extends Component {
   componentDidMount() {
-    this.props.fetchServices(1);
+      this.props.fetchPosts(1, null);
   }
 
-  onServiceClick(service) {
-    this.props.serviceClicked(service, this.props.history);
+  onPostClick(post) {
+    this.props.postClicked(post, this.props.history);
   }
 
   onPaginationClick(page) {
-    this.props.fetchServices(page)
+    this.props.fetchPosts(page)
   }
 
-  renderServices() {
-    return this.props.services.map(service => {
+  renderPosts() {
+    return this.props.posts.map(post => {
       return (
-        <div key={service._id} className="col l4" onClick={() => {this.onServiceClick(service)}}>
+        <div key={post._id} className="col l4" onClick={() => {this.onPostClick(post)}}>
             <CardImageh1h2
-              image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + service.mainPhoto}
-              title={service.title}
-              body={service.shortDescription}
+              image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + post.mainPhoto}
+              title={post.title}
             />
         </div>
       );
@@ -31,22 +30,23 @@ class AdminServices extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="admin-container">
         <div className="row admin-margin-container">
           <div className="col s12">
-          <h2 className="center">Servicios</h2>
+          <h2 className="center">Posts del Blog</h2>
           <div className="container">
             <div className="row">
               <div className="col s12 m3 offset-m9">
-                <a href="/admin/servicios/nuevo" className="waves-effect white grey-text text-darken-4 btn-large margin-right-12 right">CREAR SERVICIO</a>
+                <a href="/admin/posts/nuevo" className="waves-effect white grey-text text-darken-4 btn-large margin-right-12 right">CREAR POST</a>
               </div>
             </div>
           </div>
           <div className="container">
 
             <div className="row">
-              {this.props && this.props.services && this.renderServices()}
+              {this.props && this.props.posts && this.renderPosts()}
             </div>
             {this.props.pages >= 40 &&
               <div className="center" style={{ paddingBottom: '10px', paddingTop: '10px' }}>
@@ -70,11 +70,11 @@ class AdminServices extends Component {
 }
 
 function mapStateToProps(state) {
-  const services  = state.service.services;
-  const pages  = state.service.pages;
-  const page  = state.service.page;
+  const posts  = state.post.posts;
+  const pages  = state.post.pages;
+  const page  = state.post.page;
 
-  return { services, pages, page };
+  return { posts, pages, page };
 }
 
-export default connect(mapStateToProps, actions)(AdminServices);
+export default connect(mapStateToProps, actions)(AdminPosts);

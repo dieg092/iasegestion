@@ -47,7 +47,6 @@ class FilterForm extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
        <form onSubmit={this.props.handleSubmit(this.onSubmitFilerUser.bind(this))}>
           <div className="card horizontal">

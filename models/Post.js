@@ -3,17 +3,15 @@ const mongoosePaginate = require('mongoose-paginate');
 const uniqueValidator = require('mongoose-unique-validator');
 const { Schema } = mongoose;
 
-const serviceSchema = new Schema({
-    // _id: Number,
+const postSchema = new Schema({
 	  title: { type: String, index: { unique: true }},
-    shortDescription: String,
+    category: String,
     mainPhoto: String,
     body: String,
 		slug: String,
-		important: { type: Boolean, default: false },
 });
 
-serviceSchema.plugin(mongoosePaginate);
-serviceSchema.plugin(uniqueValidator);
+postSchema.plugin(mongoosePaginate);
+postSchema.plugin(uniqueValidator);
 
-mongoose.model('service', serviceSchema);
+mongoose.model('post', postSchema);
