@@ -16,11 +16,12 @@ class Services extends Component {
   renderServices() {
     return this.props.services.map(service => {
       return (
-        <div key={service._id} className="col l4" onClick={() => {this.onServiceClick(service)}}>
+        <div key={service._id} className="col l4">
             <CardImageh1h2
               image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + service.mainPhoto}
               title={service.title}
               body={service.shortDescription}
+              link={'/servicios/' + service.slug}
             />
         </div>
       );
@@ -35,7 +36,16 @@ class Services extends Component {
         </div>
         <div className="container">
           <div className="row">
-            {this.props && this.props.services && this.renderServices()}
+            {this.props && this.props.services &&
+              (this.props.services.length > 0 ?
+                this.renderServices()
+              :
+                <h4 className="container justify">
+                  No hay servicios disponibles en este momento. Disculpe las molestias.
+                </h4>
+              )
+            }
+
           </div>
         </div>
         <Footer />

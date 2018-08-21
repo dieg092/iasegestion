@@ -10,8 +10,8 @@ const CardImageh1h2 = (props) => {
            </div>
             <div className="card-content">
               <h2 className="margin-top-0"><span className="card-title bold black-text">{props.title}</span></h2>
-              <p className="black-text">
-                {props.body}
+              <p className="black-text justify">
+                {props.body && props.body.length >= 128 ? props.body + '...' : props.body}
               </p>
             </div>
           </div>

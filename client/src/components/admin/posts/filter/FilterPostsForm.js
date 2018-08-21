@@ -12,7 +12,7 @@ import formFields from './formFields';
 import * as actions from '../../../../actions';
 import { POPULATION } from '../../../../utils/population';
 
-class FilterForm extends Component {
+class FilterPostsForm extends Component {
   componentDidMount() {
     const elems = document.querySelectorAll('select');
     M.FormSelect.init(elems, {});
@@ -24,31 +24,14 @@ class FilterForm extends Component {
     });
   }
 
-  onSubmitFilerUser() {
-    this.props.fetchUsers(1, this.props.filterUserForm.values);
+  onSubmitFilerPost() {
+    this.props.fetchPosts(1, this.props.filterPostsForm.values);
     $("#target option:first").attr('selected','selected');
-
-  }
-
-  loadPopulations() {
-    $('input.autocomplete').autocomplete({
-        source: (request, response) => {
-        const results = $.ui.autocomplete.filter(POPULATION, request.term);
-        response(results.slice(0, 6));
-      },
-      select: (event, ui) => {
-        const text = ui.item.label;
-
-        $('input.autocomplete').val(text);
-        event.preventDefault();
-      },
-      minLength: 2,
-    })
   }
 
   render() {
     return (
-       <form onSubmit={this.props.handleSubmit(this.onSubmitFilerUser.bind(this))}>
+       <form onSubmit={this.props.handleSubmit(this.onSubmitFilerPost.bind(this))}>
           <div className="card horizontal">
             <div className="card-stacked">
               <div className="card-content">
@@ -56,7 +39,6 @@ class FilterForm extends Component {
                 <div></div>
                   {this.renderFields()}
                 </div>
-                {this.loadPopulations()}
               </div>
               <div className="card-action">
                 <button type="submit" className="btn teal btn-flat waves-effect waves-light white-text no-uppercase margin-top-15 margin-left-50 right col s12 m2 xl1">
@@ -71,16 +53,16 @@ class FilterForm extends Component {
 }
 
 function mapStateToProps(state) {
-  const userSelected = state.user.userSelected;
-  const filterUserForm = state.form.filterUserForm;
+  const postSelected = state.post.postSelected;
+  const filterPostsForm = state.form.filterPostsForm;
 
-  return { userSelected, filterUserForm };
+  return { postSelected, filterPostsForm };
 }
 
 export default compose(
   connect(mapStateToProps, actions),
   reduxForm({
-    form: 'filterUserForm',
+    form: 'filterPostsForm',
     value: ''
   })
-)(withRouter(FilterForm));
+)(withRouter(FilterPostsForm));

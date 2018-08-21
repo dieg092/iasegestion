@@ -22,8 +22,12 @@ export const FETCH_SERVICES = 'fetch_services';
 export const SERVICE_CREATED = 'service_created';
 export const SERVICE_CLICKED = 'service_clicked';
 export const SERVICE_DELETED = 'service_deleted';
+export const SERVICE_OTHERS = 'service_others';
+export const SERVICES_FAVOURITE = 'services_favourite';
 
 export const FETCH_POSTS = 'fetch_posts';
 export const POST_CREATED = 'post_created';
 export const POST_CLICKED = 'post_clicked';
 export const POST_DELETED = 'post_deleted';
+export const POST_OTHERS = 'post_others';
+export const CATEGORY_CLICKED = 'category_clicked';

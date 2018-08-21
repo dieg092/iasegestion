@@ -9,7 +9,7 @@ import $ from 'jquery';
 import 'jquery-ui/ui/widgets/autocomplete';
 import M from "materialize-css/dist/js/materialize.min.js";
 import AuthField from './AuthField';
-import formFields from './formFields';
+import formFields from './filter/formFields';
 import * as actions from '../../../actions';
 
 import { EditorConvertToHTML } from '../../../utils/EditorConvertToHTML';
@@ -33,14 +33,15 @@ class PostForm extends Component {
   }
 
   handleInitialize() {
+    console.log('jhop')
     console.log(this.props.postSelected)
     const initData = {
       "postTitle": this.props && this.props.postSelected && this.props.postSelected.title,
       "category": this.props && this.props.postSelected && this.props.postSelected.category
     };
-
+    console.log(initData.category)
     this.props.initialize(initData);
-    $('.selDiv option[value="' + initData.category + '"]').attr('selected', 'selected')
+    $('.selDiv option[value="' + initData.category.toUpperCase() + '"]').attr('selected', 'selected')
 
   }
 

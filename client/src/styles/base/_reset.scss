@@ -83,6 +83,16 @@ nav {
   }
 }
 
+.card-content {
+  min-height: 170px !important;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 /* .input-field input[type=text]:focus + label {
   color: $secondary !important;

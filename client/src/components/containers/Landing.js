@@ -9,6 +9,7 @@ import Footer from './Footer';
 
 class Langing extends Component {
   componentDidMount() {
+    this.props.favouriteServices();
     const height = $( window ).height() * 0.8;
     const elems = document.querySelectorAll('.slider');
     M.Slider.init(elems, {
@@ -16,14 +17,28 @@ class Langing extends Component {
       height: height
     });
 
-
     const elem = document.querySelectorAll('.modal');
     M.Modal.init(elem, {});
-
   }
 
   openRequestModal() {
     this.props.requestModal();
+  }
+
+  renderServicesFavourite() {
+    return this.props.servicesFavourite.map(service => {
+      console.log(service)
+      return (
+          <div key={service._id} className="col l4">
+            <CardImageh1h2
+              image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + service.mainPhoto}
+              title={service.title}
+              body={service.shortDescription}
+              link={'/servicios/' + service.slug}
+            />
+          </div>
+      );
+    });
   }
 
   render() {
@@ -51,31 +66,12 @@ class Langing extends Component {
         <div className="container">
           <h1 className="center">Servicios destacados</h1>
           <div className="row">
-            <div className="col l4">
-              <CardImageh1h2
-                image="https://images.unsplash.com/photo-1518021964703-4b2030f03085?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=67eedb090e43beecf456d519c3fca86c&auto=format&fit=crop&w=1353&q=80"
-                title="Asesoría Económica"
-                body="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-                link="/servicios/asesoria-economica"
-              />
+            {this.props.servicesFavourite && this.renderServicesFavourite()}
+            <div className="col s12">
+              <div className="row">
+                <a href="/servicios" className="waves-effect white grey-text text-darken-4 btn-large margin-right-12 right margin-bottom-75">Más servicios</a>
+              </div>
             </div>
-            <div className="col l4">
-              <CardImageh1h2
-                image="https://images.unsplash.com/photo-1504198912477-3018896a9525?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8a8d03d811c1f087466020c19d947a6d&auto=format&fit=crop&w=1950&q=80"
-                title="Asesoría Laboral"
-                body="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-
-              />
-            </div>
-            <div className="col l4">
-              <CardImageh1h2
-                image="https://images.unsplash.com/photo-1522070436199-956aa4b7dec9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ec391df493ec165dc1b9789512d16703&auto=format&fit=crop&w=1350&q=80"
-                title="Asesoría Jurídica"
-                body="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-
-              />
-            </div>
-            <a href="/servicios" className="waves-effect white grey-text text-darken-4 btn-large margin-right-12 right margin-bottom-75">Más servicios</a>
           </div>
         </div>
 
@@ -146,7 +142,13 @@ class Langing extends Component {
   }
 }
 
-export default connect(null, actions)(Langing);
+function mapStateToProps(state) {
+  const servicesFavourite  = state.service.servicesFavourite;
+
+  return { servicesFavourite };
+}
+
+export default connect(mapStateToProps, actions)(Langing);
 //https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ed17683f2c514eed2ab020ff59b1e3b8&auto=format&fit=crop&w=1224&q=80
 
 // <div className="col l4">

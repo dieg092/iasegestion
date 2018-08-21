@@ -15,7 +15,7 @@ class Usuarios extends Component {
   }
 
   onPaginationClick(page) {
-    this.props.fetchUsers(page, this.state.filterUserForm)
+    this.props.fetchUsers(page, this.props.filterUserForm)
   }
 
   renderUsers() {
@@ -59,7 +59,7 @@ class Usuarios extends Component {
       <div className="admin-container">
         <div className="row admin-margin-container">
           <div className="col s12">
-          <h2 className="center">Usuarios</h2>
+            <h2 className="center">Usuarios</h2>
             <h4>Filtrar Usuarios</h4>
           <div className="card">
             <FilterForm />
@@ -84,16 +84,16 @@ class Usuarios extends Component {
               </tbody>
             </table>
 
-            {this.props.pages >= 40 &&
+            {this.props.pages >= 30 &&
               <div className="center" style={{ paddingBottom: '10px', paddingTop: '10px' }}>
                 <ul className="pagination">
-                  <li className={this.props.page === 1 ? 'disabled' : 'waves-effect'} onClick={() => {this.onPaginationClick(this.props.page - 1)}}><a href="#!"><i className="material-icons">chevron_left</i></a></li>
+                  <li className={this.props.page === 1 ? 'disabled' : 'waves-effect'} onClick={() => {this.props.page !== 1 && this.onPaginationClick(this.props.page - 1)}}><a href="#!"><i className="material-icons">chevron_left</i></a></li>
                   {this.pagination().map((result) => {
                     return (
                       <li key={result.key} className={result.props.className} onClick={() => {this.onPaginationClick(result.key)}}><a href="#!">{result.key}</a></li>
                     )
                   })}
-                  <li className={this.props.page === this.props.pages ? 'disabled' : 'waves-effect'} onClick={() => {this.onPaginationClick(this.props.page + 1)}}><a href="#!"><i className="material-icons">chevron_right</i></a></li>
+                  <li className={this.props.page === this.props.pages ? 'disabled' : 'waves-effect'} onClick={() => {this.props.page !== this.props.pages && this.onPaginationClick(this.props.page + 1)}}><a href="#!"><i className="material-icons">chevron_right</i></a></li>
                 </ul>
               </div>
             }

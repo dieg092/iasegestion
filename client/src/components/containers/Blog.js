@@ -13,17 +13,42 @@ class Blog extends Component {
       this.props.fetchPosts(1, null);
   }
 
+  onPaginationClick(page, category) {
+    const filter = {
+      category:  category
+    }
+    this.props.fetchPosts(page, filter)
+  }
+
+  onCategoryClicked(category) {
+    this.props.categoryClicked(category);
+    const filter = {
+      category:  category
+    }
+
+    this.props.fetchPosts(1, filter);
+  }
+
   renderPosts() {
     return this.props.posts.map(post => {
       return (
-        <div key={post._id} className="col l4" onClick={() => {this.onPostClick(post)}}>
+        <div key={post._id} className="col l4">
             <CardImageh1h2
               image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + post.mainPhoto}
               title={post.title}
+              link={'/blog/' + post.slug}
             />
         </div>
       );
     });
+  }
+
+  pagination() {
+    let rows = [];
+    for (var i = 1; i <= this.props.pages; i++) {
+        rows.push(<li key={i} className={this.props.page === i ? 'active waves-effect' : 'waves-effect'}><a href="#!">{i}</a></li>);
+    }
+    return rows;
   }
 
   render() {
@@ -36,27 +61,44 @@ class Blog extends Component {
         <nav className="margin-bottom-75 transparent menu-blog">
          <div className="nav-wrapper container">
            <ul id="nav-mobile" className="left hide-on-med-and-down">
-             <li><a className="black-text">Todos</a></li>
-             <li><a className="black-text">Categoría 1</a></li>
-             <li><a className="black-text">Categoría 2</a></li>
-             <li><a className="black-text">Categoría 3</a></li>
-             <li><a className="black-text">Categoría 4</a></li>
+             <li onClick={() => {this.onCategoryClicked('')}}><a className={this.props.categoryCli === ''  ? 'white-text grey' : 'black-text'}>Todos</a></li>
+             <li onClick={() => {this.onCategoryClicked('Economía')}}><a className={this.props.categoryCli === 'Economía' ? 'white-text grey' : 'black-text'}>Economía</a></li>
+             <li onClick={() => this.onCategoryClicked('Laboral')}><a className={this.props.categoryCli === 'Laboral' ? 'white-text grey' : 'black-text'}>Laboral</a></li>
+             <li onClick={() => this.onCategoryClicked('Jurídica')}><a className={this.props.categoryCli === 'Jurídica' ? 'white-text grey' : 'black-text'}>Jurídica</a></li>
+             <li onClick={() => this.onCategoryClicked('Financiera')}><a className={this.props.categoryCli === 'Financiera' ? 'white-text grey' : 'black-text'}>Financiera</a></li>
+             <li onClick={() => this.onCategoryClicked('RR.HH')}><a className={this.props.categoryCli === 'RR.HH' ? 'white-text grey' : 'black-text'}>RR.HH</a></li>
+             <li onClick={() => this.onCategoryClicked('Márketing')}><a className={this.props.categoryCli === 'Márketing' ? 'white-text grey' : 'black-text'}>Márketing</a></li>
+             <li onClick={() => this.onCategoryClicked('Técnica')}><a className={this.props.categoryCli === 'Técnica' ? 'white-text grey' : 'black-text'}>Técnica</a></li>
            </ul>
          </div>
        </nav>
         <div className="container">
+
           <div className="row">
-            {this.props && this.props.posts && this.renderPosts()}
+            {this.props && this.props.posts &&
+              (this.props.posts.length > 0 ?
+                this.renderPosts()
+              :
+                <h4 className="container justify">
+                  No hay artículos disponibles en este momento. Disculpe las molestias.
+                </h4>
+              )
+            }
+
           </div>
-          <ul className="pagination center">
-             <li className="disabled"><a><i className="material-icons">chevron_left</i></a></li>
-             <li className="active"><a>1</a></li>
-             <li className="waves-effect"><a>2</a></li>
-             <li className="waves-effect"><a>3</a></li>
-             <li className="waves-effect"><a>4</a></li>
-             <li className="waves-effect"><a>5</a></li>
-             <li className="waves-effect"><a><i className="material-icons">chevron_right</i></a></li>
-          </ul>
+            {this.props.pages >= 12 &&
+              <div className="center" style={{ paddingBottom: '10px', paddingTop: '10px' }}>
+                <ul className="pagination">
+                  <li className={this.props.page === 1 ? 'disabled' : 'waves-effect'} onClick={() => {this.props.page !== 1 && this.onPaginationClick(this.props.page - 1, this.props.categoryCli)}}><a><i className="material-icons">chevron_left</i></a></li>
+                  {this.pagination().map((result) => {
+                    return (
+                      <li key={result.key} className={result.props.className} onClick={() => {this.onPaginationClick(result.key, this.props.categoryCli)}}><a href="#!">{result.key}</a></li>
+                    )
+                  })}
+                  <li className={this.props.page === this.props.pages ? 'disabled' : 'waves-effect'} onClick={() => {this.props.page !== this.props.pages && this.onPaginationClick(this.props.page + 1, this.props.categoryCli)}}><a><i className="material-icons">chevron_right</i></a></li>
+                </ul>
+              </div>
+            }
         </div>
         <Footer />
       </div>
@@ -68,8 +110,10 @@ function mapStateToProps(state) {
   const posts  = state.post.posts;
   const pages  = state.post.pages;
   const page  = state.post.page;
+  const filterPostsForm = state.post.filterPostsForm;
+  const categoryCli = state.post.categoryClicked;
 
-  return { posts, pages, page };
+  return { posts, pages, page, filterPostsForm, categoryCli };
 }
 
 export default connect(mapStateToProps, actions)(Blog);

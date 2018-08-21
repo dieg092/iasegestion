@@ -11,6 +11,7 @@ const User = mongoose.model('user');
 module.exports = app => {
   app.get('/api/usuarios', requireLogin, async (req, res) => {
     let query = req.query;
+    const page = parseInt(req.query.page);
 
     if (query.email) {
       query.email = { $regex: '.*' + req.query.email + '.*' };
@@ -47,7 +48,7 @@ module.exports = app => {
 
     delete query.page;
 
-    await User.paginate(query, { page: parseInt(req.query.page), limit: 40, sort: {email: 1}},(err, result) => {
+    await User.paginate(query, { page: page, limit: 30, sort: {email: 1}},(err, result) => {
       res.send(result);
     });
   });

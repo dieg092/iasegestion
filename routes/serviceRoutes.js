@@ -10,16 +10,29 @@ module.exports = app => {
   app.get('/api/services', async (req, res) => {
     let query = req.query;
     delete query.page;
-    await Service.paginate(query, { page: parseInt(req.query.page), limit: 40, sort: {title: 1}}, (err, result) => {
+    await Service.paginate(query, { page: parseInt(req.query.page), sort: {title: 1}}, (err, result) => {
       res.send(result);
     });
   });
 
-  app.get('/api/service/:slugService', requireLogin, async (req, res) => {
+  app.get('/api/service/:slugService', async (req, res) => {
     const service = await Service.find({ slug: req.params.slugService});
 
     res.send(service);
   });
+
+  app.get('/api/service/others/:slugService', async (req, res) => {
+    const services = await Service.find().where('slug').ne(req.params.slugService).limit(3);
+
+    res.send(services);
+  });
+
+  app.get('/api/services/favourite', async (req, res) => {
+    const services = await Service.find({ important: true }).limit(3);
+
+    res.send(services);
+  });
+
 
   app.post('/api/service', requireLogin, async (req, res) => {
     const { title, shortDescription, mainPhoto, editor, important } = req.body;

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { FETCH_SERVICES, SERVICE_CREATED, SERVICE_CLICKED, SERVICE_DELETED } from './types';
+import { FETCH_SERVICES, SERVICE_CREATED, SERVICE_CLICKED,
+  SERVICE_DELETED, SERVICE_OTHERS, SERVICES_FAVOURITE } from './types';
 import M from "materialize-css/dist/js/materialize.min.js";
 import { POPULATION } from '../utils/population';
 
@@ -7,6 +8,28 @@ export const fetchServices = (page) => async dispatch => {
   const res = await axios.get('/api/services?page=' + page);
 
   dispatch({ type: FETCH_SERVICES, payload: res.data });
+};
+
+export const getService = (history) => async dispatch => {
+  const service = history.location.pathname.split('/')[2];
+
+  const res = await axios.get('/api/service/' + service);
+
+  dispatch({ type: SERVICE_CLICKED, payload: res.data });
+};
+
+export const otherServices = (history) => async dispatch => {
+  const service = history.location.pathname.split('/')[2];
+
+  const res = await axios.get('/api/service/others/' + service);
+
+  dispatch({ type: SERVICE_OTHERS, payload: res.data });
+};
+
+export const favouriteServices = () => async dispatch => {
+  const res = await axios.get('/api/services/favourite');
+
+  dispatch({ type: SERVICES_FAVOURITE, payload: res.data });
 };
 
 export const deleteService = (service, history) => async dispatch => {

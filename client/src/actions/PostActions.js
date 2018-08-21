@@ -1,13 +1,29 @@
 import axios from 'axios';
-import { FETCH_POSTS, POST_CREATED, POST_CLICKED, POST_DELETED } from './types';
+import { FETCH_POSTS, POST_CREATED, POST_CLICKED, POST_DELETED,
+  CATEGORY_CLICKED, POST_OTHERS } from './types';
 import M from "materialize-css/dist/js/materialize.min.js";
 
 export const fetchPosts = (page, filters) => async dispatch => {
-  const filter = filters;
+  const filter = filterPosts(filters);
 
   const res = await axios.get('/api/posts?page=' + page + '&filter=' + filter);
-  console.log(res)
   dispatch({ type: FETCH_POSTS, payload: res.data });
+};
+
+export const getPost = (history) => async dispatch => {
+  const post = history.location.pathname.split('/')[2];
+
+  const res = await axios.get('/api/post/' + post);
+
+  dispatch({ type: POST_CLICKED, payload: res.data[0] });
+};
+
+export const otherPosts = (history) => async dispatch => {
+  const post = history.location.pathname.split('/')[2];
+
+  const res = await axios.get('/api/post/others/' + post);
+
+  dispatch({ type: POST_OTHERS, payload: res.data });
 };
 
 export const postData = (post) => {
@@ -121,4 +137,23 @@ export const submitPost = (values, file, mainPhoto, editor, history, edit, postS
   dispatch({
     type: POST_CREATED
   });
+}
+
+export const filterPosts = (filters) => {
+  let filter = "";
+  if (filters && filters.postTitle) {
+    filter = filter + '&title=' + filters.postTitle;
+  }
+  if (filters && filters.category) {
+    filter = filter + '&category=' + filters.category;
+  }
+
+  return filter;
+};
+
+export const categoryClicked = (category) => {
+  return {
+    type: CATEGORY_CLICKED,
+    payload: category
+  };
 }

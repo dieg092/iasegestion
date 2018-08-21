@@ -73,12 +73,14 @@ export const submitChangePass = (values, history) => async dispatch => {
 export const submitLogin = (values, history) => async dispatch => {
   const res = await axios.post('/api/login', values);
   const modalLogin = document.getElementById('modal-login');
-
+  const overlaySideNav = document.querySelectorAll('.sidenav');
+  console.log(overlaySideNav);
   if (res.data.email) {
     if (res.data.isActive) {
       history.push('/');
 
       M.Modal.getInstance(modalLogin).close();
+      M.Sidenav.getInstance(overlaySideNav[0]).close();
       dispatch({ type: USER_LOGGED, payload: res.data });
     } else {
       dispatch({ type: USER_LOGGED_DISABLED, payload: res.data });

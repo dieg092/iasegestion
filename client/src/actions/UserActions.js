@@ -5,7 +5,7 @@ import { POPULATION } from '../utils/population';
 
 export const fetchUsers = (page, filters) => async dispatch => {
   const filter = filterUsers(filters)
-
+  console.log(page)
   const res = await axios.get('/api/usuarios?page=' + page + filter);
 
   dispatch({ type: FETCH_USERS, payload: res.data });

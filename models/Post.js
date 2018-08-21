@@ -9,6 +9,7 @@ const postSchema = new Schema({
     mainPhoto: String,
     body: String,
 		slug: String,
+		date: { type: Date, default: Date.now }
 });
 
 postSchema.plugin(mongoosePaginate);

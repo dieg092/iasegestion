@@ -32,7 +32,7 @@ class HeaderAdmin extends Component {
           <div className="sidebar-header header-cover" style={{ backgroundImage: 'url(https://s.tmimgcdn.com/blog/wp-content/uploads/2016/04/1-9-2.jpg?x20232)', paddingTop: '30px', paddingBottom: '3px' }}>
             <div className="container center">
               <div className="sidebar-image">
-                  <img className="circle responsive-im" style={{ maxWidth: '180px' }} src="http://iasegestion.com/templates/siteground/images/summer/joomla_logo.png" />
+                  <img className="circle responsive-im" style={{ maxWidth: '180px' }} src={'/images/logo.png'} />
               </div>
               <p className="bold">{this.props && this.props.userLogged && this.props.userLogged.email && this.props.userLogged.email.length >= 18 ? (this.props.userLogged.email.substr(0, 21) + '...') : this.props.userLogged.email}</p>
             </div>

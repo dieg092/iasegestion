@@ -9,53 +9,33 @@ const Post = mongoose.model('post');
 module.exports = app => {
   app.get('/api/posts', async (req, res) => {
     let query = req.query;
+    const page = parseInt(req.query.page);
 
-    // if (query.email) {
-    //   query.email = { $regex: '.*' + req.query.email + '.*' };
-    // }
-    // if (query.name) {
-    //   query.name = { $regex: '.*' + req.query.name + '.*' };
-    // }
-    // if (query.lastName) {
-    //   query.lastName = { $regex: '.*' + req.query.lastName + '.*' };
-    // }
-    // if (query.nif) {
-    //   query.nif = { $regex: '.*' + req.query.nif + '.*' };
-    // }
-    // if (query.gender === 'Femeníno') {
-    //   query.gender = true;
-    // } else if (query.gender === 'Masculino') {
-    //   query.gender = false;
-    // }
-    // if (query.rol === 'Administrador') {
-    //   query.rol = true;
-    // } else if (query.rol === 'Cliente') {
-    //   query.rol = false;
-    // }
-    // if (query.isActive === 'Activado') {
-    //   query.isActive = true;
-    // } else if (query.isActive === 'Desactivado') {
-    //   query.isActive = false;
-    // }
-    // if (query.isVerified === 'Si') {
-    //   query.isVerified = true;
-    // } else if (query.isVerified === 'No') {
-    //   query.isVerified = false;
-    // }
+    if (query.title) {
+      query.title = { $regex: '.*' + req.query.title + '.*' };
+    }
 
     delete query.page;
     delete query.filter;
-    await Post.paginate(query, { page: parseInt(req.query.page), limit: 40, sort: {email: 1}},(err, result) => {
 
+    await Post.paginate(query, { page: page, limit: 12, sort: {date: -1}},(err, result) => {
       res.send(result);
     });
   });
 
-  app.get('/api/post/:slugPost', requireLogin, async (req, res) => {
+  app.get('/api/post/:slugPost', async (req, res) => {
     const post = await Post.find({ slug: req.params.slugPost});
 
     res.send(post);
   });
+
+  app.get('/api/post/others/:slugPost', async (req, res) => {
+    const post = await Post.find().where('slug').ne(req.params.slugPost).limit(3).sort({date: -1});
+
+    res.send(post);
+  });
+
+
 
   app.post('/api/post/:slugPost', requireLogin, async (req, res) => {
     const { title, category, mainPhoto, editor } = req.body;

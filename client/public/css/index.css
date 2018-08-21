@@ -45,6 +45,9 @@
 .margin-bottom-15 {
   margin-bottom: 15px; }
 
+.margin-bottom-20 {
+  margin-bottom: 20px; }
+
 .margin-bottom-25 {
   margin-bottom: 25px; }
 
@@ -209,6 +212,14 @@ nav {
   .logo-header {
     margin-left: 0px; } }
 
+.card-content {
+  min-height: 170px !important; }
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
 /* .input-field input[type=text]:focus + label {
   color: $secondary !important;
 }
@@ -259,7 +270,7 @@ table.highlight tbody tr:hover {
 
 #request .modal, #remember .modal {
   width: 600px !important;
-  height: 382px !important; }
+  height: 415px !important; }
 
 #success-request .modal {
   width: 950px !important;
