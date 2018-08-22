@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import M from "materialize-css/dist/js/materialize.min.js";
 import $ from 'jquery';
 import * as actions from '../../actions';
@@ -7,8 +8,18 @@ import { CardImage } from '../containers/common';
 
 class Footer extends Component {
   componentDidMount() {
-
+    this.props.otherPosts(this.props.history)
   }
+
+  renderOtherPosts() {
+    return this.props.postsOthers.map(post => {
+      return (
+        <li key={post._id} className="valign-wrapper grey-text text-lighten-3 margin-bottom-15">{post.title}</li>
+      )
+    })
+  }
+
+
 
   render() {
     return (
@@ -31,9 +42,8 @@ class Footer extends Component {
             <div className="col l3 s12">
               <h5 className="white-text margin-bottom-30">Últimos Posts</h5>
               <ul>
-                <li className="valign-wrapper grey-text text-lighten-3 margin-bottom-15">Post 1</li>
-                <li className="valign-wrapper grey-text text-lighten-3 margin-bottom-15">Post 2</li>
-                <li className="valign-wrapper grey-text text-lighten-3 margin-bottom-15">Post 3</li>
+                {this.props.postsOthers && this.renderOtherPosts()}
+
               </ul>
             </div>
           </div>
@@ -53,4 +63,10 @@ class Footer extends Component {
   }
 }
 
-export default connect(null, actions)(Footer);
+function mapStateToProps(state) {
+  const postsOthers = state.post.postsOthers;
+
+  return { postsOthers };
+}
+
+export default connect(mapStateToProps, actions)(withRouter(Footer));
