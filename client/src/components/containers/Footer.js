@@ -45,11 +45,14 @@ class Footer extends Component {
         </div>
         <div className="footer-copyright">
           <div className="container">
-          © 2018 Copyright IASE gestión. Todos los derechos reservados
+            <div className="row">
+              <div className="col s12 l6">© 2018 Copyright IASE gestión. Todos los derechos reservados </div>
 
-          <a className="grey-text text-lighten-4 right margin-left-15" href="/contacto">Contacto</a>
-          <a className="grey-text text-lighten-4 right margin-left-15" href="#!">Términos de uso</a>
-          <a className="grey-text text-lighten-4 right" href="#!">Política de privacidad</a>
+              <div className="col s12 l6">
+                <a className="grey-text text-lighten-4 right margin-left-15" href="/contacto">Contacto</a>
+                <a className="grey-text text-lighten-4 right margin-left-15" href="/terminos">Términos y Privacidad</a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
