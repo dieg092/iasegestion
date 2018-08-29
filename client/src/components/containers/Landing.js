@@ -48,8 +48,8 @@ class Langing extends Component {
            <li>
              <img alt="" src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0bab11002aaa5491c9238eb0c9b4b28d&auto=format&fit=crop&w=1050&q=80" />
              <div className="caption center-align" style={{ marginTop: '-15px' }}>
-               <h1 className="font-title">Tus documentos online</h1>
-               <h2 className="light grey-text font-title text-lighten-3 font-40-custom bold">donde y cuando quieras.</h2>
+               <h1 className="font-title">ASESORÍA</h1>
+               <h2 className="light grey-text font-title text-lighten-3 font-40-custom bold">EMPRESARIAL</h2>
              </div>
            </li>
            <li>
