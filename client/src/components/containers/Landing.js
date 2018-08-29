@@ -4,7 +4,6 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import $ from 'jquery';
 import * as actions from '../../actions';
 import { CardImageh1h2} from '../containers/common';
-import ModalRequest from '../auth/ModalRequest';
 import Footer from './Footer';
 
 class Langing extends Component {
@@ -47,17 +46,17 @@ class Langing extends Component {
         <div className="slider margin-bottom-75">
          <ul className="slides">
            <li>
-             <img src="https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20(1%20of%201)-5.jpg?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=92b4ef70a4e06a7e7bf54e1bde61b624&auto=format&fit=crop&w=1350&q=80" />
-             <div className="caption center-align">
-               <h1 className="font-title">Título Texto UNO!</h1>
-               <h2 className="light grey-text font-title text-lighten-3 font-40-custom">Descripción Texto UNO!.</h2>
+             <img alt="" src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0bab11002aaa5491c9238eb0c9b4b28d&auto=format&fit=crop&w=1050&q=80" />
+             <div className="caption center-align" style={{ marginTop: '-15px' }}>
+               <h1 className="font-title">Tus documentos online</h1>
+               <h2 className="light grey-text font-title text-lighten-3 font-40-custom bold">donde y cuando quieras.</h2>
              </div>
            </li>
            <li>
-             <img src="https://images.unsplash.com/photo-1518169640858-0d622b058e5c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5ffa10ff5bac3a77cb7de6e4e7164787&auto=format&fit=crop&w=1383&q=80" />
+             <img alt="" src="https://images.unsplash.com/photo-1518169640858-0d622b058e5c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5ffa10ff5bac3a77cb7de6e4e7164787&auto=format&fit=crop&w=1383&q=80" />
              <div className="caption right-align">
-               <h1 className="font-title">Right Aligned Caption</h1>
-               <h2 className="light grey-text font-title text-lighten-3 font-40-custom">Here is our small slogan.</h2>
+               <h1 className="font-title grey-text text-darken-4">Cada cliente</h1>
+               <h2 className="light grey-text text-darken-4 font-title font-40-custom bold">es nuestro mejor  y único cliente.</h2>
              </div>
            </li>
           </ul>
@@ -79,7 +78,7 @@ class Langing extends Component {
           <div className="landing-container">
             <div className="row center">
               <div className="col l6">
-                <h1 className="white-text landing-text">Buscamos estar más cerca de nuestros clientes.</h1>
+                <h1 className="white-text landing-text">Apostamos por la proximidad con nuestros clientes.</h1>
               </div>
               <div className="col s12">
                 <div>
@@ -100,7 +99,7 @@ class Langing extends Component {
             <div className="col l4">
               <div className="col s12 xl4 center-on-small-only margin-top-28">
                 <div className="image-container">
-                  <img className="circle" style={{ width: '100px', height: '100px' }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsDFTrQnrPC5HWbQbNddHew_1yIK5b14taTQbHks0mC_E1jQWz" />
+                  <img alt="" className="circle" style={{ width: '100px', height: '100px' }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsDFTrQnrPC5HWbQbNddHew_1yIK5b14taTQbHks0mC_E1jQWz" />
                 </div>
               </div>
               <div className="col s12 xl8">
@@ -112,7 +111,7 @@ class Langing extends Component {
             <div className="col l4">
               <div className="col s12 xl4 center-on-small-only margin-top-28">
                 <div className="image-container">
-                  <img className="circle" style={{ width: '100px', height: '100px' }} src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg" />
+                  <img alt="" className="circle" style={{ width: '100px', height: '100px' }} src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg" />
                 </div>
               </div>
               <div className="col s12 xl8">
@@ -124,7 +123,7 @@ class Langing extends Component {
             <div className="col l4">
               <div className="col s12 xl4 center-on-small-only margin-top-28">
                 <div className="image-container">
-                  <img className="circle" style={{ width: '100px', height: '100px' }} src="https://i.pinimg.com/originals/af/19/67/af1967490480cf4731b750ed11afa03e.png" />
+                  <img alt="" className="circle" style={{ width: '100px', height: '100px' }} src="https://i.pinimg.com/originals/af/19/67/af1967490480cf4731b750ed11afa03e.png" />
                 </div>
               </div>
               <div className="col s12 xl8">

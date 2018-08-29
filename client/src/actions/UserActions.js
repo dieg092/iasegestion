@@ -62,6 +62,7 @@ export const submitUser = (userId, values) => async dispatch => {
     if (element.label === values.population) {
       return element.value;
     }
+    return null;
   });
 
   valuesForm.populationId = populateId.value;

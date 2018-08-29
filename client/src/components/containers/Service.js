@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import M from "materialize-css/dist/js/materialize.min.js";
 import $ from 'jquery';
 import * as actions from '../../actions';
 import { CardImageh2h3 } from '../containers/common';
@@ -38,7 +37,7 @@ class Service extends Component {
         </div>
         <div className="container row justify">
           <div className="col s12 xl9 padding-right-30">
-          
+
           {this.props.service &&
             <div dangerouslySetInnerHTML={{__html: this.props.service[0].body}}></div>
           }

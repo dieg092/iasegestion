@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { compose } from "redux";
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux';
-import axios from 'axios';
 import PostForm from './PostForm';
 import * as actions from '../../../actions';
 

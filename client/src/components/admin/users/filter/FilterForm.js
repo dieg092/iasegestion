@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { compose } from "redux"
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import $ from 'jquery';
 import 'jquery-ui/ui/widgets/autocomplete';
 import M from "materialize-css/dist/js/materialize.min.js";

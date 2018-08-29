@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import M from "materialize-css/dist/js/materialize.min.js";
 import $ from 'jquery';
 import * as actions from '../../actions';
 import { CardImageh2h3 } from '../containers/common';
@@ -40,7 +39,7 @@ class Philosophy extends Component {
               </span>
             </p>
             <div className="container">
-              <img className="responsive-img margin-top-20 margin-bottom-30 center" src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c52e5be19eaabb3a7ae64eeb57a56f7e&auto=format&fit=crop&w=1350&q=80" />
+              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c52e5be19eaabb3a7ae64eeb57a56f7e&auto=format&fit=crop&w=1350&q=80" />
             </div>
             <p>
               <span  className="bold">
@@ -63,7 +62,7 @@ class Philosophy extends Component {
               Ello permite ofrecer a nuestros clientes un servicio no sólo rápido y eficaz, sino también próximo, haciendo gala a nuestro lema: <span className="bold">Cada cliente es nuestro mejor y único cliente. En definitiva PROXIMIDAD a los clientes. Mediante la colaboración  para estar más cerca.</span>
             </p>
             <div className="container">
-              <img className="responsive-img margin-top-20 margin-bottom-30 center" src="https://images.unsplash.com/photo-1522070436199-956aa4b7dec9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ec391df493ec165dc1b9789512d16703&auto=format&fit=crop&w=1350&q=80" />
+              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src="https://images.unsplash.com/photo-1522070436199-956aa4b7dec9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ec391df493ec165dc1b9789512d16703&auto=format&fit=crop&w=1350&q=80" />
             </div>
 
             <p className="margin-bottom-25">

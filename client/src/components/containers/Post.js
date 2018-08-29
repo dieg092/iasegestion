@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import M from "materialize-css/dist/js/materialize.min.js";
 import $ from 'jquery';
 import * as actions from '../../actions';
 import { CardImageh2h3 } from '../containers/common';

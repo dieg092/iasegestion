@@ -4,7 +4,6 @@ import { Editor } from 'react-draft-wysiwyg';
 import axios from 'axios';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
-import request from 'request';
 
 function uploadImageCallBack(file) {
   return new Promise(
@@ -51,7 +50,7 @@ export class EditorConvertToHTML extends Component {
   };
 
   render() {
-    const { editorState, contentState } = this.state;
+    const { editorState } = this.state;
     return (
       <div>
         <Editor

@@ -19,7 +19,7 @@ class Post extends Component {
 
   componentDidMount(){
     const postSlug = this.props.history.location.pathname.split('/')[3];
-    const res = axios.get('/api/post/' + postSlug)
+    axios.get('/api/post/' + postSlug)
       .then((response) => {
         this.props.postData(response);
         this.setState({

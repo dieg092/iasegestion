@@ -27,6 +27,8 @@ class UserForm extends Component {
       if (element.value === this.props.userSelected._population) {
         return element.label;
       }
+
+      return null;
     });
 
     const initData = {
@@ -37,7 +39,6 @@ class UserForm extends Component {
       "gender": this.props && this.props.userSelected && this.props.userSelected.gender,
       "birthDate": this.props && this.props.userSelected && this.props.userSelected.birthDate,
       "population": this.props && this.props.userSelected && population && population.label ? population.label : '',
-      "lastName": this.props && this.props.userSelected && this.props.userSelected.lastName,
       "rol": this.props && this.props.userSelected && this.props.userSelected.rol
     };
 

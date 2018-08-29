@@ -83,6 +83,15 @@ nav {
   }
 }
 
+@media screen and (min-width: 992px) {
+  #menu {
+    display: none;
+  }
+  .sidenav-overlay {
+    display: none !important;
+  }
+}
+
 .card-content {
   min-height: 170px !important;
 }

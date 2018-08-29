@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { FETCH_SERVICES, SERVICE_CREATED, SERVICE_CLICKED,
   SERVICE_DELETED, SERVICE_OTHERS, SERVICES_FAVOURITE } from './types';
-import M from "materialize-css/dist/js/materialize.min.js";
-import { POPULATION } from '../utils/population';
 
 export const fetchServices = (page) => async dispatch => {
   const res = await axios.get('/api/services?page=' + page);
@@ -38,7 +36,7 @@ export const deleteService = (service, history) => async dispatch => {
   images.map( async (img, index) => {
     if (index !== 0) {
       const key = img.split('" alt')[0];
-      const deleteImage = await axios.delete('/api/delete?key=' + key.split('" alt')[0]);
+      await axios.delete('/api/delete?key=' + key.split('" alt')[0]);
     }
   })
   const deleteMainImage = await axios.delete('/api/delete?key=' + service.mainPhoto);
@@ -83,7 +81,7 @@ export const submitService = (values, file, mainPhoto, editor, history, edit, se
   if (file) {
     uploadConfig = await axios.get('/api/upload?folder=services');
 
-    const upload = await axios.put(uploadConfig.data.url, file, {
+    await axios.put(uploadConfig.data.url, file, {
       headers: {
         'Content-Type': file.type
       }
@@ -106,13 +104,13 @@ export const submitService = (values, file, mainPhoto, editor, history, edit, se
         }
       });
       if (!repeated) {
-        const deleteImage = await axios.delete('/api/delete?key=' + keySelected.split('" alt')[0]);
+        await axios.delete('/api/delete?key=' + keySelected.split('" alt')[0]);
       }
     }
   });
 
   if (serviceSelected && file && serviceSelected.mainPhoto.split('/')[1] !== file.name) {
-    const deleteMainImage = await axios.delete('/api/delete?key=' + serviceSelected.mainPhoto);
+     await axios.delete('/api/delete?key=' + serviceSelected.mainPhoto);
   }
 
   const allValues = {

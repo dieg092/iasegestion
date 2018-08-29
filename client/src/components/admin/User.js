@@ -19,7 +19,7 @@ class User extends Component {
 
   componentDidMount(){
     const userId = this.props.history.location.pathname.split('/')[3];
-    const res = axios.get('/api/usuarios/' + userId)
+    axios.get('/api/usuarios/' + userId)
       .then((response) => {
         this.props.userData(response);
         this.setState({

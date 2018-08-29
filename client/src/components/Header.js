@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import M from "materialize-css/dist/js/materialize.min.js";
 import $ from 'jquery';
@@ -45,8 +44,8 @@ class Header extends Component {
         <ModalSuccessRemember />
         <nav className="transparent">
           <div className="nav-wrapper" style={{ backgroundColor: 'white', opacity: '0.8' }}>
-            <a href="/"><img className="brand-logo logo-header" src={'/images/logo.png'} /></a>
-            <a href="#!" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons margin-top-10 black-text">menu</i></a>
+            <a href="/"><img alt="logo" className="brand-logo logo-header" src={'/images/logo.png'} /></a>
+            <a data-target="menu" className="sidenav-trigger"><i className="material-icons margin-top-10 black-text">menu</i></a>
             <ul className="right hide-on-med-and-down" style={{opacity: '1'}}>
               <li className={this.props.location.pathname === '/servicios' && 'grey darken-3'}><a className={this.props.location.pathname === '/servicios' ? 'white-text bold' : 'black-text'} href="/servicios">Servicios</a></li>
               <li className={this.props.location.pathname === '/blog' && 'grey darken-3'}><a className={this.props.location.pathname === '/blog' ? 'white-text bold' : 'black-text'} href="/blog">Blog</a></li>
@@ -59,7 +58,7 @@ class Header extends Component {
           </div>
         </nav>
 
-        <ul className="sidenav pointer" id="mobile-demo">
+        <ul className="sidenav pointer" id="menu">
           <li className={this.props.location.pathname === '/servicios' && 'grey darken-3'}><a className={this.props.location.pathname === '/servicios' ? 'white-text bold' : 'black-text'} href="/servicios">Servicios</a></li>
           <li className={this.props.location.pathname === '/blog' && 'grey darken-3'}><a className={this.props.location.pathname === '/blog' ? 'white-text bold' : 'black-text'}  href="/blog">Blog</a></li>
           <li className={this.props.location.pathname === '/filosofia' && 'grey darken-3'}><a className={this.props.location.pathname === '/filosofia' ? 'white-text bold' : 'black-text'} href="/filosofia">Filosofía</a></li>

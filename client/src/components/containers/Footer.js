@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import M from "materialize-css/dist/js/materialize.min.js";
-import $ from 'jquery';
 import * as actions from '../../actions';
-import { CardImage } from '../containers/common';
 
 class Footer extends Component {
   componentDidMount() {
@@ -18,8 +15,6 @@ class Footer extends Component {
       )
     })
   }
-
-
 
   render() {
     return (
@@ -51,7 +46,6 @@ class Footer extends Component {
         <div className="footer-copyright">
           <div className="container">
           © 2018 Copyright IASE gestión. Todos los derechos reservados
-
 
           <a className="grey-text text-lighten-4 right margin-left-15" href="/contacto">Contacto</a>
           <a className="grey-text text-lighten-4 right margin-left-15" href="#!">Términos de uso</a>

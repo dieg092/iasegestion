@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import M from "materialize-css/dist/js/materialize.min.js";
 import $ from 'jquery';
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import * as actions from '../../actions';
-import { CardImage } from '../containers/common';
 import Footer from './Footer';
 import ContactForm from '../contact/ContactForm';
 
@@ -52,7 +50,7 @@ class Contact extends Component {
 
                 <div className="col s12 m12 l12 xl6">
                   <h2 className="bold margin-bottom-40 font-35-custom">Nuestros Contactos</h2>
-                  <h3 className="valign-wrapper font-20-custom"><i className="material-icons margin-right-12">location_on</i> Gran Vía, 36 - 50005 Zaragoza</h3>
+                  <h3 className="valign-wrapper font-20-custom"><i className="material-icons margin-right-12">location_on</i> Plaza San Francisco 18 4ºD - 50006 Zaragoza</h3>
                   <h3 className="valign-wrapper font-20-custom"><i className="material-icons margin-right-12">mail_outline</i> informacion@iasegestion.com</h3>
                   <h3 className="valign-wrapper font-20-custom"><i className="material-icons margin-right-12">phone</i> 976 232 771</h3>
                   <h3 className="valign-wrapper font-20-custom"><i className="material-icons margin-right-12">phone</i> 976 238 481</h3>

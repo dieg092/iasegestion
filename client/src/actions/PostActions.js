@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { FETCH_POSTS, POST_CREATED, POST_CLICKED, POST_DELETED,
   CATEGORY_CLICKED, POST_OTHERS } from './types';
-import M from "materialize-css/dist/js/materialize.min.js";
 
 export const fetchPosts = (page, filters) => async dispatch => {
   const filter = filterPosts(filters);
@@ -39,7 +38,7 @@ export const deletePost = (post, history) => async dispatch => {
   images.map( async (img, index) => {
     if (index !== 0) {
       const key = img.split('" alt')[0];
-      const deleteImage = await axios.delete('/api/delete?key=' + key.split('" alt')[0]);
+      await axios.delete('/api/delete?key=' + key.split('" alt')[0]);
     }
   })
   const deleteMainImage = await axios.delete('/api/delete?key=' + post.mainPhoto);
@@ -76,7 +75,7 @@ export const submitPost = (values, file, mainPhoto, editor, history, edit, postS
   if (file) {
     uploadConfig = await axios.get('/api/upload?folder=posts');
 
-    const upload = await axios.put(uploadConfig.data.url, file, {
+    await axios.put(uploadConfig.data.url, file, {
       headers: {
         'Content-Type': file.type
       }
@@ -99,13 +98,13 @@ export const submitPost = (values, file, mainPhoto, editor, history, edit, postS
         }
       });
       if (!repeated) {
-        const deleteImage = await axios.delete('/api/delete?key=' + keySelected.split('" alt')[0]);
+        await axios.delete('/api/delete?key=' + keySelected.split('" alt')[0]);
       }
     }
   });
 
   if (postSelected && file && postSelected.mainPhoto.split('/')[1] !== file.name) {
-    const deleteMainImage = await axios.delete('/api/delete?key=' + postSelected.mainPhoto);
+    await axios.delete('/api/delete?key=' + postSelected.mainPhoto);
   }
 
 

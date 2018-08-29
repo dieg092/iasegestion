@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { compose } from "redux";
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
 import * as actions from '../../../actions';
 
 class ModalResendPass extends Component {

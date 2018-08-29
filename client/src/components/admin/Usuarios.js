@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FilterForm from './users/filter/FilterForm';
 import * as actions from '../../actions';
-import { Card } from '../containers/common';
 import { POPULATION } from '../../utils/population';
 
 class Usuarios extends Component {
@@ -24,6 +23,7 @@ class Usuarios extends Component {
         if (element.value === user._population) {
           return element.label;
         }
+        return null;
       });
 
       return (

@@ -5,7 +5,7 @@ const CardImage = (props) => {
     <div className="margin-top-28">
         <div className="card darken-1 hoverable pointer">
           <div className="card-image">
-             <img className="responsive-img" src={props.image} />
+             <img className="responsive-img" alt={props.title} src={props.image} />
            </div>
             <div className="card-content">
               <span className="card-title bold black-text">{props.title}</span>
