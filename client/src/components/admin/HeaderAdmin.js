@@ -15,8 +15,22 @@ class HeaderAdmin extends Component {
     );
   }
 
+  renderHeader() {
+    return (
+    <div className="sidebar-header header-cover" style={{ backgroundImage: 'url(/images/analisis.jpg)', backgroundSize: '100%', paddingTop: '20px', paddingBottom: '3px' }}>
+      <div className="center" style={{ backgroundColor: 'white', opacity: '0.7', borderRadius: '10px', marginLeft: '18px', marginRight: '18px', paddingTop: '5px'}}>
+
+          <div className="sidebar-image">
+              <img className="responsive-img" alt="logo" style={{ maxWidth: '180px' }} src={'/images/logo.png'} />
+          </div>
+          <p className="bold">{this.props && this.props.userLogged && this.props.userLogged.email && this.props.userLogged.email.length >= 18 ? (this.props.userLogged.email.substr(0, 21) + '...') : this.props.userLogged.email}</p>
+
+      </div>
+    </div>
+    )
+  }
+
   render() {
-    console.log(this.props)
     return (
       <div>
         <nav>
@@ -29,14 +43,7 @@ class HeaderAdmin extends Component {
         </nav>
 
         <ul id="mobile-demo" className="sidenav sidenav-fixed" style={{ width: '250px' }}>
-          <div className="sidebar-header header-cover" style={{ backgroundImage: 'url(https://s.tmimgcdn.com/blog/wp-content/uploads/2016/04/1-9-2.jpg?x20232)', paddingTop: '30px', paddingBottom: '3px' }}>
-            <div className="container center">
-              <div className="sidebar-image">
-                  <img className="circle responsive-im" alt="logo" style={{ maxWidth: '180px' }} src={'/images/logo.png'} />
-              </div>
-              <p className="bold">{this.props && this.props.userLogged && this.props.userLogged.email && this.props.userLogged.email.length >= 18 ? (this.props.userLogged.email.substr(0, 21) + '...') : this.props.userLogged.email}</p>
-            </div>
-          </div>
+          {this.renderHeader()}
           <div style={{ position: 'relative' }}>
           {this.props.userLogged.rol &&
             <li>
@@ -45,7 +52,7 @@ class HeaderAdmin extends Component {
                   className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/usuarios' || this.props.location.pathname === '/') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
                 >supervisor_account
                 </i>
-                Usuarios
+                <span className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/usuarios' || this.props.location.pathname === '/') && 'bold'}>Usuarios</span>
               </a>
             </li>
           }
@@ -56,10 +63,21 @@ class HeaderAdmin extends Component {
                 className={this.props.location.pathname === '/admin/laboral' || (!this.props.userLogged.rol && this.props.location.pathname === '/') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
               >card_travel
               </i>
-              Asesoría Laboral
+              <span className={this.props.location.pathname === '/admin/laboral' && 'bold'}>
+                Asesoría Laboral
+              </span>
               </a>
             </li>
-            <li><a href="/admin/fiscal" className={this.props.location.pathname === '/admin/fiscal' && 'primary-text'}><i className={this.props.location.pathname === '/admin/fiscal' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>content_copy</i>Asesoría Fiscal</a></li>
+            <li>
+              <a href="/admin/fiscal" className={this.props.location.pathname === '/admin/fiscal' && 'primary-text'}>
+                <i className={this.props.location.pathname === '/admin/fiscal' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>
+                content_copy
+                </i>
+                <span className={this.props.location.pathname === '/admin/fiscal' && 'bold'}>
+                  Asesoría Fiscal
+                </span>
+              </a>
+            </li>
             {this.props.userLogged.rol &&
               <li className="margin-top-30">
                 <a href="/admin/servicios" className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/servicios') && 'primary-text'}>
@@ -67,7 +85,9 @@ class HeaderAdmin extends Component {
                     className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/servicios') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
                   >view_list
                   </i>
-                  Servicios
+                  <span className={this.props.location.pathname === '/admin/servicios' && 'bold'}>
+                    Servicios
+                  </span>
                 </a>
               </li>
             }
@@ -78,7 +98,9 @@ class HeaderAdmin extends Component {
                     className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/posts') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
                   >filter_none
                   </i>
-                  Posts
+                  <span className={this.props.location.pathname === '/admin/posts' && 'bold'}>
+                    Posts
+                  </span>
                 </a>
               </li>
             }
@@ -100,3 +122,4 @@ function mapStateToProps({ auth }) {
 export default connect(mapStateToProps, actions)(withRouter(HeaderAdmin));
 //https://images.vexels.com/media/users/3/148177/isolated/preview/ee0d01a2796059e8298032a7442810b9-abstract-square-background-by-vexels.png
 //http://toanhoang.com/wp-content/uploads/2016/04/materialdesign.png
+//https://s.tmimgcdn.com/blog/wp-content/uploads/2016/04/1-9-2.jpg?x20232

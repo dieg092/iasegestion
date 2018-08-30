@@ -12,7 +12,7 @@ class Philosophy extends Component {
   render() {
     return (
       <div>
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(/images/building.png)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(/images/filosofiaOpacity.jpg)', backgroundPositionY: '-369px', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
           <h1 className="center padding-top-145 white-text font-title">Filosofía</h1>
         </div>
         <div className="container row justify font-18-custom">
@@ -20,72 +20,57 @@ class Philosophy extends Component {
             <p className="margin-bottom-30">
               <span className="bold">
                 Cada cliente es nuestro mejor  y único cliente.
-              </span> La filosofía básica de nuestra firma es identificarnos con las necesidades de nuestros clientes y hacer nuestros sus problemas, con el máximo esfuerzo e interés por ayudar a lograr sus objetivos empresariales.
+              </span>
             </p>
+            <p>
+              La filosofía básica de nuestra firma es identificarnos con las necesidades de nuestros clientes y hacer nuestros sus problemas, intereses e inquietudes con el máximo esfuerzo y responsabilidad para    ayudar a lograr sus objetivos empresariales.
+            </p>
+            
             <p className="margin-bottom-25">
               Apostamos por Estar más cerca de nuestros clientes.
             </p>
+            <div className="container">
+              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src="https://image.shutterstock.com/z/stock-photo-customer-care-care-for-employees-human-resources-employment-agency-and-marketing-segmentation-568196314.jpg" />
+            </div>
             <p className="margin-bottom-25">
               <span className="bold">
-                La cercanía a los clientes y a sus necesidades es la clave para ofrecer un asesoramiento integral completo. En definitiva PROXIMIDAD a los clientes.
+                La cercanía a los clientes y a sus necesidades es la clave para ofrecer un asesoramiento integral completo. En definitiva PROXIMIDAD  es uno de nuestros sellos de identificación.
               </span>
             </p>
+            <div className="container">
+              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src="https://image.shutterstock.com/z/stock-photo-target-audience-and-customers-concept-man-hold-target-customer-in-hand-target-audience-in-262131845.jpg" />
+            </div>
             <p className="margin-bottom-25">
-              Nuestro despacho apuesta por el firme compromiso de colaboración con nuestros clientes en la <span className="bold">planificación y organización de su empresa</span>, así como en la <span className="bold">solución de los problemas diarios</span> de su gestión empresarial.
+              Nuestro despacho apuesta por el firme compromiso de colaboración con nuestros clientes en la planificación y organización de su empresa, así como en la solución de los problemas diarios de su gestión empresarial.
             </p>
+
+            <div className="container">
+              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src="https://thumb1.shutterstock.com/display_pic_with_logo/427951/256754716/stock-photo-portrait-of-businesswoman-sitting-at-desk-with-a-laptop-256754716.jpg" />
+            </div>
             <p className="margin-bottom-25">
               <span className="bold">
                 PARA ELLO: ESPECIALIZACION Y COLABORACION. COORDINACION Y VISION INTEGRAL
               </span>
             </p>
-            <div className="container">
-              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c52e5be19eaabb3a7ae64eeb57a56f7e&auto=format&fit=crop&w=1350&q=80" />
-            </div>
             <p>
               <span  className="bold">
                 El mundo de la empresa
-              </span>, y de la PYME, ha experimentado cambios muy profundos. Hay una tendencia general hacia una mayor <span className="bold">complejidad en todos los ámbitos</span>: Laboral, Mercantil, Contable, Fiscal, etcétera.
+              </span>, y de la PYME, ha experimentado cambios muy profundos. Hay una tendencia general hacia una mayor <span className="bold">complejidad en todos los ámbitos</span>: Laboral, Mercantil, Contable, Fiscal, Tributario, etc.
             </p>
             <p className="margin-bottom-25">
-              Con el objetivo de abarcar todo este complejo mundo de la empresa, porque nos lo impone la realidad que vivimos, nos hemos asociado de lo contario nos alejaríamos de nuestros clientes.
-            </p>
-            <p className="margin-bottom-25">
-              <span className="bold">Invertimos en talento y capital humano, para que el cliente se sienta acompañado.</span>
-            </p>
-            <p className="margin-bottom-25">
-              Hemos desarrollado líneas de colaboración exclusiva con entidades de gestión de ámbito nacional, con el fin de lograr el control absoluto de los servicios administrativos que pudieran generarse en el núcleo de nuestra actividad.
-            </p>
-            <p className="margin-bottom-25">
-              Nuestra originaria oficina de <span className="bold">Zaragoza</span> ha dado paso a una red internacional formada por otras cuatro oficinas sitas en <span className="bold">Madrid, Huesca, Buenos Aires (Argentina) y Lausana (Suiza)</span>, estando previstas nuevas expansiones y cerrados acuerdos de colaboración en otras ciudades españolas, europeas y americanas.
-            </p>
-            <p className="margin-bottom-25">
-              Ello permite ofrecer a nuestros clientes un servicio no sólo rápido y eficaz, sino también próximo, haciendo gala a nuestro lema: <span className="bold">Cada cliente es nuestro mejor y único cliente. En definitiva PROXIMIDAD a los clientes. Mediante la colaboración  para estar más cerca.</span>
+              Con el objetivo de abarcar todo este complejo mundo de la empresa, IASE está integrado por profesionales con  diferentes perfiles contamos  expertos en los distintos ámbitos del asesoramiento empresarial
+              <span className="bold"> Invertimos en talento y capital humano, para que el cliente se sienta acompañado.</span>
             </p>
             <div className="container">
-              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src="https://images.unsplash.com/photo-1522070436199-956aa4b7dec9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ec391df493ec165dc1b9789512d16703&auto=format&fit=crop&w=1350&q=80" />
+              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src="https://thumb1.shutterstock.com/display_pic_with_logo/2234105/248573119/stock-photo-little-cubes-with-the-word-team-on-a-keyboard-248573119.jpg" />
             </div>
+            <p className="margin-bottom-25">
+              Por todo ello  hemos desarrollado líneas de colaboración exclusiva con entidades de gestión de ámbito nacional, con el fin de lograr el control absoluto de los servicios administrativos que pudieran generarse en el núcleo de nuestra actividad.
+            </p>
+            <p className="margin-bottom-25">
+              <span className="bold">En definitiva ofrecemos un </span> servicio multidisciplinar <span className="bold">orientado a prever cualquier problema que pueda presentarse en el tráfico jurídico y económico del cliente, ejerciendo las acciones legales oportunas en defensa de sus intereses caso de ser necesario.</span>
+            </p>
 
-            <p className="margin-bottom-25">
-              Nuestros profesionales están altamente cualificados y organizados en Departamentos especializados con el fin de prestar un servicio de máxima calidad. Disponemos de un equipo de profesionales de primer orden que, con los medios técnicos más modernos, le proporcionará las soluciones a las necesidades de gestión de cualquier particular o sociedad. Nuestros profesionales se actualizan constantemente de la últimas novedades legislativas, ofimáticas y administrativas, optimizando las soluciones para nuestros clientes.
-            </p>
-            <p className="margin-bottom-25">
-              Debemos, y así lo hacemos, ser capaces de asesorar en nuevas especialidades, tales como: Nuevas Tecnologías, Propiedad Intelectual, Protección de Datos, Patentes y Marcas, Competencia Desleal, Mercado Comunitario, y Exportaciones e Importaciones, entre otras.
-            </p>
-            <p className="margin-bottom-25">
-              Por todo ello, hemos ampliado a través de asociaciones, buscando los especialistas en cada materia, con nuestro Plan de <span className="bold">Aumento del Capital Humano con el objetivo claro de estar cada día más cerca del cliente. Para que usted se sienta seguro.</span>
-            </p>
-            <p className="margin-bottom-25">
-              Este capital humano está perfectamente coordinado para que no se pierda la visión integral del cliente. No se puede asesorar sólo en un tema, porque todos los aspectos están interrelacionados.
-            </p>
-            <p className="margin-bottom-25">
-            Apostamos por las nuevas tecnologías, aplicadas en nuestra labor diaria para ofrecer un apoyo técnico conforme con sus necesidades, sin por ello, dejar de tener un trato personalizado. <span className="bold">GRANDES PERO AGILES</span>. Nos destacamos por ser una empresa dinámica e innovadora donde el principal interés radica en la atención al cliente. Hoy las nuevas tecnologías nos posibilitan esta visión integral, y no escatimamos esfuerzo ni inversión para PRESTAR LOS MEJORES SERVICIOS. Ponemos a su servicio los medios informáticos más modernos y competitivos. Conexión directa con <span  className="bold">Internet (INTRANET- EXTRANET)</span> y posibilidad de enviar o recibir información acortando sustancialmente el tiempo y el coste de las comunicaciones.
-            </p>
-            <p className="margin-bottom-25">
-              <span className="bold">En definitiva, BUSCAMOS estar más cerca.</span>
-            </p>
-            <p className="margin-bottom-25">
-              <span className="bold">Ofrecemos un</span> servicio multidisciplinar <span className="bold">orientado a prever cualquier problema que pueda presentarse en el tráfico jurídico y económico del cliente, ejerciendo las acciones legales oportunas en defensa de sus intereses caso de ser necesario.</span>
-            </p>
           </div>
           <div className="col s12 xl3 center border-left">
             <h2 className="font-35-custom">Últimos Posts</h2>

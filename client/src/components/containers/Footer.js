@@ -28,7 +28,7 @@ class Footer extends Component {
             <div className="col l4 offset-l1 s12">
               <h5 className="white-text margin-bottom-30">Contáctanos</h5>
               <ul>
-                <li className="valign-wrapper grey-text text-lighten-3 margin-bottom-15"><i className="material-icons margin-right-12">location_on</i> Gran Vía, 36 - 50005 Zaragoza</li>
+                <li className="valign-wrapper grey-text text-lighten-3 margin-bottom-15"><i className="material-icons margin-right-12">location_on</i> Plaza San Francisco 18 4ºD - 50006 Zaragoza</li>
                 <li className="valign-wrapper grey-text text-lighten-3 margin-bottom-15"><i className="material-icons margin-right-12">mail_outline</i> informacion@iasegestion.com</li>
                 <li className="valign-wrapper grey-text text-lighten-3 margin-bottom-15"><i className="material-icons margin-right-12">phone</i> 976 232 771</li>
                 <li className="valign-wrapper grey-text text-lighten-3 margin-bottom-15"><i className="material-icons margin-right-12">phone</i> 976 238 481</li>

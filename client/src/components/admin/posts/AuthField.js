@@ -23,7 +23,7 @@ export default ({ input, value, label, type, options, meta: { error, touched } }
         <div className="input-field col s12">
           <div className="selDiv">
             <select {...input} id={input.name}>
-              <option key={0}></option>
+              <option key={0} value=""></option>
               {options.map((option, key) => {
                 return (
                   <option key={key} value={option}>{option}</option>

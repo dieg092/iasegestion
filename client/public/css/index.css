@@ -185,11 +185,11 @@ nav {
   background-color: #191919 !important; }
 
 .primary {
-  background-color: #f25e5e !important;
+  background-color: #212121 !important;
   color: white; }
 
 .primary-text {
-  color: #f25e5e !important; }
+  color: #212121 !important; }
 
 .col.s12 > .btn, .col.s12 > .btn-large, .col.s12 > .btn-small {
   width: 100%; }
@@ -2495,7 +2495,7 @@ a {
 blockquote {
   margin: 20px 0;
   padding-left: 1.5rem;
-  border-left: 5px solid #f25e5e !important; }
+  border-left: 5px solid #212121 !important; }
 
 i {
   line-height: inherit; }
@@ -2534,7 +2534,7 @@ video.responsive-video {
   .pagination li.active a {
     color: #fff; }
   .pagination li.active {
-    background-color: #f25e5e !important; }
+    background-color: #212121 !important; }
   .pagination li.disabled a {
     cursor: default;
     color: #999; }
@@ -3573,7 +3573,7 @@ table span.badge {
 
 nav {
   color: #fff;
-  background-color: #f25e5e !important;
+  background-color: #212121 !important;
   width: 100%;
   height: 56px;
   line-height: 56px; }
@@ -5915,11 +5915,11 @@ input[type=range]::-ms-thumb {
   .table-of-contents a:hover {
     color: #a8a8a8;
     padding-left: 15px;
-    border-left: 1px solid #f25e5e !important; }
+    border-left: 1px solid #212121 !important; }
   .table-of-contents a.active {
     font-weight: 500;
     padding-left: 14px;
-    border-left: 2px solid #f25e5e !important; }
+    border-left: 2px solid #212121 !important; }
 
 .sidenav {
   position: fixed;
@@ -6052,7 +6052,7 @@ input[type=range]::-ms-thumb {
 
 .sidenav .collapsible-body > ul:not(.collapsible) > li.active,
 .sidenav.sidenav-fixed .collapsible-body > ul:not(.collapsible) > li.active {
-  background-color: #f25e5e !important; }
+  background-color: #212121 !important; }
   .sidenav .collapsible-body > ul:not(.collapsible) > li.active a,
   .sidenav.sidenav-fixed .collapsible-body > ul:not(.collapsible) > li.active a {
     color: #fff; }
@@ -6603,7 +6603,7 @@ input[type=range]::-ms-thumb {
   position: absolute;
   font-size: 1rem;
   border-radius: 50%;
-  background-color: #f25e5e !important;
+  background-color: #212121 !important;
   box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.14), 0 10px 50px 0 rgba(0, 0, 0, 0.12), 0 30px 10px -20px rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 100%;

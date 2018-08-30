@@ -54,21 +54,18 @@ class Blog extends Component {
     console.log(this.props.posts)
     return (
       <div>
-        <div className="margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(/images/imageblog.png)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
+        <div className="margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(/images/imageblogOpacity.jpg)', backgroundPositionY: '-383px', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
           <h1 className="center padding-top-145 white-text font-title">Nuestro Blog</h1>
         </div>
         <nav className="margin-bottom-75 transparent menu-blog">
          <div className="nav-wrapper container">
            <ul id="nav-mobile" className="left hide-on-med-and-down">
              <li onClick={() => {this.onCategoryClicked('')}}><a className={this.props.categoryCli === ''  ? 'white-text grey' : 'black-text'}>Todos</a></li>
-             <li onClick={() => {this.onCategoryClicked('Economía')}}><a className={this.props.categoryCli === 'Economía' ? 'white-text grey' : 'black-text'}>Economía</a></li>
+             <li onClick={() => {this.onCategoryClicked('Empresarial')}}><a className={this.props.categoryCli === 'Empresarial' ? 'white-text grey' : 'black-text'}>Empresarial</a></li>
              <li onClick={() => this.onCategoryClicked('Laboral')}><a className={this.props.categoryCli === 'Laboral' ? 'white-text grey' : 'black-text'}>Laboral</a></li>
              <li onClick={() => this.onCategoryClicked('Jurídica')}><a className={this.props.categoryCli === 'Jurídica' ? 'white-text grey' : 'black-text'}>Jurídica</a></li>
-             <li onClick={() => this.onCategoryClicked('Financiera')}><a className={this.props.categoryCli === 'Financiera' ? 'white-text grey' : 'black-text'}>Financiera</a></li>
-             <li onClick={() => this.onCategoryClicked('RR.HH')}><a className={this.props.categoryCli === 'RR.HH' ? 'white-text grey' : 'black-text'}>RR.HH</a></li>
-             <li onClick={() => this.onCategoryClicked('Márketing')}><a className={this.props.categoryCli === 'Márketing' ? 'white-text grey' : 'black-text'}>Márketing</a></li>
-             <li onClick={() => this.onCategoryClicked('Técnica')}><a className={this.props.categoryCli === 'Técnica' ? 'white-text grey' : 'black-text'}>Técnica</a></li>
-           </ul>
+             <li onClick={() => this.onCategoryClicked('Financiera y Tributaria')}><a className={this.props.categoryCli === 'Financiera y Tributaria' ? 'white-text grey' : 'black-text'}>Financiera y Tributaria</a></li>
+          </ul>
          </div>
        </nav>
         <div className="container">
@@ -116,3 +113,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, actions)(Blog);
+//<li onClick={() => this.onCategoryClicked('RR.HH')}><a className={this.props.categoryCli === 'RR.HH' ? 'white-text grey' : 'black-text'}>RR.HH</a></li>
+//<li onClick={() => this.onCategoryClicked('Márketing')}><a className={this.props.categoryCli === 'Márketing' ? 'white-text grey' : 'black-text'}>Márketing</a></li>
+//<li onClick={() => this.onCategoryClicked('Técnica')}><a className={this.props.categoryCli === 'Técnica' ? 'white-text grey' : 'black-text'}>Técnica</a></li>

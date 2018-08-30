@@ -46,17 +46,18 @@ class Langing extends Component {
         <div className="slider margin-bottom-75">
          <ul className="slides">
            <li>
-             <img alt="" src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0bab11002aaa5491c9238eb0c9b4b28d&auto=format&fit=crop&w=1050&q=80" />
+             <img alt="" src={'/images/analisis.jpg'} />
+
              <div className="caption center-align" style={{ marginTop: '-15px' }}>
                <h1 className="font-title">ASESORÍA</h1>
                <h2 className="light grey-text font-title text-lighten-3 font-40-custom bold">EMPRESARIAL</h2>
              </div>
            </li>
            <li>
-             <img alt="" src="https://images.unsplash.com/photo-1518169640858-0d622b058e5c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5ffa10ff5bac3a77cb7de6e4e7164787&auto=format&fit=crop&w=1383&q=80" />
+             <img alt="" src={'/images/manos.jpg'} />
              <div className="caption right-align">
-               <h1 className="font-title grey-text text-darken-4">Cada cliente</h1>
-               <h2 className="light grey-text text-darken-4 font-title font-40-custom bold">es nuestro mejor  y único cliente.</h2>
+               <h1 className="font-title grey-text text-lighten-3">Cada cliente</h1>
+               <h2 className="light grey-text text-lighten-3 font-title font-40-custom bold">es nuestro mejor  y único cliente.</h2>
              </div>
            </li>
           </ul>

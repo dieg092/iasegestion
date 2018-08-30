@@ -1,12 +1,8 @@
 module.exports = {
   CATEGORY: {
-    'Economía': 'Economía',
+    'Empresarial': 'Empresarial',
     'Laboral': 'Laboral',
     'Jurídica': 'Jurídica',
-    'Financiera': 'Financiera',
-    'RR.HH': 'RR.HH',
-    'Márketing': 'Márketing',
-    'Técnica': 'Técnica',
-    'Otros': 'Otros'
+    'Financiera y Tributaria': 'Financiera y Tributaria',
   }
 };
