@@ -48,7 +48,7 @@ class Langing extends Component {
            <li>
              <img alt="" src={'/images/analisis.jpg'} />
 
-             <div className="caption center-align" style={{ marginTop: '-15px' }}>
+             <div className="caption center-align">
                <h1 className="font-title">ASESORÍA</h1>
                <h2 className="light grey-text font-title text-lighten-3 font-40-custom bold">EMPRESARIAL</h2>
              </div>
