@@ -54,7 +54,7 @@ class Blog extends Component {
     console.log(this.props.posts)
     return (
       <div>
-        <div className="margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(/images/imageblogOpacity.jpg)', backgroundPositionY: '-383px', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
+        <div className="margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(images/imageblogOpacity.jpg)', backgroundPositionY: '-383px', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
           <h1 className="center padding-top-145 white-text font-title">Nuestro Blog</h1>
         </div>
         <nav className="margin-bottom-75 transparent menu-blog">

@@ -12,7 +12,7 @@ class Philosophy extends Component {
   render() {
     return (
       <div>
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(/images/filosofiaOpacity.jpg)', backgroundPositionY: '-369px', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(images/filosofiaOpacity.jpg)', backgroundPositionY: '-369px', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
           <h1 className="center padding-top-145 white-text font-title">Filosofía</h1>
         </div>
         <div className="container row justify font-18-custom">
@@ -25,7 +25,7 @@ class Philosophy extends Component {
             <p>
               La filosofía básica de nuestra firma es identificarnos con las necesidades de nuestros clientes y hacer nuestros sus problemas, intereses e inquietudes con el máximo esfuerzo y responsabilidad para    ayudar a lograr sus objetivos empresariales.
             </p>
-            
+
             <p className="margin-bottom-25">
               Apostamos por Estar más cerca de nuestros clientes.
             </p>
