@@ -29,7 +29,6 @@ class PostForm extends Component {
 
     M.Modal.init(elems, {});
     M.FormSelect.init(elem, {});
-
   }
 
   handleInitialize() {
@@ -39,15 +38,17 @@ class PostForm extends Component {
       "postTitle": this.props && this.props.postSelected && this.props.postSelected.title,
       "category": this.props && this.props.postSelected && this.props.postSelected.category
     };
-    console.log(initData.category)
     this.props.initialize(initData);
-    $('.selDiv option[value="' + initData.category.toUpperCase() + '"]').attr('selected', 'selected')
-
   }
+
 
   renderFields() {
     return _.map(formFields, ({ label, name, type, icon, options }) => {
-      return <Field key={name} label={label} type={type} name={name} options={options} component={AuthField} />
+      if (options) {
+        AuthField.value = this.props.postSelected && this.props.postSelected.category
+    
+      }
+      return <Field key={name} label={label} type={type} name={name} options={options} component={AuthField} selected={this.props.postSelected && this.props.postSelected}/>
     });
   }
 
@@ -65,8 +66,6 @@ class PostForm extends Component {
     } else {
       this.props.submitPost(this.props.postForm.values, this.state.file, mainPhoto, editor, this.props.history, edit);
     }
-
-
   }
 
   onFileChange(event) {
@@ -74,7 +73,6 @@ class PostForm extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
        <form onSubmit={this.props.handleSubmit(this.onSubmitPost.bind(this))}>
           <div className="card horizontal">

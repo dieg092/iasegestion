@@ -102,6 +102,16 @@ img {
   margin-right: auto;
 }
 
+.image-philosopy {
+  background-position-y: '-369px' !important;
+}
+
+@media screen and (min-width: 992px) {
+  .image-philosopy {
+    background-position-y: '0px' !important;
+  }
+}
+
 
 /* .input-field input[type=text]:focus + label {
   color: $secondary !important;

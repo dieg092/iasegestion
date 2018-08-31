@@ -12,7 +12,9 @@ class Philosophy extends Component {
   render() {
     return (
       <div>
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(images/filosofiaOpacity.jpg)', backgroundPositionY: '-369px', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo"
+        style={{ backgroundImage: 'url(/images/phylosopy.jpg)', backgroundRepeat: 'no-repeat', width: '100%', height: '100%', backgroundSize: '100%', height: height }}>
+
           <h1 className="center padding-top-145 white-text font-title">Filosofía</h1>
         </div>
         <div className="container row justify font-18-custom">

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ input, value, label, type, options, meta: { error, touched } }) => {
+export default ({ input, value, label, type, options, meta: { error, touched }, selected }) => {
 
   return (
     <div>
@@ -21,9 +21,9 @@ export default ({ input, value, label, type, options, meta: { error, touched } }
 
       {type === 'select' &&
         <div className="input-field col s12">
-          <div className="selDiv">
-            <select {...input} id={input.name}>
-              <option key={0} value=""></option>
+          <div className="selDiv" id="selDiv">
+            <select {...input} value={selected && selected.category ? selected.category : ''}>
+              <option></option>
               {options.map((option, key) => {
                 return (
                   <option key={key} value={option}>{option}</option>
