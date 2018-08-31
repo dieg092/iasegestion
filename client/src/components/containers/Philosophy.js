@@ -13,7 +13,7 @@ class Philosophy extends Component {
     return (
       <div>
         <div className="margin-bottom-75 margin-top-42-negative min-height-photo"
-        style={{ backgroundImage: 'url(/images/phylosopy.jpg)', backgroundRepeat: 'no-repeat', width: '100%', height: '100%', backgroundSize: '100%', height: height }}>
+        style={{ backgroundImage: 'url(/images/phylosopy.jpg)', backgroundRepeat: 'no-repeat',  backgroundSize: 'cover', height: height }}>
 
           <h1 className="center padding-top-145 white-text font-title">Filosofía</h1>
         </div>
@@ -32,22 +32,19 @@ class Philosophy extends Component {
               Apostamos por Estar más cerca de nuestros clientes.
             </p>
             <div className="container">
-              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src="https://image.shutterstock.com/z/stock-photo-customer-care-care-for-employees-human-resources-employment-agency-and-marketing-segmentation-568196314.jpg" />
+              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src={'/images/mano_cliente.jpg'} />
             </div>
             <p className="margin-bottom-25">
               <span className="bold">
                 La cercanía a los clientes y a sus necesidades es la clave para ofrecer un asesoramiento integral completo. En definitiva PROXIMIDAD  es uno de nuestros sellos de identificación.
               </span>
             </p>
-            <div className="container">
-              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src="https://image.shutterstock.com/z/stock-photo-target-audience-and-customers-concept-man-hold-target-customer-in-hand-target-audience-in-262131845.jpg" />
-            </div>
             <p className="margin-bottom-25">
               Nuestro despacho apuesta por el firme compromiso de colaboración con nuestros clientes en la planificación y organización de su empresa, así como en la solución de los problemas diarios de su gestión empresarial.
             </p>
 
             <div className="container">
-              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src="https://thumb1.shutterstock.com/display_pic_with_logo/427951/256754716/stock-photo-portrait-of-businesswoman-sitting-at-desk-with-a-laptop-256754716.jpg" />
+              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src={'/images/users_hand.jpg'} />
             </div>
             <p className="margin-bottom-25">
               <span className="bold">

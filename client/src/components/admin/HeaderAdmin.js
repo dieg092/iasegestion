@@ -17,7 +17,7 @@ class HeaderAdmin extends Component {
 
   renderHeader() {
     return (
-    <div className="sidebar-header header-cover" style={{ backgroundImage: 'url(/images/analisis.jpg)', backgroundSize: '100%', paddingTop: '20px', paddingBottom: '3px' }}>
+    <div className="sidebar-header header-cover" style={{ backgroundImage: 'url(/images/calculator_small.jpg)', backgroundSize: '100%', paddingTop: '20px', paddingBottom: '3px' }}>
       <div className="center" style={{ backgroundColor: 'white', opacity: '0.7', borderRadius: '10px', marginLeft: '18px', marginRight: '18px', paddingTop: '5px'}}>
 
           <div className="sidebar-image">

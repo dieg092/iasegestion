@@ -46,7 +46,7 @@ class Langing extends Component {
         <div className="slider margin-bottom-75">
          <ul className="slides">
            <li>
-             <img alt="" src={'/images/analisis.jpg'} />
+             <img alt="" src={'/images/graph.jpg'} />
 
              <div className="caption center-align">
                <h1 className="font-title">ASESORÍA</h1>
@@ -75,7 +75,7 @@ class Langing extends Component {
           </div>
         </div>
 
-        <div className="margin-bottom-100" style={{ backgroundImage: 'url(/images/building.png)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: '100%' }}>
+        <div className="margin-bottom-100" style={{ backgroundImage: 'url(/images/building.jpg)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: '100%' }}>
           <div className="landing-container">
             <div className="row center">
               <div className="col l6">

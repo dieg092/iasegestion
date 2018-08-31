@@ -11,7 +11,7 @@ class Conditions extends Component {
   render() {
     return (
       <div>
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1525167753025-08f17bdddb7f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=679dd1936d7c0bdb8f3682cf4f98108c&auto=format&fit=crop&w=1050&q=80)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(/images/conditions2.jpg)', backgroundRepeat: 'no-repeat',  backgroundSize: 'cover', height: height }}>
           <h1 className="center padding-top-145 white-text font-title">Términos y Condiciones de Uso</h1>
         </div>
         <div className="container">
