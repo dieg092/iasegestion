@@ -7,6 +7,7 @@ const postSchema = new Schema({
 	  title: { type: String, index: { unique: true }},
     category: String,
     mainPhoto: String,
+		alt: String,
     body: String,
 		slug: String,
 		date: { type: Date, default: Date.now }

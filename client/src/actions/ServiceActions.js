@@ -112,11 +112,12 @@ export const submitService = (values, file, mainPhoto, editor, history, edit, se
   if (serviceSelected && file && serviceSelected.mainPhoto.split('/')[1] !== file.name) {
      await axios.delete('/api/delete?key=' + serviceSelected.mainPhoto);
   }
-
+  
   const allValues = {
     title: values.serviceTitle,
     shortDescription: values.shortDescription,
     important: values.important ? values.important : false,
+    alt: values.altImage,
     mainPhoto: uploadConfig.data && uploadConfig.data.key ? uploadConfig.data.key : '',
     editor: editor
   }

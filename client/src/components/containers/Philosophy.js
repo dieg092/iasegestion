@@ -18,7 +18,7 @@ class Philosophy extends Component {
           <h1 className="center padding-top-145 white-text font-title">Filosofía</h1>
         </div>
         <div className="container row justify font-18-custom">
-          <div className="col s12 xl8 padding-right-30">
+          <div className="col s12">
             <p className="margin-bottom-30">
               <span className="bold">
                 Cada cliente es nuestro mejor  y único cliente.
@@ -32,7 +32,7 @@ class Philosophy extends Component {
               Apostamos por Estar más cerca de nuestros clientes.
             </p>
             <div className="container">
-              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src={'/images/mano_cliente.jpg'} />
+              <img className="responsive-img margin-top-20 margin-bottom-30 center" style={{ borderRadius: '10px' }} alt="" src={'/images/mano_cliente.jpg'} />
             </div>
             <p className="margin-bottom-25">
               <span className="bold">
@@ -44,7 +44,7 @@ class Philosophy extends Component {
             </p>
 
             <div className="container">
-              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src={'/images/users_hand.jpg'} />
+              <img className="responsive-img margin-top-20 margin-bottom-30 center" style={{ borderRadius: '10px' }} alt="" src={'/images/users_hand.jpg'} />
             </div>
             <p className="margin-bottom-25">
               <span className="bold">
@@ -61,7 +61,7 @@ class Philosophy extends Component {
               <span className="bold"> Invertimos en talento y capital humano, para que el cliente se sienta acompañado.</span>
             </p>
             <div className="container">
-              <img className="responsive-img margin-top-20 margin-bottom-30 center" alt="" src="https://thumb1.shutterstock.com/display_pic_with_logo/2234105/248573119/stock-photo-little-cubes-with-the-word-team-on-a-keyboard-248573119.jpg" />
+              <img className="responsive-img margin-top-20 margin-bottom-30 center" style={{ borderRadius: '10px' }} alt="" src={'/images/grua.jpg'} />
             </div>
             <p className="margin-bottom-25">
               Por todo ello  hemos desarrollado líneas de colaboración exclusiva con entidades de gestión de ámbito nacional, con el fin de lograr el control absoluto de los servicios administrativos que pudieran generarse en el núcleo de nuestra actividad.
@@ -69,26 +69,6 @@ class Philosophy extends Component {
             <p className="margin-bottom-25">
               <span className="bold">En definitiva ofrecemos un </span> servicio multidisciplinar <span className="bold">orientado a prever cualquier problema que pueda presentarse en el tráfico jurídico y económico del cliente, ejerciendo las acciones legales oportunas en defensa de sus intereses caso de ser necesario.</span>
             </p>
-
-          </div>
-          <div className="col s12 xl3 center border-left">
-            <h2 className="font-35-custom">Últimos Posts</h2>
-            <CardImageh2h3
-              image="https://images.unsplash.com/photo-1494707924465-e1426acb48cb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d7cac606b3752d340f2c342f32536727&auto=format&fit=crop&w=1350&q=80"
-              title="Asesoría Económica en las ciudades del sur"
-              body=""
-              link="/blog/post-1"
-            />
-            <CardImageh2h3
-              image="https://images.unsplash.com/photo-1504198912477-3018896a9525?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8a8d03d811c1f087466020c19d947a6d&auto=format&fit=crop&w=1950&q=80"
-              title="Asesoría Fiscal en las ciudades mas pobladas en España"
-              body=""
-            />
-            <CardImageh2h3
-              image="https://images.unsplash.com/photo-1462899006636-339e08d1844e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b207890c10d8df3f11b7a520ad57d177&auto=format&fit=crop&w=1350&q=80"
-              title="Asesoría Económica"
-              body=""
-            />
           </div>
         </div>
         <Footer />

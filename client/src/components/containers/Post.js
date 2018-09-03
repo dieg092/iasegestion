@@ -23,6 +23,7 @@ class Post extends Component {
             title={post.title}
             body=""
             link={'/blog/' + post.slug}
+            alt={post.alt}
           />
         </div>
       )

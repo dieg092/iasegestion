@@ -32,11 +32,10 @@ class PostForm extends Component {
   }
 
   handleInitialize() {
-    console.log('jhop')
-    console.log(this.props.postSelected)
     const initData = {
       "postTitle": this.props && this.props.postSelected && this.props.postSelected.title,
-      "category": this.props && this.props.postSelected && this.props.postSelected.category
+      "category": this.props && this.props.postSelected && this.props.postSelected.category,
+      "altPost": this.props && this.props.postSelected && this.props.postSelected.alt,
     };
     this.props.initialize(initData);
   }
@@ -46,7 +45,7 @@ class PostForm extends Component {
     return _.map(formFields, ({ label, name, type, icon, options }) => {
       if (options) {
         AuthField.value = this.props.postSelected && this.props.postSelected.category
-    
+
       }
       return <Field key={name} label={label} type={type} name={name} options={options} component={AuthField} selected={this.props.postSelected && this.props.postSelected}/>
     });

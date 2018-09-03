@@ -31,7 +31,8 @@ class ServiceForm extends Component {
     const initData = {
       "serviceTitle": this.props && this.props.serviceSelected && this.props.serviceSelected.title,
       "shortDescription": this.props && this.props.serviceSelected && this.props.serviceSelected.shortDescription,
-      "important": this.props && this.props.serviceSelected && this.props.serviceSelected.important
+      "important": this.props && this.props.serviceSelected && this.props.serviceSelected.important,
+      "altImage": this.props && this.props.serviceSelected && this.props.serviceSelected.alt,
     };
 
     this.props.initialize(initData);

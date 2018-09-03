@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import * as actions from '../actions';
 import Header from './Header';
 import Landing from './containers/Landing';
@@ -27,8 +28,9 @@ import AdminPosts from './admin/AdminPosts'
 import NewPost from './admin/posts/AdminPost';
 import AdminPost from './admin/Post';
 
-const Laboral = () => <h3>Laboral</h3>;
-const Fiscal = () => <h3>Fiscal</h3>;
+const Laboral = () => <h1>Laboral</h1>;
+const Fiscal = () => <h1>Fiscal</h1>;
+const NoFind = () => <h1>404</h1>;
 
 class App extends Component {
 
@@ -37,6 +39,8 @@ class App extends Component {
   }
 
   render () {
+    console.log('pppp')
+    console.log(this.props)
     return (
       <div className="app-container">
         {this.props.userLogged !== null &&
@@ -85,12 +89,17 @@ class App extends Component {
                 {this.props.userLogged && this.props.userLogged.rol &&
                     <Route exact path="/admin/posts/:slugPost" component={AdminPost} />
                 }
+
                 {this.props.userLogged &&
                     <Route exact path="/admin/laboral" component={Laboral} />
                 }
                 {this.props.userLogged &&
                     <Route exact path="/admin/fiscal" component={Fiscal} />
                 }
+                {this.props.userLogged && !this.props.userLogged.rol &&
+                    <Route exact render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/admin/laboral"/> ) : ( <Laboral />)))} />
+                }
+
                 {!this.props.userLogged &&
                     <Route exact component={NotFound} />
                 }

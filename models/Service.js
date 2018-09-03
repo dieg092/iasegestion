@@ -8,6 +8,7 @@ const serviceSchema = new Schema({
 	  title: { type: String, index: { unique: true }},
     shortDescription: String,
     mainPhoto: String,
+		alt: String,
     body: String,
 		slug: String,
 		important: { type: Boolean, default: false },

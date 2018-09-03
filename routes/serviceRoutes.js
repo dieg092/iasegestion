@@ -35,51 +35,62 @@ module.exports = app => {
 
 
   app.post('/api/service', requireLogin, async (req, res) => {
-    const { title, shortDescription, mainPhoto, editor, important } = req.body;
+    const { title, shortDescription, mainPhoto, editor, important, alt } = req.body;
+    try {
+      let newService = new Service();
+      newService.title = title;
+      newService.shortDescription = shortDescription;
+      newService.mainPhoto = mainPhoto;
+      newService.important = important;
+      newService.alt = alt;
+      newService.body = editor;
+      newService.slug = urlSlug(title, '_');
+      newService.save((err) => {
+        if (err) {
+            res.statusMessage = "ERROR";
+        }
 
-    let newService = new Service();
-    newService.title = title;
-    newService.shortDescription = shortDescription;
-    newService.mainPhoto = mainPhoto;
-    newService.important = important;
-    newService.body = editor;
-    newService.slug = urlSlug(title, '_');
-    newService.save((err) => {
-      if (err) {
-          res.statusMessage = "ERROR";
-      }
-      res.send({});
-    });
+      });
+    } catch (err) {
+      res.statusMessage = "ERROR";
+    }
+
+    res.send({});
+
   });
 
   app.post('/api/service/:slugService', requireLogin, async (req, res) => {
-    const { title, shortDescription, mainPhoto, editor, important } = req.body;
+    const { title, shortDescription, mainPhoto, editor, important, alt } = req.body;
 
-    const service = await Service.find({ slug: req.params.slugService });
+    try {
+      const service = await Service.find({ slug: req.params.slugService });
 
-    let update = {};
-    update.title = title ? title : '';
-    update.shortDescription = shortDescription ? shortDescription : '';
-    if (mainPhoto) {
-        update.mainPhoto = mainPhoto ? mainPhoto : '';
-    }
-    update.body = editor ? editor : '';
-    update.important = important ? important : false;
-    update.slug = title ? urlSlug(title, '_') : '';
-
-    Service.updateOne(
-      {
-        slug: req.params.slugService
-      },
-        update
-    ).exec((err, result) => {
-      if (!err) {
-        res.send({});
-      } else {
-        res.statusMessage = "ERROR";
-        res.send({});
+      let update = {};
+      update.title = title ? title : '';
+      update.shortDescription = shortDescription ? shortDescription : '';
+      if (mainPhoto) {
+          update.mainPhoto = mainPhoto ? mainPhoto : '';
       }
-    });
+      update.alt = alt ? alt : '';
+      update.body = editor ? editor : '';
+      update.important = important ? important : false;
+      update.slug = title ? urlSlug(title, '_') : '';
+
+      Service.updateOne(
+        {
+          slug: req.params.slugService
+        },
+          update
+      ).exec((err, result) => {
+        if (err) {
+          res.statusMessage = "ERROR";
+        }
+      });
+    } catch (err) {
+      console.log(err)
+        res.statusMessage = "ERROR";
+    }
+    res.send({});
   });
 
   app.delete('/api/service/:idService', requireLogin, async (req, res) => {

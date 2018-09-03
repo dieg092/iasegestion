@@ -22,6 +22,7 @@ class Service extends Component {
             image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + service.mainPhoto}
             title={service.title}
             link={'/servicios/' + service.slug}
+            alt={service.alt}
           />
         </div>
       )

@@ -31,6 +31,9 @@ class HeaderAdmin extends Component {
   }
 
   render() {
+    const path = this.props.location.pathname;
+    const rol = this.props.userLogged.rol;
+
     return (
       <div>
         <nav>
@@ -45,60 +48,60 @@ class HeaderAdmin extends Component {
         <ul id="mobile-demo" className="sidenav sidenav-fixed" style={{ width: '250px' }}>
           {this.renderHeader()}
           <div style={{ position: 'relative' }}>
-          {this.props.userLogged.rol &&
+          {rol &&
             <li>
-              <a href="/admin/usuarios" className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/usuarios' || this.props.location.pathname === '/') && 'primary-text'}>
+              <a href="/admin/usuarios" className={rol && (path === '/admin/usuarios' || path === '/') && 'primary-text'}>
                 <i
-                  className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/usuarios' || this.props.location.pathname === '/') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
+                  className={rol && (path === '/admin/usuarios' || path === '/') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
                 >supervisor_account
                 </i>
-                <span className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/usuarios' || this.props.location.pathname === '/') && 'bold'}>Usuarios</span>
+                <span className={rol && (path === '/admin/usuarios' || path === '/') && 'bold'}>Usuarios</span>
               </a>
             </li>
           }
 
             <li>
-              <a href="/admin/laboral" className={this.props.location.pathname === '/admin/laboral' || (!this.props.userLogged.rol && this.props.location.pathname === '/') && 'primary-text'}>
+              <a href="/admin/laboral" className={path === '/admin/laboral' || (!rol && path === '/') && 'primary-text'}>
               <i
-                className={this.props.location.pathname === '/admin/laboral' || (!this.props.userLogged.rol && this.props.location.pathname === '/') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
+                className={path === '/admin/laboral' || (!rol && path === '/') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
               >card_travel
               </i>
-              <span className={this.props.location.pathname === '/admin/laboral' && 'bold'}>
+              <span className={path === '/admin/laboral' || (!rol && path === '/') ? 'bold' : ''}>
                 Asesoría Laboral
               </span>
               </a>
             </li>
             <li>
-              <a href="/admin/fiscal" className={this.props.location.pathname === '/admin/fiscal' && 'primary-text'}>
-                <i className={this.props.location.pathname === '/admin/fiscal' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>
+              <a href="/admin/fiscal" className={path === '/admin/fiscal' && 'primary-text'}>
+                <i className={path === '/admin/fiscal' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>
                 content_copy
                 </i>
-                <span className={this.props.location.pathname === '/admin/fiscal' && 'bold'}>
+                <span className={path === '/admin/fiscal' && 'bold'}>
                   Asesoría Fiscal
                 </span>
               </a>
             </li>
-            {this.props.userLogged.rol &&
+            {rol &&
               <li className="margin-top-30">
-                <a href="/admin/servicios" className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/servicios') && 'primary-text'}>
+                <a href="/admin/servicios" className={rol && (path === '/admin/servicios') && 'primary-text'}>
                   <i
-                    className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/servicios') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
+                    className={rol && (path === '/admin/servicios') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
                   >view_list
                   </i>
-                  <span className={this.props.location.pathname === '/admin/servicios' && 'bold'}>
+                  <span className={path === '/admin/servicios' && 'bold'}>
                     Servicios
                   </span>
                 </a>
               </li>
             }
-            {this.props.userLogged.rol &&
+            {rol &&
               <li>
-                <a href="/admin/posts" className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/posts') && 'primary-text'}>
+                <a href="/admin/posts" className={rol && (path === '/admin/posts') && 'primary-text'}>
                   <i
-                    className={this.props.userLogged.rol && (this.props.location.pathname === '/admin/posts') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
+                    className={rol && (path === '/admin/posts') ? 'primary-text material-icons prefix' : 'material-icons prefix'}
                   >filter_none
                   </i>
-                  <span className={this.props.location.pathname === '/admin/posts' && 'bold'}>
+                  <span className={path === '/admin/posts' && 'bold'}>
                     Posts
                   </span>
                 </a>

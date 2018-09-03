@@ -21,6 +21,7 @@ class Services extends Component {
               title={service.title}
               body={service.shortDescription}
               link={'/servicios/' + service.slug}
+              alt={service.alt}
             />
         </div>
       );

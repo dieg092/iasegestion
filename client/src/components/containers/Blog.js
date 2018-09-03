@@ -36,6 +36,7 @@ class Blog extends Component {
               image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + post.mainPhoto}
               title={post.title}
               link={'/blog/' + post.slug}
+              alt={post.alt}
             />
         </div>
       );

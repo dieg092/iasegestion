@@ -5,9 +5,13 @@ import { compose } from "redux"
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'react-router-dom';
+import $ from 'jquery';
 import AuthField from '../../login/AuthField';
 import formFields from './formFields';
 import * as actions from '../../../../actions';
+import Footer from '../../../containers/Footer';
+
+const height = $( window ).height() * 0.3;
 
 class ChangePassForm extends Component {
   onSubmitRequest() {
@@ -24,9 +28,11 @@ class ChangePassForm extends Component {
     console.log(this.props)
     return (
         <div>
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(/images/password.jpg)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: 'cover', height: height }}>
+          <h1 className="center padding-top-145 white-text font-title">Nueva contraseña</h1>
+        </div>
           <div className="row">
             <div className="col m4 offset-m4 s12 darken-1">
-              <h2 className="header center">Nueva Contraseña</h2>
               <form onSubmit={this.props.handleSubmit(this.onSubmitRequest.bind(this))}>
               <div className="card horizontal">
                 <div className="card-stacked">
@@ -48,6 +54,7 @@ class ChangePassForm extends Component {
             </form>
             </div>
           </div>
+          <Footer />
         </div>
     );
   }

@@ -112,6 +112,7 @@ export const submitPost = (values, file, mainPhoto, editor, history, edit, postS
     title: values.postTitle,
     category: values.category ? values.category : false,
     mainPhoto: uploadConfig.data && uploadConfig.data.key ? uploadConfig.data.key : '',
+    alt: values.altPost,
     editor: editor
   }
 

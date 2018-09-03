@@ -38,7 +38,7 @@ module.exports = app => {
 
 
   app.post('/api/post/:slugPost', requireLogin, async (req, res) => {
-    const { title, category, mainPhoto, editor } = req.body;
+    const { title, category, mainPhoto, editor, alt } = req.body;
 
     const post = await Post.find({ slug: req.params.slugPost });
 
@@ -47,6 +47,7 @@ module.exports = app => {
     if (mainPhoto) {
         update.mainPhoto = mainPhoto ? mainPhoto : '';
     }
+    update.alt = alt ? alt : '';
     update.body = editor ? editor : '';
     update.category = category ? category : '';
     update.slug = title ? urlSlug(title, '_') : '';
@@ -67,12 +68,13 @@ module.exports = app => {
   });
 
   app.post('/api/post', requireLogin, async (req, res) => {
-    const { title, category, mainPhoto, editor } = req.body;
+    const { title, category, mainPhoto, editor, alt } = req.body;
 
     let newPost = new Post();
     newPost.title = title;
     newPost.category = category;
     newPost.mainPhoto = mainPhoto;
+    newPost.alt = alt;
     newPost.body = editor;
     newPost.slug = urlSlug(title, '_');
     newPost.save((err) => {
