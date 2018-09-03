@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import $ from 'jquery';
 import * as actions from '../../actions';
-import { CardImageh2h3 } from '../containers/common';
 import Footer from './Footer';
 
 const height = $( window ).height() * 0.3;
@@ -12,8 +11,7 @@ class Philosophy extends Component {
   render() {
     return (
       <div>
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo"
-        style={{ backgroundImage: 'url(/images/phylosopy.jpg)', backgroundRepeat: 'no-repeat',  backgroundSize: 'cover', height: height }}>
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" role="img" alt="filosofía" style={{ backgroundImage: 'url(/images/phylosopy.jpg)', backgroundRepeat: 'no-repeat',  backgroundSize: 'cover', height: height }}>
 
           <h1 className="center padding-top-145 white-text font-title">Filosofía</h1>
         </div>

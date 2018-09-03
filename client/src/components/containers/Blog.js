@@ -52,21 +52,18 @@ class Blog extends Component {
   }
 
   render() {
-    console.log(this.props.posts)
     return (
       <div>
-        <div className="margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(images/blog.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: height }}>
+        <div className="margin-top-42-negative min-height-photo" role="img" alt="blog" style={{ backgroundImage: 'url(images/blog.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: height }}>
           <h1 className="center padding-top-145 white-text font-title">Nuestro Blog</h1>
         </div>
         <nav className="margin-bottom-75 transparent menu-blog">
          <div className="nav-wrapper container">
            <ul id="nav-mobile" className="left hide-on-med-and-down">
              <li onClick={() => {this.onCategoryClicked('')}}><a className={this.props.categoryCli === ''  ? 'white-text grey' : 'black-text'}>Todos</a></li>
-             <li onClick={() => {this.onCategoryClicked('Empresarial')}}><a className={this.props.categoryCli === 'Empresarial' ? 'white-text grey' : 'black-text'}>Empresarial</a></li>
-             <li onClick={() => this.onCategoryClicked('Laboral')}><a className={this.props.categoryCli === 'Laboral' ? 'white-text grey' : 'black-text'}>Laboral</a></li>
-             <li onClick={() => this.onCategoryClicked('Jurídica')}><a className={this.props.categoryCli === 'Jurídica' ? 'white-text grey' : 'black-text'}>Jurídica</a></li>
-             <li onClick={() => this.onCategoryClicked('Financiera y Tributaria')}><a className={this.props.categoryCli === 'Financiera y Tributaria' ? 'white-text grey' : 'black-text'}>Financiera y Tributaria</a></li>
-          </ul>
+             <li onClick={() => {this.onCategoryClicked('Actualidad')}}><a className={this.props.categoryCli === 'Actualidad' ? 'white-text grey' : 'black-text'}>Actualidad</a></li>
+             <li onClick={() => {this.onCategoryClicked('Destacados')}}><a className={this.props.categoryCli === 'Destacados' ? 'white-text grey' : 'black-text'}>Destacados</a></li>
+            </ul>
          </div>
        </nav>
         <div className="container">

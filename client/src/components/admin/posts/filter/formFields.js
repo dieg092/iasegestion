@@ -8,6 +8,5 @@ Object.keys(CONSTANTS.CATEGORY).map((category) => {
 export default [
   { label: 'Título', name: 'postTitle', type: 'text', options: null },
   { label: 'Categoría', name: 'category', type: 'select', options: categories },
-  { label: 'Alt', name: 'altPost', type: 'text', noValueError: 'Campo Alt vacío', options: null },
-
+  { label: 'Alt', name: 'altPost', type: 'text', noValueError: 'Campo Alt vacío', options: null }
 ];

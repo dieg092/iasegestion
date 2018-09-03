@@ -8,7 +8,7 @@ const CardImageh1h2 = (props) => {
           <div className="card-image">
              <img  style={{ height: '280px' }} alt={props.alt} src={props.image} />
            </div>
-            <div className="card-content">
+            <div className="card-content" id="cardText">
               <h2 className="margin-top-0"><span className="card-title bold black-text">{props.title}</span></h2>
               <p className="black-text justify">
                 {props.body && props.body.length >= 128 ? props.body + '...' : props.body}

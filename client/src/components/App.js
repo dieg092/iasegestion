@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import * as actions from '../actions';
 import Header from './Header';
 import Landing from './containers/Landing';
@@ -30,7 +29,6 @@ import AdminPost from './admin/Post';
 
 const Laboral = () => <h1>Laboral</h1>;
 const Fiscal = () => <h1>Fiscal</h1>;
-const NoFind = () => <h1>404</h1>;
 
 class App extends Component {
 

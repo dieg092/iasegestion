@@ -31,7 +31,7 @@ class Services extends Component {
   render() {
     return (
       <div>
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(/images/building.jpg)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" role="img" alt="servicios" style={{ backgroundImage: 'url(/images/building.jpg)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
           <h1 className="center padding-top-145 white-text font-title">Servicios</h1>
         </div>
         <div className="container">

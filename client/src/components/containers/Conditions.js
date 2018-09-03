@@ -11,7 +11,7 @@ class Conditions extends Component {
   render() {
     return (
       <div>
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(/images/conditions2.jpg)', backgroundRepeat: 'no-repeat',  backgroundSize: 'cover', height: height }}>
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" role="img" alt="politica" style={{ backgroundImage: 'url(/images/conditions2.jpg)', backgroundRepeat: 'no-repeat',  backgroundSize: 'cover', height: height }}>
           <h1 className="center padding-top-145 white-text font-title">Términos y Condiciones de Uso</h1>
         </div>
         <div className="container">

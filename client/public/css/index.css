@@ -221,7 +221,7 @@ nav {
   .sidenav-overlay {
     display: none !important; } }
 
-.card-content {
+#cardText {
   min-height: 170px !important; }
 
 img {
@@ -282,11 +282,11 @@ table.highlight tbody tr:hover {
 
 #login .modal {
   width: 503px !important;
-  height: 500px !important; }
+  height: 465px !important; }
 
 #request .modal, #remember .modal {
   width: 600px !important;
-  height: 415px !important; }
+  height: 360px !important; }
 
 #success-request .modal {
   width: 950px !important;

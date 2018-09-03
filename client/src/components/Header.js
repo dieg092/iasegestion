@@ -44,7 +44,7 @@ class Header extends Component {
         <ModalSuccessRemember />
         <nav className="transparent">
           <div className="nav-wrapper" style={{ backgroundColor: 'white', opacity: '0.8' }}>
-            <a href="/"><img alt="logo" className="brand-logo logo-header" src={'/images/logo.png'} /></a>
+            <a href="/"><img alt="iasegestion" className="brand-logo logo-header" src={'/images/logo.png'} /></a>
             <a data-target="menu" className="sidenav-trigger"><i className="material-icons margin-top-10 black-text">menu</i></a>
             <ul className="right hide-on-med-and-down" style={{opacity: '1'}}>
               <li className={this.props.location.pathname === '/' && 'grey darken-3'}><a className={this.props.location.pathname === '/' ? 'white-text bold' : 'black-text'} href="/">Inicio</a></li>
