@@ -38,7 +38,7 @@ export const deleteService = (service, history) => async dispatch => {
       const key = img.split('" alt')[0];
       await axios.delete('/api/delete?key=' + key.split('" alt')[0]);
     }
-  })
+  });
   const deleteMainImage = await axios.delete('/api/delete?key=' + service.mainPhoto);
 
   if (deleteMainImage.statusText === 'OK') {
@@ -46,7 +46,7 @@ export const deleteService = (service, history) => async dispatch => {
 
     if (res.statusText !== 'ERROR') {
       message = 'Servicio eliminado';
-      history.push('/admin/servicios');
+      window.history.go(-3)
       dispatch({
         type: SERVICE_DELETED
       });
@@ -112,7 +112,7 @@ export const submitService = (values, file, mainPhoto, editor, history, edit, se
   if (serviceSelected && file && serviceSelected.mainPhoto.split('/')[1] !== file.name) {
      await axios.delete('/api/delete?key=' + serviceSelected.mainPhoto);
   }
-  
+
   const allValues = {
     title: values.serviceTitle,
     shortDescription: values.shortDescription,

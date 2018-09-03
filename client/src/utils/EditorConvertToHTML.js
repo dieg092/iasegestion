@@ -68,6 +68,7 @@ export class EditorConvertToHTML extends Component {
           }}
         />
         <textarea
+          className="hide"
           id="editor"
           disabled
           value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}

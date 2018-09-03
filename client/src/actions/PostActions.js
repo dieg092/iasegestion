@@ -48,7 +48,7 @@ export const deletePost = (post, history) => async dispatch => {
 
     if (res.statusText !== 'ERROR') {
       message = 'Servicio eliminado';
-      history.push('/admin/posts');
+      window.history.go(-3)
       dispatch({
         type: POST_DELETED
       });
