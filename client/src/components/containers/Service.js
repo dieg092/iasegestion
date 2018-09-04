@@ -31,7 +31,7 @@ class Service extends Component {
 
   renderPhoto() {
       return (
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" role="img" alt={this.props.service[0].alt} style={{ backgroundImage: 'url(https://s3.eu-west-3.amazonaws.com/iase-test/' + this.props.service[0].mainPhoto + ')', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: height }}>
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo image-header" role="img" alt={this.props.service[0].alt} style={{ backgroundImage: 'url(https://s3.eu-west-3.amazonaws.com/iase-test/' + this.props.service[0].mainPhoto + ')', height: height }}>
           <h1 className="center padding-top-145 white-text font-title">{this.props.service[0].title}</h1>
         </div>
       )
@@ -42,7 +42,6 @@ class Service extends Component {
     return (
       <div>
       {this.props.service && this.renderPhoto()}
-
         <div className="container row justify">
           <div className="col s12 xl9 padding-right-30">
 

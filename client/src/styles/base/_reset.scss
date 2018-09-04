@@ -22,6 +22,20 @@ nav {
   line-height: 80px !important;
 }
 
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#page-footer {
+  background-color: #212121 !important;
+}
+
+#cardText {
+  min-height: 170px !important;
+}
+
 .landing-container {
   margin-left: 2em;
   margin-right: 2em;
@@ -29,10 +43,6 @@ nav {
 
 .justify {
   text-align: justify;
-}
-
-#page-footer {
-  background-color: #212121 !important;
 }
 
 .sidenav-overlay {
@@ -77,6 +87,34 @@ nav {
   height: 80px;
   margin-left: 50px;
 }
+
+.card-height {
+  height: 280px;
+}
+
+.height-adjust {
+  height: 39.86em;
+}
+
+.border-10 {
+  border-radius: 10px;
+}
+
+.nav-color {
+  background-color: white;
+  opacity: 0.8;
+}
+
+.image-philosopy {
+  background-position-y: '-369px' !important;
+}
+
+@media screen and (min-width: 992px) {
+  .image-philosopy {
+    background-position-y: '0px' !important;
+  }
+}
+
 @media screen and (max-width: 992px) {
   .logo-header {
     margin-left: 0px;
@@ -92,25 +130,6 @@ nav {
   }
 }
 
-#cardText {
-  min-height: 170px !important;
-}
-
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.image-philosopy {
-  background-position-y: '-369px' !important;
-}
-
-@media screen and (min-width: 992px) {
-  .image-philosopy {
-    background-position-y: '0px' !important;
-  }
-}
 
 
 /* .input-field input[type=text]:focus + label {

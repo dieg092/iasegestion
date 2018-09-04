@@ -8,8 +8,8 @@ const height = $( window ).height() * 0.3;
 const RequestResend = () => {
   return (
     <div className="">
-      <div style={{ height: '39.86em' }}>
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" role="img" alt="reenviar" style={{ backgroundImage: 'url(/images/resend.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: height }}>
+      <div className="height-adjust">
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo image-header image-resend" role="img" alt="reenviar" style={{ height: height }}>
           <h1 className="center padding-top-145 white-text font-title">Solicitud expirada</h1>
         </div>
 

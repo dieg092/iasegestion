@@ -21,10 +21,14 @@ class User extends Component {
     const userId = this.props.history.location.pathname.split('/')[3];
     axios.get('/api/usuarios/' + userId)
       .then((response) => {
-        this.props.userData(response);
-        this.setState({
-          user: response
-        })
+        if (response.data[0]) {
+          this.props.userData(response);
+          this.setState({
+            user: response
+          })
+        } else {
+          window.history.go(-1);
+        }
       })
       .catch((error) => {
         console.log(error);

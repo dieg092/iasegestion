@@ -85,7 +85,7 @@ class Usuarios extends Component {
             </table>
 
             {this.props.pages >= 30 &&
-              <div className="center" style={{ paddingBottom: '10px', paddingTop: '10px' }}>
+              <div className="center padding-y-10">
                 <ul className="pagination">
                   <li className={this.props.page === 1 ? 'disabled' : 'waves-effect'} onClick={() => {this.props.page !== 1 && this.onPaginationClick(this.props.page - 1)}}><a href="#!"><i className="material-icons">chevron_left</i></a></li>
                   {this.pagination().map((result) => {

@@ -17,11 +17,10 @@ class HeaderAdmin extends Component {
 
   renderHeader() {
     return (
-    <div className="sidebar-header header-cover" style={{ backgroundImage: 'url(/images/calculator_small.jpg)', backgroundSize: '100%', paddingTop: '20px', paddingBottom: '3px' }}>
-      <div className="center" style={{ backgroundColor: 'white', opacity: '0.7', borderRadius: '10px', marginLeft: '18px', marginRight: '18px', paddingTop: '5px'}}>
-
+    <div className="sidebar-header header-cover header-image">
+      <div className="center header-content">
           <div className="sidebar-image">
-              <img className="responsive-img" alt="logo" style={{ maxWidth: '180px' }} src={'/images/logo.png'} />
+              <img className="responsive-img opacity-container" alt="logo" src={'/images/logo.png'} />
           </div>
           <p className="bold">{this.props && this.props.userLogged && this.props.userLogged.email && this.props.userLogged.email.length >= 18 ? (this.props.userLogged.email.substr(0, 21) + '...') : this.props.userLogged.email}</p>
 
@@ -45,9 +44,9 @@ class HeaderAdmin extends Component {
           </div>
         </nav>
 
-        <ul id="mobile-demo" className="sidenav sidenav-fixed" style={{ width: '250px' }}>
+        <ul id="mobile-demo" className="sidenav sidenav-fixed nav-width">
           {this.renderHeader()}
-          <div style={{ position: 'relative' }}>
+          <div className="nav-position">
           {rol &&
             <li>
               <a href="/admin/usuarios" className={rol && (path === '/admin/usuarios' || path === '/') && 'primary-text'}>
@@ -108,7 +107,7 @@ class HeaderAdmin extends Component {
               </li>
             }
           </div>
-            <li style={{ position: 'absolute', bottom: '0px', paddingBottom: '0px', width: '100%' }}>
+            <li className="exit-option">
               <a href="/api/logout"><i className="material-icons prefix">power_settings_new</i>Cerrar Sesión</a>
             </li>
         </ul>

@@ -4,12 +4,12 @@
   margin-right: -11px
 }
 
+.map-element {
+  height: 100%;
+}
+
 @media screen and (max-width: 992px) {
   .content-element {
     height: 200px;
   }
-}
-
-.map-element {
-  height: 100%;
 }

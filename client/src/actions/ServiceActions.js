@@ -12,7 +12,8 @@ export const getService = (history) => async dispatch => {
   const service = history.location.pathname.split('/')[2];
 
   const res = await axios.get('/api/service/' + service);
-
+  console.log(res.data)
+  console.log('res.data')
   dispatch({ type: SERVICE_CLICKED, payload: res.data });
 };
 
@@ -46,7 +47,7 @@ export const deleteService = (service, history) => async dispatch => {
 
     if (res.statusText !== 'ERROR') {
       message = 'Servicio eliminado';
-      window.history.go(-3)
+      window.history.go(-3);
       dispatch({
         type: SERVICE_DELETED
       });

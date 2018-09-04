@@ -22,7 +22,7 @@ class Contact extends Component {
   render() {
     return (
       <div>
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" role="img" alt="contacto" style={{ backgroundImage: 'url(/images/building.jpg)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: height }}>
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo image-header image-contact" role="img" alt="contacto" style={{ height: height }}>
           <h1 className="center padding-top-145 white-text font-title">Contacto</h1>
         </div>
 

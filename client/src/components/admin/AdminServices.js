@@ -62,21 +62,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, actions)(AdminServices);
-// {this.props.pages >= 12 &&
-//   <div className="center" style={{ paddingBottom: '10px', paddingTop: '10px' }}>
-//     <ul className="pagination">
-//       <li className={this.props.page === 1 ? 'disabled' : 'waves-effect'} onClick={() => {this.onPaginationClick(this.props.page - 1)}}><a href="#!"><i className="material-icons">chevron_left</i></a></li>
-//       {this.pagination().map((result) => {
-//         return (
-//           <li key={result.key} className={result.props.className} onClick={() => {this.onPaginationClick(result.key)}}><a href="#!">{result.key}</a></li>
-//         )
-//       })}
-//       <li className={this.props.page === this.props.pages ? 'disabled' : 'waves-effect'} onClick={() => {this.onPaginationClick(this.props.page + 1)}}><a href="#!"><i className="material-icons">chevron_right</i></a></li>
-//     </ul>
-//   </div>
-// }
-//
-//
-//   onPaginationClick(page) {
-//     this.props.fetchServices(page)
-//   }

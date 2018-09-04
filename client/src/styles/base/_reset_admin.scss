@@ -6,12 +6,6 @@
   padding-right: 20px;
 }
 
-@media screen and (max-width: 992px) {
-  .admin-container {
-    padding-left: 0px;
-  }
-}
-
 table.highlight tbody tr:hover {
     background-color: #eee !important;
     cursor: pointer;
@@ -19,6 +13,12 @@ table.highlight tbody tr:hover {
 
 .titleUser {
   font-size: 30px;
+}
+
+@media screen and (max-width: 992px) {
+  .admin-container {
+    padding-left: 0px;
+  }
 }
 
 @media screen and (max-width: 668px) {

@@ -53,10 +53,16 @@ module.exports = app => {
     });
   });
 
-  app.get('/api/usuarios/:idUsuario', requireLogin, async (req, res) => {
-    const user = await User.find({ _id: req.params.idUsuario});
 
-    res.send(user);
+  app.get('/api/usuarios/:idUsuario', requireLogin, async (req, res) => {
+    try {
+      const user = await User.find({ _id: req.params.idUsuario});
+
+      res.send(user);
+    } catch (err) {
+      res.send();
+    }
+
   });
 
   app.post('/api/usuarios/:userId', requireLogin, async (req, res) => {

@@ -21,10 +21,16 @@ class Service extends Component {
     const serviceSlug = this.props.history.location.pathname.split('/')[3];
     axios.get('/api/service/' + serviceSlug)
       .then((response) => {
-        this.props.serviceData(response);
-        this.setState({
-          service: response
-        })
+        console.log('response')
+        console.log(response.data)
+        if (response.data[0]) {
+          this.props.serviceData(response);
+          this.setState({
+            service: response
+          })
+        } else {
+          window.history.go(-1);
+        }
       })
       .catch((error) => {
         console.log(error);

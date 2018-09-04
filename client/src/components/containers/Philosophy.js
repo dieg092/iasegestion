@@ -11,7 +11,7 @@ class Philosophy extends Component {
   render() {
     return (
       <div>
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" role="img" alt="filosofía" style={{ backgroundImage: 'url(/images/phylosopy.jpg)', backgroundRepeat: 'no-repeat',  backgroundSize: 'cover', height: height }}>
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo image-header image-philosophy" role="img" alt="filosofía" style={{ height: height }}>
 
           <h1 className="center padding-top-145 white-text font-title">Filosofía</h1>
         </div>
@@ -30,7 +30,7 @@ class Philosophy extends Component {
               Apostamos por Estar más cerca de nuestros clientes.
             </p>
             <div className="container">
-              <img className="responsive-img margin-top-20 margin-bottom-30 center" style={{ borderRadius: '10px' }} alt="" src={'/images/mano_cliente.jpg'} />
+              <img className="responsive-img margin-top-20 margin-bottom-30 center border-10" alt="" src={'/images/mano_cliente.jpg'} />
             </div>
             <p className="margin-bottom-25">
               <span className="bold">
@@ -42,7 +42,7 @@ class Philosophy extends Component {
             </p>
 
             <div className="container">
-              <img className="responsive-img margin-top-20 margin-bottom-30 center" style={{ borderRadius: '10px' }} alt="" src={'/images/users_hand.jpg'} />
+              <img className="responsive-img margin-top-20 margin-bottom-30 center border-10" alt="" src={'/images/users_hand.jpg'} />
             </div>
             <p className="margin-bottom-25">
               <span className="bold">
@@ -59,7 +59,7 @@ class Philosophy extends Component {
               <span className="bold"> Invertimos en talento y capital humano, para que el cliente se sienta acompañado.</span>
             </p>
             <div className="container">
-              <img className="responsive-img margin-top-20 margin-bottom-30 center" style={{ borderRadius: '10px' }} alt="" src={'/images/grua.jpg'} />
+              <img className="responsive-img margin-top-20 margin-bottom-30 center border-10" alt="" src={'/images/grua.jpg'} />
             </div>
             <p className="margin-bottom-25">
               Por todo ello  hemos desarrollado líneas de colaboración exclusiva con entidades de gestión de ámbito nacional, con el fin de lograr el control absoluto de los servicios administrativos que pudieran generarse en el núcleo de nuestra actividad.

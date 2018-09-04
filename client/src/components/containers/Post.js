@@ -32,7 +32,7 @@ class Post extends Component {
 
   renderPhoto() {
     return (
-      <div className="margin-bottom-75 margin-top-42-negative min-height-photo" role="img" alt={this.props.postSelected.alt} style={{ backgroundImage: 'url(https://s3.eu-west-3.amazonaws.com/iase-test/' + this.props.postSelected.mainPhoto + ')', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: height }}>
+      <div className="margin-bottom-75 margin-top-42-negative min-height-photo image-header" role="img" alt={this.props.postSelected.alt} style={{ backgroundImage: 'url(https://s3.eu-west-3.amazonaws.com/iase-test/' + this.props.postSelected.mainPhoto + ')', height: height }}>
         <h1 className="center padding-top-145 white-text font-title">{this.props.postSelected.title}</h1>
       </div>
     )

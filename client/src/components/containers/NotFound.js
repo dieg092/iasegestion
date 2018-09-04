@@ -8,8 +8,8 @@ const height = $( window ).height() * 0.3;
 const NotFound = () => {
   return (
     <div className="margin-top-28">
-      <div style={{ height: '39.86em' }}>
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" role="img" alt="404" style={{ backgroundImage: 'url(/images/404.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: height }}>
+      <div className="height-adjust">
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo image-header image-404" role="img" alt="404" style={{ height: height }}>
           <h1 className="center padding-top-145 white-text font-title">ERROR 404</h1>
         </div>
         <div className="container center padding-300-custom">

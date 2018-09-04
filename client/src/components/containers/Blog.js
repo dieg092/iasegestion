@@ -54,7 +54,7 @@ class Blog extends Component {
   render() {
     return (
       <div>
-        <div className="margin-top-42-negative min-height-photo" role="img" alt="blog" style={{ backgroundImage: 'url(images/blog.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: height }}>
+        <div className="margin-top-42-negative min-height-photo image-header image-blog" role="img" alt="blog" style={{ height: height }}>
           <h1 className="center padding-top-145 white-text font-title">Nuestro Blog</h1>
         </div>
         <nav className="margin-bottom-75 transparent menu-blog">
@@ -81,7 +81,7 @@ class Blog extends Component {
 
           </div>
             {this.props.pages >= 12 &&
-              <div className="center" style={{ paddingBottom: '10px', paddingTop: '10px' }}>
+              <div className="center padding-y-10">
                 <ul className="pagination">
                   <li className={this.props.page === 1 ? 'disabled' : 'waves-effect'} onClick={() => {this.props.page !== 1 && this.onPaginationClick(this.props.page - 1, this.props.categoryCli)}}><a><i className="material-icons">chevron_left</i></a></li>
                   {this.pagination().map((result) => {

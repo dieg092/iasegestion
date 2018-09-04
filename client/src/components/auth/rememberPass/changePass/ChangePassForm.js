@@ -25,10 +25,9 @@ class ChangePassForm extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
         <div>
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo" style={{ backgroundImage: 'url(/images/password.jpg)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: 'cover', height: height }}>
+        <div className="margin-bottom-75 margin-top-42-negative min-height-photo image-header image-changePass" style={{ height: height }}>
           <h1 className="center padding-top-145 white-text font-title">Nueva contraseña</h1>
         </div>
           <div className="row">

@@ -26,7 +26,6 @@ class Langing extends Component {
 
   renderServicesFavourite() {
     return this.props.servicesFavourite.map(service => {
-      console.log(service)
       return (
           <div key={service._id} className="col l4">
             <CardImageh1h2
@@ -75,7 +74,7 @@ class Langing extends Component {
           </div>
         </div>
 
-        <div className="margin-bottom-100" role="img" alt="proximidad" style={{ backgroundImage: 'url(/images/building.jpg)', backgroundRepeat: 'no-repeat', width: '100%', backgroundSize: '100%', height: '100%' }}>
+        <div className="margin-bottom-100 image-block img-1" role="img" alt="proximidad">
           <div className="landing-container">
             <div className="row center">
               <div className="col l6">
@@ -100,7 +99,7 @@ class Langing extends Component {
             <div className="col l4">
               <div className="col s12 xl4 center-on-small-only margin-top-28">
                 <div className="image-container">
-                  <img alt="" className="circle" style={{ width: '100px', height: '100px' }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsDFTrQnrPC5HWbQbNddHew_1yIK5b14taTQbHks0mC_E1jQWz" />
+                  <img alt="" className="circle img-client" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsDFTrQnrPC5HWbQbNddHew_1yIK5b14taTQbHks0mC_E1jQWz" />
                 </div>
               </div>
               <div className="col s12 xl8">
@@ -112,7 +111,7 @@ class Langing extends Component {
             <div className="col l4">
               <div className="col s12 xl4 center-on-small-only margin-top-28">
                 <div className="image-container">
-                  <img alt="" className="circle" style={{ width: '100px', height: '100px' }} src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg" />
+                  <img alt="" className="circle img-client" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg" />
                 </div>
               </div>
               <div className="col s12 xl8">
@@ -124,7 +123,7 @@ class Langing extends Component {
             <div className="col l4">
               <div className="col s12 xl4 center-on-small-only margin-top-28">
                 <div className="image-container">
-                  <img alt="" className="circle" style={{ width: '100px', height: '100px' }} src="https://i.pinimg.com/originals/af/19/67/af1967490480cf4731b750ed11afa03e.png" />
+                  <img alt="" className="circle img-client" src="https://i.pinimg.com/originals/af/19/67/af1967490480cf4731b750ed11afa03e.png" />
                 </div>
               </div>
               <div className="col s12 xl8">

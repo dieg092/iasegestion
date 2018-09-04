@@ -120,7 +120,7 @@ class UserForm extends Component {
               </div>
               <div className="card-action">
                 <div className="col s12 l3 left">
-                  <Link to="/usuarios" className="btn red btn-red waves-effect waves-light white-text no-uppercase margin-top-15">
+                  <Link to="/admin/usuarios" className="btn red btn-red waves-effect waves-light white-text no-uppercase margin-top-15">
                     Cancelar
                   </Link>
                 </div>

@@ -21,10 +21,14 @@ class Post extends Component {
     const postSlug = this.props.history.location.pathname.split('/')[3];
     axios.get('/api/post/' + postSlug)
       .then((response) => {
-        this.props.postData(response);
-        this.setState({
-          post: response
-        })
+        if (response.data[0]) {
+          this.props.postData(response);
+          this.setState({
+            post: response
+          });
+        } else {
+          window.history.go(-1);
+        }
       })
       .catch((error) => {
         console.log(error);
