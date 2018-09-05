@@ -30,11 +30,21 @@ class Service extends Component {
   }
 
   renderPhoto() {
-      return (
-        <div className="margin-bottom-75 margin-top-42-negative min-height-photo image-header" role="img" alt={this.props.service[0].alt} style={{ backgroundImage: 'url(https://s3.eu-west-3.amazonaws.com/iase-test/' + this.props.service[0].mainPhoto + ')', height: height }}>
-          <h1 className="center padding-top-145 white-text font-title">{this.props.service[0].title}</h1>
-        </div>
-      )
+    return (
+      <div className="margin-bottom-75 margin-top-42-negative min-height-photo image-header" role="img" alt={this.props.service[0].alt} style={{ backgroundImage: 'url(https://s3.eu-west-3.amazonaws.com/iase-test/' + this.props.service[0].mainPhoto + ')', height: height }}>
+        <h1 className="center padding-top-145 white-text font-title">{this.props.service[0].title}</h1>
+      </div>
+    )
+  }
+
+  addResponsive() {
+    const imges = document.getElementsByTagName('img');
+
+    for (let i = 0; i <= Object.keys(imges).length; i++) {
+      if (imges[i] && imges[i].classList.length === 0) {
+        imges[i].classList.add("responsive-img");
+      }
+    }
   }
 
   render() {
@@ -55,6 +65,7 @@ class Service extends Component {
           </div>
         </div>
         <Footer />
+        {this.addResponsive()}
       </div>
     );
   }

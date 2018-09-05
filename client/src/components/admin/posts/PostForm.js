@@ -9,7 +9,7 @@ import $ from 'jquery';
 import 'jquery-ui/ui/widgets/autocomplete';
 import M from "materialize-css/dist/js/materialize.min.js";
 import AuthField from './AuthField';
-import formFields from './filter/formFields';
+import formFields from './formFields';
 import * as actions from '../../../actions';
 
 import { EditorConvertToHTML } from '../../../utils/EditorConvertToHTML';

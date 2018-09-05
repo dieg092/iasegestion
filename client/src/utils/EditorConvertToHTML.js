@@ -24,6 +24,7 @@ function uploadImageCallBack(file) {
   })
 }
 
+
 const content = {"entityMap":{},"blocks":[{"key":"637gr","text":"Initialized from content state.","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}]};
 
 export class EditorConvertToHTML extends Component {
@@ -52,7 +53,7 @@ export class EditorConvertToHTML extends Component {
   render() {
     const { editorState } = this.state;
     return (
-      <div>
+      <div >
         <Editor
           editorState={editorState}
           wrapperClassName="demo-wrapper"
@@ -77,5 +78,6 @@ export class EditorConvertToHTML extends Component {
     );
   }
 }
+
 
 //https://api.imgur.com/3/image

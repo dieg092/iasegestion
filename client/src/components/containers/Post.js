@@ -38,17 +38,26 @@ class Post extends Component {
     )
   }
 
+  addResponsive() {
+    const imges = document.getElementsByTagName('img');
+
+    for (let i = 0; i <= Object.keys(imges).length; i++) {
+      if (imges[i] && imges[i].classList.length === 0) {
+        imges[i].classList.add("responsive-img");
+      }
+    }
+  }
+
+
   render() {
     return (
       <div>
         {this.props.postSelected && this.renderPhoto()}
         <div className="container row justify">
           <div className="col s12 xl9 padding-right-30">
-
-              {this.props.postSelected &&
-                <div dangerouslySetInnerHTML={{__html: this.props.postSelected.body}}></div>
-              }
-
+            {this.props.postSelected &&
+              <div dangerouslySetInnerHTML={{__html: this.props.postSelected.body}}></div>
+            }
           </div>
           <div className="col s12 xl3 center border-left">
             <h2 className="font-35-custom">Otros posts</h2>
@@ -56,6 +65,7 @@ class Post extends Component {
           </div>
         </div>
         <Footer />
+        {this.addResponsive()}
       </div>
     );
   }

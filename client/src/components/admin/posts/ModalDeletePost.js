@@ -20,7 +20,7 @@ class ModaDeletePost extends Component {
             <i className="material-icons left grey-text text-darken-2 pointer" onClick={this.closeModal.bind(this)}>clear</i>
             <div className="body-login">
               <h4>Eliminar servicio</h4>
-              <h6>¿Estás seguro de que deseas eliminar el post <span className="primary-text">{this.props.postSelected.title}</span>?</h6>
+              <h6>¿Estás seguro de que deseas eliminar el post <span className="primary-text">{this.props.postSelected && this.props.postSelected.title}</span>?</h6>
               <div className="card-content margin-top-28">
                 <button className="btn red btn-red waves-effect waves-light white-text no-uppercase margin-top-15 left" onClick={this.closeModal.bind(this)}>
                   Cancelar
