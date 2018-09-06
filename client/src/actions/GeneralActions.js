@@ -31,8 +31,10 @@ export const requestModal = () => {
 export const rememberPass = () => {
   let login = document.getElementById('modal-login');
   let remember = document.getElementById('modal-remember');
+  let clientAccess = document.getElementById('modal-client-access');
 
   M.Modal.getInstance(login).close();
+  M.Modal.getInstance(clientAccess).close();
   M.Modal.getInstance(remember).open();
 
   return {

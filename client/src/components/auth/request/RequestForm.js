@@ -9,6 +9,7 @@ import $ from 'jquery';
 import AuthField from '../login/AuthField';
 import validateEmail from '../../../utils/validateEmail';
 import formFields from './formFields';
+import formFieldsClientAccess from './formFieldsClientAccess';
 import * as actions from '../../../actions';
 
 class RequestForm extends Component {
@@ -18,10 +19,10 @@ class RequestForm extends Component {
     this.state = { sendClicked: false };
 
   }
-  onSubmitRequest() {
+  onSubmitRequest(event) {
+    event.preventDefault();
 
-
-    if ($("#terminos").is(':checked')) {
+    if ($("#termino").is(':checked') || $("#terminos").is(':checked')) {
       this.setState({ sendClicked: false });
       this.props.submitRequest(this.props.requestForm.values, this.props.history);
     } else {
@@ -31,7 +32,11 @@ class RequestForm extends Component {
   }
 
   renderFields() {
-    return _.map(formFields, ({ label, name, type, icon }) => {
+    let formF = formFields;
+    if (this.props.clientAccess) {
+      formF = formFieldsClientAccess;
+    }
+    return _.map(formF, ({ label, name, type, icon }) => {
       return <Field key={name} label={label} type={type} name={name} icon={icon} component={AuthField} />
     });
   }
@@ -39,12 +44,12 @@ class RequestForm extends Component {
   render() {
     return (
         <div>
-          <form onSubmit={this.props.handleSubmit(this.onSubmitRequest.bind(this))}>
+          <form onSubmit={this.onSubmitRequest.bind(this)}>
             <div className="card-content margin-top-28">
               {this.renderFields()}
               <p className="margin-left-7">
                 <label>
-                  <input id="terminos" name="terminos" type="checkbox" />
+                  <input id={this.props.clientAccess ? 'terminos' : 'termino'} name="terminos" type="checkbox" />
                   <span>Acepto los <a href="/terminos">Términos y condicioes</a></span>
                 </label>
               </p>
@@ -70,6 +75,11 @@ function validate(values) {
   errors.emailRequest = validateEmail(values.emailRequest || '');
 
   _.each(formFields, ({ name, noValueError }) => {
+    if (!values[name]) {
+      errors[name] = noValueError;
+    }
+  });
+  _.each(formFieldsClientAccess, ({ name, noValueError }) => {
     if (!values[name]) {
       errors[name] = noValueError;
     }

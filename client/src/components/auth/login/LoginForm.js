@@ -9,22 +9,28 @@ import AuthField from './AuthField';
 import * as actions from '../../../actions';
 import validateEmail from '../../../utils/validateEmail';
 import formFields from './formFields';
+import formFieldsClientAccess from './formFieldsClientAccess';
 
 class LoginForm extends Component {
   renderFields() {
-    return _.map(formFields, ({ label, name, type, icon }) => {
+    let formF = formFields;
+    if (this.props.clientAccess) {
+      formF = formFieldsClientAccess;
+    }
+    return _.map(formF, ({ label, name, type, icon }) => {
       return <Field key={name} label={label} type={type} name={name} icon={icon} component={AuthField} />
     });
   }
 
-  onSubmitLogin() {
+  onSubmitLogin(event) {
+    event.preventDefault();
     this.props.submitLogin(this.props.loginForm.values, this.props.history);
   }
 
   render() {
     return (
         <div>
-          <form onSubmit={this.props.handleSubmit(this.onSubmitLogin.bind(this))}>
+          <form onSubmit={this.onSubmitLogin.bind(this)}>
             <div className="card-content">
               {this.renderFields()}
             </div>
@@ -44,10 +50,14 @@ class LoginForm extends Component {
 
 function validate(values) {
   const errors = {};
-
   errors.recipients = validateEmail(values.recipients || '');
 
   _.each(formFields, ({ name, noValueError }) => {
+    if (!values[name]) {
+      errors[name] = noValueError;
+    }
+  });
+  _.each(formFieldsClientAccess, ({ name, noValueError }) => {
     if (!values[name]) {
       errors[name] = noValueError;
     }

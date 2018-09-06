@@ -7,6 +7,7 @@ import ModalRememberPass from './auth/ModalRememberPass';
 import ModalLogin from './auth/ModalLogin';
 import ModalSuccessRequest from './auth/ModalSuccessRequest';
 import ModalSuccessRemember from './auth/ModalSuccessRemember';
+import ModalClientAccess from './auth/ModalClientAccess';
 
 window.jQuery = $;
 
@@ -27,17 +28,16 @@ class Header extends Component {
   render() {
     const width = $( document ).width();
     if (width >= 993) {
-      console.log('hola')
       const elem = document.getElementsByClassName("sidenav");
       if (elem && elem[0]) {
           M.Sidenav.getInstance(elem[0]).close();
       }
-
     }
 
     return (
       <div className="header-absolute">
         <ModalRequest />
+        <ModalClientAccess />
         <ModalRememberPass />
         <ModalLogin />
         <ModalSuccessRequest />
@@ -53,8 +53,7 @@ class Header extends Component {
               <li className={this.props.location.pathname === '/filosofia' && 'grey darken-3'}><a className={this.props.location.pathname === '/filosofia' ? 'white-text bold' : 'black-text'} href="/filosofia">Filosofía</a></li>
               <li className={this.props.location.pathname === '/quienes-somos' && 'grey darken-3'}><a className={this.props.location.pathname === '/quienes-somos' ? 'white-text bold' : 'black-text'} href="/quienes-somos">¿Quiénes somos?</a></li>
               <li className={this.props.location.pathname === '/contacto' && 'grey darken-3'}><a className={this.props.location.pathname === '/contacto' ? 'white-text bold' : 'black-text'} href="/contacto">Contacto</a></li>
-              <li><a data-target="modal-request" className="modal-trigger black-text">Solicitud Acceso</a></li>
-              <li><a data-target="modal-login" className="modal-trigger black-text">Iniciar Sesión</a></li>
+              <li><a data-target="modal-client-access" className="modal-trigger black-text">Acceso Clientes</a></li>
             </ul>
           </div>
         </nav>

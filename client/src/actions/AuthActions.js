@@ -23,18 +23,25 @@ export const fetchUser = () => async dispatch => {
 // }
 
 export const submitRequest = (values, history) => async dispatch => {
-  const res = await axios.post('/api/solicitud', values);
+  console.log('holaaaaaaaaaaaa')
+  let val = {
+    emailRequest: values.emailRequest ? values.emailRequest : values.emailRequestAccess
+  }
+
+  const res = await axios.post('/api/solicitud', val);
 
   if (res.statusText === "OK") {
     const request = document.getElementById('modal-request');
+    const clientAccess = document.getElementById('modal-client-access');
     const succesRequest = document.getElementById('modal-success-request');
 
     M.Modal.getInstance(request).close();
+      M.Modal.getInstance(clientAccess).close();
     M.Modal.getInstance(succesRequest).open();
 
-    dispatch({ type: SUBMIT_REQUEST_SUCCESS, payload: values.emailRequest });
+    dispatch({ type: SUBMIT_REQUEST_SUCCESS, payload: val.emailRequest });
   } else {
-    dispatch({ type: SUBMIT_REQUEST_ERROR, payload: values.emailRequest });
+    dispatch({ type: SUBMIT_REQUEST_ERROR, payload: val.emailRequest });
   }
 };
 
@@ -71,10 +78,15 @@ export const submitChangePass = (values, history) => async dispatch => {
 };
 
 export const submitLogin = (values, history) => async dispatch => {
-  const res = await axios.post('/api/login', values);
+  let val = {
+    email: values.email ? values.email : values.emailAccess,
+    password: values.password ? values.password : values.passwordAccess
+  }
+
+  const res = await axios.post('/api/login', val);
   const modalLogin = document.getElementById('modal-login');
   const overlaySideNav = document.querySelectorAll('.sidenav');
-  console.log(overlaySideNav);
+
   if (res.data.email) {
     if (res.data.isActive) {
       history.push('/');

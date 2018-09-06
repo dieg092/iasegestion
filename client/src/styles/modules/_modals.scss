@@ -26,8 +26,9 @@
   }
 }
 
+
 @media screen and (max-width: 668px) {
-  #login, #request, #success-request, #resend-pass, #remember {
+  #login, #request, #success-request, #resend-pass, #remember, #client-access {
     .modal {
       width: 100% !important;
       height: 100% !important;
@@ -47,5 +48,40 @@
        padding-top: 10px;
        border-top: solid 0.5px grey;
      }
+  }
+}
+
+.container-login {
+  padding-left: 50px !important;
+  border-left: 1px solid black;
+  padding-right: 40px !important;
+}
+
+.container-request {
+  padding-left: 30px !important;
+  padding-right: 70px !important;
+}
+
+@media screen and (max-width: 1200px) {
+  #client-access {
+    .modal {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: 100% !important;
+      top: 0% !important;
+    }
+    .container-login {
+      padding-left: 0px !important;
+      border-left: 0px ;
+      padding-right: 0px !important;
+    }
+
+    .container-request {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+      margin-bottom: 30px;
+      padding-bottom: 55px;
+      border-bottom: 1px solid black;
+    }
   }
 }
