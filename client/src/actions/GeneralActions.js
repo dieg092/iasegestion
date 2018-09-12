@@ -5,6 +5,10 @@ import {
   CONTACT_MESSAGE
 } from './types';
 import M from "materialize-css/dist/js/materialize.min.js";
+import $ from 'jquery';
+
+window.jQuery = $;
+
 
 export const requestAccessModal = () => {
   let login = document.getElementById('modal-login');
@@ -28,6 +32,16 @@ export const requestModal = () => {
   };
 }
 
+export const clientAccessModal = () => {
+  let clientAccess = document.getElementById('modal-client-access');
+
+  M.Modal.getInstance(clientAccess).open();
+
+  return {
+    type: REQUEST_ACCESS_MODAL
+  };
+}
+
 export const rememberPass = () => {
   let login = document.getElementById('modal-login');
   let remember = document.getElementById('modal-remember');
@@ -41,6 +55,15 @@ export const rememberPass = () => {
     type: REQUEST_ACCESS_MODAL
   };
 };
+
+export const showConditions = () => {
+  let conditions = document.getElementById('modal-conditions');
+  M.Modal.getInstance(conditions).open();
+
+  return {
+    type: CLOSE_MODAL
+  };
+}
 
 export const closeModal = (modal) => {
   let elem = document.getElementById(modal);

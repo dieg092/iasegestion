@@ -10,6 +10,7 @@ require('./models/Province');
 require('./models/Population');
 require('./models/Service');
 require('./models/Post');
+require('./models/Document');
 require('./models/User');
 require('./models/Token');
 require('./services/passport');
@@ -34,6 +35,7 @@ require('./routes/userRoutes')(app);
 require('./routes/uploadRoutes')(app);
 require('./routes/serviceRoutes')(app);
 require('./routes/postRoutes')(app);
+require('./routes/documentRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets

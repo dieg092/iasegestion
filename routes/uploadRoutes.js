@@ -11,16 +11,20 @@ const s3 = new AWS.S3({
 
 module.exports = app => {
   app.get('/api/upload', requireLogin, (req, res) => {
-    const key = `${req.query.folder}/${uuid()}.jpeg`;
-
+    const extension = req.query.type ? '.pdf' : '.jpeg';
+    const key = `${req.query.folder}/${uuid()}` + extension;
+    console.log(key)
     s3.getSignedUrl(
       'putObject',
       {
         Bucket: 'iase-test',
-        ContentType: 'image/jpeg',
+        ContentType: req.query.type ? req.query.type : 'image/jpeg',
         Key: key
       },
-      (err, url) => res.send({ key, url })
+      (err, url) => {
+        console.log(err)
+        res.send({ key, url })
+      }
     );
   });
 

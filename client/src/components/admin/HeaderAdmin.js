@@ -66,17 +66,17 @@ class HeaderAdmin extends Component {
               >card_travel
               </i>
               <span className={path === '/admin/laboral' || (!rol && path === '/') ? 'bold' : ''}>
-                Asesoría Laboral
+                Laboral
               </span>
               </a>
             </li>
             <li>
-              <a href="/admin/fiscal" className={path === '/admin/fiscal' && 'primary-text'}>
-                <i className={path === '/admin/fiscal' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>
+              <a href="/admin/fiscal-financiero" className={path === '/admin/fiscal-financiero' && 'primary-text'}>
+                <i className={path === '/admin/fiscal-financiero' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>
                 content_copy
                 </i>
-                <span className={path === '/admin/fiscal' && 'bold'}>
-                  Asesoría Fiscal
+                <span className={path === '/admin/fiscal-financiero' && 'bold'}>
+                  Fiscal | Financiero
                 </span>
               </a>
             </li>

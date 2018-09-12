@@ -31,3 +31,8 @@ export const POST_CLICKED = 'post_clicked';
 export const POST_DELETED = 'post_deleted';
 export const POST_OTHERS = 'post_others';
 export const CATEGORY_CLICKED = 'category_clicked';
+
+export const FETCH_FISCAL = 'fetch_fiscal';
+export const FISCAL_CLICKED = 'fetch_clicked';
+export const FISCAL_DELETED = 'fetch_deleted';
+export const FISCAL_CREATED = 'fetch_created';

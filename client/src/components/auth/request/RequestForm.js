@@ -1,6 +1,7 @@
 //SurveyForm shows a form for a user to add input
 import _ from 'lodash';
 import React, { Component } from 'react';
+import M from "materialize-css/dist/js/materialize.min.js";
 import { compose } from "redux"
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
@@ -17,8 +18,13 @@ class RequestForm extends Component {
     super(props);
 
     this.state = { sendClicked: false };
-
   }
+
+  componentDidMount() {
+    const elem = document.querySelectorAll('.modal');
+    M.Modal.init(elem, {});
+  }
+
   onSubmitRequest(event) {
     event.preventDefault();
 
@@ -28,7 +34,6 @@ class RequestForm extends Component {
     } else {
       this.setState({ sendClicked: true });
     }
-
   }
 
   renderFields() {
@@ -41,6 +46,11 @@ class RequestForm extends Component {
     });
   }
 
+  onShowConditions(event) {
+    event.preventDefault();
+    this.props.showConditions();
+  }
+
   render() {
     return (
         <div>
@@ -50,7 +60,8 @@ class RequestForm extends Component {
               <p className="margin-left-7">
                 <label>
                   <input id={this.props.clientAccess ? 'terminos' : 'termino'} name="terminos" type="checkbox" />
-                  <span>Acepto los <a href="/terminos">Términos y condicioes</a></span>
+                  <span style={{ cursor: 'default ' }}>Acepto los <a className="pointer" onClick={this.onShowConditions.bind(this)}>Términos y condicioes</a></span>
+
                 </label>
               </p>
               {this.state.sendClicked && <p className="red-text">Tienes que aceptar los términos y condiciones</p>}

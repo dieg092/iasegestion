@@ -8,6 +8,7 @@ import ModalLogin from './auth/ModalLogin';
 import ModalSuccessRequest from './auth/ModalSuccessRequest';
 import ModalSuccessRemember from './auth/ModalSuccessRemember';
 import ModalClientAccess from './auth/ModalClientAccess';
+import ModalConditions from './auth/ModalConditions';
 
 window.jQuery = $;
 
@@ -42,10 +43,11 @@ class Header extends Component {
         <ModalLogin />
         <ModalSuccessRequest />
         <ModalSuccessRemember />
+        <ModalConditions />
         <nav className="transparent">
           <div className="nav-wrapper nav-color">
             <a href="/"><img alt="iasegestion" className="brand-logo logo-header" src={'/images/logo.png'} /></a>
-            <a data-target="menu" className="sidenav-trigger"><i className="material-icons margin-top-10 black-text">menu</i></a>
+            <a data-target="menu" className="sidenav-trigger pointer"><i className="material-icons margin-top-10 black-text">menu</i></a>
             <ul className="right hide-on-med-and-down">
               <li className={this.props.location.pathname === '/' && 'grey darken-3'}><a className={this.props.location.pathname === '/' ? 'white-text bold' : 'black-text'} href="/">Inicio</a></li>
               <li className={this.props.location.pathname === '/servicios' && 'grey darken-3'}><a className={this.props.location.pathname === '/servicios' ? 'white-text bold' : 'black-text'} href="/servicios">Servicios</a></li>

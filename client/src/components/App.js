@@ -26,9 +26,9 @@ import AdminService from './admin/Service';
 import AdminPosts from './admin/AdminPosts'
 import NewPost from './admin/posts/AdminPost';
 import AdminPost from './admin/Post';
-
-const Laboral = () => <h1>Laboral</h1>;
-const Fiscal = () => <h1>Fiscal</h1>;
+import Laboral from './admin/Laboral';
+import FiscalFinanciero from './admin/FiscalFinanciero';
+import FiscalNuevo from './admin/fiscal/AdminFiscal';
 
 class App extends Component {
 
@@ -37,8 +37,6 @@ class App extends Component {
   }
 
   render () {
-    console.log('pppp')
-    console.log(this.props)
     return (
       <div className="app-container">
         {this.props.userLogged !== null &&
@@ -92,7 +90,10 @@ class App extends Component {
                     <Route exact path="/admin/laboral" component={Laboral} />
                 }
                 {this.props.userLogged &&
-                    <Route exact path="/admin/fiscal" component={Fiscal} />
+                    <Route exact path="/admin/fiscal-financiero" component={FiscalFinanciero} />
+                }
+                {this.props.userLogged &&
+                    <Route exact path="/admin/fiscal-financiero/nuevo" component={FiscalNuevo} />
                 }
                 {this.props.userLogged && !this.props.userLogged.rol &&
                     <Route exact render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/admin/laboral"/> ) : ( <Laboral />)))} />

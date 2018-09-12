@@ -12,7 +12,7 @@ module.exports = app => {
   app.get('/api/usuarios', requireLogin, async (req, res) => {
     let query = req.query;
     const page = parseInt(req.query.page);
-
+    console.log(query)
     if (query.email) {
       query.email = { $regex: '.*' + req.query.email + '.*' };
     }
@@ -46,11 +46,54 @@ module.exports = app => {
       query.isVerified = false;
     }
 
+    delete query.callback;
     delete query.page;
-
+    delete query._;
     await User.paginate(query, { page: page, limit: 30, sort: {email: 1}},(err, result) => {
+      console.log(result)
       res.send(result);
     });
+  });
+
+
+  app.get('/api/usuariosSearch', requireLogin, async (req, res) => {
+    let query = req.query;
+    const page = parseInt(req.query.page);
+
+    if (query.email) {
+      query.email = { $regex: '.*' + req.query.email + '.*' };
+    }
+    if (query.name) {
+      query.name = { $regex: '.*' + req.query.name + '.*' };
+    }
+    if (query.lastName) {
+      query.lastName = { $regex: '.*' + req.query.lastName + '.*' };
+    }
+    if (query.nif) {
+      query.nif = { $regex: '.*' + req.query.nif + '.*' };
+    }
+
+    delete query.callback;
+    delete query.page;
+    delete query._;
+    await User.find()
+    .and([
+        { $or: [{name: {$regex: '.*' + req.query.name + '.*'}}, {lastname: { $regex: '.*' + req.query.lastName + '.*' }}] },
+        { $or: [{nif: { $regex: '.*' + req.query.nif + '.*' }}, {email: { $regex: '.*' + req.query.email + '.*' }}] }
+      ]
+    )
+    .exec((err, result) => {
+        let array = [];
+        result.forEach((user) => {
+          let data = {};
+          data.label = (user.name ? user.name : '' + '  ') + (user.lastName ? user.lastName : '') +  (user.nif ?  ' - ' + user.nif : '');
+          array.push(data);
+        });
+
+        res.send(array);
+      }
+    );
+
   });
 
 

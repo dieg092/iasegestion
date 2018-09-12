@@ -4,11 +4,13 @@ import authReducer from './authReducer';
 import userReducer from './userReducer';
 import serviceReducer from './serviceReducer';
 import postReducer from './postReducer';
+import fiscalReducer from './fiscalReducer';
 
 export default combineReducers({
   auth: authReducer,
   form: reduxForm,
   user: userReducer,
   service: serviceReducer,
-  post: postReducer
+  post: postReducer,
+  fiscal: fiscalReducer
 })

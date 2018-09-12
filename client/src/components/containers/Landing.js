@@ -21,7 +21,7 @@ class Langing extends Component {
   }
 
   openRequestModal() {
-    this.props.requestModal();
+    this.props.clientAccessModal();
   }
 
   renderServicesFavourite() {

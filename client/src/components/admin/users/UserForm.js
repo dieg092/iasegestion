@@ -89,7 +89,7 @@ class UserForm extends Component {
 
   loadPopulations() {
     $('input.autocomplete').autocomplete({
-        source: (request, response) => {
+      source: (request, response) => {
         const results = $.ui.autocomplete.filter(POPULATION, request.term);
         response(results.slice(0, 6));
       },
@@ -100,7 +100,7 @@ class UserForm extends Component {
         event.preventDefault();
       },
       minLength: 2,
-    })
+    });
   }
 
   render() {

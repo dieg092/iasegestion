@@ -347,6 +347,11 @@ table.highlight tbody tr:hover {
   padding-right: 70px !important; }
 
 @media screen and (max-width: 1200px) {
+  #conditions .modal {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    top: 0% !important; }
   #client-access .modal {
     width: 100% !important;
     height: 100% !important;
