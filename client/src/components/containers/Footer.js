@@ -23,7 +23,7 @@ class Footer extends Component {
           <div className="row">
             <div className="col l4 s12">
               <h5 className="white-text margin-bottom-30">IASE Gestión</h5>
-              <p className="grey-text text-lighten-4 justify">IASE GESTION se define como un DESPACHO PROFESIONAL  MULTIDISCIPLINAR de asesoría, consultaría, y gestión empresarial.</p>
+              <p className="grey-text text-lighten-4">IASE GESTION se define como un DESPACHO PROFESIONAL  MULTIDISCIPLINAR de asesoría, consultaría, y gestión empresarial.</p>
             </div>
             <div className="col l4 offset-l1 s12">
               <h5 className="white-text margin-bottom-30">Contáctanos</h5>
