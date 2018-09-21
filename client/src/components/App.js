@@ -29,6 +29,8 @@ import AdminPost from './admin/Post';
 import Laboral from './admin/Laboral';
 import FiscalFinanciero from './admin/FiscalFinanciero';
 import FiscalNuevo from './admin/fiscal/AdminFiscal';
+import AdminFiscal from './admin/Doc';
+import ListDocument from './admin/ListDocument';
 
 class App extends Component {
 
@@ -82,6 +84,12 @@ class App extends Component {
                 {this.props.userLogged && this.props.userLogged.rol &&
                     <Route exact path="/admin/posts/nuevo" component={NewPost} />
                 }
+                {this.props.userLogged && !this.props.userLogged.rol &&
+                    <Route exact path="/admin/fiscal-financiero/impuestos" component={ListDocument} />
+                }
+                {this.props.userLogged && !this.props.userLogged.rol &&
+                    <Route exact path="/admin/fiscal-financiero/financiero" component={ListDocument} />
+                }
                 {this.props.userLogged && this.props.userLogged.rol &&
                     <Route exact path="/admin/posts/:slugPost" component={AdminPost} />
                 }
@@ -94,6 +102,12 @@ class App extends Component {
                 }
                 {this.props.userLogged &&
                     <Route exact path="/admin/fiscal-financiero/nuevo" component={FiscalNuevo} />
+                }
+                {this.props.userLogged &&
+                    <Route exact path="/admin/fiscal-financiero/nuevo-impuesto" component={FiscalNuevo} />
+                }
+                {this.props.userLogged && this.props.userLogged.rol &&
+                    <Route exact path="/admin/fiscal-financiero/:slugPost" component={AdminFiscal} />
                 }
                 {this.props.userLogged && !this.props.userLogged.rol &&
                     <Route exact render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/admin/laboral"/> ) : ( <Laboral />)))} />

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { FETCH_POSTS, POST_CREATED, POST_CLICKED, POST_DELETED,
   CATEGORY_CLICKED, POST_OTHERS } from './types';
+import M from "materialize-css/dist/js/materialize.min.js";
+import $ from 'jquery';
 
 export const fetchPosts = (page, filters) => async dispatch => {
   const filter = filterPosts(filters);
@@ -47,8 +49,12 @@ export const deletePost = (post, history) => async dispatch => {
     const res = await axios.delete('/api/post/' + post._id);
 
     if (res.statusText !== 'ERROR') {
-      message = 'Servicio eliminado';
-      window.history.go(-3)
+      message = 'Post eliminado';
+      let modal = document.getElementById('modal-delete-post');
+
+      M.Modal.getInstance(modal).close();
+      
+      history.goBack();
       dispatch({
         type: POST_DELETED
       });

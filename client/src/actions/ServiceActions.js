@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { FETCH_SERVICES, SERVICE_CREATED, SERVICE_CLICKED,
   SERVICE_DELETED, SERVICE_OTHERS, SERVICES_FAVOURITE } from './types';
+import M from "materialize-css/dist/js/materialize.min.js";
+import $ from 'jquery';
 
 export const fetchServices = (page) => async dispatch => {
   const res = await axios.get('/api/services?page=' + page);
@@ -47,7 +49,10 @@ export const deleteService = (service, history) => async dispatch => {
 
     if (res.statusText !== 'ERROR') {
       message = 'Servicio eliminado';
-      window.history.go(-3);
+      window.history.back();
+      let modal = document.getElementById('modal-delete-service');
+
+      M.Modal.getInstance(modal).close();
       dispatch({
         type: SERVICE_DELETED
       });

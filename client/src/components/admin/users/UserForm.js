@@ -105,7 +105,7 @@ class UserForm extends Component {
 
   render() {
     return (
-       <form onSubmit={this.props.handleSubmit(this.onSubmitUser.bind(this))}>
+       <form onSubmit={this.props.handleSubmit(this.onSubmitUser.bind(this))} style={{ marginBottom: '60px' }}>
           <div className="card horizontal">
             <div className="card-stacked">
               <div className="card-content">

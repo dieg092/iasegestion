@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import $ from 'jquery';
 import * as actions from '../../actions';
-import { CardImageh1h2 } from '../containers/common';
+import { CardImageh1h2Post } from '../containers/common';
 import Footer from './Footer';
 
 const height = $( window ).height() * 0.3;
@@ -32,7 +32,7 @@ class Blog extends Component {
     return this.props.posts.map(post => {
       return (
         <div key={post._id} className="col l4">
-            <CardImageh1h2
+            <CardImageh1h2Post
               image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + post.mainPhoto}
               title={post.title}
               link={'/blog/' + post.slug}

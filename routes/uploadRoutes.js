@@ -13,7 +13,6 @@ module.exports = app => {
   app.get('/api/upload', requireLogin, (req, res) => {
     const extension = req.query.type ? '.pdf' : '.jpeg';
     const key = `${req.query.folder}/${uuid()}` + extension;
-    console.log(key)
     s3.getSignedUrl(
       'putObject',
       {
@@ -22,7 +21,6 @@ module.exports = app => {
         Key: key
       },
       (err, url) => {
-        console.log(err)
         res.send({ key, url })
       }
     );

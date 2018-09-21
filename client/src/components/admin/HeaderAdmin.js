@@ -71,7 +71,7 @@ class HeaderAdmin extends Component {
               </a>
             </li>
             <li>
-              <a href="/admin/fiscal-financiero" className={path === '/admin/fiscal-financiero' && 'primary-text'}>
+              <a  className={path === '/admin/fiscal-financiero' && 'primary-text'}>
                 <i className={path === '/admin/fiscal-financiero' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>
                 content_copy
                 </i>
@@ -122,6 +122,7 @@ function mapStateToProps({ auth }) {
 }
 
 export default connect(mapStateToProps, actions)(withRouter(HeaderAdmin));
+//href="/admin/fiscal-financiero"
 //https://images.vexels.com/media/users/3/148177/isolated/preview/ee0d01a2796059e8298032a7442810b9-abstract-square-background-by-vexels.png
 //http://toanhoang.com/wp-content/uploads/2016/04/materialdesign.png
 //https://s.tmimgcdn.com/blog/wp-content/uploads/2016/04/1-9-2.jpg?x20232

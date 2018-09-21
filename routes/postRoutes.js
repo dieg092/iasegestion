@@ -14,6 +14,9 @@ module.exports = app => {
     if (query.title) {
       query.title = { $regex: '.*' + req.query.title + '.*' };
     }
+    if (query.category) {
+      query.category = query.category;
+    }
 
     delete query.page;
     delete query.filter;

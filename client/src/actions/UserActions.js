@@ -24,6 +24,13 @@ export const userClicked = (user, history) => async dispatch => {
   });
 };
 
+export const cleanUserSelected = () => {
+  return {
+    type: USER_CLICKED,
+    payload: null
+  };
+}
+
 export const userData = (user) => {
   return {
     type: USER_CLICKED,

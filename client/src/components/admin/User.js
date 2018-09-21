@@ -4,6 +4,7 @@ import { compose } from "redux";
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux';
 import axios from 'axios';
+import AdminFiscal from './AdminFiscal';
 import UserForm from './users/UserForm';
 import ModalResendPass from './users/ModalResendPass';
 import * as actions from '../../actions';
@@ -45,6 +46,9 @@ class User extends Component {
                 <div>
                   <UserForm />
                   <ModalResendPass />
+                  <div className="margin-top-20" style={{ borderTop: '1px solid black' }}>
+                    <AdminFiscal />
+                  </div>
                 </div>
               }
             </div>

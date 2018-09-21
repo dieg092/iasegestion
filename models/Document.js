@@ -8,7 +8,9 @@ const documentSchema = new Schema({
 		number: String,
     type: String,
     pdf: String,
+		namePDF: String,
 		slug: String,
+		client: [{ type: Schema.Types.ObjectId, ref: 'user' }],
 		date: { type: Date, default: Date.now }
 });
 

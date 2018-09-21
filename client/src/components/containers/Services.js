@@ -20,7 +20,7 @@ class Services extends Component {
               image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + service.mainPhoto}
               title={service.title}
               body={service.shortDescription}
-              link={'/servicios/' + service.slug}
+              link={service.body.length > 8 && '/servicios/' + service.slug}
               alt={service.alt}
             />
         </div>

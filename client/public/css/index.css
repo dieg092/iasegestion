@@ -188,7 +188,10 @@ img {
   background-color: #212121 !important; }
 
 #cardText {
-  min-height: 170px !important; }
+  height: 265px !important; }
+
+#cardTextPost {
+  height: 150px !important; }
 
 .landing-container {
   margin-left: 2em;
@@ -231,7 +234,7 @@ img {
   margin-left: 50px; }
 
 .card-height {
-  height: 280px; }
+  min-height: 288px !important; }
 
 .height-adjust {
   height: 39.86em; }

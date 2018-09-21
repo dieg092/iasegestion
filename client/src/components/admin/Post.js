@@ -10,11 +10,11 @@ import * as actions from '../../actions';
 
 class Post extends Component {
   constructor(props) {
-      super(props);
+    super(props);
 
-      this.state = {
-        post: null
-      }
+    this.state = {
+      post: null
+    }
   }
 
   componentDidMount(){

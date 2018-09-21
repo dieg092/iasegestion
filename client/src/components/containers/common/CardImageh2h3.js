@@ -8,7 +8,7 @@ const CardImageh2h3 = (props) => {
           <div className="card-image">
              <img className="responsive-img" alt={props.alt} src={props.image} />
            </div>
-            <div className="card-content" id="cardText">
+            <div className="card-content" style={{ overFlow: 'hidden' }} >
               <h3 className="margin-top-0"><span className="card-title bold black-text">{props.title}</span></h3>
               <p className="black-text">
                 {props.body}

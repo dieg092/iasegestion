@@ -4,7 +4,7 @@ import authReducer from './authReducer';
 import userReducer from './userReducer';
 import serviceReducer from './serviceReducer';
 import postReducer from './postReducer';
-import fiscalReducer from './fiscalReducer';
+import docReducer from './docReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -12,5 +12,5 @@ export default combineReducers({
   user: userReducer,
   service: serviceReducer,
   post: postReducer,
-  fiscal: fiscalReducer
-})
+  doc: docReducer
+});

@@ -33,7 +33,10 @@ img {
 }
 
 #cardText {
-  min-height: 170px !important;
+  height: 265px !important;
+}
+#cardTextPost {
+  height: 150px !important;
 }
 
 .landing-container {
@@ -89,7 +92,7 @@ img {
 }
 
 .card-height {
-  height: 280px;
+  min-height: 288px !important;
 }
 
 .height-adjust {

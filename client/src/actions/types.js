@@ -32,7 +32,9 @@ export const POST_DELETED = 'post_deleted';
 export const POST_OTHERS = 'post_others';
 export const CATEGORY_CLICKED = 'category_clicked';
 
-export const FETCH_FISCAL = 'fetch_fiscal';
-export const FISCAL_CLICKED = 'fetch_clicked';
-export const FISCAL_DELETED = 'fetch_deleted';
-export const FISCAL_CREATED = 'fetch_created';
+export const FETCH_DOCS = 'fetch_doc';
+export const DOC_CLICKED = 'doc_clicked';
+export const DOC_DELETED = 'doc_deleted';
+export const DOC_CREATED = 'doc_created';
+export const TYPEDOC_CLICKED = 'typedoc_clicked';
+export const DOC_SELECTED_CLEAN = 'doc_selected_clean';

@@ -111,11 +111,13 @@ class PostForm extends Component {
                     Cancelar
                   </Link>
                 </div>
-                <div className="col s12 l3 left">
-                  <button type="button" data-target="modal-delete-post" className="btn amber darken-1 waves-effect waves-light btn-flat white-text no-uppercase margin-top-15 modal-trigger">
-                    Eliminar
-                  </button>
-                </div>
+                {this.props.postSelected &&
+                  <div className="col s12 l3 left">
+                    <button type="button" data-target="modal-delete-post" className="btn amber darken-1 waves-effect waves-light btn-flat white-text no-uppercase margin-top-15 modal-trigger">
+                      Eliminar
+                    </button>
+                  </div>
+                }
                 <div className="col s12 l3 right">
                   <button type="submit" className="btn teal btn-flat waves-effect waves-light white-text no-uppercase margin-top-15 ">
                     Guardar
