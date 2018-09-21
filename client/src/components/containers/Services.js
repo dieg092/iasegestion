@@ -15,7 +15,7 @@ class Services extends Component {
   renderServices() {
     return this.props.services.map(service => {
       return (
-        <div key={service._id} className="col l4">
+        <div key={service._id} className="col xl4">
             <CardImageh1h2
               image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + service.mainPhoto}
               title={service.title}

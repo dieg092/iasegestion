@@ -31,7 +31,7 @@ class Blog extends Component {
   renderPosts() {
     return this.props.posts.map(post => {
       return (
-        <div key={post._id} className="col l4">
+        <div key={post._id} className="col xl4">
             <CardImageh1h2Post
               image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + post.mainPhoto}
               title={post.title}
