@@ -28,7 +28,7 @@ class Langing extends Component {
   renderServicesFavourite() {
     return this.props.servicesFavourite.map(service => {
       return (
-          <div key={service._id} className="col l4">
+          <div key={service._id} className="col xl4">
             <CardImageh1h2
               image={CONSTANTS.URL.photo + service.mainPhoto}
               title={service.title}
@@ -97,40 +97,40 @@ class Langing extends Component {
         <div className="container margin-bottom-100">
           <h1 className="center margin-bottom-75 col s12">¿Qué opinan nuesrtos clientes?</h1>
           <div className="row">
-            <div className="col l4">
+            <div className="col xl4">
               <div className="col s12 xl4 center-on-small-only margin-top-28">
                 <div className="image-container">
-                  <img alt="" className="circle img-client" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsDFTrQnrPC5HWbQbNddHew_1yIK5b14taTQbHks0mC_E1jQWz" />
+                  <img alt="" className="circle img-client" src="/images/thermolympic.jpg" />
                 </div>
               </div>
               <div className="col s12 xl8">
                 <h2 className="font-35-custom">Alvin Wang</h2>
                 <p>Alvin is an Information Systems and Human Computer Interaction Major. He worked as a Software Engineer at Fidelity Investments this past summer.</p>
-                <h3 className="bold center font-20-custom">SpaceX</h3>
+                <h3 className="bold center font-20-custom">Thermolympic</h3>
               </div>
             </div>
-            <div className="col l4">
+            <div className="col xl4">
               <div className="col s12 xl4 center-on-small-only margin-top-28">
                 <div className="image-container">
-                  <img alt="" className="circle img-client" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg" />
+                  <img alt="" className="circle img-client" src="/images/mhenta.jpg" />
                 </div>
               </div>
               <div className="col s12 xl8">
                 <h2 className="font-35-custom">Alvin Wang</h2>
                 <p>Alvin is an Information Systems and Human Computer Interaction Major. He worked as a Software Engineer at Fidelity Investments this past summer.</p>
-                <h3 className="bold center font-20-custom">Hollywood</h3>
+                <h3 className="bold center font-20-custom">Mhenta</h3>
               </div>
             </div>
-            <div className="col l4">
+            <div className="col xl4">
               <div className="col s12 xl4 center-on-small-only margin-top-28">
                 <div className="image-container">
-                  <img alt="" className="circle img-client" src="https://i.pinimg.com/originals/af/19/67/af1967490480cf4731b750ed11afa03e.png" />
+                  <img alt="" className="circle img-client" src="/images/duromit.jpg" />
                 </div>
               </div>
               <div className="col s12 xl8">
                 <h2 className="font-35-custom">Alvin Wang</h2>
                 <p>Alvin is an Information Systems and Human Computer Interaction Major. He worked as a Software Engineer at Fidelity Investments this past summer.</p>
-                <h3 className="bold center font-20-custom">Facebook</h3>
+                <h3 className="bold center font-20-custom">Duromit</h3>
               </div>
             </div>
           </div>
