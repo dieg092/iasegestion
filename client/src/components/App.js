@@ -35,6 +35,7 @@ import ListDocument from './admin/ListDocument';
 class App extends Component {
 
   componentDidMount() {
+    console.log(process.env.NODE_ENV)
     this.props.fetchUser();
   }
 
@@ -107,7 +108,7 @@ class App extends Component {
                     <Route exact path="/admin/fiscal-financiero/nuevo-impuesto" component={FiscalNuevo} />
                 }
                 {this.props.userLogged && this.props.userLogged.rol &&
-                    <Route exact path="/admin/fiscal-financiero/:slugPost" component={AdminFiscal} />
+                    <Route exact path="/admin/fiscal-financiero/:slugFiscal" component={AdminFiscal} />
                 }
                 {this.props.userLogged && !this.props.userLogged.rol &&
                     <Route exact render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/admin/laboral"/> ) : ( <Laboral />)))} />

@@ -4,6 +4,7 @@ import $ from 'jquery';
 import * as actions from '../../actions';
 import { CardImageh1h2 } from '../containers/common';
 import Footer from './Footer';
+import CONSTANTS from '../../utils/constants';
 
 const height = $( window ).height() * 0.3;
 
@@ -17,7 +18,7 @@ class Services extends Component {
       return (
         <div key={service._id} className="col xl4">
             <CardImageh1h2
-              image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + service.mainPhoto}
+              image={CONSTANTS.URL.photo + service.mainPhoto}
               title={service.title}
               body={service.shortDescription}
               link={service.body.length > 8 && '/servicios/' + service.slug}

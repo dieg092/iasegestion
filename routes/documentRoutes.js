@@ -48,7 +48,7 @@ module.exports = app => {
     const { name, number, pdf, type, client, namePDF } = req.body;
 
     const document = await Document.find({ slug: req.params.slugDocument });
-    console.log(client)
+
     let update = {};
     update.name = name ? name : '';
     if (pdf) {
@@ -72,7 +72,6 @@ module.exports = app => {
       if (err && err.name === 'ValidationError') {
         res.statusMessage = "ERROR NAME";
       } else if (err) {
-        console.log(err)
         res.statusMessage = "ERROR";
       }
       res.send({});

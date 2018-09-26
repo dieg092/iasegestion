@@ -8,7 +8,6 @@ class ModalSuccessRemember extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div id="success-remember">
         <div id="modal-success-remember" className="modal">

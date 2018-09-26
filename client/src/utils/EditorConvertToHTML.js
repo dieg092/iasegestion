@@ -4,6 +4,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import axios from 'axios';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
+import CONSTANTS from './constants';
 
 function uploadImageCallBack(file) {
   return new Promise(
@@ -17,7 +18,7 @@ function uploadImageCallBack(file) {
       });
 
       if (upload.status === 200) {
-         resolve({ data: { link: 'https://s3.eu-west-3.amazonaws.com/iase-test/' + uploadConfig.data.key  } });
+         resolve({ data: { link: CONSTANTS.URL.photo + uploadConfig.data.key  } });
       } else {
          reject('Error');
       }

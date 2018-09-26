@@ -23,7 +23,6 @@ export const fetchUser = () => async dispatch => {
 // }
 
 export const submitRequest = (values, history) => async dispatch => {
-  console.log('holaaaaaaaaaaaa')
   let val = {
     emailRequest: values.emailRequest ? values.emailRequest : values.emailRequestAccess
   }

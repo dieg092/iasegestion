@@ -76,11 +76,9 @@ class FilterFiscalForm extends Component {
              nif: request.term
            },
            success: ( data ) => {
-             console.log(data)
              response( data);
            },
            error: ( err ) => {
-             console.log('errror')
              console.log(err)
            }
          });

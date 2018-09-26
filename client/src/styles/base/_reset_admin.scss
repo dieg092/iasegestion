@@ -14,15 +14,37 @@ table.highlight tbody tr:hover {
 .titleUser {
   font-size: 30px;
 }
+#ui-id-1 {
+  border: 1px solid grey;
+  width: 60%
+}
+.ui-autocomplete {
+  background-color: white !important;
+  z-index: 90;
+}
+.ui-menu-item-wrapper {
+  background-color: white !important;
+  border-bottom: 1px solid black !important;
+  cursor: pointer;
+  font-size: 22px !important;
+}
 
 @media screen and (max-width: 992px) {
   .admin-container {
     padding-left: 0px;
+  }
+  #ui-id-1 {
+    left: -1px !important;
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 668px) {
   .titleUser {
     font-size: 18px;
+  }
+  .ui-menu-item-wrapper {
+    font-size: 17px !important;
+
   }
 }

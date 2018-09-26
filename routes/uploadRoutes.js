@@ -16,11 +16,13 @@ module.exports = app => {
     s3.getSignedUrl(
       'putObject',
       {
-        Bucket: 'iase-test',
+        Bucket: keys.bucket,
         ContentType: req.query.type ? req.query.type : 'image/jpeg',
         Key: key
       },
       (err, url) => {
+        console.log(key)
+        console.log(url)
         res.send({ key, url })
       }
     );
@@ -31,7 +33,7 @@ module.exports = app => {
 
     s3.deleteObject(
       {
-        Bucket: 'iase-test',
+        Bucket: keys.bucket,
         Key: key
       },
       (err, data) => res.send({ data })

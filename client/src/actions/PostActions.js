@@ -3,6 +3,7 @@ import { FETCH_POSTS, POST_CREATED, POST_CLICKED, POST_DELETED,
   CATEGORY_CLICKED, POST_OTHERS } from './types';
 import M from "materialize-css/dist/js/materialize.min.js";
 import $ from 'jquery';
+import CONSTANTS from '../utils/constants';
 
 export const fetchPosts = (page, filters) => async dispatch => {
   const filter = filterPosts(filters);
@@ -36,7 +37,7 @@ export const postData = (post) => {
 
 export const deletePost = (post, history) => async dispatch => {
   let message = 'Error al eliminar el post';
-  const images = post.body.split('https://s3.eu-west-3.amazonaws.com/iase-test/');
+  const images = post.body.split(CONSTANTS.URL.photo);
   images.map( async (img, index) => {
     if (index !== 0) {
       const key = img.split('" alt')[0];
@@ -53,7 +54,7 @@ export const deletePost = (post, history) => async dispatch => {
       let modal = document.getElementById('modal-delete-post');
 
       M.Modal.getInstance(modal).close();
-      
+
       history.goBack();
       dispatch({
         type: POST_DELETED
@@ -88,8 +89,8 @@ export const submitPost = (values, file, mainPhoto, editor, history, edit, postS
     });
   }
 
-  const imagesBodySelected = postSelected && postSelected.body.split('https://s3.eu-west-3.amazonaws.com/iase-test/');
-  const imagesBody = editor && editor.split('https://s3.eu-west-3.amazonaws.com/iase-test/');
+  const imagesBodySelected = postSelected && postSelected.body.split(CONSTANTS.URL.photo);
+  const imagesBody = editor && editor.split(CONSTANTS.URL.photo);
 
   imagesBodySelected && imagesBodySelected.map( async (img, index) => {
     if (index !== 0) {

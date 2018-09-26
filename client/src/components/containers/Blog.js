@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import $ from 'jquery';
 import * as actions from '../../actions';
 import { CardImageh1h2Post } from '../containers/common';
+import CONSTANTS from '../../utils/constants';
 import Footer from './Footer';
 
 const height = $( window ).height() * 0.3;
@@ -33,7 +34,7 @@ class Blog extends Component {
       return (
         <div key={post._id} className="col xl4">
             <CardImageh1h2Post
-              image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + post.mainPhoto}
+              image={CONSTANTS.URL.photo + post.mainPhoto}
               title={post.title}
               link={'/blog/' + post.slug}
               alt={post.alt}

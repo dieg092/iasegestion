@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import FilterPostsForm from './posts/filter/FilterPostsForm';
 import * as actions from '../../actions';
 import { CardImageh1h2Post } from '../containers/common';
+import CONSTANTS from '../../utils/constants';
 
 class AdminPosts extends Component {
   componentDidMount() {
@@ -20,9 +21,9 @@ class AdminPosts extends Component {
   renderPosts() {
     return this.props.posts.map(post => {
       return (
-        <div key={post._id} className="col l4" onClick={() => {this.onPostClick(post)}}>
+        <div key={post._id} className="col xl4" onClick={() => {this.onPostClick(post)}}>
             <CardImageh1h2Post
-              image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + post.mainPhoto}
+              image={CONSTANTS.URL.photo + post.mainPhoto}
               title={post.title}
             />
         </div>

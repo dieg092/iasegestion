@@ -5,6 +5,7 @@ import $ from 'jquery';
 import * as actions from '../../actions';
 import { CardImageh2h3 } from '../containers/common';
 import Footer from './Footer';
+import CONSTANTS from '../../utils/constants';
 
 const height = $( window ).height() * 0.3;
 
@@ -19,7 +20,7 @@ class Service extends Component {
       return (
         <div key={service._id}>
           <CardImageh2h3
-            image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + service.mainPhoto}
+            image={CONSTANTS.URL.photo + service.mainPhoto}
             title={service.title}
             link={'/servicios/' + service.slug}
             alt={service.alt}
@@ -31,7 +32,7 @@ class Service extends Component {
 
   renderPhoto() {
     return (
-      <div className="margin-bottom-75 margin-top-42-negative min-height-photo image-header" role="img" alt={this.props.service[0].alt} style={{ backgroundImage: 'url(https://s3.eu-west-3.amazonaws.com/iase-test/' + this.props.service[0].mainPhoto + ')', height: height }}>
+      <div className="margin-bottom-75 margin-top-42-negative min-height-photo image-header" role="img" alt={this.props.service[0].alt} style={{ backgroundImage: 'url(' + CONSTANTS.URL.photo + this.props.service[0].mainPhoto + ')', height: height }}>
         <h1 className="center padding-top-145 white-text font-title">{this.props.service[0].title}</h1>
       </div>
     )

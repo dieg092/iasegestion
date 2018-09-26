@@ -11,7 +11,7 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import AuthField from './AuthField';
 import formFields from './formFields';
 import * as actions from '../../../actions';
-
+import CONSTANTS from '../../../utils/constants';
 import { EditorConvertToHTML } from '../../../utils/EditorConvertToHTML';
 
 window.jQuery = $;
@@ -46,7 +46,6 @@ class FiscalForm extends Component {
   }
 
   handleInitializeWithUser() {
-    console.log('asdfasdfasdf')
     const initData = {
       // "type": this.props && this.props.docSelected && this.props.docSelected.type,
       // "number": this.props && this.props.docSelected && this.props.docSelected.number,
@@ -119,11 +118,9 @@ class FiscalForm extends Component {
              nif: request.term
            },
            success: ( data ) => {
-             console.log(data)
              response( data);
            },
            error: ( err ) => {
-             console.log('errror')
              console.log(err)
            }
          });
@@ -148,7 +145,7 @@ class FiscalForm extends Component {
 
   render() {
     const { pageNumber, numPages } = this.state;
-    console.log(this.props.userSelected)
+
     return (
        <form onSubmit={this.props.handleSubmit(this.onSubmitFiscal.bind(this))}>
           <div className="card horizontal">
@@ -176,7 +173,7 @@ class FiscalForm extends Component {
                          </div>
                          <div className="col s12">
                          {this.state.file ? this.state.file.title : (this.props.docSelected && this.props.docSelected.pdf ?
-                            <a target="_blank" href={'https://s3.eu-west-3.amazonaws.com/iase-test/'+ this.props.docSelected.pdf}>PDF</a>
+                            <a target="_blank" href={CONSTANTS.URL.photo + this.props.docSelected.pdf}>PDF</a>
                           :
                             ''
                           )}

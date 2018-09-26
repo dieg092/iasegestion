@@ -3,6 +3,7 @@ import { FETCH_SERVICES, SERVICE_CREATED, SERVICE_CLICKED,
   SERVICE_DELETED, SERVICE_OTHERS, SERVICES_FAVOURITE } from './types';
 import M from "materialize-css/dist/js/materialize.min.js";
 import $ from 'jquery';
+import CONSTANTS from '../utils/constants';
 
 export const fetchServices = (page) => async dispatch => {
   const res = await axios.get('/api/services?page=' + page);
@@ -14,8 +15,7 @@ export const getService = (history) => async dispatch => {
   const service = history.location.pathname.split('/')[2];
 
   const res = await axios.get('/api/service/' + service);
-  console.log(res.data)
-  console.log('res.data')
+
   dispatch({ type: SERVICE_CLICKED, payload: res.data });
 };
 
@@ -35,7 +35,7 @@ export const favouriteServices = () => async dispatch => {
 
 export const deleteService = (service, history) => async dispatch => {
   let message = 'Error al eliminar el servicio';
-  const images = service.body.split('https://s3.eu-west-3.amazonaws.com/iase-test/');
+  const images = service.body.split(CONSTANTS.URL.photo);
   images.map( async (img, index) => {
     if (index !== 0) {
       const key = img.split('" alt')[0];
@@ -94,8 +94,8 @@ export const submitService = (values, file, mainPhoto, editor, history, edit, se
     });
   }
 
-  const imagesBodySelected = serviceSelected && serviceSelected.body.split('https://s3.eu-west-3.amazonaws.com/iase-test/');
-  const imagesBody = editor && editor.split('https://s3.eu-west-3.amazonaws.com/iase-test/');
+  const imagesBodySelected = serviceSelected && serviceSelected.body.split(CONSTANTS.URL.photo);
+  const imagesBody = editor && editor.split(CONSTANTS.URL.photo);
 
   imagesBodySelected && imagesBodySelected.map( async (img, index) => {
     if (index !== 0) {

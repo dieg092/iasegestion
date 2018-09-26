@@ -21,8 +21,6 @@ class Service extends Component {
     const serviceSlug = this.props.history.location.pathname.split('/')[3];
     axios.get('/api/service/' + serviceSlug)
       .then((response) => {
-        console.log('response')
-        console.log(response.data)
         if (response.data[0]) {
           this.props.serviceData(response);
           this.setState({

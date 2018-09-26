@@ -12,7 +12,7 @@ module.exports = app => {
   app.get('/api/usuarios', requireLogin, async (req, res) => {
     let query = req.query;
     const page = parseInt(req.query.page);
-    console.log(query)
+
     if (query.email) {
       query.email = { $regex: '.*' + req.query.email + '.*' };
     }

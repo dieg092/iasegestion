@@ -19,7 +19,7 @@ class FiscalFinanciero extends Component {
           <div>
             <div className="col s12 l4 offset-l1 container">
               <CardImageh1h2
-                image={'https://www.flexcontact.com.br/negociar/wp-content/uploads/2016/11/03.jpg'}
+                image={'/images/fiscal.jpg'}
                 title={'Fiscal'}
                 body={'Aquí encontrarás todos los modelos'}
                 link={'/admin/fiscal-financiero/impuestos'}
@@ -27,7 +27,7 @@ class FiscalFinanciero extends Component {
             </div>
             <div className="col s12 l4 offset-l1 container">
               <CardImageh1h2
-                image={'http://fundacioncarlosslim.org/wp-content/uploads/2018/07/academica-curso-gratuito-contabilidad-basica-2.jpg'}
+                image={'/images/economico.jpg'}
                 title={'Económico Financiero'}
                 body={'Aquí encontrarás todos los documentos relacionados con Conabilidad e Informes'}
                 link={'/admin/fiscal-financiero/financiero'}

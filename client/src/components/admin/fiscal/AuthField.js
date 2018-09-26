@@ -5,7 +5,6 @@ export default ({ input, value, label, type, options, meta: { error, touched }, 
   return (
 
     <div>
-    {console.log(tax)}
     {input.name === "number" && tax === false ?
       ''
     : type !== 'file' && type !== 'select' &&

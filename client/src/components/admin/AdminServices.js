@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import { CardImageh1h2 } from '../containers/common';
+import CONSTANTS from '../../utils/constants';
 
 class AdminServices extends Component {
   componentDidMount() {
@@ -15,9 +16,9 @@ class AdminServices extends Component {
   renderServices() {
     return this.props.services.map(service => {
       return (
-        <div key={service._id} className="col l4" onClick={() => {this.onServiceClick(service)}}>
+        <div key={service._id} className="col xl4" onClick={() => {this.onServiceClick(service)}}>
           <CardImageh1h2
-            image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + service.mainPhoto}
+            image={CONSTANTS.URL.photo + service.mainPhoto}
             title={service.title}
             body={service.shortDescription}
           />

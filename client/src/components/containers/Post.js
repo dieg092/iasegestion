@@ -5,6 +5,8 @@ import $ from 'jquery';
 import * as actions from '../../actions';
 import { CardImageh2h3 } from '../containers/common';
 import Footer from './Footer';
+import CONSTANTS from '../../utils/constants';
+
 
 const height = $( window ).height() * 0.3;
 
@@ -19,7 +21,7 @@ class Post extends Component {
       return (
         <div key={post._id}>
           <CardImageh2h3
-            image={'https://s3.eu-west-3.amazonaws.com/iase-test/' + post.mainPhoto}
+            image={CONSTANTS.URL.photo + post.mainPhoto}
             title={post.title}
             body=""
             link={'/blog/' + post.slug}
@@ -32,7 +34,7 @@ class Post extends Component {
 
   renderPhoto() {
     return (
-      <div className="margin-bottom-75 margin-top-42-negative min-height-photo image-header" role="img" alt={this.props.postSelected.alt} style={{ backgroundImage: 'url(https://s3.eu-west-3.amazonaws.com/iase-test/' + this.props.postSelected.mainPhoto + ')', height: height }}>
+      <div className="margin-bottom-75 margin-top-42-negative min-height-photo image-header" role="img" alt={this.props.postSelected.alt} style={{ backgroundImage: 'url(' + CONSTANTS.URL.photo + this.props.postSelected.mainPhoto + ')', height: height }}>
         <h1 className="center padding-top-145 white-text font-title">{this.props.postSelected.title}</h1>
       </div>
     )
