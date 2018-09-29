@@ -33,6 +33,7 @@ export const docClicked = (doc, history) => async dispatch => {
     payload: null
   };
 };
+
 export const docNotSelected = () => {
 
   return {
@@ -89,15 +90,17 @@ export const submitFiscal = (values, file, namePDF, history, edit, userId, docSe
   let res = '';
   let documentNameValidation = false;
   let fileN = '';
+  let folder = 'documents/' + userId ;
 
   if (file) {
     fileN = file.name;
     const fileName = fileN.split('.')[0].split('_')[0];
 
     if (fileName === clientLastName) {
-      documentNameValidation = true
+      documentNameValidation = true;
 
-      uploadConfig = await axios.get('/api/upload?folder=documents&type=application/pdf');
+
+      uploadConfig = await axios.get('/api/upload?folder=' + folder + '&type=application/pdf');
 
       await axios.put(uploadConfig.data.url, file, {
         headers: {

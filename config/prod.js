@@ -4,8 +4,9 @@ module.exports = {
   key: process.env.KEY,
   sendGridUser: process.env.SENDGRID_USERNAME,
   sendGridPass: process.env.SENDGRID_PASSWORD,
-  accessKeyId: 'AKIAIPQBNLZJO4LCX5NQ', // CREAR PRODUCCIÓN DEV
-  secretAccessKey: 'QSuOSk+tffbEUx/gon9Rjo64kMTsSK7GBIkDQAxS' // CREAR PRODUCCIÓN DEV
+  bucket: process.env.BUCKET
+  accessKeyId: process.env.BUCKET,
+  secretAccessKey: process.env.BUCKET 
 };
 
 //SENDGRID -> https://lairjgliargli.localtunnel.me/api/solicitud/webhook
