@@ -18,42 +18,54 @@ require('./models/User');
 require('./models/Token');
 require('./services/passport');
 
-mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongoURI);
+const numCPUs = require('os').cpus().length;
 
-const app = express();
-app.use(bodyParser.json());
-app.use(
-  cookieSession({
-      maxAge: 30 * 24 * 60 * 60 * 1000,
-      keys: [keys.cookieKey]
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
-app.use(compression());
+if (cluster.isMaster) {
+  for (var i = 0; i < numCPUs; i++)
+  {
+    cluster.fork();
+  }
+}  else {
+  mongoose.Promise = global.Promise;
+  mongoose.connect(keys.mongoURI);
 
-require('./routes/authRoutes')(app);
-require('./routes/userRoutes')(app);
-require('./routes/uploadRoutes')(app);
-require('./routes/serviceRoutes')(app);
-require('./routes/postRoutes')(app);
-require('./routes/documentRoutes')(app);
+  const app = express();
+  app.use(bodyParser.json());
+  app.use(
+    cookieSession({
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        keys: [keys.cookieKey]
+    })
+  );
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(flash());
+  app.use(compression());
 
-if (process.env.NODE_ENV === 'production') {
-  // Express will serve up production assets
-  // like our main.js file, or main.css file!
-  app.use(express.static('client/build'));
+  require('./routes/authRoutes')(app);
+  require('./routes/userRoutes')(app);
+  require('./routes/uploadRoutes')(app);
+  require('./routes/serviceRoutes')(app);
+  require('./routes/postRoutes')(app);
+  require('./routes/documentRoutes')(app);
 
-  // Express will serve up the index.html file
-  // if it doesn't recognice the route
-  const path = require('path');
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  })
+  if (process.env.NODE_ENV === 'production') {
+    // Express will serve up production assets
+    // like our main.js file, or main.css file!
+    app.use(express.static('client/build'));
+
+    // Express will serve up the index.html file
+    // if it doesn't recognice the route
+    const path = require('path');
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+  }
+
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Listening on port`, PORT);
+  });
+
+
 }
-
-app.listen(process.env.PORT || 3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
