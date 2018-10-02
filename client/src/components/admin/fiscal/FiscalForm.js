@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import { compose } from "redux"
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { withRouter, Link } from 'react-router-dom';
-import { Document, Page } from 'react-pdf';
+import { withRouter } from 'react-router-dom';
 import $ from 'jquery';
 import 'jquery-ui/ui/widgets/autocomplete';
 import M from "materialize-css/dist/js/materialize.min.js";
@@ -12,12 +11,11 @@ import AuthField from './AuthField';
 import formFields from './formFields';
 import * as actions from '../../../actions';
 import CONSTANTS from '../../../utils/constants';
-import { EditorConvertToHTML } from '../../../utils/EditorConvertToHTML';
 
 window.jQuery = $;
 
 class FiscalForm extends Component {
-  state = { file: null, user_id: null, pageNumber: 1, numPages: null };
+  state = { file: null, user_id: null };
 
   componentDidMount() {
     if (this.props.userSelected) {
@@ -144,8 +142,6 @@ class FiscalForm extends Component {
   }
 
   render() {
-    const { pageNumber, numPages } = this.state;
-
     return (
        <form onSubmit={this.props.handleSubmit(this.onSubmitFiscal.bind(this))}>
           <div className="card horizontal">

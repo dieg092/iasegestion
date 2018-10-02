@@ -18,8 +18,6 @@ class FilterDocsForm extends Component {
   }
 
   renderFields() {
-    const pathname = this.props.location.pathname.split('/')[3];
-
     return _.map(formFields, ({ label, name, type, icon, options }) => {
         return <Field key={name} label={label} type={type} name={name} options={options} component={AuthField} />
     });

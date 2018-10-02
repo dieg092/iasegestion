@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import FilterFiscalForm from './fiscal/filter/FilterFiscalForm';
 import FilterDocsForm from './users/filterDocs/FilterDocsForm';
 import * as actions from '../../actions';
-import { CardImageh1h2 } from '../containers/common';
 import CONSTANTS from '../../utils/constants';
 
 class AdminFiscal extends Component {
@@ -37,7 +35,7 @@ class AdminFiscal extends Component {
           <td onClick={() => {this.onDocClick(doc)}}>{doc.name}</td>
           <td onClick={() => {this.onDocClick(doc)}}>{doc.client[0].name + ' ' + doc.client[0].lastName}</td>
           <td onClick={() => {this.onDocClick(doc)}}>{new Date(doc.date).toLocaleDateString()}</td>
-          <td className="centered"><a target="_blank" href={CONSTANTS.URL.photo + doc.pdf}><img src="/images/icono-pdf.png" className="responsive-img" style={{ maxWidth: '30px' }} /></a></td>
+          <td className="centered"><a target="_blank" href={CONSTANTS.URL.photo + doc.pdf}><img src="/images/icono-pdf.png" alt="pdf" className="responsive-img" style={{ maxWidth: '30px' }} /></a></td>
         </tr>
       );
     });

@@ -1,5 +1,5 @@
 import {
-  FETCH_DOCS, DOC_CREATED, DOC_CLICKED, DOC_DELETED, TYPEDOC_CLICKED, DOC_SELECTED_CLEAN
+  FETCH_DOCS, DOC_CREATED, DOC_CLICKED, DOC_DELETED, DOC_SELECTED_CLEAN
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -22,8 +22,6 @@ export default function(state = INITIAL_STATE, action) {
       return { ...state, docType: action.payload };
     case DOC_CREATED:
       return { ...state };
-    case DOC_DELETED:
-      return { ...state, postSelected: null };
     default:
       return state;
   }

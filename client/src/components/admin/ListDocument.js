@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import FilterFiscalForm from './fiscal/filter/FilterFiscalForm';
 import * as actions from '../../actions';
 import CONSTANTS from '../../utils/constants';
-import { CardImageh1h2 } from '../containers/common';
 
 class ListDocument extends Component {
   state = { type: null };
@@ -47,7 +46,7 @@ class ListDocument extends Component {
           {this.props.location.pathname.split('/')[3] !== 'financiero' && <td>{doc.number ? doc.number : '-'}</td>}
           <td>{doc.name}</td>
           <td>{new Date(doc.date).toLocaleDateString()}</td>
-          <td className="centered"><a target="_blank" href={CONSTANTS.URL.photo + doc.pdf}><img src="/images/icono-pdf.png" className="responsive-img" style={{ maxWidth: '30px' }} /></a></td>
+          <td className="centered"><a target="_blank" href={CONSTANTS.URL.photo + doc.pdf}><img src="/images/icono-pdf.png" alt="pdf" className="responsive-img" style={{ maxWidth: '30px' }} /></a></td>
         </tr>
       );
     });

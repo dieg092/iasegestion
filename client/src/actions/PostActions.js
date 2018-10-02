@@ -2,7 +2,6 @@ import axios from 'axios';
 import { FETCH_POSTS, POST_CREATED, POST_CLICKED, POST_DELETED,
   CATEGORY_CLICKED, POST_OTHERS } from './types';
 import M from "materialize-css/dist/js/materialize.min.js";
-import $ from 'jquery';
 import CONSTANTS from '../utils/constants';
 
 export const fetchPosts = (page, filters) => async dispatch => {

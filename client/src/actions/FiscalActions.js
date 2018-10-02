@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { FETCH_DOCS, DOC_CREATED, DOC_CLICKED, DOC_DELETED, TYPEDOC_CLICKED, DOC_SELECTED_CLEAN } from './types';
 import M from "materialize-css/dist/js/materialize.min.js";
-import $ from 'jquery';
 
 export const fetchDocs = (page, filters) => async dispatch => {
   const filter = filterDocs(filters);

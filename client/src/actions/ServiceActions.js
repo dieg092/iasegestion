@@ -2,7 +2,6 @@ import axios from 'axios';
 import { FETCH_SERVICES, SERVICE_CREATED, SERVICE_CLICKED,
   SERVICE_DELETED, SERVICE_OTHERS, SERVICES_FAVOURITE } from './types';
 import M from "materialize-css/dist/js/materialize.min.js";
-import $ from 'jquery';
 import CONSTANTS from '../utils/constants';
 
 export const fetchServices = (page) => async dispatch => {

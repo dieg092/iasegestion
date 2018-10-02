@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { compose } from "redux";
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import ModalDeleteFiscal from './fiscal/ModalDeleteFiscal';
 import FiscalForm from './fiscal/FiscalForm';
