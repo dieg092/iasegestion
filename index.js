@@ -19,14 +19,9 @@ require('./models/Token');
 require('./services/passport');
 
 
-if (cluster.isMaster) {
-   const cpuCount = require('os').cpus().length;
 
-   for (let i = 0; i < cpuCount; i += 1) {
-       cluster.fork();
-   }
+  
 
-} else {
   mongoose.Promise = global.Promise;
   mongoose.connect(keys.mongoURI);
 
@@ -65,5 +60,3 @@ if (cluster.isMaster) {
 
   const PORT = process.env.PORT || 5000;
   app.listen(PORT);
-
-}
