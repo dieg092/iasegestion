@@ -92,11 +92,9 @@ export const submitLogin = (values, history, worker) => async dispatch => {
   const res = await axios.post('/api/login', val);
   const modalLogin = document.getElementById('modal-login');
   const overlaySideNav = document.querySelectorAll('.sidenav');
-console.log(res)
+
   if (res.data.email) {
-    console.log('hey')
     if (res.data.isActive) {
-      console.log('yaaaah!')
       history.push('/');
 
       M.Modal.getInstance(modalLogin).close();

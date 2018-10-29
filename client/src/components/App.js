@@ -98,16 +98,16 @@ class App extends Component {
                 {this.props.userLogged &&
                     <Route exact path="/admin/laboral" component={Laboral} />
                 }
-                {this.props.userLogged &&
+                {this.props.userLogged && this.props.userLogged.email !== 'invitado@iasegestion.com' &&
                     <Route exact path="/admin/fiscal-financiero" component={FiscalFinanciero} />
                 }
-                {this.props.userLogged &&
+                {this.props.userLogged && this.props.userLogged.email !== 'invitado@iasegestion.com' &&
                     <Route exact path="/admin/fiscal-financiero/nuevo" component={FiscalNuevo} />
                 }
-                {this.props.userLogged &&
+                {this.props.userLogged && this.props.userLogged.email !== 'invitado@iasegestion.com' &&
                     <Route exact path="/admin/fiscal-financiero/nuevo-impuesto" component={FiscalNuevo} />
                 }
-                {this.props.userLogged && this.props.userLogged.rol &&
+                {this.props.userLogged && this.props.userLogged.rol && this.props.userLogged.email !== 'invitado@iasegestion.com' &&
                     <Route exact path="/admin/fiscal-financiero/:slugFiscal" component={AdminFiscal} />
                 }
                 {this.props.userLogged && !this.props.userLogged.rol &&
