@@ -19,9 +19,10 @@ passport.use(new LocalStrategy({
 		usernameField: 'email',
 		passwordField: 'password'
 	}, (email, password, done) => {
-
+    console.log(email);
+    console.log(password)
     User.findOne({ email: email.toLowerCase() }, (err, user) => {
-
+      console.log(user)
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });

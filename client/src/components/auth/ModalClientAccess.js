@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 import LoginForm from './login/LoginForm';
 import RequestForm from './request/RequestForm';
@@ -15,6 +16,11 @@ class ModalClientAccess extends Component {
 
   onRememberPass() {
     this.props.rememberPass();
+  }
+
+  onRequestAccessWorker(event) {
+    event.preventDefault();
+    this.props.submitLogin(null, this.props.history, true);
   }
 
   render() {
@@ -34,7 +40,8 @@ class ModalClientAccess extends Component {
                     <p className="margin-bottom-20 font-35-custom margin-top-0 center">Iniciar Sesión</p>
                     <LoginForm clientAccess={true}/>
                     <div className="center padding-top-60">
-                      <a className="teal-text pointer" onClick={this.onRememberPass.bind(this)}>¿Has olvidado tu contraseña?</a>
+                      <p><a className="teal-text pointer" onClick={this.onRememberPass.bind(this)}>¿Has olvidado tu contraseña?</a></p>
+                      <p><a className="teal-text pointer" onClick={this.onRequestAccessWorker.bind(this)}>Acceso Trabajadores</a></p>
                     </div>
                   </div>
                 </div>
@@ -47,4 +54,4 @@ class ModalClientAccess extends Component {
   }
 };
 
-export default connect(null, actions)(ModalClientAccess);
+export default connect(null, actions)(withRouter(ModalClientAccess));

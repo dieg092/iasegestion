@@ -95,7 +95,7 @@ class Langing extends Component {
 
 
         <div className="container margin-bottom-100">
-          <h1 className="center margin-bottom-75 col s12">¿Qué opinan nuesrtos clientes?</h1>
+          <h1 className="center margin-bottom-75 col s12">¿Qué opinan nuestros clientes?</h1>
           <div className="row">
             <div className="col xl4">
               <div className="col s12 xl4 center-on-small-only margin-top-28">

@@ -70,16 +70,19 @@ class HeaderAdmin extends Component {
               </span>
               </a>
             </li>
-            <li>
-              <a href="/admin/fiscal-financiero" className={path === '/admin/fiscal-financiero' && 'primary-text'}>
-                <i className={path === '/admin/fiscal-financiero' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>
-                content_copy
-                </i>
-                <span className={path === '/admin/fiscal-financiero' && 'bold'}>
-                  Fiscal | Financiero
-                </span>
-              </a>
-            </li>
+            {this.props.userLogged.email !== 'invitado@iasegestion.com' &&
+              <li>
+                <a href="/admin/fiscal-financiero" className={path === '/admin/fiscal-financiero' && 'primary-text'}>
+                  <i className={path === '/admin/fiscal-financiero' ? 'primary-text material-icons prefix' : 'material-icons prefix'}>
+                  content_copy
+                  </i>
+                  <span className={path === '/admin/fiscal-financiero' && 'bold'}>
+                    Fiscal | Financiero
+                  </span>
+                </a>
+              </li>
+            }
+
             {rol &&
               <li className="margin-top-30">
                 <a href="/admin/servicios" className={rol && (path === '/admin/servicios') && 'primary-text'}>

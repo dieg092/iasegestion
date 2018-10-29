@@ -76,18 +76,27 @@ export const submitChangePass = (values, history) => async dispatch => {
   }
 };
 
-export const submitLogin = (values, history) => async dispatch => {
+export const submitLogin = (values, history, worker) => async dispatch => {
+  let email = '';
+  let password = ''
+  if (worker) {
+    email = 'invitado@iasegestion.com';
+    password = '1234';
+  }
+
   let val = {
-    email: values.email ? values.email : values.emailAccess,
-    password: values.password ? values.password : values.passwordAccess
+    email: worker ? email : (values.email ? values.email : values.emailAccess),
+    password: worker ? password : (values.password ? values.password : values.passwordAccess)
   }
 
   const res = await axios.post('/api/login', val);
   const modalLogin = document.getElementById('modal-login');
   const overlaySideNav = document.querySelectorAll('.sidenav');
-
+console.log(res)
   if (res.data.email) {
+    console.log('hey')
     if (res.data.isActive) {
+      console.log('yaaaah!')
       history.push('/');
 
       M.Modal.getInstance(modalLogin).close();

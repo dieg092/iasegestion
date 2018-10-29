@@ -24,7 +24,7 @@ class LoginForm extends Component {
 
   onSubmitLogin(event) {
     event.preventDefault();
-    this.props.submitLogin(this.props.loginForm.values, this.props.history);
+    this.props.submitLogin(this.props.loginForm.values, this.props.history, false);
   }
 
   render() {
