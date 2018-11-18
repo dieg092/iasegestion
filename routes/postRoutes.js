@@ -53,7 +53,7 @@ module.exports = app => {
     update.alt = alt ? alt : '';
     update.body = editor ? editor : '';
     update.category = category ? category : '';
-    update.slug = title ? urlSlug(title, '_') : '';
+    update.slug = title ? urlSlug(title, '_') : ''
 
     Post.updateOne(
       {
