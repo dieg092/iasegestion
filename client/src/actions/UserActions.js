@@ -12,7 +12,7 @@ export const fetchUsers = (page, filters) => async dispatch => {
 };
 
 export const submitFilterUser = (values) => async dispatch => {
-  console.log(values);
+
 };
 
 export const userClicked = (user, history) => async dispatch => {

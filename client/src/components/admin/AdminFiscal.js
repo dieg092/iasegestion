@@ -22,7 +22,6 @@ class AdminFiscal extends Component {
   }
 
   onPaginationClick(page) {
-    console.log(this.props.filterFiscalsForm)
     this.props.fetchDocs(page, this.props.filterFiscalsForm.values)
   }
 

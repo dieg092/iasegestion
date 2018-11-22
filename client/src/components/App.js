@@ -35,7 +35,6 @@ import ListDocument from './admin/ListDocument';
 class App extends Component {
 
   componentDidMount() {
-    console.log(process.env.NODE_ENV)
     this.props.fetchUser();
   }
 
