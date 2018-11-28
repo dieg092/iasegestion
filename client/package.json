@@ -9,9 +9,7 @@
   },
   "browserslist": [
     "last 1 version",
-    "> 1%",
-    "maintained node versions",
-    "not dead"
+    "> 1%"
   ],
   "dependencies": {
     "axios": "^0.18.0",
