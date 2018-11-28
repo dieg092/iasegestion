@@ -26,8 +26,19 @@ if (cluster.isMaster) {
     cluster.fork();
   }
 }  else {
-  mongoose.Promise = global.Promise;
-  mongoose.connect(keys.mongoURI);
+
+
+  if (process.env.NODE_ENV !== 'production') {
+    mongoose.Promise = global.Promise;
+    mongoose.connect(keys.mongoURI);
+  } else {
+    mongoose.connect(keys.mongoURI, {
+      auth: {
+        user: keys.mongoUser,
+        password: keys.mongoPassword
+      }
+    });
+  }
 
   const app = express();
   app.use(bodyParser.json());

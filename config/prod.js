@@ -6,5 +6,7 @@ module.exports = {
   sendGridPass: process.env.SENDGRID_PASSWORD,
   bucket: process.env.BUCKET,
   accessKeyId: process.env.ACCESS_KEY_ID,
-  secretAccessKey: process.env.SECRET_ACCESS_KEY
+  secretAccessKey: process.env.SECRET_ACCESS_KEY,
+  mongoUser: process.env.MONGO_DB_USER,
+  mongoPassword: process.env.MONGO_DB_PASSWORD,
 };
