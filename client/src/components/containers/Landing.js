@@ -33,7 +33,7 @@ class Langing extends Component {
               image={CONSTANTS.URL.photo + service.mainPhoto}
               title={service.title}
               body={service.shortDescription}
-              link={service.body.length > 8 && '/servicios/' + service.slug}
+              link={service.body.length > 10  && '/servicios/' + service.slug}
             />
           </div>
       );

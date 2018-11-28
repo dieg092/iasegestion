@@ -27,9 +27,6 @@ if (cluster.isMaster) {
     cluster.fork();
   }
 }  else {
-  console.log(process.env.NODE_ENV)
-  console.log(keys.mongoURI)
-
   mongoose.Promise = global.Promise;
   mongoose.connect(keys.mongoURI);
 
@@ -66,8 +63,7 @@ if (cluster.isMaster) {
     })
   }
 
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => {
-    console.log(`Listening on port`, PORT);
-  });
+  const PORT = process.env.PORT || 9000;
+  app.listen(PORT, 'localhost');
+
 }
