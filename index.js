@@ -8,6 +8,7 @@ const compression = require('compression');
 const cluster = require('cluster');
 const os = require('os');
 const keys = require('./config/keys');
+require('dotenv').config();
 require('./models/Community');
 require('./models/Province');
 require('./models/Population');
@@ -26,19 +27,11 @@ if (cluster.isMaster) {
     cluster.fork();
   }
 }  else {
+  console.log(process.env.NODE_ENV)
+  console.log(keys.mongoURI)
 
-
-  if (process.env.NODE_ENV !== 'production') {
-    mongoose.Promise = global.Promise;
-    mongoose.connect(keys.mongoURI);
-  } else {
-    mongoose.connect(keys.mongoURI, {
-      auth: {
-        user: keys.mongoUser,
-        password: keys.mongoPassword
-      }
-    });
-  }
+  mongoose.Promise = global.Promise;
+  mongoose.connect(keys.mongoURI);
 
   const app = express();
   app.use(bodyParser.json());
