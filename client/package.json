@@ -7,8 +7,15 @@
       "target": "http://localhost:5000"
     }
   },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ],
   "dependencies": {
     "axios": "^0.18.0",
+    "browserslist": "^4.3.4",
     "concurrently": "^3.5.1",
     "jquery": "^3.2.1",
     "jquery-ui": "^1.12.1",
