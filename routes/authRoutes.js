@@ -65,9 +65,9 @@ module.exports = app => {
 
   app.post('/api/solicitud', async (req, res) => {
     const { emailRequest } = req.body;
-    console.log(emailRequest)
+
     const existingUser =  await User.findOne({ email : emailRequest.toLowerCase() });
-console.log(existingUser)
+
     if (existingUser) {
       res.statusMessage = "Correo ya en uso";
       return res.status(200).end(); //CAMBIAR ERROR
