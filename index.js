@@ -50,6 +50,9 @@ if (cluster.isMaster) {
   require('./routes/postRoutes')(app);
   require('./routes/documentRoutes')(app);
 
+
+  const PORT = process.env.PORT || 9000;
+
   if (process.env.NODE_ENV === 'production') {
     // Express will serve up production assets
     // like our main.js file, or main.css file!
@@ -61,9 +64,19 @@ if (cluster.isMaster) {
     app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
+    const privateKey = fs.readFileSync( './certificates/www.iasegestion.com/fullchain.pem' );
+    const certificate = fs.readFileSync( './certificates/www.iasegestion.com/privkey.pem' );
+
+    https.createServer({
+        key: privateKey,
+        cert: certificate
+    }, app).listen(port);
+
+  } else {
+    app.listen(PORT, 'localhost');
   }
 
-  const PORT = process.env.PORT || 9000;
-  app.listen(PORT, 'localhost');
+
+
 
 }

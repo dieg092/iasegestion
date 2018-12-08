@@ -25,7 +25,7 @@ export default function(state =INITIAL_STATE, action) {
     case SUBMIT_REQUEST_SUCCESS:
       return { ...state, emailRequest: action.payload, error: '' };
     case SUBMIT_REQUEST_ERROR:
-      return { ...state, emailRequest: action.payload, error: 'Correo en uso' };
+      return { ...state, emailRequest: action.payload, error: action.payload };
     case USER_LOGGED:
       return { ...state, userLogged: action.payload, errorLogin: '' };
     case USER_LOGGED_FAIL:

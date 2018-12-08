@@ -31,6 +31,8 @@
     "draftjs-to-html": "^0.8.4",
     "express": "^4.16.3",
     "html-to-draftjs": "^1.4.0",
+    "http": "0.0.0",
+    "https": "^1.0.0",
     "jquery": "^3.3.1",
     "localtunnel": "^1.9.0",
     "mongoose": "^5.1.2",
