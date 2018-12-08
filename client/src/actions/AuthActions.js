@@ -29,6 +29,7 @@ export const submitRequest = (values, history) => async dispatch => {
 
   const res = await axios.post('/api/solicitud', val)
     .then((res) => {
+        console.log(res)
       if (res.statusText === "OK") {
         const request = document.getElementById('modal-request');
         const clientAccess = document.getElementById('modal-client-access');
@@ -40,7 +41,7 @@ export const submitRequest = (values, history) => async dispatch => {
 
         dispatch({ type: SUBMIT_REQUEST_SUCCESS, payload: val.emailRequest });
       } else {
-        dispatch({ type: SUBMIT_REQUEST_ERROR, payload: val.emailRequest });
+        dispatch({ type: SUBMIT_REQUEST_ERROR, payload: res });
       }
     }).catch((err) => {
       console.log(err)
