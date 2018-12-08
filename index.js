@@ -65,8 +65,8 @@ if (cluster.isMaster) {
     app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
-    const privateKey = fs.readFileSync( './certificates/fullchain.pem' );
-    const certificate = fs.readFileSync( './certificates/privkey.pem' );
+    const privateKey = fs.readFileSync( 'certificates/fullchain.pem' );
+    const certificate = fs.readFileSync( 'certificates/privkey.pem' );
 
     https.createServer({
         key: privateKey,
