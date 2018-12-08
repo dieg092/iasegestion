@@ -4,6 +4,7 @@ const fs = require('fs');
 const cluster = require('cluster');
 const os = require('os');
 const app = require('./app');
+require('dotenv').config();
 
 const numCPUs = require('os').cpus().length;
 
