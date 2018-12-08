@@ -90,7 +90,6 @@ export const submitFiscal = (values, file, namePDF, history, edit, userId, docSe
   let documentNameValidation = false;
   let fileN = '';
   let folder = 'documents/' + userId ;
-console.log(values)
 
   if (file) {
     fileN = file.name;
