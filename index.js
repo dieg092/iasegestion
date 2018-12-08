@@ -65,8 +65,8 @@ if (cluster.isMaster) {
     app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
-    const privateKey = fs.readFileSync('../../../../letsencrypt/live/www.iasegestion.com/privkey.pem');
-    const certificate = fs.readFileSync('../../../../letsencrypt/live/www.iasegestion.com/fullchain.pem');
+    const privateKey = fs.readFileSync('../../../../etc/letsencrypt/live/www.iasegestion.com/privkey.pem');
+    const certificate = fs.readFileSync('../../../../etc/letsencrypt/live/www.iasegestion.com/fullchain.pem');
 
     https.createServer({
         key: privateKey,
