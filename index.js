@@ -24,6 +24,6 @@ if (cluster.isMaster) {
     }, app).listen(9445);
 
   } else {
-    http.createServer(app);
+    http.createServer(app).listen(9000);
   }
 }
