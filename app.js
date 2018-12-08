@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
+const helmet = require('helmet');
 const passport = require('passport');
 const flash = require('connect-flash');
 const compression = require('compression');
@@ -21,6 +22,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI);
 
 const app = express();
+app.use(require('helmet')());
 app.use(bodyParser.json());
 app.use(
   cookieSession({

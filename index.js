@@ -14,18 +14,18 @@ if (cluster.isMaster) {
   }
 }  else {
   const PORT = process.env.PORT || 9000;
-
+  const server = '';
   if (process.env.NODE_ENV === 'production') {
     const privateKey = fs.readFileSync('../../../../etc/letsencrypt/live/www.iasegestion.com/privkey.pem');
     const certificate = fs.readFileSync('../../../../etc/letsencrypt/live/www.iasegestion.com/fullchain.pem');
 
-    const server = https.createServer({
+    server = https.createServer({
         key: privateKey,
         cert: certificate
     }, app);
 
   } else {
-    const server = http.createServer(app);
+    server = http.createServer(app);
   }
   server.listen(PORT);
 }
