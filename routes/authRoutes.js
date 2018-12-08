@@ -65,81 +65,82 @@ module.exports = app => {
 
   app.post('/api/solicitud', async (req, res) => {
     const { emailRequest } = req.body;
+    console.log(emailRequest)
     const existingUser =  await User.findOne({ email : emailRequest.toLowerCase() });
-
+console.log(existingUser)
     if (existingUser) {
       res.statusMessage = "Correo ya en uso";
       return res.status(200).end(); //CAMBIAR ERROR
-    }
+    } else {
+      try {
+        let newUser = new User();
+        newUser.email = emailRequest.toLowerCase();
+        newUser._population = '123';
+        newUser.requestDate = Date.now();
+        newUser.save((err) => {
 
-    try {
-      let newUser = new User();
-      newUser.email = emailRequest.toLowerCase();
-      newUser._population = '123';
-      newUser.requestDate = Date.now();
-      newUser.save((err) => {
+          const cryptoEmail = crypto.createCipher('aes-128-cfb', keys.key)
+                                    .update(emailRequest.toString(), 'utf-8', 'hex');
 
-        const cryptoEmail = crypto.createCipher('aes-128-cfb', keys.key)
-                                  .update(emailRequest.toString(), 'utf-8', 'hex');
+          const token = new Token({ _userId: newUser._id, token: crypto.randomBytes(16).toString('hex') });
 
-        const token = new Token({ _userId: newUser._id, token: crypto.randomBytes(16).toString('hex') });
+          token.save((err) => {
+            if (err) { return res.status(500).send({ msg: err.message }); }
 
-        token.save((err) => {
-          if (err) { return res.status(500).send({ msg: err.message }); }
+            host = req.get('host');
+            linkConfirmar = "http://" + host + "/api/solicitud/" + token.token + '/' + cryptoEmail;
+            linkRegenerar = "http://" + host + "/api/regenerar/" + cryptoEmail;
+            mailOptions={
+              from: 'Iasegestión <informacion@iasegestion.com>',
+              to: emailRequest,
+              subject: 'Verificiación de Cuenta',
+              text: 'Verifica tu cuenta',
+              html: '<a href="' + linkConfirmar + '">Verifica tu cuenta</a> \n Si se ha expirado la verificación <a href="' + linkRegenerar + '">Regenerar correo de verificación</a>',
+            };
 
-          host = req.get('host');
-          linkConfirmar = "http://" + host + "/api/solicitud/" + token.token + '/' + cryptoEmail;
-          linkRegenerar = "http://" + host + "/api/regenerar/" + cryptoEmail;
-          mailOptions={
-            from: 'Iasegestión <informacion@iasegestion.com>',
-            to: emailRequest,
-            subject: 'Verificiación de Cuenta',
-            text: 'Verifica tu cuenta',
-            html: '<a href="' + linkConfirmar + '">Verifica tu cuenta</a> \n Si se ha expirado la verificación <a href="' + linkRegenerar + '">Regenerar correo de verificación</a>',
-          };
+            Mailer.newMail(mailOptions, req);
+          })
+        });
 
-          Mailer.newMail(mailOptions, req);
-        })
-      });
-
-      res.status(200).end();
-    } catch (err) {
-      res.status(422).send(err);
-    }
-  });
-
-  app.post('/api/solicitud/webhook', (req, res) => {
-    const p = new Path('/api/solicitud/:token/:cryptoEmail');
-
-    _.chain(req.body)
-      .map(({ email, url }) => {
-        const match = p.test(new URL(url).pathname);
-        if (match) {
-          return { email, token: match.token };
-        }
+        res.status(200).end();
+      } catch (err) {
+        res.status(422).send(err);
       }
-    )
-    .compact()
-    .uniqBy('email', 'token')
-    .each(({ email, token }) => {
-      User.updateOne(
-        {
-          'email': email,
-          'isVerified': false
-        },
-        {
-          $set: { 'isVerified': true }
-        }
-      ).exec((err, result) => {
-        if (!err) {
-          Token.deleteOne({ token: token }, (err, result) => {});
-        }
-      });
-    })
-    .value();
-
-    res.send({});
+    }
   });
+
+  // app.post('/api/solicitud/webhook', (req, res) => {
+  //   const p = new Path('/api/solicitud/:token/:cryptoEmail');
+  //
+  //   _.chain(req.body)
+  //     .map(({ email, url }) => {
+  //       const match = p.test(new URL(url).pathname);
+  //       if (match) {
+  //         return { email, token: match.token };
+  //       }
+  //     }
+  //   )
+  //   .compact()
+  //   .uniqBy('email', 'token')
+  //   .each(({ email, token }) => {
+  //     User.updateOne(
+  //       {
+  //         'email': email,
+  //         'isVerified': false
+  //       },
+  //       {
+  //         $set: { 'isVerified': true }
+  //       }
+  //     ).exec((err, result) => {
+  //       if (!err) {
+  //         Token.deleteOne({ token: token }, (err, result) => {});
+  //       }
+  //     });
+  //   })
+  //   .value();
+  //
+  //   res.send({});
+  // });
 
   app.get('/api/solicitud/:token/:cryptoEmail', (req, res) => {
     const url = req.originalUrl;
@@ -149,19 +150,34 @@ module.exports = app => {
     const email = crypto.createDecipher('aes-128-cfb', keys.key)
                         .update(cryptoEmail.toString(), 'hex', 'utf-8');
 
-    User.findOne({ email: email }, async (err, user) => {
-      if (user.isVerified) {
-        res.redirect('/solicitud/verificar');
-      } else {
-        Token.findOne({ token: token }, async (err, token) => {
-          if (token) {
+    Token.findOne({ token: token }, async (err, token) => {
+      if (token) {
+        User.findOne({ email: email }, async (err, user) => {
+
+          if (user.isVerified) {
             res.redirect('/solicitud/verificar');
           } else {
-            res.redirect('/api/regenerar/' + cryptoEmail);
+            User.updateOne(
+              {
+                'email': email,
+                'isVerified': false
+              },
+              {
+                $set: { 'isVerified': true }
+              }
+            ).exec((err, result) => {
+                Token.deleteOne({ token: token.token }, (err, result) => {
+                  if (!err) {
+                    res.redirect('/solicitud/verificar');
+                  }
+                });
+            });
           }
         });
+      } else {
+        res.redirect('/api/regenerar/' + cryptoEmail);
       }
-    })
+    });
   });
 
   app.get('/api/regenerar/:cryptoEmail', (req, res) => {
@@ -254,7 +270,7 @@ module.exports = app => {
     } catch (err) {
       res.statusMessage = "ERROR";
     }
-    
+
     res.status(200).end();
   });
 

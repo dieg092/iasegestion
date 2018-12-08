@@ -43,6 +43,10 @@ class FilterForm extends Component {
         event.preventDefault();
       },
       minLength: 2,
+      messages: {
+        noResults: '',
+        results: function() {}
+      }
     })
   }
 

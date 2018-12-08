@@ -84,18 +84,19 @@ export const deleteDoc = (doc, history) => async dispatch => {
 
 export const submitFiscal = (values, file, namePDF, history, edit, userId, docSelected) => async dispatch => {
   let message = 'Error al guardar';
-  const clientLastName = values.client.split(' ')[1];
+  const dni = values.client.split('- ')[1];
   let uploadConfig = '';
   let res = '';
   let documentNameValidation = false;
   let fileN = '';
   let folder = 'documents/' + userId ;
+console.log(values)
 
   if (file) {
     fileN = file.name;
     const fileName = fileN.split('.')[0].split('_')[0];
 
-    if (fileName === clientLastName) {
+    if (fileName === dni) {
       documentNameValidation = true;
 
 
@@ -109,9 +110,10 @@ export const submitFiscal = (values, file, namePDF, history, edit, userId, docSe
     }
   } else {
     const fileName = namePDF.split('.')[0].split('_')[0];
-    if (fileName === clientLastName) {
+    if (fileName === dni) {
       documentNameValidation = true
     }
+    console.log(fileName)
   }
 
  if (documentNameValidation) {
@@ -145,7 +147,7 @@ export const submitFiscal = (values, file, namePDF, history, edit, userId, docSe
    }
 
  } else {
-   message = 'El Primer Apellido del cliente debe coincidir con la Primera Palabra del nombre del fichero.';
+   message = 'El DNI/CIF del cliente debe de ser el primer campo del nombre del .pdf';
  }
 
  window.M.toast({html: message, classes: 'rounded'})

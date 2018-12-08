@@ -34,11 +34,12 @@ class FiscalForm extends Component {
   }
 
   handleInitialize() {
+    console.log(this.props.docSelected.client[0])
     const initData = {
       "type": this.props && this.props.docSelected && this.props.docSelected.type,
       "number": this.props && this.props.docSelected && this.props.docSelected.number,
       "documentName": this.props && this.props.docSelected && this.props.docSelected.name,
-      "client": this.props && this.props.docSelected && this.props.docSelected.client[0].name + ' ' + this.props.docSelected.client[0].lastName
+      "client": this.props && this.props.docSelected && this.props.docSelected.client[0].name + ' ' + this.props.docSelected.client[0].lastName + ' - ' + this.props.docSelected.client[0].nif
     };
     this.props.initialize(initData);
   }
@@ -134,6 +135,10 @@ class FiscalForm extends Component {
         event.preventDefault();
       },
       minLength: 2,
+      messages: {
+        noResults: '',
+        results: function() {}
+      }
     });
   }
 

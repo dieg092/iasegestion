@@ -8,9 +8,12 @@ const Token = mongoose.model('token');
 module.exports = {
   newMail: (mailOptions, req) => {
     let transporter = nodemailer.createTransport({
-      service: 'Sendgrid',
-      auth: { user: keys.sendGridUser,
-        pass: keys.sendGridPass
+      host: 'smtp.ionos.es',
+      port: 587,
+      secure: false,
+      auth: {
+        user: keys.userMail,
+        pass: keys.passMail
       }}
     );
 
