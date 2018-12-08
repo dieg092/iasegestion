@@ -14,7 +14,6 @@ if (cluster.isMaster) {
     cluster.fork();
   }
 }  else {
-  const PORT = process.env.PORT || 9000;
   if (process.env.NODE_ENV === 'production') {
     const privateKey = fs.readFileSync('../../../../etc/letsencrypt/live/www.iasegestion.com/privkey.pem');
     const certificate = fs.readFileSync('../../../../etc/letsencrypt/live/www.iasegestion.com/fullchain.pem');
