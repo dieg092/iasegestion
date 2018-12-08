@@ -7,7 +7,6 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const compression = require('compression');
 const keys = require('./config/keys');
-require('dotenv').config();
 require('./models/Community');
 require('./models/Province');
 require('./models/Population');
@@ -17,7 +16,7 @@ require('./models/Document');
 require('./models/User');
 require('./models/Token');
 require('./services/passport');
-console .log(keys)
+console.log(keys)
 mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI);
 
