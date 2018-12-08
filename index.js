@@ -9,6 +9,7 @@ const fs = require('fs');
 const compression = require('compression');
 const cluster = require('cluster');
 const os = require('os');
+const helmet = require('helmet');
 const keys = require('./config/keys');
 require('dotenv').config();
 require('./models/Community');
@@ -33,6 +34,7 @@ if (cluster.isMaster) {
   mongoose.connect(keys.mongoURI);
 
   const app = express();
+  app.use(helmet());
   app.use(bodyParser.json());
   app.use(
     cookieSession({
@@ -72,7 +74,7 @@ if (cluster.isMaster) {
     https.createServer({
         key: privateKey,
         cert: certificate
-    }, app).listen(PORT, 'localhost');
+    }, app).listen(PORT);
 
   } else {
     app.listen(PORT, 'localhost');

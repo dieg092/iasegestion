@@ -31,6 +31,7 @@
     "draftjs-to-html": "^0.8.4",
     "express": "^4.16.3",
     "fs": "0.0.1-security",
+    "helmet": "^3.15.0",
     "html-to-draftjs": "^1.4.0",
     "http": "0.0.0",
     "https": "^1.0.0",
