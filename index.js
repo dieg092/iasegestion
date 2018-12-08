@@ -72,7 +72,7 @@ if (cluster.isMaster) {
     https.createServer({
         key: privateKey,
         cert: certificate
-    }, app).listen(PORT);
+    }, app).listen(PORT, 'localhost');
 
   } else {
     app.listen(PORT, 'localhost');
