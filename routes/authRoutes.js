@@ -203,26 +203,30 @@ module.exports = app => {
   app.post('/api/recordar/:token', async (req, res) => {
     const token = await Token.findOne({ token: req.params.token});
     let update = {};
+    if (token) {
+      bcrypt.hash(req.body.contrasenaRemember, null, null, (err, hash) => {
+          update.password = hash;
 
-    bcrypt.hash(req.body.contrasenaRemember, null, null, (err, hash) => {
-        update.password = hash;
+          User.updateOne(
+            {
+              _id: token._userId
+            },
+              update
+          ).exec((err, result) => {
+            if (!err) {
+              Token.deleteOne({ token: req.params.token }, (err, result) => {
+                res.send('OK');
+              });
+            } else {
+              res.statusMessage = "ERROR";
+              res.send('ERROR');
+            }
+          });
+      });
+    } else {
+      res.redirect('/');
+    }
 
-        User.updateOne(
-          {
-            _id: token._userId
-          },
-            update
-        ).exec((err, result) => {
-          if (!err) {
-            Token.deleteOne({ token: req.params.token }, (err, result) => {
-              res.send('OK');
-            });
-          } else {
-            res.statusMessage = "ERROR";
-            res.send('ERROR');
-          }
-        });
-    });
   });
 
 
