@@ -72,6 +72,8 @@ module.exports = app => {
       res.send('CORREO EN USO');
     } else {
       try {
+        console.log(req.body)
+        console.log(email)
         let newUser = new User();
         newUser.email = emailRequest.toLowerCase();
         newUser._population = '123';
