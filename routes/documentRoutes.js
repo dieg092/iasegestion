@@ -32,7 +32,7 @@ module.exports = app => {
 
     delete query.page;
     delete query.filter;
-console.log(query)
+
     await Document.paginate(query, { page: page, limit: 30, sort: {date: -1}, populate: 'client'},(err, result) => {
       res.send(result);
     });

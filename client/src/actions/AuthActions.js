@@ -29,8 +29,8 @@ export const submitRequest = (values, history) => async dispatch => {
 
   const res = await axios.post('/api/solicitud', val)
     .then((res) => {
-      console.log(res)
-      if (res.statusText === "OK") {
+      console.log(res.data)
+      if (res.data === "OK") {
         const request = document.getElementById('modal-request');
         const clientAccess = document.getElementById('modal-client-access');
         const succesRequest = document.getElementById('modal-success-request');
