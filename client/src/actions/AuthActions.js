@@ -68,7 +68,7 @@ export const submitChangePass = (values, history) => async dispatch => {
     const token = history.location.pathname.split('/')[2];
     const res = await axios.post('/api/recordar/' + token, values);
 
-    if (res.statusText === "OK") {
+    if (res.data === "OK") {
        window.M.toast({html: 'Contraseña cambiada', classes: 'rounded'});
        history.push('/');
        dispatch({ type: USER_CHANGE_PASS_SUCCESS, payload: '' });

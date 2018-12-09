@@ -214,11 +214,13 @@ module.exports = app => {
             update
         ).exec((err, result) => {
           if (!err) {
-            Token.deleteOne({ token: req.params.token }, (err, result) => {});
+            Token.deleteOne({ token: req.params.token }, (err, result) => {
+              res.send('OK');
+            });
           } else {
             res.statusMessage = "ERROR";
+            res.send('ERROR');
           }
-          res.send({});
         });
     });
   });
