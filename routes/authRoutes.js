@@ -203,6 +203,7 @@ module.exports = app => {
   app.post('/api/recordar/:token', async (req, res) => {
     const token = await Token.findOne({ token: req.params.token});
     let update = {};
+    console.log(token)
     if (token) {
       bcrypt.hash(req.body.contrasenaRemember, null, null, (err, hash) => {
           update.password = hash;
@@ -213,6 +214,7 @@ module.exports = app => {
             },
               update
           ).exec((err, result) => {
+            co
             if (!err) {
               Token.deleteOne({ token: req.params.token }, (err, result) => {
                 res.send('OK');
