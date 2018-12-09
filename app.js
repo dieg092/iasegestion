@@ -16,7 +16,6 @@ require('./models/Document');
 require('./models/User');
 require('./models/Token');
 require('./services/passport');
-console.log(keys)
 mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI);
 

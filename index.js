@@ -17,7 +17,8 @@ if (cluster.isMaster) {
   if (process.env.NODE_ENV === 'production') {
     const privateKey = fs.readFileSync('../../../../etc/letsencrypt/live/www.iasegestion.com/privkey.pem');
     const certificate = fs.readFileSync('../../../../etc/letsencrypt/live/www.iasegestion.com/fullchain.pem');
-
+    console.log(privateKey);
+    console.log(certificate);
     https.createServer({
         key: privateKey,
         cert: certificate

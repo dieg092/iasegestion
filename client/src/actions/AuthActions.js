@@ -29,18 +29,19 @@ export const submitRequest = (values, history) => async dispatch => {
 
   const res = await axios.post('/api/solicitud', val)
     .then((res) => {
+      console.log(res)
       if (res.statusText === "OK") {
         const request = document.getElementById('modal-request');
         const clientAccess = document.getElementById('modal-client-access');
         const succesRequest = document.getElementById('modal-success-request');
 
         M.Modal.getInstance(request).close();
-          M.Modal.getInstance(clientAccess).close();
+        M.Modal.getInstance(clientAccess).close();
         M.Modal.getInstance(succesRequest).open();
 
         dispatch({ type: SUBMIT_REQUEST_SUCCESS, payload: val.emailRequest });
       } else {
-        dispatch({ type: SUBMIT_REQUEST_ERROR, payload: res.statusText });
+        dispatch({ type: SUBMIT_REQUEST_ERROR, payload: val.emailRequest });
       }
     }).catch((err) => {
       console.log(err)
