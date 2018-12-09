@@ -73,7 +73,8 @@ module.exports = app => {
     } else {
       try {
         console.log(req.body)
-        console.log(email)
+        console.log(emailRequest)
+        console.log(Date.now())
         let newUser = new User();
         newUser.email = emailRequest.toLowerCase();
         newUser._population = '123';
