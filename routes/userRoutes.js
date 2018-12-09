@@ -138,7 +138,6 @@ module.exports = app => {
           } else {
             res.send('OK');
           }
-          res.send('OK');
         } else {
           res.send('ERROR');
         }
