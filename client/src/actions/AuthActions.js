@@ -41,7 +41,7 @@ export const submitRequest = (values, history) => async dispatch => {
 
         dispatch({ type: SUBMIT_REQUEST_SUCCESS, payload: val.emailRequest });
       } else {
-        dispatch({ type: SUBMIT_REQUEST_ERROR, payload: val.emailRequest });
+        dispatch({ type: SUBMIT_REQUEST_ERROR, payload: 'Correo en uso' });
       }
     }).catch((err) => {
       console.log(err)

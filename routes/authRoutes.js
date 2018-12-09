@@ -101,7 +101,7 @@ module.exports = app => {
             Mailer.newMail(mailOptions, req);
           })
         });
-        res.send({'OK'})
+        res.send('OK')
       } catch (err) {
         res.status(422).send(err);
       }
