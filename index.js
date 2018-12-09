@@ -21,8 +21,8 @@ if (cluster.isMaster) {
     https.createServer({
         key: privateKey,
         cert: certificate
-    }, app).listen(9445);
-    http.createServer(app).listen(9000);
+    }, app).listen(9000);
+    //http.createServer(app).listen(9000);
 
   } else {
     http.createServer(app).listen(9000);
