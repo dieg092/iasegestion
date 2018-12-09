@@ -69,15 +69,17 @@ module.exports = app => {
     const existingUser =  await User.findOne({ email : emailRequest.toLowerCase() });
 
     if (existingUser) {
-      res.statusMessage = "Correo ya en uso";
-      return res.status(200).end(); //CAMBIAR ERROR
+      res.send('CORREO EN USO');
     } else {
       try {
         let newUser = new User();
         newUser.email = emailRequest.toLowerCase();
         newUser._population = '123';
         newUser.requestDate = Date.now();
-        newUser.save((err) => {
+        newUser.save((err, result) => {
+
+          console.log(result);
+          console.log(err);
 
           const cryptoEmail = crypto.createCipher('aes-128-cfb', keys.key)
                                     .update(emailRequest.toString(), 'utf-8', 'hex');
@@ -107,39 +109,6 @@ module.exports = app => {
       }
     }
   });
-
-  // app.post('/api/solicitud/webhook', (req, res) => {
-  //   const p = new Path('/api/solicitud/:token/:cryptoEmail');
-  //
-  //   _.chain(req.body)
-  //     .map(({ email, url }) => {
-  //       const match = p.test(new URL(url).pathname);
-  //       if (match) {
-  //         return { email, token: match.token };
-  //       }
-  //     }
-  //   )
-  //   .compact()
-  //   .uniqBy('email', 'token')
-  //   .each(({ email, token }) => {
-  //     User.updateOne(
-  //       {
-  //         'email': email,
-  //         'isVerified': false
-  //       },
-  //       {
-  //         $set: { 'isVerified': true }
-  //       }
-  //     ).exec((err, result) => {
-  //       if (!err) {
-  //         Token.deleteOne({ token: token }, (err, result) => {});
-  //       }
-  //     });
-  //   })
-  //   .value();
-  //
-  //   res.send({});
-  // });
 
   app.get('/api/solicitud/:token/:cryptoEmail', (req, res) => {
     const url = req.originalUrl;
