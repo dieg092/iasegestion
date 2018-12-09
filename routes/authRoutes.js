@@ -78,7 +78,7 @@ module.exports = app => {
         let newUser = new User();
         newUser.email = emailRequest.toLowerCase();
         newUser._population = '123';
-        newUser.requestDate = Date.now();
+        newUser.requestDate = Date.now()
         newUser.save((err, result) => {
 
           console.log(result);

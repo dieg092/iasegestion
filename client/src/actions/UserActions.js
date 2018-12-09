@@ -76,11 +76,11 @@ export const submitUser = (userId, values) => async dispatch => {
 
   const res = await axios.post('/api/usuarios/' + userId, values);
 
-  if (res.statusText === 'OK') {
+  if (res.data === 'OK') {
     message = 'Usuario Guardado';
-  } else if (res.statusText === 'OK CORREO') {
+  } else if (res.data === 'OK CORREO') {
     message = 'Usuario Guardado y Correo con Claves Enviado';
-  } else  if (res.statusText === 'OK NO CORREO') {
+  } else  if (res.data === 'OK NO CORREO') {
     message = 'Usuario Guardado. ERROR al enviar el Correo con las Claves';
   }
 

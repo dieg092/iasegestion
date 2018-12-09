@@ -131,17 +131,16 @@ module.exports = app => {
               };
 
               Mailer.newMail(mailOptions, req);
-              res.statusMessage = "OK CORREO";
+              res.send('OK CORREO');
             } catch (e) {
-              res.statusMessage = "OK NO CORREO";
+              res.send('OK NO CORREO');
             }
           } else {
-            res.statusMessage = "OK";
+            res.send('OK');
           }
-          res.send({});
+          res.send('OK');
         } else {
-          res.statusMessage = "ERROR";
-          res.send({});
+          res.send('ERROR');
         }
       });
     });
