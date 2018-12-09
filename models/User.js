@@ -7,7 +7,7 @@ const userSchema = new Schema({
     // _id: Number,
 	  name: String,
     lastName: String,
-    nif: { type: String, unique: true },
+    nif: { type: String, unique: true, default: null },
     email: { type: String, unique: true },
     password: String,
     isVerified: { type: Boolean, default: false },
