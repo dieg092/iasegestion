@@ -14,16 +14,17 @@ if (cluster.isMaster) {
     cluster.fork();
   }
 }  else {
-  // if (process.env.NODE_ENV === 'production') {
-  //   const privateKey = fs.readFileSync('../../../../etc/letsencrypt/live/www.iasegestion.com/privkey.pem');
-  //   const certificate = fs.readFileSync('../../../../etc/letsencrypt/live/www.iasegestion.com/fullchain.pem');
-  //
-  //   https.createServer({
-  //       key: privateKey,
-  //       cert: certificate
-  //   }, app).listen(9445);
-  //
-  // } else {
+  if (process.env.NODE_ENV === 'production') {
+    // const privateKey = fs.readFileSync('../../../../etc/letsencrypt/live/www.iasegestion.com/privkey.pem');
+    // const certificate = fs.readFileSync('../../../../etc/letsencrypt/live/www.iasegestion.com/fullchain.pem');
+    //
+    // https.createServer({
+    //     key: privateKey,
+    //     cert: certificate
+    // }, app).listen(9445);
     http.createServer(app).listen(9000);
-  // }
+
+  } else {
+    http.createServer(app).listen(9000);
+  }
 }
