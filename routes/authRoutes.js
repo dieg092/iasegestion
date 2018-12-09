@@ -214,7 +214,6 @@ module.exports = app => {
             },
               update
           ).exec((err, result) => {
-            co
             if (!err) {
               Token.deleteOne({ token: req.params.token }, (err, result) => {
                 res.send('OK');
