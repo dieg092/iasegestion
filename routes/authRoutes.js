@@ -36,7 +36,7 @@ module.exports = app => {
     //¿Existe el usuario?
     const { emailRemember } = req.body;
     const existingUser =  await User.findOne({ email : emailRemember.toLowerCase() });
-
+    console.log(existingUser)
     if (!existingUser) {
       res.send('Correo no encontrado');
     } else {
