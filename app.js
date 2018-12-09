@@ -16,8 +16,11 @@ require('./models/Document');
 require('./models/User');
 require('./models/Token');
 require('./services/passport');
-mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongoURI);
+if (keys.mongoURI) {
+  mongoose.Promise = global.Promise;
+  mongoose.connect(keys.mongoURI);
+}
+
 
 const app = express();
 app.use(require('helmet')());
