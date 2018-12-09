@@ -204,7 +204,7 @@ module.exports = app => {
     const token = await Token.findOne({ token: req.params.token});
     let update = {};
     console.log(token)
-    if (token) {
+    if (token !== null) {
       bcrypt.hash(req.body.contrasenaRemember, null, null, (err, hash) => {
           update.password = hash;
 
