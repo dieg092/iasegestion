@@ -54,7 +54,7 @@ export const submitRemember = (values, history) => async dispatch => {
   const remember = document.getElementById('modal-remember');
   const succesRemember = document.getElementById('modal-success-remember');
 
-  if (res.statusText === "OK") {
+  if (res.data === "OK") {
      M.Modal.getInstance(remember).close();
      M.Modal.getInstance(succesRemember).open();
      dispatch({ type: USER_REMEMBER_SUCCESS, payload: values.emailRemember });

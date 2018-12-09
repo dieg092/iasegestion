@@ -38,8 +38,7 @@ module.exports = app => {
     const existingUser =  await User.findOne({ email : emailRemember.toLowerCase() });
 
     if (!existingUser) {
-      res.statusMessage = "Correo no encontrado";
-      return res.status(200).end(); //CAMBIAR ERROR
+      res.send('Correo no encontrado');
     } else {
       const token = new Token({ _userId: existingUser._id, token: crypto.randomBytes(16).toString('hex') });
 
@@ -58,7 +57,7 @@ module.exports = app => {
 
         Mailer.newMail(mailOptions, req);
       })
-      res.status(200).end();
+      res.send('OK');
     }
     //Emvoar correo con Link con token
   });
