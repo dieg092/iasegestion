@@ -123,7 +123,7 @@ module.exports = app => {
           if (!user[0].password) {
             try {
               mailOptions={
-                from: 'Iasegestion <informacion@iasegestion.com>',
+                from: 'informacion@iasegestion.com',
                 to: user[0].email,
                 subject: 'Cuenta Activada (Claves de Acceso)',
                 text: 'Bienvenido a la plataforma de iasegestion.com, aquí debajo tienes tus claves de acceso:',
@@ -179,7 +179,7 @@ module.exports = app => {
         if (!err) {
           try {
             mailOptions={
-              from: 'Iasegestión <informacion@iasegestion.com>',
+              from: 'informacion@iasegestion.com',
               to: user[0].email,
               subject: 'Cuenta Activada (Claves de Acceso)',
               text: 'Bienvenido a la plataforma de iasegestion.com, aquí debajo tienes tus claves de acceso:',
@@ -187,14 +187,12 @@ module.exports = app => {
             };
 
             Mailer.newMail(mailOptions, req);
-            res.statusMessage = "OK CORREO";
+            res.send('OK CORREO')
           } catch (e) {
-            res.statusMessage = "OK NO CORREO";
+            res.send('OK NO CORREO')
           }
-          res.send({});
         } else {
-          res.statusMessage = "ERROR";
-          res.send({});
+          res.send('ERROR');
         }
       });
     });
