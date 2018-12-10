@@ -4,8 +4,8 @@ const requireLogin = require('../middlewares/requireLogin');
 const keys = require('../config/keys');
 
 const s3 = new AWS.S3({
-  accessKeyId: keys.accessKeyId,
-  secretAccessKey: keys.secretAccessKey,
+  accessKeyId: 'AKIAIHPBEY6KAANHN6XA',
+  secretAccessKey: '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',
   region: 'eu-west-3'
 });
 
@@ -21,6 +21,7 @@ module.exports = app => {
         Key: key
       },
       (err, url) => {
+        console.log(err)
         res.send({ key, url })
       }
     );

@@ -234,7 +234,7 @@ module.exports = app => {
     const { nameContact, emailContact, message } = req.body;
 
     mailOptions={
-      from: 'informacion@iasegestion.com',
+      from: emailContact,
       to: 'informacion@iasegestion.com',
       subject: nameContact + ' quiere contactar contigo',
       text: message,
