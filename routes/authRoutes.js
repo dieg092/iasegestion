@@ -238,7 +238,7 @@ module.exports = app => {
       to: 'informacion@iasegestion.com',
       subject: nameContact + ' quiere contactar contigo',
       text: message,
-      html: '<p>'+ message + '</p>',
+      html: '<p>'+ message + '</p>' + '<p> Contacto:'+ emailContact + '</p>' ,
     };
 
     try {
