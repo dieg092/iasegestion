@@ -45,6 +45,7 @@ module.exports = app => {
   });
 
   app.post('/api/docs/:slugDocument', requireLogin, async (req, res) => {
+    console.log('hola')
     const { name, number, pdf, type, client, namePDF } = req.body;
 
     const document = await Document.find({ slug: req.params.slugDocument });

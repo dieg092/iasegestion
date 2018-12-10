@@ -124,7 +124,7 @@ export const submitFiscal = (values, file, namePDF, history, edit, userId, docSe
      namePDF: fileN,
      client: userId
    }
-
+   console.log(allValues)
    if (edit) {
      res = await axios.post('/api/docs/' + history.location.pathname.split('/')[3], allValues);
    } else {
