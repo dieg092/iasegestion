@@ -38,8 +38,11 @@ module.exports = app => {
         Key: key
       },
       (err, data) => {
-        console.log(err)
-        res.send({ data });
+        if (!err) {
+          res.send('OK');
+        } else {
+          res.send('ERROR');
+        }
       }
     );
   });
