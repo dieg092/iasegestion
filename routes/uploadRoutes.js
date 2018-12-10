@@ -38,6 +38,7 @@ module.exports = app => {
         Key: key
       },
       (err, data) => {
+        console.log(data)
         if (!err) {
           res.send('OK');
         } else {
