@@ -3,9 +3,11 @@ const uuid = require('uuid/v1');
 const requireLogin = require('../middlewares/requireLogin');
 const keys = require('../config/keys');
 
+console.log(keys.accessKeyId)
+console.log(keys.secretAccessKey)
 const s3 = new AWS.S3({
-  accessKeyId: 'AKIAIHPBEY6KAANHN6XA',
-  secretAccessKey: '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',
+  accessKeyId: keys.accessKeyId,
+  secretAccessKey: keys.secretAccessKey,
   region: 'eu-west-3'
 });
 
