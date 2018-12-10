@@ -43,7 +43,7 @@ export const deleteService = (service, history) => async dispatch => {
   });
   const deleteMainImage = await axios.delete('/api/delete?key=' + service.mainPhoto);
 
-  if (deleteMainImage.statusText === 'OK') {
+  if (deleteMainImage.data === 'OK') {
     const res = await axios.delete('/api/service/' + service._id);
 
     if (res.data !== 'ERROR') {

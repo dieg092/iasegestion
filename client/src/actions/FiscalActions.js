@@ -62,7 +62,7 @@ export const deleteDoc = (doc, history) => async dispatch => {
 
   const deletePDF = await axios.delete('/api/delete?key=' + doc.pdf);
 
-  if (deletePDF.statusText === 'OK') {
+  if (deletePDF.data === 'OK') {
     const res = await axios.delete('/api/docs/' + doc._id);
 
     if (res.data !== 'ERROR') {
