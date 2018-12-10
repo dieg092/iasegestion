@@ -45,11 +45,9 @@ module.exports = app => {
   });
 
   app.post('/api/docs/:slugDocument', requireLogin, async (req, res) => {
-    console.log('hola')
     const { name, number, pdf, type, client, namePDF } = req.body;
 
     const document = await Document.find({ slug: req.params.slugDocument });
-    console.log(req.params.slugDocument)
     let update = {};
     update.name = name ? name : '';
     if (pdf) {
@@ -62,18 +60,19 @@ module.exports = app => {
     }
     update.number = number ? number : '';
     update.slug = name ? urlSlug(name, '_') : '';
-    console.log(update)
+
     Document.updateOne(
       {
         slug: req.params.slugDocument
       },
         update
     ).exec((err, result) => {
-      console.log(err)
       if (err && err.name === 'ValidationError') {
         res.send('ERROR NAME');
       } else if (err) {
         res.send('ERROR');
+      } else {
+        res.send('OK');
       }
     });
   });

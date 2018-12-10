@@ -125,12 +125,13 @@ export const submitFiscal = (values, file, namePDF, history, edit, userId, docSe
      client: userId
    }
    console.log(allValues)
+   console.log(history.location.pathname.split('/')[3])
    if (edit) {
      res = await axios.post('/api/docs/' + history.location.pathname.split('/')[3], allValues);
    } else {
      res = await axios.post('/api/docs', allValues);
    }
-
+   console.log(res)
 
    if (res.data !== 'ERROR' && res.data !== 'ERROR NAME') {
      if (edit) {
