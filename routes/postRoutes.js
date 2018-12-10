@@ -89,6 +89,7 @@ module.exports = app => {
   });
 
   app.delete('/api/post/:idPost', requireLogin, async (req, res) => {
+    console.log(req.params)
     Post.deleteOne(
       {
         _id: req.params.idPost
