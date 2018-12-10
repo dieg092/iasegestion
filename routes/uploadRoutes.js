@@ -37,7 +37,10 @@ module.exports = app => {
         Bucket: keys.bucket,
         Key: key
       },
-      (err, data) => res.send({ data })
+      (err, data) => {
+        console.log(err)
+        res.send({ data });
+      }
     );
   });
 };
