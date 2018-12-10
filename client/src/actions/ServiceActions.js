@@ -46,7 +46,7 @@ export const deleteService = (service, history) => async dispatch => {
   if (deleteMainImage.statusText === 'OK') {
     const res = await axios.delete('/api/service/' + service._id);
 
-    if (res.statusText !== 'ERROR') {
+    if (res.data !== 'ERROR') {
       message = 'Servicio eliminado';
       window.history.back();
       let modal = document.getElementById('modal-delete-service');
@@ -134,7 +134,7 @@ export const submitService = (values, file, mainPhoto, editor, history, edit, se
   }
 
 
-  if (res.statusText !== 'ERROR') {
+  if (res.data !== 'ERROR') {
     if (edit) {
       message = 'Servicio editado';
     } else {

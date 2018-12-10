@@ -238,7 +238,8 @@ img {
   margin-left: 50px; }
 
 .card-height {
-  min-height: 288px !important; }
+  min-height: 288px !important;
+  max-height: 288px !important; }
 
 .height-adjust {
   height: 39.86em; }

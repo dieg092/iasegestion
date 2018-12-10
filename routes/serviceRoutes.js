@@ -46,17 +46,15 @@ module.exports = app => {
       newService.body = editor;
       newService.slug = urlSlug(title, '_');
       newService.save((err) => {
-        if (err) {
-            res.statusMessage = "ERROR";
+        if (!err) {
+          res.send('OK');
+        } else {
+          res.send('ERROR');
         }
-
       });
     } catch (err) {
-      res.statusMessage = "ERROR";
+      res.send('ERROR');
     }
-
-    res.send({});
-
   });
 
   app.post('/api/service/:slugService', requireLogin, async (req, res) => {
@@ -82,14 +80,15 @@ module.exports = app => {
         },
           update
       ).exec((err, result) => {
-        if (err) {
-          res.statusMessage = "ERROR";
+        if (!err) {
+          res.send('OK');
+        } else {
+          res.send('ERROR');
         }
       });
     } catch (err) {
-        res.statusMessage = "ERROR";
+        res.send('ERROR');
     }
-    res.send({});
   });
 
   app.delete('/api/service/:idService', requireLogin, async (req, res) => {
@@ -101,8 +100,7 @@ module.exports = app => {
       if (!err) {
         res.send({});
       } else {
-        res.statusMessage = "ERROR";
-        res.send({});
+        res.send('ERROR');
       }
     });
   });

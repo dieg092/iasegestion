@@ -81,7 +81,7 @@ export const submitContact = (values) => async dispatch => {
   const success = 'Mensaje enviado';
   const fail = 'Error al enviar el mensaje, Intentelo de nuevo';
 
-  if (res.request.statusText === "OK") {
+  if (res.data === "OK") {
     window.M.toast({html: success, classes: 'rounded'});
   } else {
     window.M.toast({html: fail, classes: 'rounded'});

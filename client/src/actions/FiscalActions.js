@@ -65,7 +65,7 @@ export const deleteDoc = (doc, history) => async dispatch => {
   if (deletePDF.statusText === 'OK') {
     const res = await axios.delete('/api/docs/' + doc._id);
 
-    if (res.statusText !== 'ERROR') {
+    if (res.data !== 'ERROR') {
       message = 'Documento eliminado';
 
       let modal = document.getElementById('modal-delete-doc');
@@ -132,7 +132,7 @@ export const submitFiscal = (values, file, namePDF, history, edit, userId, docSe
    }
 
 
-   if (res.statusText !== 'ERROR'  && res.statusText !== 'ERROR NAME') {
+   if (res.data !== 'ERROR' && res.data !== 'ERROR NAME') {
      if (edit) {
        message = 'Documento editado';
      } else {
@@ -141,7 +141,7 @@ export const submitFiscal = (values, file, namePDF, history, edit, userId, docSe
 
      history.goBack();
    }
-   if (res.statusText === 'ERROR NAME') {
+   if (res.data === 'ERROR NAME') {
      message = 'Nombre ya en uso.';
    }
 

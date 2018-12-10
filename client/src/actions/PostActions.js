@@ -48,7 +48,7 @@ export const deletePost = (post, history) => async dispatch => {
   if (deleteMainImage.statusText === 'OK') {
     const res = await axios.delete('/api/post/' + post._id);
 
-    if (res.statusText !== 'ERROR') {
+    if (res.data !== 'ERROR') {
       message = 'Post eliminado';
       let modal = document.getElementById('modal-delete-post');
 
@@ -80,7 +80,7 @@ export const submitPost = (values, file, mainPhoto, editor, history, edit, postS
 
   if (file) {
     uploadConfig = await axios.get('/api/upload?folder=posts');
-
+    console.log(uploadConfig)
     await axios.put(uploadConfig.data.url, file, {
       headers: {
         'Content-Type': file.type
@@ -128,7 +128,7 @@ export const submitPost = (values, file, mainPhoto, editor, history, edit, postS
     res = await axios.post('/api/post', allValues);
   }
 
-  if (res.statusText !== 'ERROR') {
+  if (res.data === 'OK') {
     if (edit) {
       message = 'Post editado';
     } else {

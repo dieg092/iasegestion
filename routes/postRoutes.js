@@ -62,10 +62,9 @@ module.exports = app => {
         update
     ).exec((err, result) => {
       if (!err) {
-        res.send({});
+        res.send('OK');
       } else {
-        res.statusMessage = "ERROR";
-        res.send({});
+        res.send('ERROR');
       }
     });
   });
@@ -81,10 +80,11 @@ module.exports = app => {
     newPost.body = editor;
     newPost.slug = urlSlug(title, '_');
     newPost.save((err) => {
-      if (err) {
-          res.statusMessage = "ERROR";
+      if (!err) {
+          res.send('OK');
+      } else {
+        res.send('ERROR');
       }
-      res.send({});
     });
   });
 
@@ -97,8 +97,7 @@ module.exports = app => {
       if (!err) {
         res.send({});
       } else {
-        res.statusMessage = "ERROR";
-        res.send({});
+        res.send('ERROR');
       }
     });
   });

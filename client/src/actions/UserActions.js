@@ -96,9 +96,9 @@ export const regeneratePass = (userId) => async dispatch => {
   let message = 'ERROR al generar y al enviar el Correo con las Claves';
   const resendModal = document.getElementById('modal-resend-pass');
 
-  if (res.statusText === 'OK CORREO') {
+  if (res.data === 'OK CORREO') {
     message = 'Contraseña generada y Correo con Claves Enviado';
-  } else  if (res.statusText === 'OK NO CORREO') {
+  } else  if (res.data === 'OK NO CORREO') {
     message = 'Contraseña generada. ERROR al enviar el Correo con las Claves';
   }
   M.Modal.getInstance(resendModal).close();

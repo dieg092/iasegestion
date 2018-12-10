@@ -219,7 +219,6 @@ module.exports = app => {
                 res.send('OK');
               });
             } else {
-              res.statusMessage = "ERROR";
               res.send('ERROR');
             }
           });
@@ -244,11 +243,10 @@ module.exports = app => {
 
     try {
       Mailer.newMail(mailOptions, req);
+      res.send("OK")
     } catch (err) {
-      res.statusMessage = "ERROR";
+      res.send("ERROR");
     }
-
-    res.status(200).end();
   });
 
 }

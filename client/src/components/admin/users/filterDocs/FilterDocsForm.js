@@ -24,7 +24,11 @@ class FilterDocsForm extends Component {
   }
 
   onSubmitFilerFiscal() {
-    this.props.filterFiscalsForm.values.client = this.props.userSelected._id;
+    console.log(this.props.filterFiscalsForm)
+    if (this.props.filterFiscalsForm.values.client) {
+      this.props.filterFiscalsForm.values.client = this.props.userSelected._id;
+    }
+
     this.props.fetchDocs(1, this.props.filterFiscalsForm.values);
 
     $("#target option:first").attr('selected','selected');

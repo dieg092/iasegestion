@@ -70,11 +70,10 @@ module.exports = app => {
     ).exec((err, result) => {
 
       if (err && err.name === 'ValidationError') {
-        res.statusMessage = "ERROR NAME";
+        res.send('ERROR NAME');
       } else if (err) {
-        res.statusMessage = "ERROR";
+        res.send('ERROR');
       }
-      res.send({});
     });
   });
 
@@ -91,11 +90,12 @@ module.exports = app => {
     newDocument.client = client;
     newDocument.save((err) => {
       if (err && err.name === 'ValidationError') {
-        res.statusMessage = "ERROR NAME";
+        res.send('ERROR NAME');
       } else if (err) {
-        res.statusMessage = "ERROR";
+        res.send('ERROR');
+      } else {
+        res.send('OK');
       }
-      res.send({});
     });
   });
 
@@ -106,10 +106,9 @@ module.exports = app => {
       },
     ).exec((err, result) => {
       if (!err) {
-        res.send({});
+        res.send('OK');
       } else {
-        res.statusMessage = "ERROR";
-        res.send({});
+        res.send('ERROR');
       }
     });
   });

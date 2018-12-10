@@ -16,7 +16,7 @@ class AdminServices extends Component {
   renderServices() {
     return this.props.services.map(service => {
       return (
-        <div key={service._id} className="col xl4" onClick={() => {this.onServiceClick(service)}}>
+        <div key={service._id} className="col xl4 pointer" onClick={() => {this.onServiceClick(service)}}>
           <CardImageh1h2
             image={CONSTANTS.URL.photo + service.mainPhoto}
             title={service.title}
