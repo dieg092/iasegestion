@@ -45,7 +45,7 @@ export const deletePost = (post, history) => async dispatch => {
   })
   const deleteMainImage = await axios.delete('/api/delete?key=' + post.mainPhoto);
 
-  if (deleteMainImage.statusText === 'OK') {
+  if (deleteMainImage.data === 'OK') {
     const res = await axios.delete('/api/post/' + post._id);
 
     if (res.data !== 'ERROR') {

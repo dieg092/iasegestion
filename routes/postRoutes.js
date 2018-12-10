@@ -95,7 +95,7 @@ module.exports = app => {
       },
     ).exec((err, result) => {
       if (!err) {
-        res.send({});
+        res.send('OK');
       } else {
         res.send('ERROR');
       }
