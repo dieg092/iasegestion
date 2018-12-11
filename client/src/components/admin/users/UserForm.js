@@ -157,7 +157,7 @@ function validate(values) {
   const errors = {};
 
   errors.nif = validateID(values.nif || '') ? false : 'Formato NIF/CIF Erroneo';
-  console.log(errors.nif)
+
   _.each(formFields, ({ name, noValueError }) => {
     if (!values[name]) {
       errors[name] = noValueError;

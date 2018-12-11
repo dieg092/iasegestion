@@ -81,7 +81,7 @@ module.exports = app => {
 
   app.post('/api/docs', requireLogin, async (req, res) => {
     const { name, number, pdf, type, client, namePDF } = req.body;
-    console.log(type)
+
     let newDocument = new Document();
     newDocument.name = name;
     newDocument.type = type;
@@ -100,16 +100,12 @@ module.exports = app => {
         if (user) {
           console.log(type)
           try {
-            if (!type || type === '') {
-              type = 'Impuesto'
-            }
-            console.log(type)
             mailOptions={
               from: 'informacion@iasegestion.com',
               to: user[0].email,
               subject: 'Nuevo ' + type + ' disponible',
               text: 'Tienes un nuevo ' + type + ' a tu disposición.',
-              html: '<div><p>Tienes un nuevo documentoa tu disposición.</p> <p>Abrir documento: <a href="' + keys.urlBucket + pdf + '">' + name + '</a></p><div>Recuerda que puedes encontrar todos tus documentos en <a href="www.iasegestion.com">www.iasegestion.com</a></div></div>',
+              html: '<div><p>Tienes un nuevo ' + type + ' a su disposición.</p> <p>Abrir documento: <a href="' + keys.urlBucket + pdf + '">' + name + '</a></p><div>Recuerda que puedes encontrar todos tus documentos en <a href="www.iasegestion.com">www.iasegestion.com</a></div></div>',
             };
 
             Mailer.newMail(mailOptions, req);
