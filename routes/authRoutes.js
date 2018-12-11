@@ -36,7 +36,7 @@ module.exports = app => {
     //¿Existe el usuario?
     const { emailRemember } = req.body;
     const existingUser =  await User.findOne({ email : emailRemember.toLowerCase() });
-    console.log(existingUser)
+
     if (!existingUser) {
       res.send('Correo no encontrado');
     } else {
@@ -71,18 +71,11 @@ module.exports = app => {
       res.send('CORREO EN USO');
     } else {
       try {
-        console.log(req.body)
-        console.log(emailRequest)
-        console.log(Date.now())
         let newUser = new User();
         newUser.email = emailRequest.toLowerCase();
         newUser._population = '123';
         newUser.requestDate = Date.now()
         newUser.save((err, result) => {
-
-          console.log(result);
-          console.log(err);
-
           const cryptoEmail = crypto.createCipher('aes-128-cfb', keys.key)
                                     .update(emailRequest.toString(), 'utf-8', 'hex');
 
@@ -203,7 +196,7 @@ module.exports = app => {
   app.post('/api/recordar/:token', async (req, res) => {
     const token = await Token.findOne({ token: req.params.token});
     let update = {};
-    console.log(token)
+  
     if (token !== null) {
       bcrypt.hash(req.body.contrasenaRemember, null, null, (err, hash) => {
           update.password = hash;

@@ -3,8 +3,10 @@ const bcrypt = require('bcrypt-nodejs');
 const urlSlug = require('url-slug');
 const keys = require('../config/keys');
 const requireLogin = require('../middlewares/requireLogin');
+const Mailer = require('../services/Mailer');
 
 const Document = mongoose.model('document');
+const User = mongoose.model('user');
 
 module.exports = app => {
 
@@ -88,13 +90,29 @@ module.exports = app => {
     newDocument.number = number;
     newDocument.slug = urlSlug(name, '_');
     newDocument.client = client;
-    newDocument.save((err) => {
+    newDocument.save(async (err) => {
       if (err && err.name === 'ValidationError') {
         res.send('ERROR NAME');
       } else if (err) {
         res.send('ERROR');
       } else {
-        res.send('OK');
+        const user = await User.find({ _id: client });
+        if (user) {
+          try {
+            mailOptions={
+              from: 'informacion@iasegestion.com',
+              to: user[0].email,
+              subject: 'Nuevo documento ' + type,
+              text: 'Tienes un nuevo ' + type + ' a tu disposición.',
+              html: '<div><p>Tienes un nuevo documentoa tu disposición.</p> <p>Abrir documento: <a href="' + keys.urlBucket + pdf + '">' + name + '</a></p><div>Recuerda que puedes encontrar todos tus documentos en <a href="www.iasegestion.com">www.iasegestion.com</a></div></div>',
+            };
+
+            Mailer.newMail(mailOptions, req);
+            res.send('OK');
+          } catch (e) {
+            res.send('OK NO CORREO');
+          }
+        }
       }
     });
   });

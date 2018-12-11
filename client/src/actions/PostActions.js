@@ -80,7 +80,6 @@ export const submitPost = (values, file, mainPhoto, editor, history, edit, postS
 
   if (file) {
     uploadConfig = await axios.get('/api/upload?folder=posts');
-    console.log(uploadConfig)
     await axios.put(uploadConfig.data.url, file, {
       headers: {
         'Content-Type': file.type

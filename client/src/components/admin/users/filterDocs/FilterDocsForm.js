@@ -24,7 +24,6 @@ class FilterDocsForm extends Component {
   }
 
   onSubmitFilerFiscal() {
-    console.log(this.props.filterFiscalsForm)
     if (this.props.filterFiscalsForm.values.client) {
       this.props.filterFiscalsForm.values.client = this.props.userSelected._id;
     }

@@ -16,6 +16,9 @@ module.exports = app => {
     if (query.email) {
       query.email = { $regex: '.*' + req.query.email + '.*' };
     }
+    if (query.businessName) {
+      query.businessName = { $regex: '.*' + req.query.businessName + '.*' };
+    }
     if (query.name) {
       query.name = { $regex: '.*' + req.query.name + '.*' };
     }
@@ -25,10 +28,13 @@ module.exports = app => {
     if (query.nif) {
       query.nif = { $regex: '.*' + req.query.nif + '.*' };
     }
-    if (query.gender === 'Femeníno') {
-      query.gender = true;
-    } else if (query.gender === 'Masculino') {
-      query.gender = false;
+    if (query.phone) {
+      query.phone = { $regex: '.*' + req.query.phone + '.*' };
+    }
+    if (query.type === 'Persona física') {
+      query.type = true;
+    } else if (query.type === 'Perosna jurídica') {
+      query.type = false;
     }
     if (query.rol === 'Administrador') {
       query.rol = true;
@@ -67,13 +73,14 @@ module.exports = app => {
       $or: [
         {name:  { $regex: '.*' + req.query.name + '.*' }},
         {lastName:  { $regex: '.*' + req.query.lastName + '.*' }},
+        {businessName:  { $regex: '.*' + req.query.businessName + '.*' }},
         {nif: { $regex: '.*' + req.query.nif + '.*' }}
       ]
     }, (err, result) => {
         let array = [];
         result.forEach((user) => {
           let data = {};
-          data.label = (user.name ? user.name + ' ' : '' + '  ') + (user.lastName ? user.lastName + ' ' : '') +  (user.nif ?  ' - ' + user.nif : '');
+          data.label = (user.name ? user.name + ' ' : '' + '  ') + (user.lastName ? user.lastName + ' ' : '') + (user.nif ?  ' - ' + user.nif : '') + (user.businessName ? ' | ' + user.businessName : '');
           data.value = user._id
           array.push(data);
         });
@@ -106,10 +113,12 @@ module.exports = app => {
       if (!user[0].password) {
         update.password = hash;
       }
+      update.businessName = req.body.businessName ? req.body.businessName : '';
       update.name = req.body.name ? req.body.name : '';
       update.lastName = req.body.lastName ? req.body.lastName : '';
       update.nif = req.body.nif ? req.body.nif : '';
-      update.gender = req.body.gender ? req.body.gender : false;
+      update.phone = req.body.phone ? req.body.phone : '';
+      update.type = req.body.type ? req.body.type : false;
       update.rol = req.body.rol ? req.body.rol : false;
       update._population = req.body.populationId ? req.body.populationId : '';
 

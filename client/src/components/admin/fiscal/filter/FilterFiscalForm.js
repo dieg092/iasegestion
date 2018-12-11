@@ -73,6 +73,7 @@ class FilterFiscalForm extends Component {
              email: request.term,
              name: request.term,
              lastName: request.term,
+             businessName: request.term,
              nif: request.term
            },
            success: ( data ) => {

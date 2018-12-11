@@ -33,10 +33,12 @@ class UserForm extends Component {
 
     const initData = {
       "email": this.props && this.props.userSelected && this.props.userSelected.email,
+      "businessName": this.props && this.props.userSelected && this.props.userSelected.businessName,
       "name": this.props && this.props.userSelected && this.props.userSelected.name,
       "lastName": this.props && this.props.userSelected && this.props.userSelected.lastName,
       "nif": this.props && this.props.userSelected && this.props.userSelected.nif,
-      "gender": this.props && this.props.userSelected && this.props.userSelected.gender,
+      "phone": this.props && this.props.userSelected && this.props.userSelected.phone,
+      "type": this.props && this.props.userSelected && this.props.userSelected.type,
       "birthDate": this.props && this.props.userSelected && this.props.userSelected.birthDate,
       "population": this.props && this.props.userSelected && population && population.label ? population.label : '',
       "rol": this.props && this.props.userSelected && this.props.userSelected.rol

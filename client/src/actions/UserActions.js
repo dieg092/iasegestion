@@ -111,8 +111,11 @@ export const filterUsers = (filters) => {
   if (filters && filters.email) {
     filter = filter + '&email=' + filters.email;
   }
-  if (filters && filters.gender) {
-    filter = filter + '&gender=' + filters.gender;
+  if (filters && filters.type) {
+    filter = filter + '&type=' + filters.type;
+  }
+  if (filters && filters.businessName) {
+    filter = filter + '&businessName=' + filters.businessName;
   }
   if (filters && filters.name) {
     filter = filter + '&name=' + filters.name;
@@ -122,6 +125,9 @@ export const filterUsers = (filters) => {
   }
   if (filters && filters.nif) {
     filter = filter + '&nif=' + filters.nif;
+  }
+  if (filters && filters.phone) {
+    filter = filter + '&phone=' + filters.phone;
   }
   if (filters && filters.rol) {
     filter = filter + '&rol=' + filters.rol;

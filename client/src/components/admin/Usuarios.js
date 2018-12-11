@@ -31,7 +31,9 @@ class Usuarios extends Component {
           <td>{user.email}</td>
           <td>{user.name}</td>
           <td>{user.lastName}</td>
+          <td>{user.businessName}</td>
           <td>{user.nif}</td>
+          <td>{user.phone}</td>
           <td>{population && population.value !== '123' ? population.label : (population && population.label ? '-' : '-')}</td>
           <td>{user.isVerified ? 'Si' : 'No'}</td>
           <td>{user.isActive ?
@@ -72,7 +74,9 @@ class Usuarios extends Component {
                     <th>Correo</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
+                    <th>Empresa</th>
                     <th>NIF/CIF</th>
+                    <th>Teléfono</th>
                     <th>Población</th>
                     <th>Verificado</th>
                     <th>Activado</th>

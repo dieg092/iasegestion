@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { FETCH_DOCS, DOC_CREATED, DOC_CLICKED, DOC_DELETED, TYPEDOC_CLICKED, DOC_SELECTED_CLEAN } from './types';
 import M from "materialize-css/dist/js/materialize.min.js";
+import validateID from '../utils/validateID';
 
 export const fetchDocs = (page, filters) => async dispatch => {
   const filter = filterDocs(filters);
@@ -84,77 +85,78 @@ export const deleteDoc = (doc, history) => async dispatch => {
 
 export const submitFiscal = (values, file, namePDF, history, edit, userId, docSelected) => async dispatch => {
   let message = 'Error al guardar';
-  const dni = values.client.split('- ')[1];
+  const dni = values.client.split('- ')[1] ? values.client.split('- ')[1].split(' | ')[0] : null;
   let uploadConfig = '';
   let res = '';
   let documentNameValidation = false;
   let fileN = '';
   let folder = 'documents/' + userId ;
 
-  if (file) {
-    fileN = file.name;
-    const fileName = fileN.split('.')[0].split('_')[0];
+  if (dni && validateID(dni)) {
+    if (file) {
+      fileN = file.name;
+      const fileName = fileN.split('.')[0].split('_')[0];
+      if (fileName === dni) {
+        documentNameValidation = true;
 
-    if (fileName === dni) {
-      documentNameValidation = true;
+        uploadConfig = await axios.get('/api/upload?folder=' + folder + '&type=application/pdf');
 
-
-      uploadConfig = await axios.get('/api/upload?folder=' + folder + '&type=application/pdf');
-
-      await axios.put(uploadConfig.data.url, file, {
-        headers: {
-          'Content-Type': file.type
-        }
-      });
+        await axios.put(uploadConfig.data.url, file, {
+          headers: {
+            'Content-Type': file.type
+          }
+        });
+      }
+    } else {
+      const fileName = namePDF.split('.')[0].split('_')[0];
+      if (fileName === dni) {
+        documentNameValidation = true
+      }
     }
-  } else {
-    const fileName = namePDF.split('.')[0].split('_')[0];
-    if (fileName === dni) {
-      documentNameValidation = true
-    }
-    console.log(fileName)
-  }
 
- if (documentNameValidation) {
-   const allValues = {
-     name: values.documentName,
-     number: values.number ? values.number : '',
-     type: values.type ? values.type : 'Impuesto',
-     pdf: uploadConfig.data && uploadConfig.data.key ? uploadConfig.data.key : '',
-     namePDF: fileN,
-     client: userId
-   }
-   console.log(allValues)
-   console.log(history.location.pathname.split('/')[3])
-   if (edit) {
-     res = await axios.post('/api/docs/' + history.location.pathname.split('/')[3], allValues);
-   } else {
-     res = await axios.post('/api/docs', allValues);
-   }
-   console.log(res)
-
-   if (res.data !== 'ERROR' && res.data !== 'ERROR NAME') {
-     if (edit) {
-       message = 'Documento editado';
-     } else {
-       message = 'Documento creado';
+    if (documentNameValidation) {
+      const allValues = {
+        name: values.documentName,
+        number: values.number ? values.number : '',
+        type: values.type ? values.type : 'Impuesto',
+        pdf: uploadConfig.data && uploadConfig.data.key ? uploadConfig.data.key : '',
+        namePDF: fileN,
+        client: userId
      }
 
-     history.goBack();
-   }
-   if (res.data === 'ERROR NAME') {
-     message = 'Nombre ya en uso.';
-   }
+     if (edit) {
+       res = await axios.post('/api/docs/' + history.location.pathname.split('/')[3], allValues);
+     } else {
+       res = await axios.post('/api/docs', allValues);
+     }
 
- } else {
-   message = 'El DNI/CIF del cliente debe de ser el primer campo del nombre del .pdf';
- }
+     if (res.data !== 'ERROR' && res.data !== 'ERROR NAME') {
+        if (edit) {
+          message = 'Documento editado';
+        } else {
+         message = 'Documento creado';
+        }
 
- window.M.toast({html: message, classes: 'rounded'})
+        history.goBack();
+     }
+     if (res.data === 'ERROR NAME') {
+       message = 'Nombre ya en uso.';
+     }
+
+     } else {
+       message = 'El DNI/CIF del cliente debe de ser el primer campo del nombre del .pdf';
+     }
+
+  } else {
+    message = 'Campo Cliente Incorrecto';
+  }
+
+  window.M.toast({html: message, classes: 'rounded'})
 
   dispatch({
     type: DOC_CREATED
   });
+
 }
 
 
