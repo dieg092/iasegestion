@@ -17,7 +17,7 @@ module.exports = app => {
 
   app.get('/api/service/:slugService', async (req, res) => {
     const service = await Service.find({ slug: req.params.slugService});
-    res.set('Cache-Control', 'public, max-age=31557600');
+    res.set('Cache-Control', 'public, max-age=86400');
     res.send(service);
   });
 
@@ -29,7 +29,7 @@ module.exports = app => {
 
   app.get('/api/services/favourite', async (req, res) => {
     const services = await Service.find({ important: true }).limit(3);
-    res.set('Cache-Control', 'public, max-age=31557600');
+    res.set('Cache-Control', 'public, max-age=86400');
     res.send(services);
   });
 

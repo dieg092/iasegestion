@@ -34,7 +34,7 @@ module.exports = app => {
 
   app.get('/api/post/others/:slugPost', async (req, res) => {
     const post = await Post.find().where('slug').ne(req.params.slugPost).limit(3).sort({date: -1});
-    res.set('Cache-Control', 'public, max-age=31557600');
+    res.set('Cache-Control', 'public, max-age=86400');
     res.send(post);
   });
 
