@@ -45,7 +45,7 @@ class ContactForm extends Component {
 function validate(values) {
   const errors = {};
 
-  errors.recipients = validateEmail(values.recipients || '');
+  errors.emailContact = validateEmail(values.emailContact || '');
 
   _.each(formFields, ({ name, noValueError }) => {
     if (!values[name]) {

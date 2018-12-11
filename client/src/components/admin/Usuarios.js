@@ -19,32 +19,34 @@ class Usuarios extends Component {
 
   renderUsers() {
     return this.props.users.map(user => {
-      const population = POPULATION.find((element) => {
-        if (element.value === user._population) {
-          return element.label;
-        }
-        return null;
-      });
+      if (user.email !== 'invitado@iasegestion.com') {
+        const population = POPULATION.find((element) => {
+          if (element.value === user._population) {
+            return element.label;
+          }
+          return null;
+        });
 
-      return (
-        <tr key={user.email} onClick={() => {this.onUserClick(user)}}>
-          <td>{user.email}</td>
-          <td>{user.name}</td>
-          <td>{user.lastName}</td>
-          <td>{user.businessName}</td>
-          <td>{user.nif}</td>
-          <td>{user.phone}</td>
-          <td>{population && population.value !== '123' ? population.label : (population && population.label ? '-' : '-')}</td>
-          <td>{user.isVerified ? 'Si' : 'No'}</td>
-          <td>{user.isActive ?
-                <span className="new badge green" data-badge-caption={'ACTIVADO'}></span>
-                :
-                <span className="new badge red" data-badge-caption={'DESACTIVADO'}></span>
-              }
-          </td>
-          <td>{new Date(user.requestDate).toLocaleDateString()}</td>
-        </tr>
-      );
+        return (
+          <tr key={user.email} onClick={() => {this.onUserClick(user)}}>
+            <td>{user.email}</td>
+            <td>{user.name}</td>
+            <td>{user.lastName}</td>
+            <td>{user.businessName}</td>
+            <td>{user.nif}</td>
+            <td>{user.phone}</td>
+            <td>{population && population.value !== '123' ? population.label : (population && population.label ? '-' : '-')}</td>
+            <td>{user.isVerified ? 'Si' : 'No'}</td>
+            <td>{user.isActive ?
+                  <span className="new badge green" data-badge-caption={'ACTIVADO'}></span>
+                  :
+                  <span className="new badge red" data-badge-caption={'DESACTIVADO'}></span>
+                }
+            </td>
+            <td>{new Date(user.requestDate).toLocaleDateString()}</td>
+          </tr>
+        );
+      }
     });
   }
 

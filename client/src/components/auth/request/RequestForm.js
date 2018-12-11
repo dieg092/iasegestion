@@ -84,6 +84,7 @@ function validate(values) {
   const errors = {};
 
   errors.emailRequest = validateEmail(values.emailRequest || '');
+  errors.emailRequestAccess = validateEmail(values.emailRequestAccess || '');
 
   _.each(formFields, ({ name, noValueError }) => {
     if (!values[name]) {

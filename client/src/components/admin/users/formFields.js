@@ -3,7 +3,7 @@ export default [
   { label: 'Empresa', name: 'businessName', type: 'text', options: null },
   { label: 'Adminsitrador', name: 'name', type: 'text', options: null },
   { label: 'Apellidos', name: 'lastName', type: 'text', noValueError: null, options: null },
-  { label: 'NIF/CIF', name: 'nif', type: 'text', noValueError: 'Campo NIF/CIF vacío', options: null },
+  { label: 'NIF/CIF', name: 'nif', type: 'text', noValueError: 'Campo NIF/CIF vacío', options: null, invalidNifError: 'Formato NIF/CIF erróneo' },
   { label: 'Personalidad jurídica', name: 'type', type: 'checkbox', noValueError: null, options: ['Persona física', 'Persona jurídica'] },
   { label: 'Teléfono', name: 'phone', type: 'text', options: null },
   { label: 'Fecha de nacimiento', name: 'birthDate', type: 'date', noValueError: null, options: null },

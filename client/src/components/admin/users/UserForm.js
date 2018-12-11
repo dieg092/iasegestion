@@ -11,6 +11,7 @@ import AuthField from './AuthField';
 import formFields from './formFields';
 import * as actions from '../../../actions';
 import { POPULATION } from '../../../utils/population';
+import validateID from '../../../utils/validateID';
 
 window.jQuery = $;
 
@@ -130,16 +131,20 @@ class UserForm extends Component {
                     Cancelar
                   </Link>
                 </div>
-                <div className="col s12 l3 right">
-                  <button type="submit" className="btn teal btn-flat waves-effect waves-light white-text no-uppercase margin-top-15">
-                    Guardar
-                  </button>
-                </div>
-                <div className="col s12 l6 right">
-                  <button type="button" data-target="modal-resend-pass" className="btn amber darken-1 waves-effect waves-light btn-flat white-text no-uppercase margin-top-15 modal-trigger">
-                    Regenerar y reenviar Claves
-                  </button>
-                </div>
+                {this.props.userSelected.email !== 'invitado@iasegestion.com' &&
+                  <div>
+                    <div className="col s12 l3 right">
+                      <button type="submit" className="btn teal btn-flat waves-effect waves-light white-text no-uppercase margin-top-15">
+                        Guardar
+                      </button>
+                    </div>
+                    <div className="col s12 l6 right">
+                      <button type="button" data-target="modal-resend-pass" className="btn amber darken-1 waves-effect waves-light btn-flat white-text no-uppercase margin-top-15 modal-trigger">
+                        Regenerar y reenviar Claves
+                      </button>
+                    </div>
+                  </div>
+                }
               </div>
             </div>
           </div>
@@ -151,6 +156,8 @@ class UserForm extends Component {
 function validate(values) {
   const errors = {};
 
+  errors.nif = validateID(values.nif || '') ? false : 'Formato NIF/CIF Erroneo';
+  console.log(errors.nif)
   _.each(formFields, ({ name, noValueError }) => {
     if (!values[name]) {
       errors[name] = noValueError;

@@ -50,7 +50,9 @@ class LoginForm extends Component {
 
 function validate(values) {
   const errors = {};
-  errors.recipients = validateEmail(values.recipients || '');
+
+  errors.email = validateEmail(values.email || '');
+  errors.emailAccess = validateEmail(values.emailAccess || '');
 
   _.each(formFields, ({ name, noValueError }) => {
     if (!values[name]) {
