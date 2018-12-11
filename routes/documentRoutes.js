@@ -108,7 +108,7 @@ module.exports = app => {
               to: user[0].email,
               subject: type + ' disponible',
               text: 'Tiene' + gender + type + ' a tu disposición.',
-              html: '<div><p>Tiene' + gende + type + ' a su disposición.</p> <p>Abrir documento: <a href="' + keys.urlBucket + pdf + '">' + name + '</a></p><div>Recuerda que puedes encontrar todos tus documentos en <a href="www.iasegestion.com">www.iasegestion.com</a></div></div>',
+              html: '<div><p>Tiene' + gender + type + ' a su disposición.</p> <p>Abrir documento: <a href="' + keys.urlBucket + pdf + '">' + name + '</a></p><div>Recuerda que puedes encontrar todos tus documentos en <a href="www.iasegestion.com">www.iasegestion.com</a></div></div>',
             };
 
             Mailer.newMail(mailOptions, req);
