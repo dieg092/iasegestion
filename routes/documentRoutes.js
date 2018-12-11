@@ -99,7 +99,7 @@ module.exports = app => {
         const user = await User.find({ _id: client });
         let gender = ' un nuevo ';
         if (user) {
-          if (type === 'Cuenta de explotacion') {
+          if (type === 'Cuenta de explotación') {
             gender = ' una nueva '
           }
           try {

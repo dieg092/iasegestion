@@ -5,7 +5,7 @@ module.exports = {
   },
   DOCUMENT_TYPE: {
     'Balance': 'Balance',
-    'Cuenta de explotacion': 'Cuenta de explotación',
+    'Cuenta de explotación': 'Cuenta de explotación',
     'Informe': 'Informe'
   },
   URL: {
