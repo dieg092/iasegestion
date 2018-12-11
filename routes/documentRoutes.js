@@ -97,15 +97,18 @@ module.exports = app => {
         res.send('ERROR');
       } else {
         const user = await User.find({ _id: client });
+        let gender = ' un nuevo ';
         if (user) {
-          console.log(type)
+          if (type === 'Cuenta de explotacion') {
+            gender = ' una nueva '
+          }
           try {
             mailOptions={
               from: 'informacion@iasegestion.com',
               to: user[0].email,
               subject: 'Nuevo ' + type + ' disponible',
-              text: 'Tienes un nuevo ' + type + ' a tu disposición.',
-              html: '<div><p>Tienes un nuevo ' + type + ' a su disposición.</p> <p>Abrir documento: <a href="' + keys.urlBucket + pdf + '">' + name + '</a></p><div>Recuerda que puedes encontrar todos tus documentos en <a href="www.iasegestion.com">www.iasegestion.com</a></div></div>',
+              text: 'Tiene' + gender + type + ' a tu disposición.',
+              html: '<div><p>Tiene un nuevo ' + type + ' a su disposición.</p> <p>Abrir documento: <a href="' + keys.urlBucket + pdf + '">' + name + '</a></p><div>Recuerda que puedes encontrar todos tus documentos en <a href="www.iasegestion.com">www.iasegestion.com</a></div></div>',
             };
 
             Mailer.newMail(mailOptions, req);
