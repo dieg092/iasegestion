@@ -18,6 +18,7 @@ class ModalSuccessRemember extends Component {
               <div className="card-content margin-top-28">
                 <p className="margin-bottom-20 font-20-custom margin-top-0">Hemos enviado un email de regeneración de contraseña a <span className="teal-text">{this.props.emailRemember}</span></p>
                 <p className="margin-bottom-20 font-20-custom margin-top-28">Revise su bandeja de entrada y haga click en {"\"Regenerar contraseña\""}.</p>
+                <p className="margin-bottom-20 font-20-custom margin-top-28">Si no le aparece en la bandeja de entrada en unos minutos, puede rebisar la bandeja de Spam</p>
               </div>
             </div>
           </div>

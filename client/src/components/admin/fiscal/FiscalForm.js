@@ -48,7 +48,7 @@ class FiscalForm extends Component {
       // "type": this.props && this.props.docSelected && this.props.docSelected.type,
       // "number": this.props && this.props.docSelected && this.props.docSelected.number,
       // "documentName": this.props && this.props.docSelected && this.props.docSelected.name,
-      "client": this.props && this.props.userSelected && this.props.userSelected.name + ' ' + this.props.userSelected.lastName
+      "client": this.props && this.props.userSelected && this.props.userSelected.name + ' ' + this.props.userSelected.lastName+ ' - ' + this.props.docSelected.client[0].nif + (this.props.docSelected.client[0].businessName ? ' | ' + this.props.docSelected.client[0].businessName : '')
     };
     this.props.initialize(initData);
   }
