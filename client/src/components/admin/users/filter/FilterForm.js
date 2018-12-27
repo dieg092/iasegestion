@@ -58,7 +58,7 @@ class FilterForm extends Component {
               <div className="card-content">
                 <div className="col s12 margin-top-20 ">
                 <div></div>
-                  {this.renderFields()}
+                {this.renderFields()}
                 </div>
                 {this.loadPopulations()}
               </div>

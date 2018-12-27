@@ -10,7 +10,10 @@ const User = mongoose.model('user');
 
 module.exports = app => {
   app.get('/api/usuarios', requireLogin, async (req, res) => {
+    const { email, businessName, name, lastName, nif, phone, type, rol, isActive, isVerified } = req.query
     let query = req.query;
+    let des = {};
+
     const page = parseInt(req.query.page);
 
     if (query.email) {
@@ -44,7 +47,8 @@ module.exports = app => {
     if (query.isActive === 'Activado') {
       query.isActive = true;
     } else if (query.isActive === 'Desactivado') {
-      query.isActive = false;
+      delete query.isActive;
+      des = { $or: [{ isActive: false }, { isActive: null }] };
     }
     if (query.isVerified === 'Si') {
       query.isVerified = true;
@@ -55,9 +59,13 @@ module.exports = app => {
     delete query.callback;
     delete query.page;
     delete query._;
-    await User.paginate(query, { page: page, limit: 30, sort: {email: 1}},(err, result) => {
+
+    const q = { $and: [ query, des ] }
+
+    await User.paginate(q, { page: page, limit: 30, sort: {email: 1}},(err, result) => {
       res.send(result);
     });
+
   });
 
 

@@ -131,7 +131,7 @@ class UserForm extends Component {
                     Cancelar
                   </Link>
                 </div>
-                {this.props.userSelected.email !== 'invitado@iasegestion.com' &&
+                {this.props.userSelected && this.props.userSelected.email !== 'invitado@iasegestion.com' &&
                   <div>
                     <div className="col s12 l3 right">
                       <button type="submit" className="btn teal btn-flat waves-effect waves-light white-text no-uppercase margin-top-15">
