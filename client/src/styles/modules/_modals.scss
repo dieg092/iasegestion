@@ -26,6 +26,16 @@
   }
 }
 
+#client-access {
+  .modal {
+    height: 10000px !important;
+    width: 70% !important;
+    max-height: 95% !important;
+    top: 2.5% !important;
+  }
+}
+
+
 
 @media screen and (max-width: 668px) {
   #login, #request, #success-request, #resend-pass, #remember, #client-access {

@@ -41,6 +41,7 @@ require('./routes/uploadRoutes')(app);
 require('./routes/serviceRoutes')(app);
 require('./routes/postRoutes')(app);
 require('./routes/documentRoutes')(app);
+require('./routes/pdfRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets

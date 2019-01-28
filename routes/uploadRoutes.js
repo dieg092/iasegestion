@@ -10,7 +10,7 @@ const s3 = new AWS.S3({
 });
 
 module.exports = app => {
-  app.get('/api/upload', requireLogin, (req, res) => {
+  app.get('/api/upload', (req, res) => {
     const extension = req.query.type ? '.pdf' : '.jpeg';
     const key = `${req.query.folder}/${uuid()}` + extension;
     s3.getSignedUrl(
@@ -29,7 +29,6 @@ module.exports = app => {
 
   app.delete('/api/delete', requireLogin, (req, res) => {
     const key = `${req.query.key}`;
-
     s3.deleteObject(
       {
         Bucket: keys.bucket,

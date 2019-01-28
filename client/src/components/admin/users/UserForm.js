@@ -11,7 +11,9 @@ import AuthField from './AuthField';
 import formFields from './formFields';
 import * as actions from '../../../actions';
 import { POPULATION } from '../../../utils/population';
+import CONSTANTS from '../../../utils/constants';
 import validateID from '../../../utils/validateID';
+
 
 window.jQuery = $;
 
@@ -122,6 +124,30 @@ class UserForm extends Component {
                 <p className="col xl8 l12 m12 s12 underline resizeTitle titleUser">{this.props.userSelected && this.props.userSelected.email}</p>
                 <div className="col s12 margin-top-20">
                   {this.props.userSelected && this.renderFields()}
+                  <div className="input-field">
+                     <label>PDF Firma Digital</label>
+                  </div>
+                  {this.props.userSelected && this.props.userSelected.digitalSignature ?
+                    <div className="left margin-top-50 row col s12">
+                      <div className="col s5">
+                        <a target="_blank" href={CONSTANTS.URL.photo + this.props.userSelected.digitalSignature}>
+                           <img src="/images/icono-pdf.png" alt="pdf" className="responsive-img" style={{ maxWidth: '90px' }} />
+                        </a>
+                      </div>
+                      <div className="col s7">
+                        <button type="button" data-target="modal-delete-signature" className="btn red btn-flat waves-effect waves-light white-text no-uppercase col s12 modal-trigger">
+                          Eliminar (No Firmado)
+                        </button>
+                        <button type="button" data-target="modal-delete-user" className="btn red btn-flat waves-effect waves-light white-text no-uppercase col s12 margin-top-15 modal-trigger">
+                          Eliminar (Usuario)
+                        </button>
+                      </div>
+                    </div>
+                  :
+                    <div className="margin-top-50">
+                      <p className="red-text">NO TIENE PDF FIRMADO</p>
+                    </div>
+                  }
                 </div>
                 {this.loadPopulations()}
               </div>
@@ -138,6 +164,14 @@ class UserForm extends Component {
                         Guardar
                       </button>
                     </div>
+                    {this.props.userSelected && !this.props.userSelected.digitalSignature &&
+                      <div className="col s12 l6 right">
+                        <button type="button" data-target="modal-resend-access" className="btn amber darken-1 waves-effect waves-light btn-flat white-text no-uppercase margin-top-15 modal-trigger">
+                          Reenviar Solicitud Acceso
+                        </button>
+                      </div>
+                    }
+
                     <div className="col s12 l6 right">
                       <button type="button" data-target="modal-resend-pass" className="btn amber darken-1 waves-effect waves-light btn-flat white-text no-uppercase margin-top-15 modal-trigger">
                         Regenerar y reenviar Claves

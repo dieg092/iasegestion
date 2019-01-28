@@ -9,5 +9,6 @@ module.exports = {
   secretAccessKey: process.env.SECRET_ACCESS_KEY,
   mongoUser: process.env.MONGO_DB_USER,
   mongoPassword: process.env.MONGO_DB_PASSWORD,
-  urlBucket: process.env.URL_BUCKET
+  urlBucket: process.env.URL_BUCKET,
+  path: process.env.PATH
 };

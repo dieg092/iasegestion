@@ -17,23 +17,38 @@ module.exports = {
       }}
     );
 
-    var options = {
+    let options = {
       from: mailOptions.from,
       to: mailOptions.to,
       subject: mailOptions.subject,
       text: mailOptions.text,
       html: mailOptions.html
-    };
+    }
 
+    if (mailOptions.fileName) {
+      options = {
+        from: mailOptions.from,
+        to: mailOptions.to,
+        subject: mailOptions.subject,
+        text: mailOptions.text,
+        html: mailOptions.html,
+        attachments: [{
+              filename: mailOptions.fileName ? mailOptions.fileName : '' ,
+              content: mailOptions.attachment ? mailOptions.attachment : '',
+              encoding: 'base64'
+          }]
+      };
+    }
 
     transporter.sendMail(options, (error, info) => {
       if (error) {
-          return console.log(error);
+          return 'ERROR';
       }
+
       console.log('Message sent: %s', info.messageId);
       // Preview only available when sending through an Ethereal account
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-
+      return 'OK';
       // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
       // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
     });

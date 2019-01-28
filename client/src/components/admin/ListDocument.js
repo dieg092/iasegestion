@@ -61,7 +61,6 @@ class ListDocument extends Component {
   }
 
   render() {
-
     return (
       <div className="admin-container">
         <div className="row admin-margin-container">

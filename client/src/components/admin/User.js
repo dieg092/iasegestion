@@ -7,6 +7,9 @@ import axios from 'axios';
 import AdminFiscal from './AdminFiscal';
 import UserForm from './users/UserForm';
 import ModalResendPass from './users/ModalResendPass';
+import ModalNoDigitalSignature from './users/ModalNoDigitalSignature';
+import ModalInvalidData from './users/ModalInvalidData';
+import ModalResendAccess from './users/ModalResendAccess';
 import * as actions from '../../actions';
 
 class User extends Component {
@@ -46,6 +49,9 @@ class User extends Component {
                 <div>
                   <UserForm />
                   <ModalResendPass />
+                  <ModalNoDigitalSignature />
+                  <ModalInvalidData />
+                  <ModalResendAccess />
                   <div className="margin-top-20" style={{ borderTop: '1px solid black' }}>
                     <AdminFiscal />
                   </div>

@@ -34,7 +34,6 @@ class FiscalForm extends Component {
   }
 
   handleInitialize() {
-    console.log(this.props.docSelected)
     const initData = {
       "type": this.props && this.props.docSelected && this.props.docSelected.type,
       "number": this.props && this.props.docSelected && this.props.docSelected.number,

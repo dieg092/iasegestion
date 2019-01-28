@@ -11,7 +11,7 @@ import Post from './containers/Post';
 import Philosophy from './containers/Philosophy';
 import AboutUs from './containers/AboutUs';
 import Contact from './containers/Contact';
-import Verify from './containers/RequestSuccess';
+import DigitalFirm from './containers/DigitalFirm';
 import Resend from './containers/RequestResend';
 import NotFound from './containers/NotFound';
 import ChangePass from './auth/rememberPass/changePass/ChangePassForm';
@@ -59,7 +59,7 @@ class App extends Component {
                 <Route exact path="/blog" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Blog />)))} />
                 <Route exact path="/blog/:namePost" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Post />)))} />
                 <Route exact path="/terminos" render={() => (this.props.userLogged && this.props.userLogged.rol ? ( <Redirect to="/admin/usuarios"/> ) : (this.props.userLogged && !this.props.userLogged.rol ? ( <Redirect to="/laboral"/> ) : ( <Conditions />)))} />
-                <Route exact path="/solicitud/verificar" render={() => (this.props.userLogged ? ( <Redirect to="/admin/usuarios"/> ) : ( <Verify />))} />
+                <Route exact path="/solicitud/firmar/:userId/:token" render={() => (this.props.userLogged ? ( <Redirect to="/admin/usuarios"/> ) : ( <DigitalFirm />))} />
                 <Route exact path="/solicitud/reenviar" render={() => (this.props.userLogged ? ( <Redirect to="/admin/usuarios"/> ) : ( <Resend />))} />
                 <Route exact path="/regenerar/:token" render={() => (this.props.userLogged ? ( <Redirect to="/admin/usuarios"/> ) : ( <ChangePass />))} />
 

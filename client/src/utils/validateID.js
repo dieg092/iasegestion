@@ -48,17 +48,7 @@ export default id => {
       return true;
 
   } else if (primerCaracter.match(/^[XYZ]$/)){
-    var newcif;
-
-    if(primerCaracter=="X")
-      newcif=str.substr(1);
-
-    else if(primerCaracter=="Y")
-      newcif="1"+str.substr(1);
-
-    else if(primerCaracter=="Z")
-      newcif="2"+str.substr(1);
-
+    
   } else if (primerCaracter.match(/^[ABCDEFGHLM]$/)){
     if (unidad==10)
       unidad=0;

@@ -11,10 +11,6 @@ export const fetchUsers = (page, filters) => async dispatch => {
   dispatch({ type: FETCH_USERS, payload: res.data });
 };
 
-export const submitFilterUser = (values) => async dispatch => {
-
-};
-
 export const userClicked = (user, history) => async dispatch => {
   history.push('/admin/usuarios/' + user._id);
 
@@ -91,6 +87,19 @@ export const submitUser = (userId, values) => async dispatch => {
   });
 };
 
+export const regenerateAccess = (userId) => async dispatch => {
+  const resendModal = document.getElementById('modal-resend-access');
+  let  message = 'Error al enviar el correo';
+  const res =  await axios.post('/api/usuarios/' + userId + '/token');
+
+  if (res.data === 'OK') {
+    message = 'Correo enviaodo';
+  }
+
+  M.Modal.getInstance(resendModal).close();
+  window.M.toast({html: message, classes: 'rounded'});
+}
+
 export const regeneratePass = (userId) => async dispatch => {
   const res = await axios.post('/api/usuarios/' + userId + '/regenerar');
   let message = 'ERROR al generar y al enviar el Correo con las Claves';
@@ -105,6 +114,63 @@ export const regeneratePass = (userId) => async dispatch => {
   window.M.toast({html: message, classes: 'rounded'});
 }
 
+export const deleteUser = (user, history) => async dispatch => {
+  //Eliminar pdf y usuarios
+  const deletePDF = await axios.delete('/api/delete?key=' + user.digitalSignature);
+  let message = 'Error al eliminar usuario y el PDF';
+
+  if (deletePDF.data === 'OK') {
+
+    const deletePDF2 = await axios.delete('/api/delete?key=' + user.pdf);
+
+    if (deletePDF2.data === 'OK') {
+      const res = await axios.delete('/api/usuarios/' + user._id);
+
+      if (res.data !== 'ERROR') {
+        message = 'PDF y Usuario eliminados correo enviado';
+
+        let modal = document.getElementById('modal-delete-user');
+
+        M.Modal.getInstance(modal).close();
+
+        history.push('/admin/usuarios');
+
+        dispatch({
+          type: USER_SAVED
+        });
+      }
+    }
+  }
+
+   window.M.toast({html: message, classes: 'rounded'});
+}
+
+export const deleteDigitalSignature = (user, history) => async dispatch => {
+  let message = 'Error al eliminar el PDF';
+
+  const deletePDF = await axios.delete('/api/delete?key=' + user.digitalSignature);
+
+  if (deletePDF.data === 'OK') {
+    const res = await axios.post('/api/usuarios/' + user._id + '/deleteSignature', user);
+
+    if (res.data !== 'ERROR') {
+      message = 'PDF eliminado y solicitud enviada';
+
+      let modal = document.getElementById('modal-delete-signature');
+
+      M.Modal.getInstance(modal).close();
+
+      window.location.reload();
+
+      dispatch({
+        type: USER_SAVED
+      });
+
+    }
+  }
+
+   window.M.toast({html: message, classes: 'rounded'});
+}
 
 export const filterUsers = (filters) => {
   let filter = "&";

@@ -5,6 +5,8 @@ const _ = require('lodash');
 const Path = require('path-parser').default;
 const { URL } = require('url');
 const passport = require('passport');
+const Transaction = require('mongoose-transactions')
+const transaction = new Transaction()
 
 const Mailer = require('../services/Mailer');
 const keys = require('../config/keys');
@@ -56,50 +58,85 @@ module.exports = app => {
         };
 
         Mailer.newMail(mailOptions, req);
-      })
+      });
       res.send('OK');
     }
     //Emvoar correo con Link con token
   });
 
   app.post('/api/solicitud', async (req, res) => {
-    const { emailRequest } = req.body;
+    let { emailRequest, emailRequestAccess, businessName, businessName2, nif, nif2, name, name2, lastName, lastName2, phone, phone2, populationId } = req.body;
+    if (!emailRequest) {
+      emailRequest = emailRequestAccess;
+    }
+    if (!businessName) {
+      businessName = businessName2;
+    }
+    if (!nif) {
+      nif = nif2;
+    }
+    if (!name) {
+      name = name2;
+    }
+    if (!lastName) {
+      lastName = lastName2
+    }
+    if (!phone) {
+      phone = phone2;
+    }
 
     const existingUser =  await User.findOne({ email : emailRequest.toLowerCase() });
+    const existingBusiness = await User.findOne({ businessName: businessName });
+    const existingDniCif = await User.findOne({ nif: nif });
 
     if (existingUser) {
       res.send('CORREO EN USO');
+    } else if (existingBusiness) {
+      res.send('EMPRESA YA REGISTRADA');
+    } else if (existingDniCif) {
+      res.send('NIF/CIF EN USO')
     } else {
       try {
-        let newUser = new User();
-        newUser.email = emailRequest.toLowerCase();
-        newUser._population = '123';
-        newUser.requestDate = Date.now()
-        newUser.save((err, result) => {
-          const cryptoEmail = crypto.createCipher('aes-128-cfb', keys.key)
-                                    .update(emailRequest.toString(), 'utf-8', 'hex');
+        const newUser = {
+          email: emailRequest.toLowerCase(),
+          _population: populationId,
+          requestDate: Date.now(),
+          businessName: businessName.toUpperCase(),
+          nif: nif.toUpperCase(),
+          name: name,
+          lastName: lastName,
+          phone: phone
+        };
 
-          const token = new Token({ _userId: newUser._id, token: crypto.randomBytes(16).toString('hex') });
+        const user = transaction.insert('user', newUser);
 
-          token.save((err) => {
-            if (err) { return res.status(500).send({ msg: err.message }); }
+        // const newToken = {
+        //    _userId: user._id,
+        //    token: crypto.randomBytes(16).toString('hex')
+        // };
+        // const cryptoEmail = crypto.createCipher('aes-128-cfb', keys.key)
+        //                           .update(emailRequest.toString(), 'utf-8', 'hex');
+        //
+        // host = req.get('host');
+        // linkConfirmar = "http://" + host + "/api/solicitud/" + newToken.token + '/' + cryptoEmail;
+        // linkRegenerar = "http://" + host + "/api/regenerar/" + cryptoEmail;
+        // mailOptions={
+        //   from: 'informacion@iasegestion.com',
+        //   to: emailRequest,
+        //   subject: 'Verificiación de Cuenta',
+        //   text: 'Verifica tu cuenta',
+        //   html: '<a href="' + linkConfirmar + '">Verifica tu cuenta</a> \n Si se ha expirado la verificación <a href="' + linkRegenerar + '">Regenerar correo de verificación</a>',
+        // };
+        //
+        // Mailer.newMail(mailOptions, req);
+        // transaction.insert('token', newToken);
 
-            host = req.get('host');
-            linkConfirmar = "http://" + host + "/api/solicitud/" + token.token + '/' + cryptoEmail;
-            linkRegenerar = "http://" + host + "/api/regenerar/" + cryptoEmail;
-            mailOptions={
-              from: 'informacion@iasegestion.com',
-              to: emailRequest,
-              subject: 'Verificiación de Cuenta',
-              text: 'Verifica tu cuenta',
-              html: '<a href="' + linkConfirmar + '">Verifica tu cuenta</a> \n Si se ha expirado la verificación <a href="' + linkRegenerar + '">Regenerar correo de verificación</a>',
-            };
-
-            Mailer.newMail(mailOptions, req);
-          })
-        });
+        await transaction.run()
         res.send('OK')
-      } catch (err) {
+      } catch (error) {
+
+        await transaction.rollback().catch(console.error);
+        transaction.clean();
         res.status(422).send(err);
       }
     }
@@ -196,7 +233,7 @@ module.exports = app => {
   app.post('/api/recordar/:token', async (req, res) => {
     const token = await Token.findOne({ token: req.params.token});
     let update = {};
-  
+
     if (token !== null) {
       bcrypt.hash(req.body.contrasenaRemember, null, null, (err, hash) => {
           update.password = hash;
