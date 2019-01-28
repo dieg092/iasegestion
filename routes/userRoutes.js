@@ -132,7 +132,7 @@ module.exports = app => {
             to: 'informacion@iasegestion.com',
             subject: 'Solicitud de Acceso ' + user[0].businessName,
             text: user[0].name + ' ' + user[0].lastName + ' quiere acceder a iasegestion.com. Verifique el PDF Firmado Digitalmente adjunto. Una vez verificado, no olvides activar su cuenta y enviar sus claves. Si el PDF no es correcto. Hay que eliminar el PDF en la ficha del cliente para que pueda volver repetir el proceso.',
-            html: '<div><p>' + user[0].name + ' ' + user[0].lastName + ' (' + user[0].email + ')' + ' quiere acceder a iasegestion.com.</p><p>Para ello:</p><p>1. Verificar PDF Firmado Digitalmente: '+ keys.urlBucket + user[0].digitalSignature + '</p><p>2. Activar su cuenta: <a href="' + keys.path + 'admin/usuarios/' + user[0]._id + '">Ir a Ficha</a></p><p>3.Enviar claves de acceso.</p><p></p><p>*Si el PDF no es correcto. Hay que eliminar el PDF en la ficha del cliente para que pueda volver repetir el proceso.</p></div>',
+            html: '<div><p>' + user[0].name + ' ' + user[0].lastName + ' (' + user[0].email + ')' + ' quiere acceder a iasegestion.com.</p><p>Para ello:</p><p>1. Verificar PDF Firmado Digitalmente: '+ keys.urlBucket + user[0].digitalSignature + '</p><p>2. Activar su cuenta: <a href="' + keys.basePath + 'admin/usuarios/' + user[0]._id + '">Ir a Ficha</a></p><p>3.Enviar claves de acceso.</p><p></p><p>*Si el PDF no es correcto. Hay que eliminar el PDF en la ficha del cliente para que pueda volver repetir el proceso.</p></div>',
           };
 
           Mailer.newMail(mailOptions, req);

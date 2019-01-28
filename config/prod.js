@@ -10,5 +10,5 @@ module.exports = {
   mongoUser: process.env.MONGO_DB_USER,
   mongoPassword: process.env.MONGO_DB_PASSWORD,
   urlBucket: process.env.URL_BUCKET,
-  path: process.env.PATH
+  basePath: process.env.BASE_PATH
 };
