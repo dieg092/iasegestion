@@ -40,34 +40,32 @@ export const submitRequest = (values, history) => async dispatch => {
   if (res.data === "OK") {
     await axios.post('/api/pdf', values)
       .then(async (resp) => {
-        if (resp.statusText === 'OK') {
-          // if (resp.data) {
-          //   uploadConfig = await axios.get('/api/upload?folder=pdfs&type=application/pdf');
-          //   await axios.put(uploadConfig.data.url, resp, {
-          //     headers: {
-          //       'Content-Type': '.pdf'
-          //     }
-          //   });
-          // }
+        // if (resp.data) {
+        //   uploadConfig = await axios.get('/api/upload?folder=pdfs&type=application/pdf');
+        //   await axios.put(uploadConfig.data.url, resp, {
+        //     headers: {
+        //       'Content-Type': '.pdf'
+        //     }
+        //   });
+        // }
 
-          // const allValues = {
-          //   pdf: resp.data ? resp.data : '',
-          //   email: values.emailRequest ? values.emailRequest : values.emailRequestAccess
-          // }
-          //
-          // const respu = await axios.post('/api/user/pdf', allValues);
+        // const allValues = {
+        //   pdf: resp.data ? resp.data : '',
+        //   email: values.emailRequest ? values.emailRequest : values.emailRequestAccess
+        // }
+        //
+        // const respu = await axios.post('/api/user/pdf', allValues);
 
-          if (resp.data === "OK") {
-            const request = document.getElementById('modal-request');
-            const clientAccess = document.getElementById('modal-client-access');
-            const succesRequest = document.getElementById('modal-success-request');
+        if (resp.data === "OK") {
+          const request = document.getElementById('modal-request');
+          const clientAccess = document.getElementById('modal-client-access');
+          const succesRequest = document.getElementById('modal-success-request');
 
-            M.Modal.getInstance(request).close();
-            M.Modal.getInstance(clientAccess).close();
-            M.Modal.getInstance(succesRequest).open();
+          M.Modal.getInstance(request).close();
+          M.Modal.getInstance(clientAccess).close();
+          M.Modal.getInstance(succesRequest).open();
 
-            dispatch({ type: SUBMIT_REQUEST_SUCCESS, payload: values.emailRequest ? values.emailRequest : values.emailRequestAccess });
-          }
+          dispatch({ type: SUBMIT_REQUEST_SUCCESS, payload: values.emailRequest ? values.emailRequest : values.emailRequestAccess });
         }
       });
   } else if (res.data === "CORREO EN USO") {

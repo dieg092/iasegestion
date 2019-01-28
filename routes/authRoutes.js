@@ -132,6 +132,7 @@ module.exports = app => {
         // transaction.insert('token', newToken);
 
         await transaction.run()
+        console.log('hola')
         res.send('OK')
       } catch (error) {
 
