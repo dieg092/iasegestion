@@ -127,7 +127,7 @@ export const tokenExist = (history) => async dispatch => {
 
 export const submitRemember = (values, history) => async dispatch => {
   const res = await axios.post('/api/recordar', values);
-
+  console.log(res)
   const remember = document.getElementById('modal-remember');
   const succesRemember = document.getElementById('modal-success-remember');
 

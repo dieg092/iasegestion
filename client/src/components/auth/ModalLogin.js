@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import LoginForm from './login/LoginForm';
+import LoginFormModal from './login/LoginForm';
 
 class ModalLogin extends Component {
   onCloseModal() {
@@ -25,7 +25,7 @@ class ModalLogin extends Component {
               <i className="material-icons left grey-text text-darken-2 pointer" onClick={this.onCloseModal.bind(this)}>clear</i>
               <div className="body-login">
                 <p className="margin-bottom-20 font-35-custom margin-top-0">Iniciar Sesión</p>
-                <LoginForm />
+                <LoginFormModal />
                 <div className="center margin-top-10">
                   <a className="teal-text pointer" onClick={this.onRememberPass.bind(this)}>¿Has olvidado tu contraseña?</a>
                 </div>

@@ -66,9 +66,12 @@ module.exports = app => {
     await User.paginate(q, { page: page, limit: 30, sort: {email: 1}},(err, result) => {
       res.send(result);
     });
-
   });
 
+  app.get('/api/clients', requireLogin, async (req, res) => {
+      const users = await User.find({ rol: false, isActive: true });
+      res.send(users)
+  });
 
   app.get('/api/usuariosSearch', requireLogin, async (req, res) => {
     let query = req.query;
@@ -251,6 +254,7 @@ module.exports = app => {
 
   app.post('/api/usuarios/:userId', requireLogin, async (req, res) => {
     const user = await User.find({ _id: req.params.userId });
+
     let update = {};
 
     const randomPassword = Math.random().toString(36).slice(-8);
@@ -259,6 +263,7 @@ module.exports = app => {
       if (!user[0].password) {
         update.password = hash;
       }
+
       update.businessName = req.body.businessName ? req.body.businessName : '';
       update.name = req.body.name ? req.body.name : '';
       update.lastName = req.body.lastName ? req.body.lastName : '';
@@ -267,8 +272,8 @@ module.exports = app => {
       update.type = req.body.type ? req.body.type : false;
       update.rol = req.body.rol ? req.body.rol : false;
       update._population = req.body.populationId ? req.body.populationId : '';
-      update.pdf = req.body.pdf ? req.body.pdf : '';
-      update.digitalSignature = req.body.digitalSignature ? req.body.digitalSignature : '';
+      update.pdf = req.body.pdf ? req.body.pdf : (user[0].pdf ? user[0].pdf : '');
+      update.digitalSignature = req.body.digitalSignature ? req.body.digitalSignature : (user[0].digitalSignature ? user[0].digitalSignature : '');
 
       User.updateOne(
         {

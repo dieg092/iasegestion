@@ -110,13 +110,13 @@ module.exports = app => {
 
         const user = transaction.insert('user', newUser);
 
-        // const newToken = {
-        //    _userId: user._id,
-        //    token: crypto.randomBytes(16).toString('hex')
-        // };
+        const newToken = {
+           _userId: user._id,
+           token: crypto.randomBytes(16).toString('hex')
+        };
         // const cryptoEmail = crypto.createCipher('aes-128-cfb', keys.key)
         //                           .update(emailRequest.toString(), 'utf-8', 'hex');
-        //
+
         // host = req.get('host');
         // linkConfirmar = "http://" + host + "/api/solicitud/" + newToken.token + '/' + cryptoEmail;
         // linkRegenerar = "http://" + host + "/api/regenerar/" + cryptoEmail;
@@ -129,10 +129,9 @@ module.exports = app => {
         // };
         //
         // Mailer.newMail(mailOptions, req);
-        // transaction.insert('token', newToken);
+        transaction.insert('token', newToken);
 
         await transaction.run()
-        console.log('hola')
         res.send('OK')
       } catch (error) {
 

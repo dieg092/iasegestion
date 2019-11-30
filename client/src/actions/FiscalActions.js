@@ -156,9 +156,43 @@ export const submitFiscal = (values, file, namePDF, history, edit, userId, docSe
   dispatch({
     type: DOC_CREATED
   });
-
 }
 
+export const sendLoopMail = (history) => async dispatch => {
+  let message = 'Error al enviar los correos';
+  let res = '';
+  let mail = {};
+
+  const users = await axios.get('/api/clients');
+
+  if (users.data && users.data.length > 0) {
+    for (let i = 0; i < users.data.length; i++) {
+
+          mail = {
+            email: users.data[i].email
+          }
+          res = await axios.post('/api/sendLoopMail', mail);
+
+          if (res.data === 'OK' && i === 0) {
+            message = 'Enviando correos...';
+            let modal = document.getElementById('modal-send-loop-mails');
+            window.M.toast({html: message, classes: 'rounded'});
+            M.Modal.getInstance(modal).close();
+          } else if (res.data === 'OK' && i ===  users.data.length - 1) {
+            message = 'Todos los correos enviados.';
+            window.M.toast({html: message, classes: 'rounded'});
+          }
+    }
+  } else {
+      message = 'Todavía no hay clientes.';
+      window.M.toast({html: message, classes: 'rounded'});
+  }
+
+  dispatch({
+    type: DOC_CREATED
+  });
+
+}
 
 export const filterDocs = (filters) => {
   let filter = "";

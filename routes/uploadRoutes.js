@@ -29,6 +29,7 @@ module.exports = app => {
 
   app.delete('/api/delete', requireLogin, (req, res) => {
     const key = `${req.query.key}`;
+
     s3.deleteObject(
       {
         Bucket: keys.bucket,

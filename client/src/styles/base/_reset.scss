@@ -65,6 +65,10 @@ img {
   color: $primary-color;
 }
 
+.responsive-img {
+  object-fit: cover !important;
+}
+
 .col.s12 > .btn {
   width: 100%;
 }

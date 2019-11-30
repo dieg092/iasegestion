@@ -120,14 +120,31 @@ export const deleteUser = (user, history) => async dispatch => {
   let message = 'Error al eliminar usuario y el PDF';
 
   if (deletePDF.data === 'OK') {
+    if(user.pdf) {
+      const deletePDF2 = await axios.delete('/api/delete?key=' + user.pdf);
 
-    const deletePDF2 = await axios.delete('/api/delete?key=' + user.pdf);
+      if (deletePDF2.data === 'OK') {
+        const res = await axios.delete('/api/usuarios/' + user._id);
 
-    if (deletePDF2.data === 'OK') {
+        if (res.data !== 'ERROR') {
+          message = 'PDF y Usuario eliminados. Correo orientativo enviado';
+
+          let modal = document.getElementById('modal-delete-user');
+
+          M.Modal.getInstance(modal).close();
+
+          history.push('/admin/usuarios');
+
+          dispatch({
+            type: USER_SAVED
+          });
+        }
+      }
+    } else {
       const res = await axios.delete('/api/usuarios/' + user._id);
 
       if (res.data !== 'ERROR') {
-        message = 'PDF y Usuario eliminados correo enviado';
+        message = 'PDF y Usuario eliminados. Correo orientativo enviado';
 
         let modal = document.getElementById('modal-delete-user');
 
@@ -140,6 +157,7 @@ export const deleteUser = (user, history) => async dispatch => {
         });
       }
     }
+
   }
 
    window.M.toast({html: message, classes: 'rounded'});

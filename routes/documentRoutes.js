@@ -134,4 +134,58 @@ module.exports = app => {
       }
     });
   });
+
+  app.post('/api/sendLoopMail', requireLogin, async (req, res) => {
+    const mail = `<div>
+       <p>Estimado cliente:</p>
+       <p>Desde IASE Gestión trabajamos con la mayor diligencia posible y siempre con la satisfacción
+       de atender a nuestros clientes en el tiempo y forma previstos.</p>
+
+       <p>Por todo ello y para cumplir correctamente con los plazos legalmente establecidos;
+       es necesario que nos hagas llegar toda la documentación en la mayor brevedad posible, al
+       menos 5 días antes del correspondiente plazo. Para ello te recordamos los plazos de
+       presentación de los diferentes modelos de impuestos más comunes:</p>
+
+       <h3>- Modelos RENTA (115,111,130,131) </h3>
+       <p>Trimestre 1: 20/01</p>
+       <p>Trimestre 2: 20/04</p>
+       <p>Trimestre 3: 20/07</p>
+       <p>Trimestre 4: 20/10</p>
+
+       <h3>- Modelos IVA (303)</h3>
+       <p>Trimestre 1: 30/01</p>
+       <p>Trimestre 2: 20/04</p>
+       <p>Trimestre 3: 20/07</p>
+       <p>Trimestre 4: 20/10</p>
+
+       <p>(Las domiciliaciones de estos modelos finalizan 5 días antes del plazo indicado).</p>
+
+       <h3>- Declaraciones anuales (180,190,390): <span>30/01</span></h3>
+       <h3>- Declaraciones con terceros e intracomunitario (347,349): <span>28/02</span></h3>
+       <h3>- Declaración Renta (IRPF Mod 100): <span>desde el 01/04 al 30/06</span></h3>
+       <h3>- Declaración Sociedades (IS Mod 200): <span>hasta 25/07</span></h3>
+       <p></p>
+       <p>Igualmente precisamos que nos indiques un email donde poder comunicarte cualquier incidencia al respecto.</p>
+       <p>En caso de no disponer de la información pertinente en los plazos anteriormente mencionados
+       y que de ello pudiera derivar un retraso o incumplimiento de las obligaciones tributarias
+       legales, IASE Gestión no se responsabiliza de las consecuencias administrativas y o de la
+       sanción/es económicas que este incumplimiento pudiera acarrear.</p>
+    </div>`;
+
+     try {
+         mailOptions={
+           from: 'informacion@iasegestion.com',
+           to: req.body.email,
+           subject: 'Documentación - Plazos de entrega',
+           text: 'Test',
+           html: mail,
+         };
+
+        Mailer.newMail(mailOptions, req);
+
+        res.send('OK')
+     } catch (e) {
+       res.send(e)
+     }
+  });
 }

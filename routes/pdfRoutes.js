@@ -27,19 +27,27 @@ pdfMake.vfs = vfsFonts.pdfMake.vfs;
 module.exports = app => {
   app.post('/api/pdf', async (req, res, next) => {
       //res.send('PDF');
-      let { emailRequestAccess, businessName, name, lastName, nif, type, phone, population, populationId } = req.body;
+      let { emailRequestAccess, emailRequest, businessName, businessName2, name, name2, lastName, lastName2, nif, nif2, type, phone, phone2, population, population2, populationId } = req.body;
       if (type) {
         type = 'Persona jurídica';
       } else {
         type = 'Persona física';
       }
 
+      const email = emailRequest ? emailRequest : emailRequestAccess;
+      const business = businessName ? businessName : businessName2;
+      name = name ? name : name2;
+      lastName = lastName ? lastName : lastName2;
+      nif = nif ? nif : nif2;
+      phone = phone ? phone : phone2;
+      population = population ? population : population2;
+
       var documentDefinition = {
         content: [
            { text: 'FICHA DE CLIENTE', style: 'header' },
            '',
            '',
-           { text: ['Empresa: ', { text: `${businessName}.`, style: 'anotherStyle'}] },
+           { text: ['Empresa: ', { text: `${business}.`, style: 'anotherStyle'}] },
            { text: ['Administrador: ', { text: `${name} ${lastName}.`, style: 'anotherStyle'}] },
            { text: ['Email: ', { text: `${emailRequestAccess}.`, style: 'anotherStyle'}] },
            { text: ['Población: ', { text: `${population}.`, style: 'anotherStyle'}] },
@@ -65,13 +73,13 @@ module.exports = app => {
       try {
         const pdfDoc = pdfMake.createPdf(documentDefinition);
         pdfDoc.getBase64(async (data) => {
-          res.writeHead(200,
-          {
-              'Content-Type': 'application/pdf',
-              'Content-Disposition':'attachment;filename="filename.pdf"'
-          });
+          // res.writeHead(200,
+          // {
+          //     'Content-Type': 'application/pdf',
+          //     'Content-Disposition':'attachment;filename="filename.pdf"'
+          // });
 
-          const existUser =  await User.findOne({ email : emailRequestAccess.toLowerCase() });
+          const existUser =  await User.findOne({ email : email.toLowerCase() });
           if (existUser) {
             const token = new Token({ _userId: existUser._id, token: crypto.randomBytes(16).toString('hex') });
 
@@ -92,41 +100,43 @@ module.exports = app => {
                   Key: key
                 },
                 async (err, url) => {
-                  console.log(err)
-
-                  await axios.put(url, download, {
+                  const putPdf = await axios.put(url, download, {
                     headers: {
                       'Content-Type': 'application/pdf '
                     }
-                  }).then(async () => {
+                  })
+
+                  if (putPdf.statusText === 'OK') {
                     const urlPath = url.split('.com/')[1].split('?Content-Type')[0];
-                    User.updateOne({
-                      email: emailRequestAccess
+
+                    const updateUser = User.updateOne({
+                      email: email
                     }, {
                       pdf: urlPath
-                    }).then(async () => {
+                    }).then((request, resp) => {
                       const mailOptions={
                          from: 'informacion@iasegestion.com',
-                         to: emailRequestAccess,
+                         to: email,
                          subject: 'Solicitud Acceso (Firma digital)',
-                         text: 'Necesitmaos verificar que eres Administrador de ' + businessName + ' Firma digitalmente el PDF que está adjunto a este email y envíanoslo adjuntandolo en este link.',
-                         html: '<div><p>Necesitmaos verificar si eres Administrador de ' + businessName + '.</p><p>Firme digitalmente el PDF adjunto.</p><p>Abra el siguiente link: <a href="' + linkFirmaDigital + '">Adjuntar Firma Digital</a></p><p>Adjunte el PDF Firmado Digitalmente.</p></div>',
-                         fileName: urlSlug(businessName + ' ' + emailRequestAccess),
+                         text: 'Necesitmaos verificar que eres Administrador de ' + business + ' Firma digitalmente el PDF que está adjunto a este email y envíanoslo adjuntandolo en este link.',
+                         html: '<div><p>Necesitmaos verificar si eres Administrador de ' + business + '.</p><p>Firme digitalmente el PDF adjunto.</p><p>Abra el siguiente link: <a href="' + linkFirmaDigital + '">Adjuntar Firma Digital</a></p><p>Adjunte el PDF Firmado Digitalmente.</p></div>',
+                         fileName: urlSlug(business + ' ' + email),
                          attachment: download
                       };
 
                       const mail = Mailer.newMail(mailOptions, req);
-                      res.end('OK');
+                      res.send('OK');
                     });
-                  });
+                  } else {
+                    res.send('ERROR')
+                  }
                 }
               );
           });
         };
       });
-
-      } catch (e) {
-        res.send(e);
-      }
+    } catch (e) {
+      res.send(e);
+    }
   })
 }

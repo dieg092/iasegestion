@@ -7,6 +7,7 @@ const Token = mongoose.model('token');
 
 module.exports = {
   newMail: (mailOptions, req) => {
+    process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
     let transporter = nodemailer.createTransport({
       host: 'smtp.ionos.es',
       port: 587,
@@ -44,7 +45,6 @@ module.exports = {
       if (error) {
           return 'ERROR';
       }
-
       console.log('Message sent: %s', info.messageId);
       // Preview only available when sending through an Ethereal account
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));

@@ -223,6 +223,9 @@ img {
 .primary-text {
   color: #212121 !important; }
 
+.responsive-img {
+  object-fit: cover !important; }
+
 .col.s12 > .btn, .col.s12 > .btn-large, .col.s12 > .btn-small {
   width: 100%; }
 
@@ -550,7 +553,7 @@ table.highlight tbody tr:hover {
   background-image: url(/images/password.jpg); }
 
 .image-about-us {
-  background-image: url(/images/building.jpg); }
+  background-image: url(/images/quienes.jpg); }
 
 .image-blog {
   background-image: url(/images/blog.jpg); }
@@ -559,7 +562,7 @@ table.highlight tbody tr:hover {
   background-image: url(/images/conditions2.jpg); }
 
 .image-contact {
-  background-image: url(/images/building.jpg); }
+  background-image: url(/images/contact.jpg); }
 
 .image-404 {
   background-image: url(/images/404.jpg); }
@@ -574,7 +577,7 @@ table.highlight tbody tr:hover {
   background-image: url(/images/mail.jpg); }
 
 .image-services {
-  background-image: url(/images/building.jpg); }
+  background-image: url(/images/services.jpg); }
 
 .image-block {
   background-repeat: no-repeat;

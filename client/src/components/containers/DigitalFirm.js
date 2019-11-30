@@ -24,7 +24,7 @@ class DigitalFirm extends Component {
     const pdfFile = document.getElementById("pdfFile").value;
     const pdfFileArray = pdfFile.split('.');
 
-    if (pdfFileArray[pdfFileArray.length - 1] === 'pdf') {
+    if (pdfFileArray[pdfFileArray.length - 1] === 'pdf' || pdfFileArray[pdfFileArray.length - 1] === 'PDF') {
       this.props.submitPdf(this.state.file, pdfFile, this.props.history);
       this.setState({
         err: null

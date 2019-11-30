@@ -21,7 +21,7 @@ class ModalInvalidData extends Component {
             <div className="body-login">
               <h4>Eliminar PDF y Usuario</h4>
               <h6>Usar cuando la información del PDF es incorrecta.</h6>
-              <h6>Se enviará automaticamente un correo al usuario solicitando que rellene correctamente el la solicitud de información.</h6>
+              <h6>Se enviará automaticamente un correo al usuario solicitando que rellene correctamente la solicitud de información.</h6>
               <h5>¿Estás seguro de que deseas Eliminar el PDF y el Usuario?</h5>
               <div className="card-content margin-top-28">
                 <button className="btn red btn-red waves-effect waves-light white-text no-uppercase margin-top-15 left" onClick={this.closeModal.bind(this)}>

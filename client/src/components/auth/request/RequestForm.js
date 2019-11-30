@@ -36,7 +36,7 @@ class RequestForm extends Component {
     event.preventDefault();
 
     const populate = POPULATION.find((element) => {
-      if (element.label === this.props.requestForm.values.population) {
+      if (element.label === this.props.requestForm.values.population || element.label === this.props.requestForm.values.population2) {
         return element.value;
       }
       return null;
@@ -45,6 +45,7 @@ class RequestForm extends Component {
     if (this.props.requestForm.values && populate) {
       if ($("#termino").is(':checked') || $("#terminos").is(':checked')) {
         this.setState({ sendClicked: false });
+        console.log(this.props.requestForm.values)
         this.props.submitRequest(this.props.requestForm.values, this.props.history);
       } else {
         this.setState({ sendClicked: true });

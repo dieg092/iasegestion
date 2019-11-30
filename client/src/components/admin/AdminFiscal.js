@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import FilterDocsForm from './users/filterDocs/FilterDocsForm';
+import ModalSendLoopMails from './fiscal/ModalSendLoopMails';
+import M from "materialize-css/dist/js/materialize.min.js";
 import * as actions from '../../actions';
 import CONSTANTS from '../../utils/constants';
 
@@ -15,6 +17,8 @@ class AdminFiscal extends Component {
     }
 
     this.props.docNotSelected();
+    const elems = document.querySelectorAll('.modal');
+    M.Modal.init(elems, {});
   }
 
   onDocClick(doc) {
@@ -56,11 +60,18 @@ class AdminFiscal extends Component {
             <h4>Filtrar Documentos</h4>
             <div className="card">
               <FilterDocsForm />
+              <ModalSendLoopMails />
             </div>
             <div className="col s12">
+              <button type="button" data-target="modal-send-loop-mails" className="col s12 m3 margin-right-12 waves-effect white grey-text text-darken-4 btn-large left margin-top-20 no-padding-x margin-bottom-30 modal-trigger">
+                 Correo Bucle Plazos
+              </button>
               <button onClick={() => {this.props.newDoc(this.props.history)}} className="col s12 m3 waves-effect white grey-text text-darken-4 btn-large right margin-top-20 no-padding-x">SUBIR OTRO DOCUMENTO</button>
               <button onClick={() => {this.props.newTax(this.props.history)}} href="/admin/fiscal-financiero/nuevo-impuesto" className="col s12 m3 margin-right-12 waves-effect white grey-text text-darken-4 btn-large right margin-top-20 no-padding-x margin-bottom-30">SUBIR IMPUESTO</button>
             </div>
+
+
+
 
             <h4 className="margin-top-20">Listado de Documentos</h4>
               <div className="card">
