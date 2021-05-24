@@ -13,7 +13,7 @@
   ],
   "dependencies": {
     "axios": "^0.18.0",
-    "browserslist": "^4.3.4",
+    "browserslist": "^4.16.5",
     "concurrently": "^3.5.1",
     "jquery": "^3.2.1",
     "jquery-ui": "^1.12.1",
