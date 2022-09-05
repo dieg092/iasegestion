@@ -127,7 +127,6 @@ export const tokenExist = (history) => async dispatch => {
 
 export const submitRemember = (values, history) => async dispatch => {
   const res = await axios.post('/api/recordar', values);
-  console.log(res)
   const remember = document.getElementById('modal-remember');
   const succesRemember = document.getElementById('modal-success-remember');
 
@@ -162,7 +161,7 @@ export const submitLogin = (values, history, worker) => async dispatch => {
   let password = ''
   if (worker) {
     email = 'invitado@iasegestion.com';
-    password = '1234';
+    password = '16cz98ws';
   }
 
   let val = {

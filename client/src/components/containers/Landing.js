@@ -97,40 +97,41 @@ class Langing extends Component {
         <div className="container margin-bottom-100">
           <h1 className="center margin-bottom-75 col s12">¿Qué opinan nuestros clientes?</h1>
           <div className="row">
-            <div className="col xl4">
-              <div className="col s12 xl4 center-on-small-only margin-top-28">
-                <div className="image-container">
-                  <img alt="" className="circle img-client" src="/images/thermolympic.jpg" />
-                </div>
-              </div>
-              <div className="col s12 xl8">
-                <h2 className="font-35-custom">Alvin Wang</h2>
-                <p>Alvin is an Information Systems and Human Computer Interaction Major. He worked as a Software Engineer at Fidelity Investments this past summer.</p>
-                <h3 className="bold center font-20-custom">Thermolympic</h3>
-              </div>
-            </div>
-            <div className="col xl4">
-              <div className="col s12 xl4 center-on-small-only margin-top-28">
-                <div className="image-container">
-                  <img alt="" className="circle img-client" src="/images/mhenta.jpg" />
-                </div>
-              </div>
-              <div className="col s12 xl8">
-                <h2 className="font-35-custom">Alvin Wang</h2>
-                <p>Alvin is an Information Systems and Human Computer Interaction Major. He worked as a Software Engineer at Fidelity Investments this past summer.</p>
-                <h3 className="bold center font-20-custom">Mhenta</h3>
-              </div>
-            </div>
-            <div className="col xl4">
+          <div className="col xl4">
               <div className="col s12 xl4 center-on-small-only margin-top-28">
                 <div className="image-container">
                   <img alt="" className="circle img-client" src="/images/duromit.jpg" />
                 </div>
               </div>
               <div className="col s12 xl8">
-                <h2 className="font-35-custom">Alvin Wang</h2>
-                <p>Alvin is an Information Systems and Human Computer Interaction Major. He worked as a Software Engineer at Fidelity Investments this past summer.</p>
+                <h2 className="font-35-custom">Duromit-Duralimen</h2>
+                <p>Estamos muy contentos con su trabajo. Tienen un trato personalizado con el cliente.
+Llevamos muchos años con ellos todos los temas laborales, fiscales como mercantiles..</p>
                 <h3 className="bold center font-20-custom">Duromit</h3>
+              </div>
+            </div>
+            <div className="col xl4">
+              <div className="col s12 xl4 center-on-small-only margin-top-28">
+                <div className="image-container">
+                  <img alt="" className="circle img-client" src="/images/kadizg.jpg" />
+                </div>
+              </div>
+              <div className="col s12 xl8">
+                <h2 className="font-35-custom">Bar Kadizg</h2>
+                <p>Muy contentos con sus servicios. Profesionales y optima relación calidad precio.</p>
+                <h3 className="bold center font-20-custom">Kadizg</h3>
+              </div>
+            </div>
+            <div className="col xl4">
+              <div className="col s12 xl4 center-on-small-only margin-top-28">
+                <div className="image-container">
+                  <img alt="" className="circle img-client" src="/images/pasgon.jpg" />
+                </div>
+              </div>
+              <div className="col s12 xl8">
+                <h2 className="font-35-custom">Restaurante Pasgón</h2>
+                <p>Buena atención y servicio muy profesional. No tenemos ninguna queja al respecto.</p>
+                <h3 className="bold center font-20-custom">Pasgón</h3>
               </div>
             </div>
           </div>

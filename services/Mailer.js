@@ -7,11 +7,11 @@ const Token = mongoose.model('token');
 
 module.exports = {
   newMail: (mailOptions, req) => {
-    process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+   // process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 1;
     let transporter = nodemailer.createTransport({
-      host: 'smtp.ionos.es',
-      port: 587,
-      secure: false,
+      host: 'smtp.gmail.com',
+      //port: 587,
+      //secure: false,
       auth: {
         user: keys.userMail,
         pass: keys.passMail
@@ -42,6 +42,7 @@ module.exports = {
     }
 
     transporter.sendMail(options, (error, info) => {
+      console.log(error)
       if (error) {
           return 'ERROR';
       }

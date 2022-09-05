@@ -45,7 +45,6 @@ class RequestForm extends Component {
     if (this.props.requestForm.values && populate) {
       if ($("#termino").is(':checked') || $("#terminos").is(':checked')) {
         this.setState({ sendClicked: false });
-        console.log(this.props.requestForm.values)
         this.props.submitRequest(this.props.requestForm.values, this.props.history);
       } else {
         this.setState({ sendClicked: true });
