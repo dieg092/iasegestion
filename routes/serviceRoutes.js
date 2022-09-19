@@ -11,6 +11,8 @@ module.exports = app => {
     let query = req.query;
     delete query.page;
     await Service.paginate(query, { page: parseInt(req.query.page), sort: {title: 1}}, (err, result) => {
+      console.log(result)
+      console.log(err)
       res.send(result);
     });
   });
