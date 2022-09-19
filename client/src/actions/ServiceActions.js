@@ -6,7 +6,7 @@ import CONSTANTS from '../utils/constants';
 
 export const fetchServices = (page) => async dispatch => {
   const res = await axios.get('/api/services?page=' + page);
-
+  console.log(res);
   dispatch({ type: FETCH_SERVICES, payload: res.data });
 };
 
