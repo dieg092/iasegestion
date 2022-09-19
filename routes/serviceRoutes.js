@@ -9,13 +9,16 @@ const Service = mongoose.model('service');
 module.exports = app => {
   app.get('/api/services', async (req, res) => {
     let query = req.query;
+    const page = parseInt(req.query.page);
+
     delete query.page;
-    await Service.paginate(query, { page: parseInt(req.query.page), sort: {title: 1}}, (err, result) => {
+    await Service.paginate(query, { page: page, imit: 12, sort: {date: -1}}, (err, result) => {
       console.log(result)
       console.log(err)
       res.send(result);
     });
   });
+
 
   app.get('/api/service/:slugService', async (req, res) => {
     const service = await Service.find({ slug: req.params.slugService});
